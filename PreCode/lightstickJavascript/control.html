@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <title>Glowstick InMotion</title>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://mcorp.no/lib/ext/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="http://mcorp.no/lib/msv-1.4.js"></script>
+    <script type="text/javascript" src="http://mcorp.no/lib/magic-1.1.js"></script>
+
+    <style>
+        body {
+            background: black;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fullscreen {
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background {
+            z-index: 0;
+        }
+
+        .overlay {
+            z-index: 1;
+        }
+
+        #strobe {
+            background: white;
+            z-index: 2;
+        }
+
+        #glow_on {
+            opacity: 0.6;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        var bpm = 110;
+        var last_click = 0;
+
+        function post(cmd) {
+            // Round to nearest full thingy
+            var ts = Math.round(mymsv.query()[MSV.P]);
+            console.log("MSV:P", mymsv.query()[MSV.P]);
+
+            var post = {"cmd": cmd};
+            if (cmd == "strobe_on") {
+                post.cmd = "strobe"
+                if (parseFloat($("#strobe_hz").val()) == 0)
+                    $("#strobe_hz").val(1)
+                post["value"] = (1 / parseFloat($("#strobe_hz").val()))
+            } else if (cmd == "blink_on") {
+                post.cmd = "blink"
+                post["value"] = [];
+                $("input[type=checkbox]:checked").each(function (i, t) {
+                    post.value.push(parseInt($(t).val()));
+                });
+            }
+            console.log("POST: " + JSON.stringify(post));
+            ds.addAt(ts, JSON.stringify(post), null, null, 1);
+        }
+
+
+        function load() {
+            MSV.options = {};
+            $("#strobe").hide().removeClass("hidden");
+            //setInterval(strobe, 100);
+            audiomsv = MSV.msv("msv://mcorp.no:8091/13");
+            mymsv = MSV.msv("msv://mcorp.no:8091/18")
+                    .add_ready_handler(function () {
+                        var c = new TM.ControlBar(mymsv, {play: function () {
+                            mymsv.update(null, bpm / 60.0, null);
+                            audiomsv.update(null, 1, null)
+                        },
+                            beginning: function () {
+                                audiomsv.update(0, 1, null);
+                                mymsv.update(-0.5, bpm / 60.0, 0)
+                            },
+                            pause: function () {
+                                mymsv.update(null, 0, null);
+                                audiomsv.update(null, 0, null);
+                            },
+                            live: function () {
+                                audiomsv.update(0, 1, 0);
+                                mymsv.update(mymsv.query()[3]-0.5, bpm / 60.0, 0)
+                            }});
+                        c.attach($("#ctrl"), c.default_formatter, "Control", true);
+
+                        ds = new TM.DataSet("ds://mcorp.no:8080/2013", mymsv, {tail: 30, head: 10, live_window: 1}, null, function () {
+                            $("#loading").remove();
+                            setInterval(update_timer, 100);
+                        });
+                    })
+                    .add_error_handler(function () {
+                        alert("Failed to load MSV")
+                    });
+
+        }
+
+        function update_timer() {
+            var q = mymsv.query();
+            $("#p").html(q[MSV.P].toFixed(2));
+            $("#v").html(((60 * q[MSV.V]).toFixed(1)));
+            $("#beat").html(Math.floor((q[MSV.P] % 4) + 1));
+        }
+
+        function clicked() {
+            var now = new Date();
+            if (last_click == null) {
+                last_click = now;
+                return;
+            }
+
+            if (now - last_click > 5000) {
+                bpm = 0;
+                last_click = null;
+            }
+
+            // Calculate BPM
+            var new_time = now - last_click;
+            var new_bpm = 60 / (new_time / 1000);
+            if (bpm == 0)
+                bpm = new_bpm;
+
+            // If old BPM is too far off, just set it to this one
+            if (Math.abs(bpm - new_bpm) > 20)
+                bpm = new_bpm;
+            else
+                bpm = ((bpm * 9) + new_bpm) / 10;
+            $("#bpm_round").html(Math.round(bpm));
+            $("#bpm_avg").html(bpm.toFixed(1));
+            $("#bpm").html(new_bpm.toFixed(1));
+            last_click = now;
+        }
+
+        function set_bpm(obj) {
+            var bpm = $(obj).html();
+            mymsv.update(null, parseFloat(bpm));
+        }
+
+    </script>
+
+<body onload="load()">
+Current: <span id='p'></span> BPM: <span id='v'></span> Beat: <span id='beat'></span><br>
+
+<div id="ctrl"></div>
+<button onclick="clicked()">BPM counter</button>
+<a onclick="set_bpm(this)" id="bpm_round"></a> <a onclick="set_bpm(this)" id="bpm_avg"></a> <a onclick="set_bpm(this)"
+                                                                                               id="bpm"></a>
+
+<h2>Single</h2>
+<button onclick="post('strobe')">Strobe blink</button>
+<button onclick="post('blink')">Glow</button>
+
+<h2>Periodic</h2>
+<button onclick="post('strobe_on')">Strobe ON</button>
+<button onclick="post('strobe_off')">Strobe OFF</button>
+<br>
+Blinks pr beat: <input type="text" id="strobe_hz" value="1">
+<br><br>
+<button onclick="post('blink_on')">Glow ON</button>
+<button onclick="post('blink_off')">Glow OFF</button>
+<br>
+Beats:
+1 <input type="checkbox" value="1" checked>,
+2 <input type="checkbox" value="2">
+3 <input type="checkbox" value="3" checked>
+4 <input type="checkbox" value="4">
+<br><br>
+
+<!--
+<img id="glow_off" class="fullscreen background" src="neon_pink_off.png"/>
+<img id="glow_on" class="fullscreen overlay hidden" src="neon_pink_on.png"/>
+<div id="strobe" class="fullscreen overlay hidden"></div>
+-->
+
+</body>
+</html>
+

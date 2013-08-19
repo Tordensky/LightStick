@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <title>Glowstick InMotion</title>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://mcorp.no/lib/ext/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="http://mcorp.no/lib/msv-1.4.js"></script>
+    <script type="text/javascript" src="http://mcorp.no/lib/magic-1.1.js"></script>
+
+    <style>
+        body {
+            background: black;
+        }
+
+        #beat {
+            color: white;
+            z-index: 4;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fullscreen {
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background {
+            z-index: 0;
+        }
+
+        .overlay {
+            z-index: 1;
+        }
+
+        #strobe {
+            background: white;
+            z-index: 2;
+        }
+
+        #glow_on {
+            opacity: 0.6;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        var strobe_t = null;
+        var blink_t = null;
+        var last_click = null;
+        var bpm = 0;
+        var perform = {};
+
+        function strobe() {
+            $("#strobe").show();
+            setTimeout(function () {
+                $("#strobe").hide()
+            }, 25);
+        }
+
+        function strobe_on(hz) {
+            strobe_off();
+            strobe_t = setInterval(strobe, 1000 / hz);
+        }
+
+        function strobe_off(hz) {
+            if (strobe_t) {
+                clearInterval(strobe_t);
+                strobe_t = null;
+            }
+        }
+
+        function glow_on() {
+            $("#glow_on").fadeIn(100);
+        }
+
+        function glow_off() {
+            $("#glow_on").fadeOut(150);
+        }
+
+        function blink() {
+            glow_on();
+            setTimeout(glow_off, 250);
+        }
+
+        function blink_on(bpm) {
+            blink_off();
+            console.log("Blink every " + (bpm / 60) + " seconds");
+            blink_t = setInterval(blink, 1000 / (bpm / 60));
+        }
+
+        function blink_off() {
+            if (blink_t) {
+                clearInterval(blink_t);
+                blink_t = null;
+            }
+        }
+
+        var last_perform = {};
+
+        function spin_loop() {
+            if (mymsv.query()[MSV.V] == 0)
+                return;
+            var now = mymsv.query()[MSV.P] // /60.0
+
+            if (perform.blink) {
+                if (Math.abs(now % 1) < 0.05) {
+                    if (last_perform.blink)
+                        if (now - last_perform.blink < 0.5) return;
+                    last_perform.blink = now;
+
+                    // Within a 'beat'
+                    if (perform.blink.indexOf(1 + ((now % 4) - (now % 1))) > -1) {
+                        blink();
+                    }
+                }
+
+            }
+            if (perform.strobe) {
+                if (Math.abs(now % perform.strobe) < 0.05) {
+                    if (last_perform.strobe)
+                        if (now - last_perform.strobe < 0.01) return;
+                    last_perform.strobe = now;
+                    strobe();
+                }
+            }
+        }
+
+        var current_ops = {};
+
+        function process_updates(newEntries) {
+            for (var idx in newEntries) {
+                var entry = newEntries[idx];
+                console.log(entry);
+                if (entry.invalidates && current_ops[entry.invalidates]) {
+                    console.log("Stop something");
+                    current_ops[entry.invalidates].call();
+                }
+                if (!entry.val)
+                    return;
+
+                var val = JSON.parse(entry.val);
+                console.log(entry.val);
+                if (val.cmd) {
+                    if (val.cmd == "strobe") {
+                        current_ops[entry.id] = strobe_off;
+                        if (val.value) {
+                            perform.strobe = val.value;
+                        } else {
+                            strobe();
+                        }
+                    } else if (val.cmd == "blink") {
+                        current_ops[entry.id] = blink_off;
+                        if (!val.value) {
+                            blink();
+                        } else {
+                            console.log("Turning blink on: " + val.value);
+                            last_perform.blink = -1;
+                            perform.blink = val.value;
+                        }
+                    } else if (val.cmd == "strobe_off") {
+                        strobe_off();
+                        perform.strobe = false;
+                    } else if (val.cmd == "blink_off") {
+                        blink_off();
+                        perform.blink = false;
+                    }
+                }
+            }
+        }
+
+        function load() {
+            $("#strobe").hide().removeClass("hidden");
+            //setInterval(strobe, 100);
+            glow_off();
+            //perform.blink = [1, 3];
+            mymsv = MSV.msv("msv://mcorp.no:8091/18")
+                    .add_ready_handler(function () {
+
+                        ds = new TM.DataSet("ds://mcorp.no:8080/2013", mymsv, {tail: 300, head: 600}, null, function () {
+
+                            console.log("Ready");
+                            $("#loading").remove();
+                            ds.addTimedHandler(process_updates);
+                        })
+                        setInterval(spin_loop, 10);
+                    })
+                    .add_error_handler(function () {
+                        alert("Failed to load MSV")
+                    });
+
+        }
+
+    </script>
+
+<body onload="load()" onclick="clicked()">
+<span id="beat"></span>
+<img id="glow_off" class="fullscreen background" src="neon_pink_off.png"/>
+<img id="glow_on" class="fullscreen overlay hidden" src="neon_pink_on.png"/>
+
+<div id="strobe" class="fullscreen overlay hidden"></div>
+
+</body>
+</html>
+

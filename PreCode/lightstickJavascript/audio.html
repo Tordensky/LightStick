@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<title>Glowstick InMotion</title>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://mcorp.no/lib/ext/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="http://mcorp.no/lib/msv-1.4.js"></script>
+<script type="text/javascript" src="http://mcorp.no/lib/magic-1.1.js"></script>
+
+
+<script type="text/javascript">
+function load() {
+  $("#strobe").hide().removeClass("hidden");
+  //setInterval(strobe, 100);
+   mymsv = MSV.msv("msv://mcorp.no:8091/13")
+     .add_ready_handler(function() { 
+        new TM.MediaSync($("#player"), mymsv, {"target":0.05})
+     })
+     .add_error_handler(function() {alert("Failed to load MSV")});
+
+}
+
+</script>
+
+<body onload="load()">
+<!--<img id="glow_off" class="fullscreen background" src="neon_pink_off.png"/>-->
+
+<audio id="player" controls >Need audio tag support
+<source src="audio.ogg" type="audio/ogg" />
+<source src="audio.mp3" type="audio/mpeg" />
+</audio>
+
+
+
+</body>
+</html>
+
