@@ -37,6 +37,30 @@ LightStick.client = {
     },
 
     updateLoop: function () {
-        console.log('spin');
+        LightStick.client.setValuesToScreen();
+    },
+
+    getCurrentMsvTime: function () {
+        return LightStick.client.msv.query()[MSV.P];
+    },
+
+    getCurrentMsvVelocity: function () {
+        return LightStick.client.msv.query()[MSV.V];
+    },
+
+    getCurrentMsvAcceleration: function () {
+        return LightStick.client.msv.query()[MSV.A];
+    },
+
+    setValuesToScreen: function () {
+        var thisVar = LightStick.client;
+        var currentMsvTime = thisVar.getCurrentMsvTime();
+        $('#currentTime').html("MSV-P: " + currentMsvTime);
+
+        var currentMsvVelocity = thisVar.getCurrentMsvVelocity();
+        $('#currentSpeed').html("MSV-V: " + currentMsvVelocity);
+
+        var currentMsvAcceleration = thisVar.getCurrentMsvAcceleration();
+        $('#currentAcceleration').html("MSV-A: " + currentMsvAcceleration);
     }
 };
