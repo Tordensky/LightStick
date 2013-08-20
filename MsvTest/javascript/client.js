@@ -1,6 +1,6 @@
 var LightStick = LightStick || {};
 
-LightStick.client = {
+LightStick.Client = {
     ds: null,
 
     load: function () {
@@ -17,19 +17,19 @@ LightStick.client = {
 
     msvReadyHandler: function () {
         console.log('MSV ready');
-        LightStick.client.ds = new TM.DataSet(
+        LightStick.Client.ds = new TM.DataSet(
             "ds://mcorp.no:8080/2013",
-            LightStick.client.msv, {
+            LightStick.Client.msv, {
             tail: 10, head: 10},
             null,
-            LightStick.client.dsReadyHandler);
-        setInterval(LightStick.client.updateLoop, 10);
+            LightStick.Client.dsReadyHandler);
+        setInterval(LightStick.Client.updateLoop, 10);
     },
 
     dsReadyHandler: function () {
         console.log("DS Ready");
-        LightStick.client.ds.addTimedHandler(
-            LightStick.client.dsUpdateHandler);
+        LightStick.Client.ds.addTimedHandler(
+            LightStick.Client.dsUpdateHandler);
     },
 
     dsUpdateHandler: function (newEntries) {
@@ -37,23 +37,23 @@ LightStick.client = {
     },
 
     updateLoop: function () {
-        LightStick.client.setValuesToScreen();
+        LightStick.Client.setValuesToScreen();
     },
 
     getCurrentMsvTime: function () {
-        return LightStick.client.msv.query()[MSV.P];
+        return LightStick.Client.msv.query()[MSV.P];
     },
 
     getCurrentMsvVelocity: function () {
-        return LightStick.client.msv.query()[MSV.V];
+        return LightStick.Client.msv.query()[MSV.V];
     },
 
     getCurrentMsvAcceleration: function () {
-        return LightStick.client.msv.query()[MSV.A];
+        return LightStick.Client.msv.query()[MSV.A];
     },
 
     setValuesToScreen: function () {
-        var thisVar = LightStick.client;
+        var thisVar = LightStick.Client;
         var currentMsvTime = thisVar.getCurrentMsvTime();
         $('#currentTime').html("MSV-P: " + currentMsvTime);
 

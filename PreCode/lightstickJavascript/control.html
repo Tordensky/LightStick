@@ -85,10 +85,11 @@
             audiomsv = MSV.msv("msv://mcorp.no:8091/13");
             mymsv = MSV.msv("msv://mcorp.no:8091/18")
                     .add_ready_handler(function () {
-                        var c = new TM.ControlBar(mymsv, {play: function () {
-                            mymsv.update(null, bpm / 60.0, null);
-                            audiomsv.update(null, 1, null)
-                        },
+                        var c = new TM.ControlBar(mymsv, {
+                            play: function () {
+                                mymsv.update(null, bpm / 60.0, null);
+                                audiomsv.update(null, 1, null)
+                            },
                             beginning: function () {
                                 audiomsv.update(0, 1, null);
                                 mymsv.update(-0.5, bpm / 60.0, 0)
