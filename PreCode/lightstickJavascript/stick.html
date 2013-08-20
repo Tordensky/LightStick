@@ -193,7 +193,7 @@
                             console.log("Ready");
                             $("#loading").remove();
                             ds.addTimedHandler(process_updates);
-                        })
+                        });
                         setInterval(spin_loop, 10);
                     })
                     .add_error_handler(function () {
