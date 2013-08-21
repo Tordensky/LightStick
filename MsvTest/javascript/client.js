@@ -20,7 +20,7 @@ LightStick.Client = {
         LightStick.Client.ds = new TM.DataSet(
             "ds://mcorp.no:8080/2013",
             LightStick.Client.msv, {
-            tail: 10, head: 10},
+            tail: 300, head: 600},
             null,
             LightStick.Client.dsReadyHandler);
         setInterval(LightStick.Client.updateLoop, 10);
@@ -33,9 +33,10 @@ LightStick.Client = {
     },
 
     dsUpdateHandler: function (newEntries) {
-        _.each(newEntries, function (entry) {
+        _.size(newEntries);
+/*        _.each(newEntries, function (entry) {
             console.log('entry', entry);
-        });
+        });*/
     },
 
     updateLoop: function () {

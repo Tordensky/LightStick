@@ -20,7 +20,7 @@ LightStick.Controller = {
         LightStick.Controller.ds = new TM.DataSet(
             "ds://mcorp.no:8080/2013",
             LightStick.Controller.msv, {
-                tail: 10, head: 10, live_window: 1},
+                tail: 300, head: 100, live_window: 1},
             null,
             LightStick.Controller.dsReadyHandler);
         setInterval(LightStick.Controller.updateLoop, 10);
@@ -45,11 +45,11 @@ LightStick.Controller = {
                 ,
                 live: function () {
                     console.log('live');
-                    var liveTime = LightStick.Controller.ds.alive_at.getTime() +
-                        (Math.abs(LightStick.Controller.ds.alive_at.getTimezoneOffset())*60000);
-
+                    var liveTime = (LightStick.Controller.ds.alive_at.getTime() +
+                        (Math.abs(LightStick.Controller.ds.alive_at.getTimezoneOffset())*60000)) / 1000;
+                    console.log(liveTime);
                     LightStick.Controller.msv.update(
-                        liveTime, 1, null);
+                        50000, 1, null);
                 }
             }
         );
@@ -62,9 +62,11 @@ LightStick.Controller = {
     },
 
     dsUpdateHandler: function (newEntries) {
-        _.each(newEntries, function (entry) {
+        console.log('num: ', _.size(newEntries));
+        console.log(newEntries);
+/*        _.each(newEntries, function (entry) {
             console.log('entry', entry);
-        });
+        });*/
     },
 
     dsReadyHandler: function () {
@@ -80,8 +82,9 @@ LightStick.Controller = {
     post: function () {
         console.log("Hello button");
         var ts = Math.round(LightStick.Controller.msv.query()[MSV.P]);
-        var msg = {'data' : 'Hello client', id: 5415};
+        var msg = {'data' : 'Should be data', id: 5415};
         console.log(ts, msg);
-        this.ds.addAt(ts, JSON.stringify(msg), null, null, 1);
+
+        this.ds.addAt(ts, JSON.stringify(msg), null, null, 10);
     }
 };
