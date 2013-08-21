@@ -33,7 +33,9 @@ LightStick.Client = {
     },
 
     dsUpdateHandler: function (newEntries) {
-        console.log('Updates from ds', newEntries);
+        _.each(newEntries, function (entry) {
+            console.log('entry', entry);
+        });
     },
 
     updateLoop: function () {
