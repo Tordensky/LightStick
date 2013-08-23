@@ -49,7 +49,7 @@ LightStick.Controller = {
                         (Math.abs(LightStick.Controller.ds.alive_at.getTimezoneOffset())*60000)) / 1000;
                     console.log(liveTime);
                     LightStick.Controller.msv.update(
-                        50000, 1, null);
+                        50000.0, 1, null);
                 }
             }
         );
@@ -82,9 +82,9 @@ LightStick.Controller = {
     post: function () {
         console.log("Hello button");
         var ts = Math.round(LightStick.Controller.msv.query()[MSV.P]);
-        var msg = {'data' : 'Should be data', id: 5415};
+        var msg = {'data' : 'Test Msg'};
         console.log(ts, msg);
 
-        this.ds.addAt(ts, JSON.stringify(msg), null, null, 10);
+        LightStick.Controller.ds.addAt(ts, JSON.stringify(msg), null, null, 1);
     }
 };

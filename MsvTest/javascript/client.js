@@ -33,7 +33,7 @@ LightStick.Client = {
     },
 
     dsUpdateHandler: function (newEntries) {
-        _.size(newEntries);
+        console.log(_.size(newEntries));
 /*        _.each(newEntries, function (entry) {
             console.log('entry', entry);
         });*/

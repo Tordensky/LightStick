@@ -100,7 +100,8 @@
                             },
                             live: function () {
                                 audiomsv.update(0, 1, 0);
-                                mymsv.update(mymsv.query()[3]-0.5, bpm / 60.0, 0)
+                                //mymsv.update(mymsv.query()[3]-0.5, bpm / 60.0, 0);
+                                mymsv.update(100000.0, bpm / 60.0, 0);
                             }});
                         c.attach($("#ctrl"), c.default_formatter, "Control", true);
 
