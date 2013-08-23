@@ -19,7 +19,7 @@
 
     BoxLayout:
         orientation: 'horizontal'
-        padding: 10
+        padding: 20
         spacing: 0
 
         canvas.before:
@@ -52,8 +52,8 @@
     beat_counter_screen: bcs_screen
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
+        padding: 5
+        spacing: 5
 
         BeatCounterScreen:
             id: bcs_screen
@@ -68,16 +68,17 @@
 
 
 <TestScreen>:
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: 0
-        spacing: 0
-        size_hint: 1, 1
+    GridLayout:
+        cols: 2
 
         BeatCounter:
             id: abc
-            size_hint: 1.0, 1.0
 
         BeatCounter:
             id: def
-            size_hint: 1.0, 1.0
+
+        BeatCounter:
+            id: gef
+
+        BeatCounter:
+            id: ref

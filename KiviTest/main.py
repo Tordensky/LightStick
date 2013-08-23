@@ -6,6 +6,7 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.properties import NumericProperty
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.clock import Clock
 
 
@@ -87,13 +88,13 @@ class BeatCounter(BoxLayout):
         return values
 
 
-class TestScreen(BoxLayout):
+class TestScreen(GridLayout):
     pass
 
 
 class MyApp(App):
     def build(self):
-        return TestScreen()
+        return TestScreen(cols = 2)
 
 
 if __name__ == "__main__":
