@@ -1,5 +1,4 @@
 import kivy
-
 kivy.require("1.7.2")
 
 from kivy.app import App
@@ -37,33 +36,64 @@ class BeatCounterScreen(BoxLayout):
 
 
 class BeatCounter(BoxLayout):
+    TO_FAST_SAMPLE = 0.01
+    MAX_NUM_SAMPLES = 8
+
     beat_counter_screen = ObjectProperty(None)
 
-    first_sample = 0.0
-    sample_interval = 1.0
+    last_sample = 0.0
+    avg_sample_interval = 1.0
+
+    samples = []
 
     def button_press(self):
-        self._set_sample()
-        self.beat_counter_screen.update(self.sample_interval)
+        self._set_sample_time()
+        self.beat_counter_screen.update(self.avg_sample_interval)
 
-    def _set_sample(self):
-        if self.first_sample == 0.0:
-            self.first_sample = Clock.get_time()
+    def _set_sample_time(self):
+        if self.last_sample == 0.0:
+            self.last_sample = Clock.get_time()
         else:
-            second_sample = Clock.get_time()
-            self.sample_interval = second_sample - self.first_sample
-            self.first_sample = second_sample
+            new_sample = Clock.get_time()
+            new_sample_time = new_sample - self.last_sample
+            self._insert_new_sample(new_sample_time)
+            self.last_sample = new_sample
+
+            self.avg_sample_interval = self._get_avg_from_samples()
 
         Clock.unschedule(self._reset_timer)
         Clock.schedule_interval(self._reset_timer, 3)
 
     def _reset_timer(self, ds):
-        self.first_sample = 0.0
+        self.last_sample = 0.0
+        self.samples = []
+
+    def _insert_new_sample(self, sample):
+        if sample > self.TO_FAST_SAMPLE:
+            self.samples.append(sample)
+
+            if len(self.samples) > self.MAX_NUM_SAMPLES:
+                self.samples.pop(0)
+            print self.samples
+        else:
+            print 'error value'
+
+    def _get_avg_from_samples(self):
+        values = 0.0
+        for sample in self.samples:
+            values += sample
+
+        values /= float(len(self.samples))
+        return values
+
+
+class TestScreen(BoxLayout):
+    pass
 
 
 class MyApp(App):
     def build(self):
-        return BeatCounter()
+        return TestScreen()
 
 
 if __name__ == "__main__":

@@ -33,13 +33,13 @@
         Label:
             id: beat_val
             text: "145.4"
-            font_size: self.height / 1.6
+            font_size: self.height - (self.height / 2)
             size_hint: 0.6, 1
 
         Label:
             id: beat_label
             text: "bpm"
-            font_size: self.height / 5
+            font_size: self.height - (self.height / 1.2)
             valign: 'bottom'
             size_hint: 0.2, 1
 
@@ -50,7 +50,6 @@
 
 <BeatCounter>:
     beat_counter_screen: bcs_screen
-
     BoxLayout:
         orientation: 'vertical'
         padding: 10
@@ -66,3 +65,19 @@
             font_size: self.height / 2
             size_hint: 1, 0.4
             on_press: root.button_press()
+
+
+<TestScreen>:
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 0
+        spacing: 0
+        size_hint: 1, 1
+
+        BeatCounter:
+            id: abc
+            size_hint: 1.0, 1.0
+
+        BeatCounter:
+            id: def
+            size_hint: 1.0, 1.0
