@@ -1,5 +1,28 @@
 #:kivy 1.7.2
 
+<WidgetHeader>
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+        padding: 3
+
+        canvas:
+            Color:
+                rgb: 0.4, 0.4, 0.4
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "BPM Counter"
+
+            halign: 'left'
+            valign: 'middle'
+
+            font_size: self.height / 1.2
+            text_size: self.size
+
+
 <BeatCounterBall>:
     canvas:
         Color:
@@ -17,50 +40,119 @@
     counter_ball: ball
 
     BoxLayout:
-        orientation: 'horizontal'
-        padding: 2
-        spacing: 2
+        pos: root.pos
+        size: root.size
+        padding: 3
 
-        canvas.before:
+        canvas:
             Color:
-                rgba: 0.1, 0.0, 0.1, 1
-            Rectangle:
+                rgba: 0.6, 0.6, 0.6, 0.7
 
+            Rectangle:
                 pos: self.pos
                 size: self.size
 
-        Label:
-            id: beat_val
-            text: "00.0"
-            font_size: self.height / 1.8
-            size_hint: 0.7, 1
+        BoxLayout:
+            pos: root.pos
+            size: root.size
 
-        Label:
-            id: beat_label
-            text: "bpm"
-            font_size: self.height / 4
-            halign: 'left'
-            size_hint: 0.20, 1
+            orientation: 'horizontal'
 
-        BeatCounterBall:
-            id: ball
-            size_hint: 0.2, 0
+
+            canvas:
+                Color:
+                    rgba: ((1.0/255)*247), ((1.0/255)*147), ((1.0/255)*30), 0.7
+
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: beat_val
+                text: "00.0"
+                halign: 'left'
+                size: self.size
+                font_size: self.height / 1.8
+                size_hint: 0.6, 1
+
+            Label:
+                id: beat_label
+                text: "bpm"
+                size: self.size
+                font_size: self.height / 4
+
+                size_hint: 0.2, 1
+
+            BeatCounterBall:
+                id: ball
+                size_hint: 0.2, 0
+
+<UpDownMenu>:
+    up: up_button
+    down: down_button
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+
+        orientation: 'vertical'
+
+        Button:
+            id: up_button
+            text: "+"
+            font_size: self.width / 2
+            on_press: root.bpm_up()
+
+        Button:
+            id: down_button
+            text: "-"
+            font_size: self.width / 2
+            on_press: root.bpm_down()
 
 
 <BeatCounter>:
     beat_counter_screen: bcs_screen
+    up_down_menu: up_menu
+
     BoxLayout:
-        orientation: 'vertical'
         padding: 5
-        spacing: 5
+        pos: root.pos
+        size: root.size
 
-        BeatCounterScreen:
-            id: bcs_screen
-            size_hint: 1, 0.7
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 5
+            spacing: 2
 
-        Button:
-            id: sample_but
-            text: "Sample"
-            font_size: self.height / 2
-            size_hint: 1, 0.3
-            on_press: root.button_press()
+            pos: root.pos
+            size: root.size
+
+            canvas:
+                Color:
+                    rgba: 0.4, 0.4, 0.4, 0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            WidgetHeader:
+                size_hint: 1, 0.1
+
+            BoxLayout:
+                pos: root.pos
+                size: root.size
+
+                size_hint: 1, 0.5
+
+                BeatCounterScreen:
+                    id: bcs_screen
+
+                UpDownMenu:
+                    id: up_menu
+                    size_hint: 0.1, 1
+
+
+            Button:
+                id: sample_but
+                text: "Sample"
+                font_size: self.height / 2
+                size_hint: 1, 0.3
+                on_press: root.button_press()

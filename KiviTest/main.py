@@ -5,16 +5,18 @@ import bpmcounter
 kivy.require("1.7.2")
 
 from kivy.app import App
-from kivy.uix.gridlayout import GridLayout
+from kivy.uix.widget import Widget
 
 
-class TestScreen(GridLayout):
-    pass
+class TestScreen(Widget):
+    def __init__(self, **kwargs):
+        super(TestScreen, self).__init__(**kwargs)
+        print kwargs
 
 
 class MyApp(App):
     def build(self):
-        return TestScreen(cols=3)
+        return TestScreen()
 
 
 if __name__ == "__main__":

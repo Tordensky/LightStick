@@ -1,11 +1,16 @@
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.properties import NumericProperty
-from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 from kivy.lang import Builder
 
 Builder.load_file("/workspace/LightStick/KiviTest/bpmcounter.kv")
+
+
+class WidgetHeader(Widget):
+
+    def __init__(self, **kwargs):
+        super(WidgetHeader, self).__init__(**kwargs)
 
 
 class BeatCounterBall(Widget):
@@ -23,7 +28,18 @@ class BeatCounterBall(Widget):
         self.alpha = 0.1
 
 
-class BeatCounterScreen(BoxLayout):
+class UpDownMenu(Widget):
+    up = ObjectProperty(None)
+    down = ObjectProperty(None)
+
+    def bpm_up(self):
+        print "up"
+
+    def bpm_down(self):
+        print "down"
+
+
+class BeatCounterScreen(Widget):
     counter_ball = ObjectProperty(None)
     beat_value = ObjectProperty(None)
 
@@ -34,16 +50,23 @@ class BeatCounterScreen(BoxLayout):
         Clock.schedule_interval(self.counter_ball.flash, sample_time)
 
 
-class BeatCounter(BoxLayout):
-    TO_FAST_SAMPLE = 0.01
-    MAX_NUM_SAMPLES = 8
+class BeatCounter(Widget):
+    MIN_SAMPLE_TIME = 0.01
+    MAX_NUM_SAMPLES = 4
 
     beat_counter_screen = ObjectProperty(None)
+    up_down_menu = ObjectProperty(None)
 
     last_sample = 0.0
     avg_sample_interval = 1.0
 
     samples = []
+
+    def __init__(self, **kwargs):
+        super(BeatCounter, self).__init__(**kwargs)
+
+    def test(self):
+        print "hurra"
 
     def button_press(self):
         self._set_sample_time()
@@ -68,7 +91,7 @@ class BeatCounter(BoxLayout):
         self.samples = []
 
     def _insert_new_sample(self, sample):
-        if sample > self.TO_FAST_SAMPLE:
+        if sample > self.MIN_SAMPLE_TIME:
             self.samples.append(sample)
 
             if len(self.samples) > self.MAX_NUM_SAMPLES:
