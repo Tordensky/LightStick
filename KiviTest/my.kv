@@ -1,75 +1,8 @@
 #:kivy 1.7.2
 
-
-<BeatCounterBall>:
-    canvas:
-        Color:
-            rgba: 1, 1, 1, self.alpha
-
-        Ellipse:
-            pos: self.center_x - (self.parent.height/3)/2, self.parent.center_y - (self.parent.height/3)/2
-            size: self.parent.height/3, self.parent.height/3
-
-
-<BeatCounterScreen>:
-    beat_value: beat_val
-    beat_label: beat_label
-
-    counter_ball: ball
-
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: 20
-        spacing: 0
-
-        canvas.before:
-            Color:
-                rgba: 0.1, 0.0, 0.1, 1
-            Rectangle:
-
-                pos: self.pos
-                size: self.size
-
-        Label:
-            id: beat_val
-            text: "145.4"
-            font_size: self.height - (self.height / 2)
-            size_hint: 0.6, 1
-
-        Label:
-            id: beat_label
-            text: "bpm"
-            font_size: self.height - (self.height / 1.2)
-            valign: 'bottom'
-            size_hint: 0.2, 1
-
-        BeatCounterBall:
-            id: ball
-            size_hint: 0.2, 0
-
-
-<BeatCounter>:
-    beat_counter_screen: bcs_screen
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 5
-        spacing: 5
-
-        BeatCounterScreen:
-            id: bcs_screen
-            size_hint: 1, 0.6
-
-        Button:
-            id: sample_but
-            text: "Sample"
-            font_size: self.height / 2
-            size_hint: 1, 0.4
-            on_press: root.button_press()
-
-
 <TestScreen>:
     GridLayout:
-        cols: 2
+        cols: 3
 
         BeatCounter:
             id: abc
@@ -79,6 +12,21 @@
 
         BeatCounter:
             id: gef
+
+        BeatCounter:
+            id: ref
+
+        BeatCounter:
+            id: abc
+
+        BeatCounter:
+            id: def
+
+        BeatCounter:
+            id: gef
+
+        BeatCounter:
+            id: ref
 
         BeatCounter:
             id: ref
