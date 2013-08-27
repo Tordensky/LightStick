@@ -1,7 +1,6 @@
 import kivy
 import bpmcounter
 
-
 kivy.require("1.7.2")
 
 from kivy.app import App

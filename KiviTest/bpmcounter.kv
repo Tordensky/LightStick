@@ -58,7 +58,6 @@
 
             orientation: 'horizontal'
 
-
             canvas:
                 Color:
                     rgba: ((1.0/255)*247), ((1.0/255)*147), ((1.0/255)*30), 0.7
@@ -87,31 +86,10 @@
                 id: ball
                 size_hint: 0.2, 0
 
-<UpDownMenu>:
-    up: up_button
-    down: down_button
-    BoxLayout:
-        pos: root.pos
-        size: root.size
-
-        orientation: 'vertical'
-
-        Button:
-            id: up_button
-            text: "+"
-            font_size: self.width / 2
-            on_press: root.bpm_up()
-
-        Button:
-            id: down_button
-            text: "-"
-            font_size: self.width / 2
-            on_press: root.bpm_down()
-
-
 <BeatCounter>:
     beat_counter_screen: bcs_screen
-    up_down_menu: up_menu
+    button_up: up_button
+    button_down: down_button
 
     BoxLayout:
         padding: 5
@@ -145,10 +123,26 @@
                 BeatCounterScreen:
                     id: bcs_screen
 
-                UpDownMenu:
-                    id: up_menu
+                BoxLayout:
+                    pos: root.pos
+                    size: root.size
                     size_hint: 0.1, 1
 
+                    orientation: 'vertical'
+
+                    Button:
+                        id: up_button
+                        text: "+"
+                        font_size: self.width / 2
+                        on_press: root.bpm_button_press(root.bpm_up)
+                        on_release: root.bpm_button_release(root.bpm_up)
+
+                    Button:
+                        id: down_button
+                        text: "-"
+                        font_size: self.width / 2
+                        on_press: root.bpm_button_press(root.bpm_down)
+                        on_release: root.bpm_button_release(root.bpm_down)
 
             Button:
                 id: sample_but
