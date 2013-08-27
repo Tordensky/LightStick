@@ -1,2 +1,13 @@
 #:kivy 1.7.2
 
+<CustomWheel>
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+
+        ColorWheel:
+            id: wheel
+            _origin: (self.center_x, self.center_y)
+            _radius: 0.45 * min(self.size)
+            color: root.color
+            on_color: root.color[:3] = args[1][:3]

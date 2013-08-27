@@ -1,5 +1,6 @@
 import kivy
-import bpmcounter
+from bpmcounter import *
+import colorpicker
 
 kivy.require("1.7.2")
 
@@ -15,7 +16,7 @@ class TestScreen(Widget):
 
 class MyApp(App):
     def build(self):
-        return TestScreen()
+        return colorpicker.CustomWheel()
 
 
 if __name__ == "__main__":
