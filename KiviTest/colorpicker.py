@@ -2,7 +2,9 @@ from kivy.lang import Builder
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.uix.widget import Widget
 
-Builder.load_file("/workspace/LightStick/KiviTest/colorpicker.kv")
+import os
+
+Builder.load_file(os.getcwd() + "/colorpicker.kv")
 
 
 class CustomWheel(Widget):
@@ -14,6 +16,7 @@ class CustomWheel(Widget):
 
     def on_color(self, instance, value):
         print instance, value
+
 
 if __name__ == "__main__":
     pass

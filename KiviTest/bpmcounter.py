@@ -4,7 +4,9 @@ from kivy.properties import NumericProperty
 from kivy.clock import Clock
 from kivy.lang import Builder
 
-Builder.load_file("/workspace/LightStick/KiviTest/bpmcounter.kv")
+import os
+
+Builder.load_file(os.getcwd() + "/bpmcounter.kv")
 
 
 class WidgetHeader(Widget):
