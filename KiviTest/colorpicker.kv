@@ -1,9 +1,26 @@
 #:kivy 1.7.2
 
 <CustomWheel>
+    test_slider: test_slider
+    wheel: wheel
     BoxLayout:
         size: root.size
         pos: root.pos
+
+        BoxLayout:
+            Slider:
+                id: test_slider
+                orientation: 'vertical'
+                min: 0
+                max: 255
+                step: 15
+                color_red: self.value
+                on_color_red: self.value
+
+            Slider:
+                orientation: 'vertical'
+            Slider:
+                orientation: 'vertical'
 
         ColorWheel:
             id: wheel

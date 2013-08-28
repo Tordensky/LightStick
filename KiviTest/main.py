@@ -16,7 +16,7 @@ class TestScreen(Widget):
 
 class MyApp(App):
     def build(self):
-        return colorpicker.CustomWheel()
+        return TestScreen()
 
 
 if __name__ == "__main__":
