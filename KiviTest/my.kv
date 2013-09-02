@@ -1,12 +1,27 @@
 #:kivy 1.7.2
 
 <TestScreen>:
-    GridLayout:
+    BoxLayout:
         pos: root.pos
         size: root.size
-        cols: 3
+        orientation: 'vertical'
 
-        BeatCounter:
-        CustomWheel:
+        GridLayout:
+            pos: root.pos
+            size: root.size
+            size_hint: 1, 0.5
+            cols: 3
+
+            BeatCounter:
+            BeatCounter:
+            BeatCounter:
+
+        GridLayout:
+            pos: root.pos
+            size: root.size
+            cols: 2
+
+            CustomWheel:
+            CustomWheel:
 
 

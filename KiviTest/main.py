@@ -15,6 +15,8 @@ class TestScreen(Widget):
 
 
 class MyApp(App):
+    header_size = NumericProperty(26)
+
     def build(self):
         return TestScreen()
 

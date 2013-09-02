@@ -5,6 +5,10 @@
         pos: root.pos
         size: root.size
         padding: 3
+        title: ""
+
+
+
 
         canvas:
             Color:
@@ -14,7 +18,7 @@
                 size: self.size
 
         Label:
-            text: "BPM Counter"
+            text: root.title
 
             halign: 'left'
             valign: 'middle'
@@ -112,7 +116,10 @@
                     size: self.size
 
             WidgetHeader:
-                size_hint: 1, 0.1
+                title: "BPM Counter"
+                size_hint_x: 1
+                size_hint_y: None
+                height: app.header_size
 
             BoxLayout:
                 pos: root.pos

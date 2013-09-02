@@ -3,25 +3,60 @@
 
 <ColorPicker_Slider@BoxLayout>
     color: 0
+    idx: 0
     mroot: None
     orientation: 'vertical'
+    name: ""
 
-    Label:
-        text: str(int(slider.value))
+    padding: 2
+
+    BoxLayout:
+        padding: 2
         size_hint: 1, 0.1
-        font_size: self.height / 1.8
+
+        canvas.before:
+            Color:
+                rgba: 0.6, 0.6, 0.6, 0.7
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+
+            text: str(int(slider.value))
+
+            font_size: self.height / 1.2
 
     Slider:
         id: slider
         range: 0, 255
         value: root.color * 255
         orientation: 'vertical'
-        size_hint: 1, 0.9
+        size_hint: 1, 0.8
         on_value:
-            root.mroot._trigger_update_clr(args[1])
+            root.mroot._trigger_update_clr(root.idx, args[1])
+
+    Label:
+        size_hint: 1, 0.1
+        text: root.name
+        font_size: self.height / 1.5
+
+
+<ColorPreview@BoxLayout>
+    curr_color: None
+    size: root.size
+    pos: root.pos
+    canvas:
+        Color:
+            rgba: root.curr_color or (1, 1, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
 <CustomWheel>
     wheel: wheel
+    color: (1,1,1,1)
+    screen_color: (1,1,1,1)
     BoxLayout:
         padding: 5
         pos: root.pos
@@ -43,11 +78,15 @@
                     size: self.size
 
             WidgetHeader:
-                size_hint: 1, 0.1
+                title: "Color mixer"
+                size_hint_x: 1
+                size_hint_y: None
+                height: app.header_size
 
             BoxLayout:
                 size: root.size
                 pos: root.pos
+
 
                 canvas:
                     Color:
@@ -57,17 +96,39 @@
                         size: self.size
 
                 BoxLayout:
-                    ColorPicker_Slider:
-                        mroot: root
-                        color: wheel.r
+                    orientation: "vertical"
+                    spacing: 5
+                    padding: 5
 
-                    ColorPicker_Slider:
-                        mroot: root
-                        color: wheel.g
 
-                    ColorPicker_Slider:
-                        mroot: root
-                        color: wheel.b
+                    BoxLayout:
+                        size_hint: 1, 0.2
+                        canvas:
+                            Color:
+                                rgba: root.screen_color
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+
+                    BoxLayout:
+                        ColorPicker_Slider:
+                            mroot: root
+                            idx: 0
+                            color: wheel.r
+                            name: "Red"
+
+                        ColorPicker_Slider:
+                            mroot: root
+                            idx: 1
+                            color: wheel.g
+                            name: "Green"
+
+                        ColorPicker_Slider:
+                            mroot: root
+                            idx: 2
+                            color: wheel.b
+                            name: "Blue"
 
                 ColorWheel:
                     id: wheel
@@ -75,3 +136,5 @@
                     _radius: 0.45 * min(self.size)
                     color: root.color
                     on_color: root.color[:3] = args[1][:3]
+
+
