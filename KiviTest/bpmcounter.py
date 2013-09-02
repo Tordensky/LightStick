@@ -5,9 +5,10 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 
 import os
-#Builder.load_file(os.getcwd() + "/bpmcounter.kv")
+Builder.load_file(os.getenv("FILE_PATH") + "/bpmcounter.kv")
 
-Builder.load_file("/workspace/LightStick/KiviTest/bpmcounter.kv")
+#Builder.load_file("/workspace/LightStick/KiviTest/bpmcounter.kv")
+#Builder.load_file("/Hoveddisk/workspace/bpmcounter.kv")
 
 
 class WidgetHeader(Widget):
@@ -120,7 +121,6 @@ class BeatCounter(Widget):
 
             if len(self.samples) > self.MAX_NUM_SAMPLES:
                 self.samples.pop(0)
-            print self.samples
         else:
             print 'error value'
 

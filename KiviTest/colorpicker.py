@@ -1,11 +1,13 @@
+import os
 from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.properties import ListProperty
 from kivy.uix.widget import Widget
 
-#Builder.load_file(os.getcwd() + "/colorpicker.kv")
+Builder.load_file(os.getenv("FILE_PATH") + "/colorpicker.kv")
 
-Builder.load_file("/workspace/LightStick/KiviTest/colorpicker.kv")
+#Builder.load_file("/workspace/LightStick/KiviTest/colorpicker.kv")
+#Builder.load_file("/Hoveddisk/workspace/colorpicker.kv")
 
 
 class CustomWheel(Widget):
