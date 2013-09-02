@@ -15,46 +15,56 @@ class CustomWheel(Widget):
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
-        self.target_color = (0, 0, 0, 0)
+        self.new_color = (0, 0, 0, 0)
 
         self._fade_time = 5.0
-        self._fade_step_size = 0.01
-        self._cur_time = 0.0
+        self._fade_time_step_size = 0.01
+        self._current_fade_time = 0.0
 
-    def on_color(self, instance, value):
-        self.set_new_color(value)
+        self.IDX_RED = 0
+        self.IDX_GREEN = 1
+        self.IDX_BLUE = 2
 
-    def _trigger_update_clr(self, idx, value):
-        color_value = value / 255.0
+    def on_color(self, instance, new_color):
+        self.set_new_color(new_color)
+
+    def set_new_color(self, new_color):
+        self.new_color = new_color
+        self._current_fade_time = self._fade_time
+
+        Clock.unschedule(self._color_fade_step)
+        Clock.schedule_once(self._color_fade_step, self._fade_time_step_size)
+
+    def _trigger_update_color(self, idx, new_color_value):
+        color_value = new_color_value / 255.0
         if color_value > 1.0:
             color_value = 1.0
         self.color[idx] = color_value
 
-    def set_new_color(self, value):
-        self.old_color = self.target_color
-        self.target_color = value
-        self._cur_time = self._fade_time
-        Clock.unschedule(self._color_change_step)
-        Clock.schedule_once(self._color_change_step, self._fade_step_size)
+    def _color_fade_step(self, *args):
+        self._current_fade_time -= self._fade_time_step_size
 
-    def _color_change_step(self, *args):
-        self._cur_time -= self._fade_step_size
-
-        if not self._cur_time <= 0.0:
-            current_fade_percent = (self._fade_time - self._cur_time) / self._fade_time
-            self._set_new_screen_color(current_fade_percent)
-            Clock.schedule_once(self._color_change_step, self._fade_step_size)
+        if self._is_in_color_fade():
+            fade_time_step_in_percent = self._calculate_fade_step_time_to_percent()
+            self._update_current_fade_color(fade_time_step_in_percent)
+            Clock.schedule_once(self._color_fade_step, self._fade_time_step_size)
         else:
-            self.screen_color = self.target_color
+            self.screen_color = self.new_color
 
-    def _set_new_screen_color(self, current_fade_percent):
-        self._set_current_fade_color(0, current_fade_percent)
-        self._set_current_fade_color(1, current_fade_percent)
-        self._set_current_fade_color(2, current_fade_percent)
+    def _is_in_color_fade(self):
+        return self._current_fade_time > 0.0
 
-    def _set_current_fade_color(self, idx, current_time_percent):
-        color_diff = (self.target_color[idx] - self.screen_color[idx])
-        color_diff *= current_time_percent
+    def _calculate_fade_step_time_to_percent(self):
+        return (self._fade_time - self._current_fade_time) / self._fade_time
+
+    def _update_current_fade_color(self, fade_time_step_in_percent):
+        self._set_current_fade_color(self.IDX_RED, fade_time_step_in_percent)
+        self._set_current_fade_color(self.IDX_GREEN, fade_time_step_in_percent)
+        self._set_current_fade_color(self.IDX_BLUE, fade_time_step_in_percent)
+
+    def _set_current_fade_color(self, idx, fade_time_step_in_percent):
+        color_diff = (self.new_color[idx] - self.screen_color[idx])
+        color_diff *= fade_time_step_in_percent
         self.screen_color[idx] = self.screen_color[idx] + color_diff
 
 

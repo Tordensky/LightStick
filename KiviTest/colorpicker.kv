@@ -22,9 +22,7 @@
                 size: self.size
 
         Label:
-
             text: str(int(slider.value))
-
             font_size: self.height / 1.2
 
     Slider:
@@ -34,7 +32,7 @@
         orientation: 'vertical'
         size_hint: 1, 0.8
         on_value:
-            root.mroot._trigger_update_clr(root.idx, args[1])
+            root.mroot._trigger_update_color(root.idx, args[1])
 
     Label:
         size_hint: 1, 0.1
@@ -100,7 +98,6 @@
                     spacing: 5
                     padding: 5
 
-
                     BoxLayout:
                         size_hint: 1, 0.2
                         canvas:
@@ -109,7 +106,6 @@
                             Rectangle:
                                 pos: self.pos
                                 size: self.size
-
 
                     BoxLayout:
                         ColorPicker_Slider:
