@@ -1,5 +1,47 @@
 #:kivy 1.7.2
 
+<Logo@BoxLayout>
+    size: root.size
+    pos: root.pos
+
+    BoxLayout:
+        padding: 5
+        pos: root.pos
+        size: root.size
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 5
+            spacing: 2
+
+            pos: root.pos
+            size: root.size
+
+            canvas:
+                Color:
+                    rgba: 0.4, 0.4, 0.4, 0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                size: root.size
+                pos: root.pos
+
+
+                canvas:
+                    Color:
+                        rgb: 0.4, 0.4, 0.4
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    size_hint: 1, 1
+                    text: "CONTROLLER v.1.0"
+                    font_size: self.height / 10
+                    valign: 'middle'
+
 <TestScreen>:
     BoxLayout:
         pos: root.pos
@@ -13,7 +55,7 @@
             cols: 3
 
             BeatCounter:
-            BeatCounter:
+            Logo:
             BeatCounter:
 
         GridLayout:
