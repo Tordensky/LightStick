@@ -1,6 +1,8 @@
-import kivy
-from bpmcounter import *
-import colorpicker
+import os, kivy, bpmcounter, colorpicker
+from kivy.lang import Builder
+from kivy.properties import NumericProperty
+
+Builder.load_file(os.getenv("FILE_PATH") + "/my.kv")
 
 kivy.require("1.7.2")
 
