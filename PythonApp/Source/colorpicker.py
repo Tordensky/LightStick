@@ -11,8 +11,8 @@ class CustomWheel(Widget):
     color = ListProperty((1, 1, 1, 1))
     screen_color = ListProperty((0.1, 0.5, 1, 1))
     bpm = NumericProperty(0.0)
-    steps_per_beat = NumericProperty(24.0)
-    fade_time_in_beats = NumericProperty(1.0)
+    steps_per_beat = NumericProperty(8)
+    fade_time_in_beats = NumericProperty(5.0)
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
@@ -44,8 +44,8 @@ class CustomWheel(Widget):
     def _calc_time_each_fade_step(self):
         try:
             beats_per_sec = float(self.bpm) / 60.0
-            steps_per_sec = beats_per_sec * float(self.steps_per_beat)
-            return 1.0 / steps_per_sec
+            steps_per_sec = float(beats_per_sec) * float(self.steps_per_beat)
+            return 1.0 / float(steps_per_sec)
         except ZeroDivisionError:
             return 0.0
 
