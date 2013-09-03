@@ -7,9 +7,6 @@ from kivy.lang import Builder
 import os
 Builder.load_file(os.getenv("FILE_PATH") + "/bpmcounter.kv")
 
-#Builder.load_file("/workspace/LightStick/KiviTest/bpmcounter.kv")
-#Builder.load_file("/Hoveddisk/workspace/bpmcounter.kv")
-
 
 class WidgetHeader(Widget):
     title = StringProperty("")

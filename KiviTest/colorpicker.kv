@@ -1,5 +1,5 @@
 #:kivy 1.7.2
-
+#:import Colors config.WIDGET_COLORS
 
 <ColorPicker_Slider@BoxLayout>
     color: 0
@@ -16,7 +16,7 @@
 
         canvas.before:
             Color:
-                rgba: 0.6, 0.6, 0.6, 0.7
+                rgba: Colors.WIDGET_GREY_LIGHT
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -46,15 +46,15 @@
     pos: root.pos
     canvas:
         Color:
-            rgba: root.curr_color or (1, 1, 1, 1)
+            rgba: root.curr_color or Colors.WHITE
         Rectangle:
             pos: self.pos
             size: self.size
 
 <CustomWheel>
     wheel: wheel
-    color: (1,1,1,1)
-    screen_color: (1,1,1,1)
+    color: Colors.WHITE
+    screen_color: Colors.WHITE
     BoxLayout:
         padding: 5
         pos: root.pos
@@ -70,7 +70,7 @@
 
             canvas:
                 Color:
-                    rgba: 0.4, 0.4, 0.4, 0.5
+                    rgba: Colors.WIDGET_BACKGROUND_DARK
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -88,7 +88,7 @@
 
                 canvas:
                     Color:
-                        rgb: 0.4, 0.4, 0.4
+                        rgba: Colors.WIDGET_BACKGROUND_LIGHT
                     Rectangle:
                         pos: self.pos
                         size: self.size

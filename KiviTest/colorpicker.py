@@ -6,9 +6,6 @@ from kivy.uix.widget import Widget
 
 Builder.load_file(os.getenv("FILE_PATH") + "/colorpicker.kv")
 
-#Builder.load_file("/workspace/LightStick/KiviTest/colorpicker.kv")
-#Builder.load_file("/Hoveddisk/workspace/colorpicker.kv")
-
 
 class CustomWheel(Widget):
     color = ListProperty((1, 1, 1, 1))
