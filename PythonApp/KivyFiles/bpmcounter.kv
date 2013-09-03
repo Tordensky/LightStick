@@ -94,6 +94,8 @@
     button_up: up_button
     button_down: down_button
 
+    beat_value: 0.0
+
     BoxLayout:
         padding: 5
         pos: root.pos
@@ -128,6 +130,7 @@
 
                 BeatCounterScreen:
                     id: bcs_screen
+                    on_beat_value: root.beat_value = args[1]
 
                 BoxLayout:
                     pos: root.pos

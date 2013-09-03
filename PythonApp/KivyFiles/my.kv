@@ -56,8 +56,12 @@
             cols: 3
 
             BeatCounter:
+                id: beat_a
+                on_beat_value: wheel_a.bpm = args[1]
             Logo:
             BeatCounter:
+                id: beat_b
+                on_beat_value: wheel_b.bpm = args[1]
 
         GridLayout:
             pos: root.pos
@@ -65,6 +69,8 @@
             cols: 2
 
             CustomWheel:
+                id: wheel_a
             CustomWheel:
+                id: wheel_b
 
 

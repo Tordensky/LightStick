@@ -63,6 +63,8 @@ class BeatCounter(Widget):
     last_sample = 0.0
     avg_sample_time = 1.0
 
+    beat_value = NumericProperty(0)
+
     samples = []
 
     def __init__(self, **kwargs):
@@ -70,7 +72,7 @@ class BeatCounter(Widget):
 
     def button_press(self):
         self._set_sample_time()
-        self.beat_counter_screen.update(self.avg_sample_time)
+        self.set_new_bpm()
 
     def calculate_diff_value_for_bpm(self):
         return self.avg_sample_time / (600 / self.avg_sample_time)
@@ -84,7 +86,7 @@ class BeatCounter(Widget):
 
     def bpm_up(self, *args):
         self.avg_sample_time -= self.calculate_diff_value_for_bpm()
-        self.beat_counter_screen.update(self.avg_sample_time)
+        self.set_new_bpm()
 
     def bpm_down(self, *args):
         self.avg_sample_time += self.calculate_diff_value_for_bpm()
@@ -92,6 +94,13 @@ class BeatCounter(Widget):
         if self.avg_sample_time < 0.0:
             self.avg_sample_time = 0.0
 
+        self.set_new_bpm()
+
+    def sample_time_to_BPM(self, sample_time):
+        return 60 / sample_time
+
+    def set_new_bpm(self):
+        self.beat_value = self.sample_time_to_BPM(self.avg_sample_time)
         self.beat_counter_screen.update(self.avg_sample_time)
 
     def _set_sample_time(self):
