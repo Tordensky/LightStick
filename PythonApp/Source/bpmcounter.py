@@ -38,6 +38,9 @@ class BeatCounterScreen(Widget):
     counter_ball = ObjectProperty(None)
     beat_value = ObjectProperty(None)
 
+    def __init__(self, **kwargs):
+        super(BeatCounterScreen, self).__init__(**kwargs)
+
     def sample_time_to_BPM(self, sample_time):
         return 60 / sample_time
 
