@@ -1,4 +1,5 @@
 #:kivy 1.7.2
+#:import Colors config.WIDGET_COLORS
 
 <Logo@BoxLayout>
     size: root.size
@@ -19,7 +20,7 @@
 
             canvas:
                 Color:
-                    rgba: 0.4, 0.4, 0.4, 0.5
+                    rgba: Colors.WIDGET_BACKGROUND_DARK
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -31,7 +32,7 @@
 
                 canvas:
                     Color:
-                        rgb: 0.4, 0.4, 0.4
+                        rgba: Colors.WIDGET_BACKGROUND_LIGHT
                     Rectangle:
                         pos: self.pos
                         size: self.size
