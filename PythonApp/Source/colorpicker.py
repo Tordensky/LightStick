@@ -14,12 +14,6 @@ class CustomWheel(Widget):
     steps_per_beat = NumericProperty(1)
     fade_time_in_beats = NumericProperty(1.0)
 
-    def on_fade_time_in_beats(self, *args):
-        print args
-
-    def on_steps_per_beat(self, *args):
-        print args
-
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
         self.new_color = (0, 0, 0, 0)

@@ -1,3 +1,10 @@
+
+
+# HELPER TO SET RGB TO NORMALIZED TUPLE
+def RGBA(red, green, blue, alpha=1.0):
+    return ((1.0 / 255) * red), ((1.0 / 255) * green), ((1.0 / 255) * blue), alpha
+
+
 class WIDGET_COLORS():
     SCREEN_BACKGROUND = (0.8, 0.8, 0.8, 1)
 
@@ -8,7 +15,7 @@ class WIDGET_COLORS():
     WIDGET_GREY_LIGHT = (0.6, 0.6, 0.6, 0.7)
     WHITE = (1, 1, 1, 1)
 
-    WIDGET_BPM_SCREEN_COLOR = ((1.0 / 255) * 0), ((1.0 / 255) * 111), ((1.0 / 255) * 178), 1
+    WIDGET_BPM_SCREEN_COLOR = RGBA(0, 111, 178)
 
 
 class WIDGET_SIZES():
