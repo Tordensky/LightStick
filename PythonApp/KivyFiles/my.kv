@@ -1,76 +1,119 @@
 #:kivy 1.7.2
 #:import Colors config.WIDGET_COLORS
+#:import Sizes config.WIDGET_SIZES
 
-<Logo@BoxLayout>
+<Filler@BoxLayout>
     size: root.size
     pos: root.pos
+    text: ""
 
     BoxLayout:
-        padding: 5
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
         pos: root.pos
         size: root.size
 
-        BoxLayout:
-            orientation: 'vertical'
-            padding: 5
-            spacing: 2
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
-            pos: root.pos
+        BoxLayout:
             size: root.size
+            pos: root.pos
+
 
             canvas:
                 Color:
-                    rgba: Colors.WIDGET_BACKGROUND_DARK
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
                 Rectangle:
                     pos: self.pos
                     size: self.size
 
-            BoxLayout:
-                size: root.size
-                pos: root.pos
-
-
-                canvas:
-                    Color:
-                        rgba: Colors.WIDGET_BACKGROUND_LIGHT
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-                Label:
-                    size_hint: 1, 1
-                    text: "CONTROLLER v.1.0"
-                    font_size: self.height / 10
-                    valign: 'middle'
+            Label:
+                size_hint: 1, 1
+                text: root.text
+                font_size: self.height / 10
+                valign: 'middle'
 
 <TestScreen>:
+    canvas:
+        Color:
+            rgba: Colors.SCREEN_BACKGROUND
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     BoxLayout:
         pos: root.pos
         size: root.size
+
+        padding: Sizes.SCREEN_PADDING
+        spacing: Sizes.SCREEN_SPACING
+
         orientation: 'vertical'
 
         GridLayout:
             pos: root.pos
             size: root.size
-            size_hint: 1, 0.5
+            size_hint: 1, 0.2
+            spacing: Sizes.SCREEN_SPACING
             cols: 3
 
             BeatCounter:
                 id: beat_a
+                size_hint: 0.3, 1
                 on_beat_value: wheel_a.bpm = args[1]
-            Logo:
+
+            Filler:
+                size_hint: 0.6, 1
+                text: "Controller v.1.1"
+
             BeatCounter:
                 id: beat_b
+                size_hint: 0.3, 1
                 on_beat_value: wheel_b.bpm = args[1]
 
         GridLayout:
             pos: root.pos
             size: root.size
-            cols: 2
+            size_hint: 1, 0.35
+            spacing: Sizes.SCREEN_SPACING
+            cols: 3
 
             CustomWheel:
                 id: wheel_a
+                size_hint: 0.45, 1
+
+            Filler:
+                size_hint: 0.1, 1
+
             CustomWheel:
                 id: wheel_b
+                size_hint: 0.45, 1
+
+        GridLayout:
+            pos: root.pos
+            size: root.size
+            size_hint: 1, 0.35
+            spacing: Sizes.SCREEN_SPACING
+            cols: 3
+
+            FadePicker:
+                id: fade_b
+                size_hint: 0.2, 1
+
+            Filler:
+                size_hint: 0.6, 1
+
+            FadePicker:
+                id: fade_a
+                size_hint: 0.2, 1
+
+
 
 

@@ -11,7 +11,7 @@
 
         canvas:
             Color:
-                rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                rgba: Colors.WIDGET_HEADER_COLOR
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -25,6 +25,14 @@
             font_size: self.height / 1.2
             text_size: self.size
 
+
+<LightButton@Button>
+    canvas:
+        Color:
+            rgba: (1,1,1,0.4)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
 <BeatCounterBall>:
     canvas:
@@ -97,36 +105,48 @@
     beat_value: 0.0
 
     BoxLayout:
-        padding: 5
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
         pos: root.pos
         size: root.size
 
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        WidgetHeader:
+            title: "BPM Counter"
+            size_hint_x: 1
+            size_hint_y: None
+            height: app.header_size
+
         BoxLayout:
-            orientation: 'vertical'
-            padding: 5
-            spacing: 2
-
-            pos: root.pos
             size: root.size
+            pos: root.pos
 
+            padding: 5
+            spacing: 3
+
+            orientation: 'vertical'
             canvas:
                 Color:
-                    rgba: Colors.WIDGET_BACKGROUND_DARK
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
                 Rectangle:
                     pos: self.pos
                     size: self.size
-
-            WidgetHeader:
-                title: "BPM Counter"
-                size_hint_x: 1
-                size_hint_y: None
-                height: app.header_size
 
             BoxLayout:
                 pos: root.pos
                 size: root.size
 
                 size_hint: 1, 0.5
+
+                spacing: 3
 
                 BeatCounterScreen:
                     id: bcs_screen
@@ -135,25 +155,27 @@
                 BoxLayout:
                     pos: root.pos
                     size: root.size
-                    size_hint: 0.1, 1
+                    size_hint: 0.2, 1
+
+                    spacing: 3
 
                     orientation: 'vertical'
 
-                    Button:
+                    LightButton:
                         id: up_button
                         text: "+"
                         font_size: self.width / 2
                         on_press: root.bpm_button_press(root.bpm_up)
                         on_release: root.bpm_button_release(root.bpm_up)
 
-                    Button:
+                    LightButton:
                         id: down_button
                         text: "-"
                         font_size: self.width / 2
                         on_press: root.bpm_button_press(root.bpm_down)
                         on_release: root.bpm_button_release(root.bpm_down)
 
-            Button:
+            LightButton:
                 id: sample_but
                 text: "Sample"
                 font_size: self.height / 2
