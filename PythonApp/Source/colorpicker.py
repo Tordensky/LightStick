@@ -11,8 +11,14 @@ class CustomWheel(Widget):
     color = ListProperty((1, 1, 1, 1))
     screen_color = ListProperty((0.1, 0.5, 1, 1))
     bpm = NumericProperty(0.0)
-    steps_per_beat = NumericProperty(8)
-    fade_time_in_beats = NumericProperty(5.0)
+    steps_per_beat = NumericProperty(1)
+    fade_time_in_beats = NumericProperty(1.0)
+
+    def on_fade_time_in_beats(self, *args):
+        print args
+
+    def on_steps_per_beat(self, *args):
+        print args
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
@@ -65,7 +71,8 @@ class CustomWheel(Widget):
         self._set_color_step_sizes()
 
         Clock.unschedule(self._execute_fade_step)
-        Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
+        self._execute_fade_step(None)
+        #Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
 
     def _execute_fade_step(self, *args):
         if self._is_in_color_fade():

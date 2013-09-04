@@ -3,7 +3,7 @@ class WIDGET_COLORS():
 
     WIDGET_HEADER_COLOR = (0.5, 0.5, 0.5, 1)
 
-    WIDGET_BACKGROUND_DARK = (0.2, 0.2, 0.2, 1)
+    WIDGET_BACKGROUND_DARK = (0.3, 0.3, 0.3, 1)
     WIDGET_BACKGROUND_LIGHT = (0.4, 0.4, 0.4, 1)
     WIDGET_GREY_LIGHT = (0.6, 0.6, 0.6, 0.7)
     WHITE = (1, 1, 1, 1)

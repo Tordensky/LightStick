@@ -5,9 +5,10 @@
 <TimeFader@BoxLayout>
     color: 0
     idx: 0
-    mroot: None
     orientation: 'vertical'
     name: ""
+    value: 1
+    range: 0, 20
 
     padding: 2
 
@@ -28,11 +29,12 @@
 
     Slider:
         id: slider
-        range: 0, 255
-        value: root.color * 255
+        range: root.range
+        value: root.value
         orientation: 'vertical'
         size_hint: 1, 0.8
-        on_value:
+        on_value: root.value = args[1]
+        step: 1
 
 
     Label:
@@ -41,6 +43,8 @@
         font_size: self.height / 1.5
 
 <FadePicker@BoxLayout>
+    fade_time: 1
+    step_size: 1
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -75,8 +79,13 @@
 
             TimeFader:
                 name: "Fade Time"
+                range: 0, 96
+                on_value: root.fade_time = args[1]
+
             TimeFader:
                 name: "Step Size"
+                range: 1, 48
+                on_value: root.step_size = args[1]
 
 
 

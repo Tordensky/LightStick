@@ -66,16 +66,16 @@
 
             BeatCounter:
                 id: beat_a
-                size_hint: 0.3, 1
+                size_hint: 0.35, 1
                 on_beat_value: wheel_a.bpm = args[1]
 
             Filler:
-                size_hint: 0.6, 1
+                size_hint: 0.5, 1
                 text: "Controller v.1.1"
 
             BeatCounter:
                 id: beat_b
-                size_hint: 0.3, 1
+                size_hint: 0.35, 1
                 on_beat_value: wheel_b.bpm = args[1]
 
         GridLayout:
@@ -106,6 +106,8 @@
             FadePicker:
                 id: fade_b
                 size_hint: 0.2, 1
+                on_step_size: wheel_a.steps_per_beat = args[1]
+                on_fade_time: wheel_a.fade_time_in_beats = args[1]
 
             Filler:
                 size_hint: 0.6, 1
@@ -113,6 +115,8 @@
             FadePicker:
                 id: fade_a
                 size_hint: 0.2, 1
+                on_step_size: wheel_b.steps_per_beat = args[1]
+                on_fade_time: wheel_b.fade_time_in_beats = args[1]
 
 
 
