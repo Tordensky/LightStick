@@ -53,6 +53,7 @@ class CustomWheel(Widget):
         try:
             return (float(self.fade_time_in_beats) / float(self.bpm)) * 60.0
         except ZeroDivisionError:
+            print "ZERO DIV ERROR fade time"
             return 0.0
 
     def _calc_fade_step_in_time(self):
@@ -61,12 +62,14 @@ class CustomWheel(Widget):
             steps_per_sec = float(beats_per_sec) * float(self.steps_per_beat)
             return 1.0 / float(steps_per_sec)
         except ZeroDivisionError:
+            print "ZERO DIV ERROR fade step"
             return 0.0
 
     def _calc_number_of_steps(self):
         try:
             return self.fade_time_in_time / self._fade_step_in_time
         except ZeroDivisionError:
+            print "ZERO DIV ERROR num step"
             return 0.0
 
     def set_new_color(self, new_color):
@@ -78,15 +81,17 @@ class CustomWheel(Widget):
 
         self._set_color_step_sizes()
 
+        # TODO fix if fade step time is larger than fade time
         Clock.unschedule(self._execute_fade_step)
-        self._execute_fade_step(None)
-        #Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
+        #self._execute_fade_step(None)
+        Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
 
     def _execute_fade_step(self, *args):
         if self._is_in_color_fade():
             self._update_color_one_fade_step()
             Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
         else:
+            print "finish"
             self.screen_color = self.new_color
 
     def _is_in_color_fade(self):
