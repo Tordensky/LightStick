@@ -18,7 +18,7 @@ class CustomWheel(Widget):
         super(CustomWheel, self).__init__(**kwargs)
         self.new_color = (0, 0, 0, 0)
 
-        self._fade_time_step_size = 1 / 0.25
+        self._fade_step_in_time = 1 / 0.25
         self._remaining_fade_time = 0.0
 
         self.IDX_RED = 0
@@ -41,7 +41,7 @@ class CustomWheel(Widget):
         except ZeroDivisionError:
             return 0.0
 
-    def _calc_time_each_fade_step(self):
+    def _calc_fade_step_in_time(self):
         try:
             beats_per_sec = float(self.bpm) / 60.0
             steps_per_sec = float(beats_per_sec) * float(self.steps_per_beat)
@@ -51,31 +51,31 @@ class CustomWheel(Widget):
 
     def _calc_number_of_steps(self):
         try:
-            return self.fade_time_in_time / self._fade_time_step_size
+            return self.fade_time_in_time / self._fade_step_in_time
         except ZeroDivisionError:
             return 0.0
 
     def set_new_color(self, new_color):
         self.fade_time_in_time = self._calc_fade_time_in_time()
-        self._fade_time_step_size = self._calc_time_each_fade_step()
+        self._fade_step_in_time = self._calc_fade_step_in_time()
         self.new_color = new_color
 
         self._remaining_fade_time = self.fade_time_in_time
 
         self._set_color_step_sizes()
 
-        Clock.unschedule(self._color_fade_step)
-        Clock.schedule_once(self._color_fade_step, self._fade_time_step_size)
+        Clock.unschedule(self._execute_fade_step)
+        Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
 
-    def _color_fade_step(self, *args):
+    def _execute_fade_step(self, *args):
         if self._is_in_color_fade():
             self._update_color_one_fade_step()
-            Clock.schedule_once(self._color_fade_step, self._fade_time_step_size)
+            Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
         else:
             self.screen_color = self.new_color
 
     def _is_in_color_fade(self):
-        self._remaining_fade_time -= self._fade_time_step_size
+        self._remaining_fade_time -= self._fade_step_in_time
         return self._remaining_fade_time > 0.0
 
     def _get_color_step_size(self, idx):
