@@ -2,6 +2,50 @@
 #:import Colors config.WIDGET_COLORS
 #:import Sizes config.WIDGET_SIZES
 
+<FadeTimeSlider>
+    orientation: 'vertical'
+    name: ""
+    value: 1
+    range: 0, 11
+
+    label_value: ""
+
+    slider_value: self.slider_value
+
+    size: root.size
+    pos: root.pos
+
+    padding: 2
+    BoxLayout:
+        padding: 2
+        size_hint: 1, 0.1
+
+        canvas.before:
+            Color:
+                rgba: Colors.WIDGET_GREY_LIGHT
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: root.label_value
+            font_size: self.height / 1.2
+
+    Slider:
+        id: slider
+        range: root.range
+        value: root.slider_value
+        orientation: 'vertical'
+        size_hint: 1, 0.8
+        on_value: root.slider_value = args[1]
+        step: 1
+
+    Label:
+        size_hint: 1, 0.1
+        text: root.name
+        font_size: self.height / 1.5
+
+
 <TimeFader@BoxLayout>
     color: 0
     idx: 0
@@ -35,7 +79,6 @@
         size_hint: 1, 0.8
         on_value: root.value = args[1]
         step: 1
-
 
     Label:
         size_hint: 1, 0.1
@@ -77,9 +120,8 @@
                     pos: self.pos
                     size: self.size
 
-            TimeFader:
+            FadeTimeSlider:
                 name: "Fade Time"
-                range: 0, 96
                 on_value: root.fade_time = args[1]
 
             TimeFader:

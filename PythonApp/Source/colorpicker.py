@@ -1,10 +1,28 @@
 import os
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ListProperty, NumericProperty
+from kivy.properties import ListProperty, NumericProperty, StringProperty, BoundedNumericProperty
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
 
 Builder.load_file(os.getenv("FILE_PATH") + "/colorpicker.kv")
+
+
+class FadeTimeSlider(BoxLayout):
+    label_value = StringProperty("")
+    slider_value = NumericProperty(3)
+    value = NumericProperty(1)
+
+    def __init__(self, **kwargs):
+        super(FadeTimeSlider, self).__init__(**kwargs)
+        self.fade_times = [0.125, 0.25, 0.5, 1, 2, 3, 4, 8, 16, 32, 64, 128]
+        self.fade_labels = ["1/8", "1/4", "1/2", "1/1", "2/1", "3/1", "4/1", "8/1", "16/1", "32/1", "64/1", "128/1"]
+
+    def on_slider_value(self, *args):
+        idx = int(args[1])
+        print self.fade_labels[idx], self.fade_times[idx]
+        self.value = self.fade_times[idx]
+        self.label_value = self.fade_labels[idx]
 
 
 class CustomWheel(Widget):
