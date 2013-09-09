@@ -56,10 +56,15 @@ class CustomWheel(Widget):
             print "ZERO DIV ERROR fade time"
             return 0.0
 
+    # TODO does not return the correct result!
     def _calc_fade_step_in_time(self):
         try:
             beats_per_sec = float(self.bpm) / 60.0
             steps_size_in_time = float(beats_per_sec) / float(self.steps_per_beat)
+
+            fade_time = self._calc_fade_time_in_time()
+            if steps_size_in_time > fade_time:
+                return fade_time
             return steps_size_in_time
         except ZeroDivisionError:
             print "ZERO DIV ERROR fade step"
@@ -94,8 +99,10 @@ class CustomWheel(Widget):
             self.screen_color = self.new_color
 
     def _is_in_color_fade(self):
+        if self._remaining_fade_time <= 0.0:
+            return False
         self._remaining_fade_time -= self._fade_step_in_time
-        return self._remaining_fade_time > 0.0
+        return self._remaining_fade_time >= 0.0
 
     def _get_color_step_size(self, idx):
         try:
