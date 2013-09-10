@@ -1,7 +1,7 @@
 import os
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ListProperty, NumericProperty, StringProperty, BoundedNumericProperty
+from kivy.properties import ListProperty, NumericProperty, StringProperty, BoundedNumericProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
 
@@ -28,6 +28,8 @@ class CustomWheel(Widget):
     steps_per_beat = NumericProperty(1)
     fade_time_in_beats = NumericProperty(1.0)
 
+    trigger = BooleanProperty(False)
+
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
         self.new_color = (0, 0, 0, 0)
@@ -35,13 +37,23 @@ class CustomWheel(Widget):
         self._fade_step_in_time = 1 / 0.25
         self._remaining_fade_time = 0.0
 
+        self.change_color = False
+
         self.IDX_RED = 0
         self.IDX_GREEN = 1
         self.IDX_BLUE = 2
         self.color_step_size = [0.0, 0.0, 0.0]
 
     def on_color(self, instance, new_color):
-        self.set_new_color(new_color)
+        self.new_color = new_color
+        self.change_color = True
+
+    # TRIGGER SIGNAL FROM BPM COUNTER OR OTHER CONTROLLING UNIT
+    def on_trigger(self, *args):
+        if args[1]:
+            if self.change_color:
+                self.change_color = False
+                self.set_new_color()
 
     def _trigger_update_color(self, idx, new_color_value):
         color_value = new_color_value / 255.0
@@ -77,10 +89,9 @@ class CustomWheel(Widget):
             print "ZERO DIV ERROR num step"
             return 0.0
 
-    def set_new_color(self, new_color):
+    def set_new_color(self):
         self.fade_time_in_time = self._calc_fade_time_in_time()
         self._fade_step_in_time = self._calc_fade_step_in_time()
-        self.new_color = new_color
 
         self._remaining_fade_time = self.fade_time_in_time
 

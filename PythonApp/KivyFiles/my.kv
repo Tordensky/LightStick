@@ -68,6 +68,7 @@
                 id: beat_a
                 size_hint: 0.35, 1
                 on_beat_value: wheel_a.bpm = args[1]
+                on_trigger: wheel_a.trigger = args[1]
 
             Filler:
                 size_hint: 0.5, 1
@@ -77,6 +78,7 @@
                 id: beat_b
                 size_hint: 0.35, 1
                 on_beat_value: wheel_b.bpm = args[1]
+                on_trigger: wheel_b.trigger = args[1]
 
         GridLayout:
             pos: root.pos
