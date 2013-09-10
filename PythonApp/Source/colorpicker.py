@@ -46,7 +46,11 @@ class CustomWheel(Widget):
 
     def on_color(self, instance, new_color):
         self.new_color = new_color
-        self.change_color = True
+        if self.trigger:
+            self.set_new_color()
+            print "WORKS"
+        else:
+            self.change_color = True
 
     # TRIGGER SIGNAL FROM BPM COUNTER OR OTHER CONTROLLING UNIT
     def on_trigger(self, *args):

@@ -6,6 +6,8 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 
 import os
+
+BEAT_LIVE_WINDOW = 1 / 10.0
 Builder.load_file(os.getenv("FILE_PATH") + "/bpmcounter.kv")
 
 
@@ -111,7 +113,7 @@ class BeatCounter(Widget):
     def on_beat(self, *args):
         self.beat_counter_screen.flash()
         self.trigger = True
-        Clock.schedule_once(self._trigger_reset, 1 / 1000.0)
+        Clock.schedule_once(self._trigger_reset, BEAT_LIVE_WINDOW)
 
     def _trigger_reset(self, *args):
         self.trigger = False
