@@ -134,6 +134,3 @@ class CustomWheel(Widget):
 
     def _update_color_step_helper(self, idx):
         self.screen_color[idx] += self.color_step_size[idx]
-
-if __name__ == "__main__":
-    pass

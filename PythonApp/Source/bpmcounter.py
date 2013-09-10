@@ -150,7 +150,3 @@ class BeatCounter(Widget):
     def _reset_timer(self, ds):
         self.last_sample = 0.0
         self.samples = []
-
-
-if __name__ == "__main__":
-    pass
