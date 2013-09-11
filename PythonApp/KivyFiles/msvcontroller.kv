@@ -1,6 +1,7 @@
 #:kivy 1.7.2
 #:import Colors config.WIDGET_COLORS
 #:import Sizes config.WIDGET_SIZES
+#:import os os
 
 <MsvScreen@BoxLayout>
     pos: root.pos
@@ -38,14 +39,15 @@
             orientation: "vertical"
             spacing: 2
             Label:
-                size_hint: 1.0, 0.3
+                size_hint: 1.0, 0.2
                 text: "MVC Status"
                 font_size: self.height / 1.2
 
             Label:
-                size_hint: 1.0, 0.4
+                size_hint: 1.0, 0.5
                 text: str(root.msvPos)
                 font_size: self.height
+                #font_name: os.getenv("FILE_PATH")+"/mono.ttf"
 
             BoxLayout:
                 size_hint: 1.0, 0.3
