@@ -67,16 +67,17 @@
             BeatCounter:
                 id: beat_a
                 size_hint: 0.35, 1
-                on_beat_value: wheel_a.bpm = args[1]
+                on_beat_value: wheel_a.bpm = args[1]; msvControl.setBpm(args[1], "A")
                 on_trigger: wheel_a.trigger = args[1]
 
             SimpleMsvController:
+                id: msvControl
                 size_hint: 0.5, 1
 
             BeatCounter:
                 id: beat_b
                 size_hint: 0.35, 1
-                on_beat_value: wheel_b.bpm = args[1]
+                on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B")
                 on_trigger: wheel_b.trigger = args[1]
 
         GridLayout:

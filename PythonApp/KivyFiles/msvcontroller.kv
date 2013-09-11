@@ -7,6 +7,9 @@
     size: root.size
 
     msvPos: 0.0
+    msvVel: 0.0
+    msvAcc: 0.0
+    currentBPM: 0.0
     padding: 3
 
     canvas:
@@ -49,12 +52,19 @@
                 Label:
                     text: "LIVE"
                     font_size: self.height / 1.2
+                    size_hint: 0.25, 1.0
                 Label:
-                    text: "Vel: +1.0"
+                    text: "BPM: " + str(root.currentBPM)
                     font_size: self.height / 1.2
+                    size_hint: 0.25, 1.0
                 Label:
-                    text: "Acc: 0.0"
+                    text: "Vel: " + str(root.msvVel)
                     font_size: self.height / 1.2
+                    size_hint: 0.25, 1.0
+                Label:
+                    text: "Acc: " + str(root.msvAcc)
+                    font_size: self.height / 1.2
+                    size_hint: 0.25, 1.0
 
 
 
@@ -62,6 +72,9 @@
 
 <SimpleMsvController>
     msvPosition: 0.0
+    msvVelocity: 0.0
+    msvAcceleration: 0.0
+    currentBPM: 0.0
 
     BoxLayout:
         orientation: 'vertical'
@@ -100,14 +113,21 @@
 
             MsvScreen:
                 msvPos: str(root.msvPosition)
+                msvAcc: str(root.msvAcceleration)
+                msvVel: str(root.msvVelocity)
+                currentBPM: str(root.currentBPM)
                 size_hint: 1.0, 0.6
 
             BoxLayout:
                 spacing: 5
                 size_hint: 1.0, 0.4
                 LightButton:
-                    text: "A"
+                    text: "TRIGGER A"
+                    font_size: self.height / 2
+                    on_press: root.setSourceForBpm("A")
 
                 LightButton:
-                    text: "B"
+                    text: "TRIGGER B"
+                    font_size: self.height / 2
+                    on_press: root.setSourceForBpm("B")
 
