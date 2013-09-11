@@ -22,26 +22,27 @@ class CustomStepSlider(BoxLayout):
 
 
 class CustomWheel(Widget):
+    IDX_RED = 0
+    IDX_GREEN = 1
+    IDX_BLUE = 2
+
     color = ListProperty((1, 1, 1, 1))
     screen_color = ListProperty((0.1, 0.5, 1, 1))
-    bpm = NumericProperty(0.0)
-    steps_per_beat = NumericProperty(1)
-    fade_time_in_beats = NumericProperty(1.0)
 
+    bpm = NumericProperty(0.0)
     trigger = BooleanProperty(False)
+
+    fade_time_in_beats = NumericProperty(1.0)
+    steps_per_beat = NumericProperty(1)
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
         self.new_color = (0, 0, 0, 0)
 
-        self._fade_step_in_time = 1 / 0.25
+        self._fade_step_in_time = 0.0
         self._remaining_fade_time = 0.0
 
-        self.change_color = False
-
-        self.IDX_RED = 0
-        self.IDX_GREEN = 1
-        self.IDX_BLUE = 2
+        self.execute_change_color = False
         self.color_step_size = [0.0, 0.0, 0.0]
 
     def on_color(self, instance, new_color):
@@ -49,13 +50,13 @@ class CustomWheel(Widget):
         if self.trigger:
             self.set_new_color()
         else:
-            self.change_color = True
+            self.execute_change_color = True
 
     # TRIGGER SIGNAL FROM BPM COUNTER OR OTHER CONTROLLING UNIT
     def on_trigger(self, *args):
         if args[1]:
-            if self.change_color:
-                self.change_color = False
+            if self.execute_change_color:
+                self.execute_change_color = False
                 self.set_new_color()
 
     def _trigger_update_color(self, idx, new_color_value):
@@ -102,7 +103,6 @@ class CustomWheel(Widget):
 
         # TODO fix if fade step time is larger than fade time
         Clock.unschedule(self._execute_fade_step)
-        #self._execute_fade_step(None)
         Clock.schedule_once(self._execute_fade_step, self._fade_step_in_time)
 
     def _execute_fade_step(self, *args):
