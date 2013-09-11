@@ -1,4 +1,4 @@
-import os, kivy, bpmcounter, colorpicker
+import os, kivy, bpmcounter, colorpicker, msvcontroller
 from kivy.lang import Builder
 from kivy.properties import NumericProperty
 

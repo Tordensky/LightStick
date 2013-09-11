@@ -1,0 +1,113 @@
+#:kivy 1.7.2
+#:import Colors config.WIDGET_COLORS
+#:import Sizes config.WIDGET_SIZES
+
+<MsvScreen@BoxLayout>
+    pos: root.pos
+    size: root.size
+
+    msvPos: 0.0
+    padding: 3
+
+    canvas:
+        Color:
+            rgba: Colors.WIDGET_GREY_LIGHT
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+        padding: 2
+        orientation: 'horizontal'
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BPM_SCREEN_COLOR
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 2
+            Label:
+                size_hint: 1.0, 0.3
+                text: "MVC Status"
+                font_size: self.height / 1.2
+
+            Label:
+                size_hint: 1.0, 0.4
+                text: str(root.msvPos)
+                font_size: self.height
+
+            BoxLayout:
+                size_hint: 1.0, 0.3
+                Label:
+                    text: "LIVE"
+                    font_size: self.height / 1.2
+                Label:
+                    text: "Vel: +1.0"
+                    font_size: self.height / 1.2
+                Label:
+                    text: "Acc: 0.0"
+                    font_size: self.height / 1.2
+
+
+
+
+
+<SimpleMsvController>
+    msvPosition: 0.0
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
+        pos: root.pos
+        size: root.size
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        WidgetHeader:
+            title: "MSV Controller"
+            size_hint_x: 1
+            size_hint_y: None
+            height: app.header_size
+
+        BoxLayout:
+            size: root.size
+            pos: root.pos
+            orientation: "vertical"
+
+            padding: 5
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            MsvScreen:
+                msvPos: str(root.msvPosition)
+                size_hint: 1.0, 0.6
+
+            BoxLayout:
+                spacing: 5
+                size_hint: 1.0, 0.4
+                LightButton:
+                    text: "A"
+
+                LightButton:
+                    text: "B"
+

@@ -70,9 +70,8 @@
                 on_beat_value: wheel_a.bpm = args[1]
                 on_trigger: wheel_a.trigger = args[1]
 
-            Filler:
+            SimpleMsvController:
                 size_hint: 0.5, 1
-                text: "Controller v.1.1"
 
             BeatCounter:
                 id: beat_b
@@ -113,6 +112,7 @@
 
             Filler:
                 size_hint: 0.6, 1
+                text: "Controller v.1.1"
 
             FadePicker:
                 id: fade_a
