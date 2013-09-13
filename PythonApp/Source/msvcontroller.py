@@ -24,20 +24,24 @@ class SimpleMsvController(Widget):
 
     def __init__(self, **kwargs):
         super(SimpleMsvController, self).__init__(**kwargs)
-        self._stop_event = threading.Event()
-        self._client = Client(self.HOST)
-        self._client.start()
-        self._msv = Msv(self._client, self.MSVID)
-        self._msv.add_handler(self.update_handler)
+        try:
+            self._stop_event = threading.Event()
+            self._client = Client(self.HOST)
+            self._client.start()
+            self._msv = Msv(self._client, self.MSVID)
+            self._msv.add_handler(self.update_handler)
 
-        #self.update(18, 0, 1, 0)
+            #self.update(18, 0, 1, 0)
 
-        self.lock = threading.RLock()
-        self.msvThread = threading.Thread(target=self.run)
-        self.msvThread.start()
+            self.lock = threading.RLock()
+            self.msvThread = threading.Thread(target=self.run)
+            self.msvThread.start()
 
-        self.source = None
-        self.bpms = defaultdict(float)
+            self.source = None
+            self.bpms = defaultdict(float)
+
+        except AssertionError:
+            print "MSV ERROR ! ! ! ! !! ! ! "
 
     def setSourceForBpm(self, source):
         self.source = source
