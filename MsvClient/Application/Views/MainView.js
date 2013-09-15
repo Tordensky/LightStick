@@ -1,12 +1,12 @@
 var LightStick = LightStick || {};
 
-LightStick.Router = Backbone.View.extend({
+LightStick.MainView = Backbone.View.extend({
     initialize: function() {
-        this.el = options.el;
+        this.el = this.options.el;
         console.log("View", this.el);
     },
 
     render: function() {
-
+        console.log("Call render in main view");
     }
 });

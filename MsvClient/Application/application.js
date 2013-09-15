@@ -2,6 +2,9 @@ var LightStick = LightStick || {};
 
 LightStick.Application = {
     run: function (el) {
-        console.log('el', el);
+        this.el = el
+//        new LightStick.MainView({
+//            el: this.el
+//        })
     }
 };
