@@ -5,8 +5,24 @@
     <script type="text/javascript" src="/MsvClient/external/backbone.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
+    <script type="text/javascript" src="/MsvClient/Application/Router/Router.js"></script>
+    <script type="text/javascript" src="/MsvClient/Application/Views/MainView.js"></script>
+    <script type="text/javascript" src="/MsvClient/Application/Models/CommandModel.js"></script>
+    <script type="text/javascript" src="/MsvClient/Application/application.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/MsvClient/CSS/styles.css">
     <title>LIGHT STICK V1.0</title>
+
+    <script type="text/javascript">
+        $(function(){
+            var app = LightStick.Application;
+            app.run({
+                el: $("#app")
+            })
+        });
+    </script>
 </head>
+
 <body>
     <h1>HELLO WORLD</h1>
     <div id="app"></div>
