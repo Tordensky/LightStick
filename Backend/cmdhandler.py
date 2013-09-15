@@ -4,7 +4,7 @@ import threading
 
 class CommandHandler():
     def __init__(self):
-        self.command = {"Start": 123456.1234, "Show": [{"Duration": 8, "Color": [255, 222, 333]}]}
+        self.command = None
         self.lock = threading.RLock()
 
     def setCommand(self, data):
