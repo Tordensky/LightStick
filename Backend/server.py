@@ -1,14 +1,27 @@
-from config.serverconfig import APPLICATION_BASE_PATH
+from config.serverconfig import APPLICATION_BASE_PATH, INDEX_HTML
 from cmdhandler import CommandHandler
 import libs.web as web
 
+
 urls = (
     '/', 'index',
-    '/file/(.*)', 'files'
+    '/command', 'command',
+    '/(.*)', 'files'
 )
 
 
 class index:
+    def GET(self):
+        try:
+            f = open(APPLICATION_BASE_PATH + INDEX_HTML, 'r')
+            return f.read()
+
+        except IOError:
+            print "ERROR"
+            return
+
+
+class command:
     def GET(self):
         return web.cmdHandler.getCommand()
 
