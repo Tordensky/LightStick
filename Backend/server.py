@@ -16,8 +16,8 @@ class index:
             f = open(APPLICATION_BASE_PATH + INDEX_HTML, 'r')
             return f.read()
 
-        except IOError:
-            print "ERROR"
+        except IOError, e:
+            print "ERROR", e
             return
 
 
@@ -36,8 +36,8 @@ class files:
             f = open(APPLICATION_BASE_PATH + filename, 'r')
             return f.read()
 
-        except IOError:
-            print "ERROR"
+        except IOError, e:
+            print "ERROR", e
             return
 
 

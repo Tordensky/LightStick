@@ -1,10 +1,12 @@
 var LightStick = LightStick || {};
 
 LightStick.Application = {
-    run: function (el) {
-        this.el = el
-//        new LightStick.MainView({
-//            el: this.el
-//        })
+    run: function () {
+        var router = new LightStick.Router();
+
+        var mainView = new LightStick.MainView({
+            el: $("#app")
+        });
+        mainView.render();
     }
 };

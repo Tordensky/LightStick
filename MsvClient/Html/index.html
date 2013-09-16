@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/MsvClient/external/underscore.js"></script>
     <script type="text/javascript" src="/MsvClient/external/backbone.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
     <script type="text/javascript" src="/MsvClient/Application/Router/Router.js"></script>
     <script type="text/javascript" src="/MsvClient/Application/Views/MainView.js"></script>
@@ -16,15 +16,14 @@
     <script type="text/javascript">
         $(function(){
             var app = LightStick.Application;
-            app.run({
-                el: $("#app")
-            })
+            app.run();
         });
     </script>
 </head>
 
 <body>
-    <h1>HELLO WORLD</h1>
-    <div id="app"></div>
+    <div id="app">
+        <h1>HELLO WORLD</h1>
+    </div>
 </body>
 </html>

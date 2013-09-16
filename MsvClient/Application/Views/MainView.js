@@ -1,12 +1,14 @@
 var LightStick = LightStick || {};
 
 LightStick.MainView = Backbone.View.extend({
+    template: "",
+
     initialize: function() {
-        this.el = this.options.el;
-        console.log("View", this.el);
+
     },
 
     render: function() {
-        console.log("Call render in main view");
+       this.$el.html("<h1>Render OK</h1>");
+       return this;
     }
 });
