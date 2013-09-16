@@ -13,12 +13,14 @@ class HttpClient():
         headers = {"Content-type": "application/json", "Accept": "text/plain"}
         conn = httplib.HTTPConnection(self.baseAddress, 8080)
         conn.request("POST", url, jsonMessage, headers)
-        #response = conn.getresponse()
 
-        #print response.status
-        #print response.read()
+        response = conn.getresponse()
+        status = response.status
+        data = response.read()
 
         conn.close()
+
+        return status, data
 
 if __name__ == "__main__":
     client = HttpClient("localhost", 8080)

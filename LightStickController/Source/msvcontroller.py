@@ -8,7 +8,7 @@ from kivy.lang import Builder
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
 
-from pymsv.msvclient.client import Client, Msv
+from libs.pymsv.msvclient.client import Client, Msv
 
 
 Builder.load_file(os.getenv("FILE_PATH") + "/msvcontroller.kv")

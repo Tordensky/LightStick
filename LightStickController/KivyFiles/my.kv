@@ -48,6 +48,9 @@
             pos: self.pos
             size: self.size
 
+    WebTest:
+        id: web
+
     BoxLayout:
         pos: root.pos
         size: root.size
@@ -90,6 +93,7 @@
             CustomWheel:
                 id: wheel_a
                 size_hint: 0.45, 1
+                on_color: web.color = args[1]
 
             Filler:
                 size_hint: 0.1, 1
