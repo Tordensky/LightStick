@@ -21,7 +21,7 @@ LightStick.MainView = Backbone.View.extend({
         var that = this;
         setInterval(function(){
             that.updateModels();
-        }, 50);
+        }, 500);
     },
 
     handleCommand: function() {
