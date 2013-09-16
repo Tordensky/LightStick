@@ -10,7 +10,7 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     initEvents: function() {
-        this.commandModel.on("change:msg", this.handleCommand, this);
+        this.commandModel.on("change:cmdNum", this.handleCommand, this);
     },
 
     updateModels: function () {
@@ -21,7 +21,7 @@ LightStick.MainView = Backbone.View.extend({
         var that = this;
         setInterval(function(){
             that.updateModels();
-        }, 1000);
+        }, 50);
     },
 
     handleCommand: function() {

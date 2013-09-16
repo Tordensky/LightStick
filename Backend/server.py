@@ -26,6 +26,7 @@ class command:
         return web.cmdHandler.getCommand()
 
     def POST(self):
+        print web.data()
         web.cmdHandler.setCommand(web.data())
         return
 
