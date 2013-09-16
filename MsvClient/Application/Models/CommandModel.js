@@ -1,5 +1,5 @@
 var LightStick = LightStick || {};
 
-LightStick.Router = Backbone.Model.extend({
-
+LightStick.CommandModel = Backbone.Model.extend({
+    url: "/command"
 });

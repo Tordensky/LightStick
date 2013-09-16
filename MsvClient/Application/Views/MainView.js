@@ -4,6 +4,29 @@ LightStick.MainView = Backbone.View.extend({
     template: "",
 
     initialize: function() {
+        this.commandModel = new LightStick.CommandModel();
+        this.initEvents();
+        this.startUpdateTimer();
+    },
+
+    initEvents: function() {
+        this.commandModel.on("change:msg", this.handleCommand, this);
+    },
+
+    updateModels: function () {
+        this.commandModel.fetch();
+    },
+
+    startUpdateTimer: function() {
+        var that = this;
+        setInterval(function(){
+            that.updateModels();
+        }, 1000);
+    },
+
+    handleCommand: function() {
+        console.log(this.commandModel.get("command")["color"]);
+        this.$el.css("background-color", this.commandModel.get("command")["color"]);
 
     },
 
