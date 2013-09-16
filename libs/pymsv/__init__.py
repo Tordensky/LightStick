@@ -1,3 +1,7 @@
+import msvclient
+import util
+import msvserver
 
-if __name__ == "__main__":
-    pass
+from msvclient import *
+from util import *
+from msvserver import *
