@@ -2,6 +2,7 @@ import json
 import os, kivy, bpmcounter, colorpicker, msvcontroller
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, ListProperty
+import math
 from HttpWebClient import HttpClient
 
 
@@ -27,14 +28,14 @@ class WebTest(Widget):
         self.httpClient.postJson(json.dumps(msg), "/command")
 
     def colorToHex(self, color):
-        r = self.valueToHex(color[0])[2:4]
-        g = self.valueToHex(color[1])[2:4]
-        b = self.valueToHex(color[2])[2:4]
+        r = self._kivyColorToInt(color[0])
+        g = self._kivyColorToInt(color[1])
+        b = self._kivyColorToInt(color[2])
+        hexColor = ("#%02x%02x%02x" % (r, g, b))
+        return hexColor
 
-        return "#" + r + g + b
-
-    def valueToHex(self, value):
-        return hex(int(255 * value))
+    def _kivyColorToInt(self, value):
+        return int(math.floor(255 * value))
 
 
 class TestScreen(Widget):
