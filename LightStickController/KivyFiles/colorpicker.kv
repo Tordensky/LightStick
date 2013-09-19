@@ -1,6 +1,6 @@
 #:kivy 1.7.2
-#:import Colors config.WIDGET_COLORS
-#:import Sizes config.WIDGET_SIZES
+#:import Colors Config.WIDGET_COLORS
+#:import Sizes Config.WIDGET_SIZES
 
 <CustomStepSlider>
     orientation: 'vertical'
@@ -107,7 +107,7 @@
             title: "Fade mixer"
             size_hint_x: 1
             size_hint_y: None
-            height: app.header_size
+            height: Sizes.HEADER_FONT_SIZE
 
         BoxLayout:
             size: root.size
@@ -213,7 +213,7 @@
             title: "Color mixer"
             size_hint_x: 1
             size_hint_y: None
-            height: app.header_size
+            height: Sizes.HEADER_FONT_SIZE
 
         BoxLayout:
             size: root.size

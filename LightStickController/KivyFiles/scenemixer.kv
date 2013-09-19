@@ -1,0 +1,154 @@
+#:kivy 1.7.2
+#:import Colors Config.WIDGET_COLORS
+#:import Sizes Config.WIDGET_SIZES
+
+
+<HorizontalFadeBar@BoxLayout>
+    value: None
+    secValue: None
+
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: Colors.SCREEN_BAR_COLOR_BACK
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        canvas:
+            Color:
+                rgba: Colors.SCREEN_BAR_COLOR_FIRST
+            Rectangle:
+                pos: self.pos
+                size: (self.size[0] * root.value if root.value else 1.0, self.size[1])
+
+        canvas.after:
+            Color:
+                rgba: Colors.SCREEN_BAR_COLOR_SECOND
+
+            Rectangle:
+                pos: self.pos
+                size: (self.size[0] * root.secValue if root.secValue else 1.0, self.size[1])
+
+
+
+<ScenePositionBars@BoxLayout>
+    orientation: 'vertical'
+    spacing: 5
+
+    HorizontalFadeBar:
+        value: 0.6
+        secValue: 0.4
+
+
+<MiniLabel@BoxLayout>
+    label: None
+    value: None
+
+    orientation: "vertical"
+
+    Label:
+        text: root.label if root.label else "None"
+        font_size: self.height
+        size_hint: 1.0, 0.15
+
+    Label:
+        text: str(root.value) if root.value else "None"
+        font_size: self.height / 1.5
+        size_hint: 1.0, 0.7
+
+
+
+<SceneMixerScreen@BoxLayout>
+    padding: 3
+
+    canvas:
+        Color:
+            rgba: Colors.WIDGET_GREY_LIGHT
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+
+        orientation: 'horizontal'
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BPM_SCREEN_COLOR
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            padding: 10
+            BoxLayout:
+                spacing: 5
+                size_hint: 1, 1
+                orientation: "vertical"
+
+                BoxLayout:
+                    size_hint: 1, 0.4
+                    MiniLabel:
+                        label: "CUR TIME"
+                        value: 10
+                    MiniLabel:
+                        label: "SCN TIME"
+                        value: 10
+                    MiniLabel:
+                        label: "FADE TIME"
+                        value: 10
+
+                ScenePositionBars:
+                    size_hint: 1.0, 0.3
+
+            BoxLayout:
+                size_hint: 1, 1
+                MiniLabel:
+                    label: "SCENE NUM"
+                    value: "10:19"
+
+
+
+<SceneMixer>
+    BoxLayout:
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
+        pos: root.pos
+        size: root.size
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        WidgetHeader:
+            title: "Scene controller"
+            size_hint_x: 1
+            size_hint_y: None
+            height: Sizes.HEADER_FONT_SIZE
+
+        BoxLayout:
+            size: root.size
+            pos: root.pos
+
+            padding: 5
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            SceneMixerScreen:
+                size_hint: 0.5, 0.5
