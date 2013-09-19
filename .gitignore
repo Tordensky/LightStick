@@ -163,3 +163,10 @@ pip-log.txt
 .DS_Store
 
 .idea/
+
+
+#############
+## Project
+#############
+msv.log
+Precode/test.py
