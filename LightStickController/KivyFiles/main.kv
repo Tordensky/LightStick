@@ -2,6 +2,10 @@
 #:import Colors Config.WIDGET_COLORS
 #:import Sizes Config.WIDGET_SIZES
 
+#:import BeatCounter BpmCounter
+#:import SimpleMsvController MsvController
+#:import CustomWheel ColorMixer
+
 <Filler@BoxLayout>
     size: root.size
     pos: root.pos
@@ -40,7 +44,7 @@
                 font_size: self.height / 10
                 valign: 'middle'
 
-<TestScreen>:
+<WidgetScreen>:
     canvas:
         Color:
             rgba: Colors.SCREEN_BACKGROUND
@@ -124,7 +128,3 @@
                 size_hint: 0.2, 1
                 on_step_size: wheel_b.steps_per_beat = args[1]
                 on_fade_time: wheel_b.fade_time_in_beats = args[1]
-
-
-
-

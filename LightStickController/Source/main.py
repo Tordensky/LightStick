@@ -1,12 +1,14 @@
 import json
-import os, kivy, bpmcounter, colorpicker, msvcontroller
-from kivy.lang import Builder
-from kivy.properties import NumericProperty, ListProperty
+import os
 import math
+import kivy
+
+from kivy.lang import Builder
+from kivy.properties import ListProperty
 from HttpWebClient import HttpClient
 
 
-Builder.load_file(os.getenv("FILE_PATH") + "/my.kv")
+Builder.load_file(os.getenv("FILE_PATH") + "/main.kv")
 
 kivy.require("1.7.2")
 
@@ -38,16 +40,16 @@ class WebTest(Widget):
         return int(math.floor(255 * value))
 
 
-class TestScreen(Widget):
+class WidgetScreen(Widget):
     def __init__(self, **kwargs):
-        super(TestScreen, self).__init__(**kwargs)
+        super(WidgetScreen, self).__init__(**kwargs)
         print kwargs
 
 
-class MyApp(App):
+class LightStickApp(App):
     def build(self):
-        return TestScreen()
+        return WidgetScreen()
 
 
 if __name__ == "__main__":
-    MyApp().run()
+    LightStickApp().run()
