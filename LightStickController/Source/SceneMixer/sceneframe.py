@@ -1,8 +1,20 @@
+import random
 
 
 class SceneFrame():
-    pass
+    def __init__(self):
+        self.__fadeTime = random.randint(1, 100)
+        self.__sceneTime = random.randint(1, 100)
 
+    def getFadeTime(self):
+        return self.__fadeTime
 
-if __name__ == "__main__":
-    pass
+    def setFadeTime(self, fadeTime):
+        self.__fadeTime = float(fadeTime)
+
+    def getSceneTime(self):
+        return self.__sceneTime
+
+    def setSceneTime(self, sceneTime):
+        self.__sceneTime = float(sceneTime)
+

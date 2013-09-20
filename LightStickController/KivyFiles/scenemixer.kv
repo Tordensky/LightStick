@@ -50,17 +50,22 @@
 
     Label:
         text: root.label if root.label else "None"
-        font_size: self.height
-        size_hint: 1.0, 0.15
+        font_size: self.height / 2
+        size_hint: 1.0, 0.3
 
     Label:
         text: str(root.value) if root.value else "None"
-        font_size: self.height / 1.5
+        font_size: self.height / 2
         size_hint: 1.0, 0.7
 
 
 
 <SceneMixerScreen@BoxLayout>
+    currentTime: None
+    sceneTime: None
+    fadeTime: None
+    sceneNumber: None
+
     padding: 3
 
     canvas:
@@ -89,33 +94,38 @@
             padding: 10
             BoxLayout:
                 spacing: 5
-                size_hint: 1, 1
+                size_hint: 0.6, 1
                 orientation: "vertical"
 
                 BoxLayout:
-                    size_hint: 1, 0.4
+                    size_hint: 1, 0.8
                     MiniLabel:
                         label: "CUR TIME"
-                        value: 10
+                        value: root.currentTime if root.currentTime else 0.0
                     MiniLabel:
                         label: "SCN TIME"
-                        value: 10
+                        value: root.sceneTime if root.sceneTime else 0.0
                     MiniLabel:
                         label: "FADE TIME"
-                        value: 10
+                        value: root.fadeTime if root.fadeTime else 0.0
 
                 ScenePositionBars:
-                    size_hint: 1.0, 0.3
+                    size_hint: 1.0, 0.2
 
             BoxLayout:
-                size_hint: 1, 1
+                size_hint: 0.4, 1
                 MiniLabel:
                     label: "SCENE NUM"
-                    value: "10:19"
+                    value: root.sceneNumber if root.sceneNumber else "0:0"
 
 
 
 <SceneMixer>
+    currentTime: 0.0
+    sceneTime: 0.0
+    fadeTime: 0.0
+    sceneNumber: "0:0"
+
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -141,7 +151,9 @@
             size: root.size
             pos: root.pos
 
+            spacing: 5
             padding: 5
+            orientation: "vertical"
 
             canvas:
                 Color:
@@ -150,5 +162,119 @@
                     pos: self.pos
                     size: self.size
 
-            SceneMixerScreen:
-                size_hint: 0.5, 0.5
+            BoxLayout:
+                spacing: 5
+                size_hint: 1, 0.6
+                # Display part of the widget
+                SceneMixerScreen:
+                    size_hint: 0.9, 1
+
+                    currentTime: root.currentTime
+                    sceneTime: root.sceneTime
+                    fadeTime: root.fadeTime
+                    sceneNumber: root.sceneNumber
+
+                # SIDE BUTTONS
+                BoxLayout:
+                    padding: 0
+                    spacing: 5
+                    size_hint: 0.1, 1.0
+                    orientation: "vertical"
+                    LightButton:
+                        text: "ADD"
+                        on_press: root.addScene()
+                    LightButton:
+                        text: "INS BEF"
+                        on_press: root.insertSceneBefore()
+
+                    LightButton:
+                        text: "INS AFT"
+                        on_press: root.insertSceneAfter()
+
+                    LightButton:
+                        text: "DEL"
+                        on_press: root.deleteScene()
+
+            # CONTROL BUTTONS
+            BoxLayout:
+                padding: 0
+                spacing: 5
+                size_hint: 1, 0.2
+
+                LightButton:
+                    text: "START"
+                    on_press: root.gotoStartOfShow()
+                LightButton:
+                    text: "END"
+                    on_press: root.gotoEndOfShow()
+                LightButton:
+                    text: "PREV"
+                    on_press: root.gotoPrevScene()
+                LightButton:
+                    text: "NEXT"
+                    on_press: root.gotoNextScene()
+                LightButton:
+                    text: "PLAY"
+                    on_press: root.startStopPlayback()
+
+            # CONTROLLER OPTIONS
+            BoxLayout:
+                spacing: 5
+                size_hint: 1, 0.2
+                GridLayout:
+                    cols: 2
+
+                    BoxLayout:
+                        CheckBox:
+                            size_hint: 0.15, 1
+                            size: self.size
+                            on_active: root.toggleGlobalSceneTime(args[1])
+                            valign: "middle"
+                        Label:
+                            size_hint: 0.85, 1
+                            text: "SET GLOBAL SCENE TIME"
+                            text_size: self.size
+                            font_size: "12dp"
+                            valign: "middle"
+
+                    BoxLayout:
+                        CheckBox:
+                            size_hint: 0.15, 1
+                            size: self.size
+                            on_active: root.toggleSyncSceneAndFadeTime(args[1])
+                            valign: "middle"
+                        Label:
+                            size_hint: 0.85, 1
+                            text: "SYNC SCENE AND FADE TIME"
+                            text_size: self.size
+                            font_size: "12dp"
+                            valign: "middle"
+
+                    BoxLayout:
+                        CheckBox:
+                            size_hint: 0.15, 1
+                            size: self.size
+                            on_active: root.toggleGlobalFadeTime(args[1])
+                            valign: "middle"
+                        Label:
+                            size_hint: 0.85, 1
+                            text: "SET GLOBAL FADE TIME"
+                            text_size: self.size
+                            font_size: "12dp"
+                            valign: "middle"
+
+
+
+                    BoxLayout:
+                        CheckBox:
+                            size_hint: 0.15, 1
+                            size: self.size
+                            active: True
+                            on_active: root.toggleLoopScenes(args[1])
+                            valign: "middle"
+                        Label:
+                            size_hint: 0.85, 1
+                            text: "LOOP AFTER END"
+                            text_size: self.size
+                            font_size: "12dp"
+                            valign: "middle"
