@@ -98,7 +98,7 @@
                 orientation: "vertical"
 
                 BoxLayout:
-                    size_hint: 1, 0.8
+                    size_hint: 1, 0.7
                     MiniLabel:
                         label: "CUR TIME"
                         value: root.currentTime if root.currentTime else 0.0
@@ -110,7 +110,7 @@
                         value: root.fadeTime if root.fadeTime else 0.0
 
                 ScenePositionBars:
-                    size_hint: 1.0, 0.2
+                    size_hint: 1.0, 0.3
 
             BoxLayout:
                 size_hint: 0.4, 1
@@ -184,11 +184,11 @@
                         text: "ADD"
                         on_press: root.addScene()
                     LightButton:
-                        text: "INS BEF"
+                        text: "INS B"
                         on_press: root.insertSceneBefore()
 
                     LightButton:
-                        text: "INS AFT"
+                        text: "INS A"
                         on_press: root.insertSceneAfter()
 
                     LightButton:

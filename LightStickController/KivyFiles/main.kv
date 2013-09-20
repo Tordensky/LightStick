@@ -5,6 +5,7 @@
 #:import BeatCounter BpmCounter
 #:import SimpleMsvController MsvController
 #:import CustomWheel ColorMixer
+#:import SceneMixer SceneMixer
 
 <Filler@BoxLayout>
     size: root.size
@@ -67,7 +68,7 @@
         GridLayout:
             pos: root.pos
             size: root.size
-            size_hint: 1, 0.2
+            size_hint: 1, 0.15
             spacing: Sizes.SCREEN_SPACING
             cols: 3
 
@@ -87,44 +88,59 @@
                 on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B")
                 on_trigger: wheel_b.trigger = args[1]
 
+
+
         GridLayout:
             pos: root.pos
             size: root.size
-            size_hint: 1, 0.35
+            size_hint: 1, 0.25
             spacing: Sizes.SCREEN_SPACING
             cols: 3
 
             CustomWheel:
                 id: wheel_a
-                size_hint: 0.45, 1
+                size_hint: 0.40, 1
                 on_color: web.color = args[1]
 
             Filler:
-                size_hint: 0.1, 1
+                size_hint: 0.2, 1
 
             CustomWheel:
                 id: wheel_b
-                size_hint: 0.45, 1
+                size_hint: 0.40, 1
 
         GridLayout:
             pos: root.pos
             size: root.size
-            size_hint: 1, 0.35
+            size_hint: 1, 0.25
             spacing: Sizes.SCREEN_SPACING
             cols: 3
 
             FadePicker:
                 id: fade_b
-                size_hint: 0.2, 1
+                size_hint: 0.15, 1
                 on_step_size: wheel_a.steps_per_beat = args[1]
                 on_fade_time: wheel_a.fade_time_in_beats = args[1]
 
             Filler:
-                size_hint: 0.6, 1
+                size_hint: 0.7, 1
                 text: "Controller v.1.1"
 
             FadePicker:
                 id: fade_a
-                size_hint: 0.2, 1
+                size_hint: 0.15, 1
                 on_step_size: wheel_b.steps_per_beat = args[1]
                 on_fade_time: wheel_b.fade_time_in_beats = args[1]
+
+        GridLayout:
+            pos: root.pos
+            size: root.size
+            size_hint: 1, 0.3
+            cols: 3
+
+            SceneMixer:
+                id: mixer_a
+            Filler:
+                size_hint: 0.3, 1
+            SceneMixer:
+                id: mixer_b
