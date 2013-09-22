@@ -119,8 +119,8 @@
             FadePicker:
                 id: fade_b
                 size_hint: 0.15, 1
-                on_step_size: wheel_a.steps_per_beat = args[1]
-                on_fade_time: wheel_a.fade_time_in_beats = args[1]
+                on_step_size: wheel_a.steps_per_beat = args[1]; mixer_a.sceneTime = args[1]
+                on_fade_time: wheel_a.fade_time_in_beats = args[1]; mixer_a.fadeTime = args[1]
 
             Filler:
                 size_hint: 0.7, 1
@@ -136,6 +136,7 @@
             pos: root.pos
             size: root.size
             size_hint: 1, 0.3
+            spacing: Sizes.SCREEN_SPACING
             cols: 3
 
             SceneMixer:

@@ -16,14 +16,12 @@ class FrameHandler():
             return self.__frames[index]
         return None
 
-    def addFrameAtEnd(self):
-        newFrame = self.__createNewFrame()
+    def addFrameAtEnd(self, newFrame):
         self.__frames.append(newFrame)
         self.moveFramePointerToEnd()
         return self.__getCurrentSceneInfo()
 
-    def insertFrameBeforePointer(self):
-        newFrame = self.__createNewFrame()
+    def insertFrameBeforePointer(self, newFrame):
         index = self.__getCurrentListIndex()
         if index is not None:
             self.__frames.insert(index, newFrame)
@@ -32,8 +30,7 @@ class FrameHandler():
             self.moveFramePointerToEnd()
         return self.__getCurrentSceneInfo()
 
-    def insertFrameAfterPointer(self):
-        newFrame = SceneFrame()
+    def insertFrameAfterPointer(self, newFrame):
         index = self.__getCurrentListIndex()
         offset = 1
         if index is not None:
@@ -72,12 +69,12 @@ class FrameHandler():
         self.__framePointer = len(self.__frames)
         return self.__getCurrentSceneInfo()
 
+    def forAllFramesDo(self, action, *args):
+        for frame in self.__frames:
+            action(frame, *args)
+
     def __numFrames(self):
         return len(self.__frames)
-
-    def __createNewFrame(self):
-        frame = SceneFrame()
-        return frame
 
     def __getCurrentListIndex(self):
         if self.__framePointer > 0:

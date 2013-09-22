@@ -7,7 +7,7 @@
     value: None
     secValue: None
 
-    BoxLayout:
+    FloatLayout:
         canvas.before:
             Color:
                 rgba: Colors.SCREEN_BAR_COLOR_BACK
@@ -20,8 +20,8 @@
             Color:
                 rgba: Colors.SCREEN_BAR_COLOR_FIRST
             Rectangle:
-                pos: self.pos
-                size: (self.size[0] * root.value if root.value else 1.0, self.size[1])
+                pos: self.pos[0], self.pos[1] + (self.size[1] / 2)
+                size: (self.size[0] * root.value if root.value else 1.0, self.size[1] / 2)
 
         canvas.after:
             Color:
@@ -29,7 +29,7 @@
 
             Rectangle:
                 pos: self.pos
-                size: (self.size[0] * root.secValue if root.secValue else 1.0, self.size[1])
+                size: (self.size[0] * root.secValue if root.secValue else 1.0, self.size[1] / 2)
 
 
 
@@ -37,9 +37,13 @@
     orientation: 'vertical'
     spacing: 5
 
+    sceneTime: 0.0
+    fadeTime: 0.0
+    currentTime: 0.0
+
     HorizontalFadeBar:
-        value: 0.6
-        secValue: 0.4
+        value: float(root.currentTime) / float(root.sceneTime) if root.sceneTime > 0.0 else 0.0
+        secValue:  float(root.fadeTime) / float(root.sceneTime) if root.sceneTime > 0.0 else 0.0
 
 
 <MiniLabel@BoxLayout>
@@ -49,21 +53,21 @@
     orientation: "vertical"
 
     Label:
-        text: root.label if root.label else "None"
+        text: str(root.label) if root.label is not None else "None"
         font_size: self.height / 2
         size_hint: 1.0, 0.3
 
     Label:
-        text: str(root.value) if root.value else "None"
+        text: str(root.value) if root.value is not None else "None"
         font_size: self.height / 2
         size_hint: 1.0, 0.7
 
 
 
 <SceneMixerScreen@BoxLayout>
-    currentTime: None
-    sceneTime: None
-    fadeTime: None
+    currentTime: 0.0
+    sceneTime: 0.0
+    fadeTime: 0.0
     sceneNumber: None
 
     padding: 3
@@ -101,15 +105,18 @@
                     size_hint: 1, 0.7
                     MiniLabel:
                         label: "CUR TIME"
-                        value: root.currentTime if root.currentTime else 0.0
+                        value: root.currentTime
                     MiniLabel:
                         label: "SCN TIME"
-                        value: root.sceneTime if root.sceneTime else 0.0
+                        value: root.sceneTime
                     MiniLabel:
                         label: "FADE TIME"
-                        value: root.fadeTime if root.fadeTime else 0.0
+                        value: root.fadeTime
 
                 ScenePositionBars:
+                    currentTime: root.currentTime
+                    sceneTime: root.sceneTime
+                    fadeTime: root.fadeTime
                     size_hint: 1.0, 0.3
 
             BoxLayout:
@@ -245,7 +252,7 @@
                             valign: "middle"
                         Label:
                             size_hint: 0.85, 1
-                            text: "SYNC SCENE AND FADE TIME"
+#                            text: "SYNC SCENE AND FADE TIME"
                             text_size: self.size
                             font_size: "12dp"
                             valign: "middle"
