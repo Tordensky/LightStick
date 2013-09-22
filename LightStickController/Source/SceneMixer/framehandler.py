@@ -1,21 +1,14 @@
+from collections import namedtuple
 from sceneframe import SceneFrame
 
 
 class FrameHandler():
-    SCENE_TIME_IDX = 0
-    FADE_TIME_IDX = 1
-    SCENE_NUMBER_IDX = 2
+    FRAME_OBJ_IDX = 0
+    FRAME_POS_IDX = 1
 
     def __init__(self):
         self.__framePointer = 0
         self.__frames = []
-
-        self.__syncSceneAndFadeTime = False
-        self.__globalSceneTime = False
-        self.__globalFadeTime = False
-
-        self.__currentSceneTime = 0.0
-        self.__currentFadeTime = 0.0
 
     def getCurrentFrame(self):
         index = self.__getCurrentListIndex()
@@ -42,8 +35,9 @@ class FrameHandler():
     def insertFrameAfterPointer(self):
         newFrame = SceneFrame()
         index = self.__getCurrentListIndex()
+        offset = 1
         if index is not None:
-            self.__frames.insert(index + 1, newFrame)
+            self.__frames.insert(index + offset, newFrame)
             self.moveFramePointerUp()
         else:
             self.__frames.append(newFrame)
@@ -91,15 +85,10 @@ class FrameHandler():
         return None
 
     def __getCurrentSceneInfo(self):
+        FrameHolder = namedtuple("Frame", ["FramePos", "FrameNumber"])
         frame = self.getCurrentFrame()
 
-        sceneTime = 0.0
-        fadeTime = 0.0
-        if frame is not None:
-            sceneTime = frame.getSceneTime()
-            fadeTime = frame.getFadeTime()
+        framePosStr = str("%d:%d" % (self.__framePointer, self.__numFrames()))
 
-        sceneNumberStr = str("%d:%d" % (self.__framePointer, self.__numFrames()))
-
-        return sceneTime, fadeTime, sceneNumberStr
-
+        currentFrame = FrameHolder(frame, framePosStr)
+        return currentFrame

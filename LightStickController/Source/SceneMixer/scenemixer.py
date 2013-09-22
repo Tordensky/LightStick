@@ -21,6 +21,15 @@ class SceneMixer(Widget):
         super(SceneMixer, self).__init__(**kwargs)
         self.frameHandler = FrameHandler()
 
+        self.__syncSceneAndFadeTime = False
+        self.__globalSceneTime = False
+        self.__globalFadeTime = False
+
+        self.__currentSceneTime = 0.0
+        self.__currentFadeTime = 0.0
+
+        self.__currentFrame = None
+
     def on_currentTime(self, object, value):
         print object, value
 
@@ -77,10 +86,14 @@ class SceneMixer(Widget):
         #TODO
         print "Set loop after end ", value
 
-    def __setDisplayValues(self, sceneInfo):
-        self.sceneTime = sceneInfo[FrameHandler.SCENE_TIME_IDX]
-        self.fadeTime = sceneInfo[FrameHandler.FADE_TIME_IDX]
-        self.sceneNumber = sceneInfo[FrameHandler.SCENE_NUMBER_IDX]
+    def __setDisplayValues(self, currentFrame):
+        frame = currentFrame[FrameHandler.FRAME_OBJ_IDX]
+        self.__currentFrame = frame
+        if frame is not None:
+            self.sceneTime = frame.getSceneTime()
+            self.fadeTime = frame.getFadeTime()
+        self.sceneNumber = currentFrame[FrameHandler.FRAME_POS_IDX]
+
 
 class __TestScreenMixer(App):
     def build(self):
