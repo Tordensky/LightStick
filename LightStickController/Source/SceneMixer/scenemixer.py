@@ -1,11 +1,11 @@
 import os
 from kivy.app import App
-from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, StringProperty
 from kivy.uix.widget import Widget
 from SceneMixer import SceneFrame
 from framehandler import FrameHandler
+from playbackhandler import PlayBackHandler
 
 #TODO fix this import
 import BpmCounter
@@ -23,7 +23,7 @@ class SceneMixer(Widget):
 
     def __init__(self, **kwargs):
         super(SceneMixer, self).__init__(**kwargs)
-        self.frameHandler = FrameHandler()
+        self.__frameHandler = FrameHandler()
 
         self.__syncSceneAndFadeTime = False
         self.__globalSceneTime = False
@@ -38,7 +38,7 @@ class SceneMixer(Widget):
         # init playbackHandler
         self.__isInPlayback = False
         self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=20)
-        self.__playbackHandler.setIntervalUpdateCallback(self.playbackCallbackUpdate)
+        self.__playbackHandler.addIntervalUpdateCallback(self.playbackCallbackUpdate)
 
         # TODO fix a better approach for checking if object is ready
         self.__initFinished = True
@@ -54,34 +54,31 @@ class SceneMixer(Widget):
         if self.__initFinished:
             if self.sceneTime < self.fadeTime:
                 self.fadeTime = self.sceneTime
-            self.updateSceneAndFadeTimes()
+            self.__updateSceneAndFadeTimes()
 
     def on_fadeTime(self, object, value):
         if self.__initFinished:
             if self.fadeTime > self.sceneTime:
                 self.sceneTime = self.fadeTime
-            self.updateSceneAndFadeTimes()
+            self.__updateSceneAndFadeTimes()
 
     def addScene(self):
         sceneFrame = self.__createNewScene()
-        self.__setDisplayValues(self.frameHandler.addFrameAtEnd(sceneFrame))
+        self.__setDisplayValues(self.__frameHandler.addFrameAtEnd(sceneFrame))
 
     def insertSceneBefore(self):
         sceneFrame = self.__createNewScene()
-        self.__setDisplayValues(self.frameHandler.insertFrameBeforePointer(sceneFrame))
+        self.__setDisplayValues(self.__frameHandler.insertFrameBeforePointer(sceneFrame))
 
     def insertSceneAfter(self):
         sceneFrame = self.__createNewScene()
-        self.__setDisplayValues(self.frameHandler.insertFrameAfterPointer(sceneFrame))
+        self.__setDisplayValues(self.__frameHandler.insertFrameAfterPointer(sceneFrame))
 
     def __createNewScene(self):
         sceneFrame = SceneFrame()
         sceneFrame.setSceneTime(self.sceneTime)
         sceneFrame.setFadeTime(self.fadeTime)
         return sceneFrame
-
-    def deleteScene(self):
-        self.__setDisplayValues(self.frameHandler.deleteCurrentFrame())
 
     def startStopPlayback(self, *args):
         self.__isInPlayback = not self.__isInPlayback
@@ -90,37 +87,40 @@ class SceneMixer(Widget):
         else:
             self.__playbackHandler.stop()
 
+    def deleteScene(self):
+        self.__setDisplayValues(self.__frameHandler.deleteCurrentFrame())
+
+    def gotoStartOfShow(self):
+        self.__resetPlayback()
+        self.__setDisplayValues(self.__frameHandler.moveFramePointerToStart())
+
     def __resetPlayback(self):
         self.currentTime = 0.0
         self.__playbackHandler.reset()
 
-    def gotoStartOfShow(self):
-        self.__resetPlayback()
-        self.__setDisplayValues(self.frameHandler.moveFramePointerToStart())
-
     def gotoEndOfShow(self):
         self.__resetPlayback()
-        self.__setDisplayValues(self.frameHandler.moveFramePointerToEnd())
+        self.__setDisplayValues(self.__frameHandler.moveFramePointerToEnd())
 
     def gotoPrevScene(self):
         self.__resetPlayback()
-        self.__setDisplayValues(self.frameHandler.moveFramePointerDown())
+        self.__setDisplayValues(self.__frameHandler.moveFramePointerDown())
 
     def gotoNextScene(self):
         self.__resetPlayback()
-        self.__setDisplayValues(self.frameHandler.moveFramePointerUp())
+        self.__setDisplayValues(self.__frameHandler.moveFramePointerUp())
 
     def toggleSyncSceneAndFadeTime(self, value):
         self.__syncSceneAndFadeTime = value
-        self.updateSceneAndFadeTimes()
+        self.__updateSceneAndFadeTimes()
 
     def toggleGlobalSceneTime(self, value):
         self.__globalSceneTime = value
-        self.updateSceneAndFadeTimes()
+        self.__updateSceneAndFadeTimes()
 
     def toggleGlobalFadeTime(self, value):
         self.__globalFadeTime = value
-        self.updateSceneAndFadeTimes()
+        self.__updateSceneAndFadeTimes()
 
     def toggleLoopScenes(self, value):
         self.__loopScenes = value
@@ -131,77 +131,51 @@ class SceneMixer(Widget):
         if frame is not None:
             self.sceneTime = frame.getSceneTime()
             self.fadeTime = frame.getFadeTime()
-        self.sceneNumber = currentFrame[FrameHandler.FRAME_POS_IDX]
 
-    def updateSceneAndFadeTimes(self):
+        framePos = currentFrame[FrameHandler.FRAME_POS_IDX]
+        numFrames = currentFrame[FrameHandler.FRAME_NUM_IDX]
+        self.sceneNumber = ("%d:%d" % (framePos, numFrames))
+
+    def __updateSceneAndFadeTimes(self):
         self.__updateCurrentFrame()
 
         if self.__globalFadeTime:
-            self.setGlobalFadeTime()
+            self.__setGlobalFadeTime()
 
         if self.__globalSceneTime:
-            self.setGlobalSceneTime()
+            self.__setGlobalSceneTime()
 
         if self.__syncSceneAndFadeTime:
-            self.setSyncFadeAndSceneTime()
+            self.__setSyncedFadeAndSceneTime()
 
     def __updateCurrentFrame(self):
         if self.__currentFrame is not None:
             self.__currentFrame.setSceneTime(self.sceneTime)
             self.__currentFrame.setFadeTime(self.fadeTime)
 
-    def setGlobalSceneTime(self):
+    def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)
 
-    def setGlobalFadeTime(self):
+    def __setGlobalFadeTime(self):
         self.__setFadeTimeForAllFrames(self.fadeTime)
 
-    def setSyncFadeAndSceneTime(self):
+    def __setSyncedFadeAndSceneTime(self):
         self.fadeTime = self.sceneTime
 
         self.__setFadeTimeForAllFrames(self.fadeTime)
         self.__setSceneTimeForAllFrames(self.sceneTime)
 
     def __setSceneTimeForAllFrames(self, sceneTime):
-        self.frameHandler.forAllFramesDo(self.iterFuncSetSceneTime, sceneTime)
+        self.__frameHandler.forAllFramesDo(self.iterFuncSetSceneTime, sceneTime)
 
     def __setFadeTimeForAllFrames(self, fadeTime):
-        self.frameHandler.forAllFramesDo(self.iterFuncSetFadeTime, fadeTime)
+        self.__frameHandler.forAllFramesDo(self.iterFuncSetFadeTime, fadeTime)
 
     def iterFuncSetSceneTime(self, sceneFrame, sceneTime):
         sceneFrame.setSceneTime(sceneTime)
 
     def iterFuncSetFadeTime(self, sceneFrame, fadeTime):
         sceneFrame.setFadeTime(fadeTime)
-
-
-class PlayBackHandler():
-    def __init__(self, bpm=0, updatesPerBeat=100.0):
-        self.__pbm = bpm
-        self.__bpmUpdateInterval = 1.0 / float(updatesPerBeat)
-
-        self.__currTime = 0.0
-        self.__callback = None
-
-    def setIntervalUpdateCallback(self, callback):
-        self.__callback = callback
-
-    def start(self):
-        interval = self.__getIntervalTime()
-        Clock.schedule_interval(self.__update, interval)
-
-    def stop(self):
-        Clock.unschedule(self.__update)
-
-    def reset(self):
-        self.__currTime = 0.0
-
-    def __getIntervalTime(self):
-        return 60.0 * self.__bpmUpdateInterval / self.__pbm
-
-    def __update(self, *args):
-        self.__currTime += self.__bpmUpdateInterval
-        self.__callback(self.__currTime)
 
 
 class __TestScreenMixer(App):
