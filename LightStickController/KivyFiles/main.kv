@@ -75,7 +75,7 @@
             BeatCounter:
                 id: beat_a
                 size_hint: 0.35, 1
-                on_beat_value: wheel_a.bpm = args[1]; msvControl.setBpm(args[1], "A")
+                on_beat_value: wheel_a.bpm = args[1]; msvControl.setBpm(args[1], "A"); mixer_a.bpm = args[1]
                 on_trigger: wheel_a.trigger = args[1]
 
             SimpleMsvController:

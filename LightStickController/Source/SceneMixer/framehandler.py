@@ -11,7 +11,7 @@ class FrameHandler():
         self.__framePointer = 0
         self.__frames = []
 
-    def getCurrentFrame(self):
+    def __getCurrentFrame(self):
         index = self.__getCurrentListIndex()
         if index is not None:
             return self.__frames[index]
@@ -84,10 +84,13 @@ class FrameHandler():
 
     def __getCurrentFrameWithInfo(self):
         FrameHolder = namedtuple("Frame", ["FrameObject", "FramePos", "NumFrames"])
-        frame = self.getCurrentFrame()
+        frame = self.__getCurrentFrame()
 
         framePos = self.__framePointer
         numFrames = self.__numFrames()
 
         currentFrame = FrameHolder(frame, framePos, numFrames)
         return currentFrame
+
+    def isAtEndOfFrames(self):
+        return self.__framePointer == self.__numFrames()

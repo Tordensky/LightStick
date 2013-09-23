@@ -7,6 +7,7 @@ import time
 from kivy.lang import Builder
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
+import sys
 
 from libs.pymsv.msvclient.client import Client, Msv
 
@@ -40,7 +41,6 @@ class SimpleMsvController(Widget):
 
             self.source = None
             self.bpms = defaultdict(float)
-
         except AssertionError:
             print "MSV ERROR ! ! ! ! !! ! ! "
 
