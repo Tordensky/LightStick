@@ -10,13 +10,6 @@ BEAT_LIVE_WINDOW = 1 / 10.0
 Builder.load_file(os.getenv("FILE_PATH") + "/bpmcounter.kv")
 
 
-class WidgetHeader(Widget):
-    title = StringProperty("")
-
-    def __init__(self, **kwargs):
-        super(WidgetHeader, self).__init__(**kwargs)
-
-
 class BeatCounterBall(Widget):
     BALL_ALPHA_ON = 0.8
     BALL_ALPHA_OFF = 0.1

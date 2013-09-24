@@ -8,17 +8,7 @@ from kivy.uix.widget import Widget
 Builder.load_file(os.getenv("FILE_PATH") + "/colorpicker.kv")
 
 
-class CustomStepSlider(BoxLayout):
-    label_value = StringProperty("")
-    slider_value = NumericProperty(0)
-    value = NumericProperty(0)
-    step_values = ListProperty([])
-    step_labels = ListProperty([])
 
-    def on_slider_value(self, *args):
-        idx = int(args[1])
-        self.value = self.step_values[idx]
-        self.label_value = self.step_labels[idx]
 
 
 class CustomWheel(Widget):

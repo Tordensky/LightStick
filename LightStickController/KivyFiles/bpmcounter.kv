@@ -1,38 +1,7 @@
 #:kivy 1.7.2
 #:import Colors Config.WIDGET_COLORS
+#:import WidgetElements WidgetElements
 
-
-<WidgetHeader>
-    BoxLayout:
-        pos: root.pos
-        size: root.size
-        padding: 3
-        title: ""
-
-        canvas:
-            Color:
-                rgba: Colors.WIDGET_HEADER_COLOR
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        Label:
-            text: root.title
-
-            halign: 'left'
-            valign: 'middle'
-
-            font_size: self.height / 1.2
-            text_size: self.size
-
-
-<LightButton@Button>
-    canvas:
-        Color:
-            rgba: (1,1,1,0.4)
-        Rectangle:
-            pos: self.pos
-            size: self.size
 
 <BeatCounterBall>:
     canvas:

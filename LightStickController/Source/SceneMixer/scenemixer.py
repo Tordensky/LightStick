@@ -7,9 +7,6 @@ from SceneMixer import SceneFrame
 from framehandler import FrameHandler
 from playbackhandler import PlayBackHandler
 
-#TODO fix this import
-import BpmCounter
-
 Builder.load_file(os.getenv("FILE_PATH") + "/scenemixer.kv")
 
 

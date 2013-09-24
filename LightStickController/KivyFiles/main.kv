@@ -6,44 +6,8 @@
 #:import SimpleMsvController MsvController
 #:import CustomWheel ColorMixer
 #:import SceneMixer SceneMixer
+#:import WidgetElements WidgetElements
 
-<Filler@BoxLayout>
-    size: root.size
-    pos: root.pos
-    text: ""
-
-    BoxLayout:
-        orientation: 'vertical'
-        padding: Sizes.WIDGET_BORDER
-        spacing: Sizes.WIDGET_SPACING
-
-        pos: root.pos
-        size: root.size
-
-        canvas:
-            Color:
-                rgba: Colors.WIDGET_BACKGROUND_DARK
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        BoxLayout:
-            size: root.size
-            pos: root.pos
-
-
-            canvas:
-                Color:
-                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-
-            Label:
-                size_hint: 1, 1
-                text: root.text
-                font_size: self.height / 10
-                valign: 'middle'
 
 <WidgetScreen>:
     canvas:

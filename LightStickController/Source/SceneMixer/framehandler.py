@@ -1,5 +1,4 @@
 from collections import namedtuple
-from sceneframe import SceneFrame
 
 
 class FrameHandler():

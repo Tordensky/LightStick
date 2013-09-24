@@ -1,0 +1,125 @@
+#:kivy 1.7.2
+#:import Colors Config.WIDGET_COLORS
+#:import WidgetElements WidgetElements
+
+
+<WidgetHeader@Widget>
+    title: ""
+
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+        padding: 3
+        title: ""
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_HEADER_COLOR
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: root.title
+
+            halign: 'left'
+            valign: 'middle'
+
+            font_size: self.height / 1.2
+            text_size: self.size
+
+
+# A button with a color overlay
+<LightButton@Button>
+    canvas:
+        Color:
+            rgba: (1,1,1,0.4)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<CustomStepSlider>
+    orientation: 'vertical'
+    name: ""
+
+    step_values: [1]
+    step_labels: ["N/A"]
+    slider_value: 0
+
+    range: 0, len(self.step_values) - 1
+    value: self.step_values[int(self.slider_value)]
+    label_value: self.step_labels[int(self.slider_value)]
+
+    size: root.size
+    pos: root.pos
+
+    padding: 2
+    BoxLayout:
+        padding: 2
+        size_hint: 1, 0.1
+
+        canvas.before:
+            Color:
+                rgba: Colors.WIDGET_GREY_LIGHT
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: root.label_value
+            font_size: self.height / 1.2
+
+    Slider:
+        id: slider
+        range: root.range
+        value: root.slider_value
+        orientation: 'vertical'
+        size_hint: 1, 0.8
+        on_value: root.slider_value = args[1]
+        step: 1
+
+    Label:
+        size_hint: 1, 0.1
+        text: root.name
+        font_size: self.height / 1.5
+
+
+<Filler@BoxLayout>
+    size: root.size
+    pos: root.pos
+    text: ""
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
+        pos: root.pos
+        size: root.size
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size: root.size
+            pos: root.pos
+
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                size_hint: 1, 1
+                text: root.text
+                font_size: self.height / 10
+                valign: 'middle'
+
