@@ -1,9 +1,11 @@
 import os
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, StringProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty
 from kivy.uix.widget import Widget
+from sceneframe import ColorEffect
 from SceneMixer import SceneFrame
+from scnconfig import EffectNames
 from framehandler import FrameHandler
 from playbackhandler import PlayBackHandler
 
@@ -16,6 +18,9 @@ class SceneMixer(Widget):
     fadeTime = NumericProperty(0.0)
     sceneNumber = StringProperty(None)
     bpm = NumericProperty(0.0)
+
+    # Properties for effects
+    color = ListProperty((1.0, 1.0, 1.0, 1.0))
 
     __initFinished = False
 
@@ -43,6 +48,22 @@ class SceneMixer(Widget):
 
     def on_bpm(self, *args):
         self.__playbackHandler.setBpm(args[1])
+
+    def on_color(self, obj, color):
+        self.__setColorEffect(color)
+
+    def __setColorEffect(self, color):
+        self.__beforeSetEffect()
+        colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
+        if colorEffectObj is None:
+            colorEffectObj = ColorEffect()
+            self.__currentFrame.addEffect(colorEffectObj)
+
+        colorEffectObj.setKivyColor(color)
+
+    def __beforeSetEffect(self):
+        if self.__currentFrame is None:
+            self.addScene()
 
     def playbackCallbackUpdate(self, *args):
         self.currentTime = round(args[0], 1)
@@ -148,6 +169,7 @@ class SceneMixer(Widget):
     def toggleLoopScenes(self, value):
         self.__loopScenes = value
 
+    # TODO RENAME OR REFACTOR
     def __setDisplayValues(self, currentFrameData):
         frame = currentFrameData[FrameHandler.FRAME_OBJ_IDX]
         self.__currentFrame = frame
@@ -158,6 +180,8 @@ class SceneMixer(Widget):
         framePos = currentFrameData[FrameHandler.FRAME_POS_IDX]
         numFrames = currentFrameData[FrameHandler.FRAME_NUM_IDX]
         self.sceneNumber = ("%d:%d" % (framePos, numFrames))
+
+        self.__setCurrentFrameEffects()
 
     def __updateSceneAndFadeTimes(self):
         self.__updateCurrentFrame()
@@ -175,6 +199,12 @@ class SceneMixer(Widget):
         if self.__currentFrame is not None:
             self.__currentFrame.setSceneTime(self.sceneTime)
             self.__currentFrame.setFadeTime(self.fadeTime)
+
+    def __setCurrentFrameEffects(self):
+        effects = self.__currentFrame.getEffects()
+        for effect in effects:
+            if effect.getEffectName() == EffectNames.COLOR_EFFECT:
+                self.color = effect.getKivyColor()
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)

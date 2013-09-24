@@ -1,14 +1,10 @@
 import os
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ListProperty, NumericProperty, StringProperty, BooleanProperty
-from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import ListProperty, NumericProperty, BooleanProperty
 from kivy.uix.widget import Widget
 
 Builder.load_file(os.getenv("FILE_PATH") + "/colorpicker.kv")
-
-
-
 
 
 class CustomWheel(Widget):
