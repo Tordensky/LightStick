@@ -40,16 +40,16 @@ class SimpleMsvController(Widget):
             self.msvThread.start()
 
             self.source = None
-            self.bpms = defaultdict(float)
+            self.bpm = defaultdict(float)
         except AssertionError:
             print "MSV ERROR ! ! ! ! !! ! ! "
 
     def setSourceForBpm(self, source):
         self.source = source
-        self.setVelocityFromBPM(self.bpms[source])
+        self.setVelocityFromBPM(self.bpm[source])
 
     def setBpm(self, bpm, source):
-        self.bpms[source] = bpm
+        self.bpm[source] = bpm
         print bpm, source
 
     def setVelocityFromBPM(self, bpm):
