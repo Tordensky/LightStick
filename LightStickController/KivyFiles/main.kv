@@ -53,7 +53,7 @@
             BeatCounter:
                 id: beat_b
                 size_hint: 0.35, 1
-                on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B")
+                on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B"); mixer_b.bpm = args[1]
                 on_trigger: wheel_b.trigger = args[1]
 
 
@@ -90,9 +90,9 @@
 
             # FADE MIXER A
             FadePicker:
-                id: fade_b
+                id: fade_a
                 size_hint: 0.15, 1
-                on_step_size: wheel_a.steps_per_beat = args[1]; mixer_a.sceneTime = args[1]
+                on_scene_time: mixer_a.sceneTime = args[1]
                 on_fade_time: wheel_a.fade_time_in_beats = args[1]; mixer_a.fadeTime = args[1]
 
             Filler:
@@ -101,10 +101,10 @@
 
             # FADE MIXER B
             FadePicker:
-                id: fade_a
+                id: fade_b
                 size_hint: 0.15, 1
-                on_step_size: wheel_b.steps_per_beat = args[1]
-                on_fade_time: wheel_b.fade_time_in_beats = args[1]
+                on_scene_time: mixer_b.sceneTime = args[1]
+                on_fade_time: wheel_b.fade_time_in_beats = args[1]; mixer_b.fadeTime = args[1]
 
         # SCENE CONTROLLER ROW
         GridLayout:
@@ -118,6 +118,8 @@
             SceneMixer:
                 id: mixer_a
                 on_color: wheel_a.color = args[1]
+                on_fadeTime: fade_a.fade_time = args[1]
+                on_sceneTime: fade_a.scene_time = args[1]
 
             Filler:
                 size_hint: 0.3, 1
@@ -126,3 +128,5 @@
             SceneMixer:
                 id: mixer_b
                 on_color: wheel_b.color = args[1]
+                on_fadeTime: fade_b.fade_time = args[1]
+                on_sceneTime: fade_b.scene_time = args[1]

@@ -19,7 +19,7 @@ class CustomWheel(Widget):
     trigger = BooleanProperty(False)
 
     fade_time_in_beats = NumericProperty(1.0)
-    steps_per_beat = NumericProperty(1)
+    steps_per_beat = NumericProperty(64)
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
@@ -33,17 +33,17 @@ class CustomWheel(Widget):
 
     def on_color(self, instance, new_color):
         self.new_color = new_color
-        if self.trigger:
-            self.set_new_color()
-        else:
-            self.execute_change_color = True
+        #if self.trigger:
+        self.set_new_color()
+        #else:
+        #    self.execute_change_color = True
 
     # TRIGGER SIGNAL FROM BPM COUNTER OR OTHER CONTROLLING UNIT
-    def on_trigger(self, *args):
-        if args[1]:
-            if self.execute_change_color:
-                self.execute_change_color = False
-                self.set_new_color()
+    # def on_trigger(self, *args):
+    #     if args[1]:
+    #         if self.execute_change_color:
+    #             self.execute_change_color = False
+    #             self.set_new_color()
 
     def _trigger_update_color(self, idx, new_color_value):
         color_value = new_color_value / 255.0

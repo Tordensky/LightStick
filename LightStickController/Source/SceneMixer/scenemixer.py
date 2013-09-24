@@ -52,6 +52,10 @@ class SceneMixer(Widget):
     def on_color(self, obj, color):
         self.__setColorEffect(color)
 
+    def __beforeSetEffect(self):
+        if self.__currentFrame is None:
+            self.addScene()
+
     def __setColorEffect(self, color):
         self.__beforeSetEffect()
         colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
@@ -60,10 +64,6 @@ class SceneMixer(Widget):
             self.__currentFrame.addEffect(colorEffectObj)
 
         colorEffectObj.setKivyColor(color)
-
-    def __beforeSetEffect(self):
-        if self.__currentFrame is None:
-            self.addScene()
 
     def playbackCallbackUpdate(self, *args):
         self.currentTime = round(args[0], 1)
@@ -117,9 +117,11 @@ class SceneMixer(Widget):
     def startStopPlayback(self, *args):
         self.__isInPlayback = not self.__isInPlayback
         if self.__isInPlayback:
+            self.__resetPlayback()
             self.__playbackHandler.start()
         else:
             self.__playbackHandler.stop()
+            self.__resetPlayback()
 
     def deleteScene(self):
         result = (self.__frameHandler.deleteCurrentFrame())
@@ -201,10 +203,11 @@ class SceneMixer(Widget):
             self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
-        effects = self.__currentFrame.getEffects()
-        for effect in effects:
-            if effect.getEffectName() == EffectNames.COLOR_EFFECT:
-                self.color = effect.getKivyColor()
+        if self.__currentFrame is not None:
+            effects = self.__currentFrame.getEffects()
+            for effect in effects:
+                if effect.getEffectName() == EffectNames.COLOR_EFFECT:
+                    self.color = effect.getKivyColor()
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)
