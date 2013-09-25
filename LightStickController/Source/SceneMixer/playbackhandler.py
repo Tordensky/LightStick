@@ -26,6 +26,10 @@ class PlayBackHandler():
         Clock.unschedule(self.__onUpdate)
         self.__updateInterval = 0.0
 
+    def stopAndReset(self):
+        self.stop()
+        self.reset()
+
     def reset(self):
         self.__currTime = 0.0
 

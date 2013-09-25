@@ -101,13 +101,6 @@
                 step_labels: root.labels
                 slider_value: self.valueToIdx(root.fade_time)
 
-
-
-
-
-
-
-
 <ColorPicker_Slider@BoxLayout>
     color: 0
     idx: 0
@@ -139,7 +132,7 @@
         orientation: 'vertical'
         size_hint: 1, 0.8
         on_value:
-            root.mroot._trigger_update_color(root.idx, args[1])
+            root.mroot.setValueFromSlider(root.idx, args[1])
 
     Label:
         size_hint: 1, 0.1

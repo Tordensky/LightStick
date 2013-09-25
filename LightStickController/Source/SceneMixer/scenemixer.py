@@ -56,6 +56,9 @@ class SceneMixer(Widget):
         if self.__currentFrame is None:
             self.addScene()
 
+        if self.sceneTime == 0.0:
+            self.sceneTime = 1.0
+
     def __setColorEffect(self, color):
         self.__beforeSetEffect()
         colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)

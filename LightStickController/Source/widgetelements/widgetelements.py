@@ -18,3 +18,6 @@ class CustomStepSlider(BoxLayout):
         idx = int(args[1])
         self.value = self.step_values[idx]
         self.label_value = self.step_labels[idx]
+
+    def valueToIdx(self, value):
+        return self.step_values.index(value)

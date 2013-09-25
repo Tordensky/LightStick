@@ -30,13 +30,13 @@ class WebTest(Widget):
         self.httpClient.postJson(json.dumps(msg), "/command")
 
     def colorToHex(self, color):
-        r = self._kivyColorToInt(color[0])
-        g = self._kivyColorToInt(color[1])
-        b = self._kivyColorToInt(color[2])
+        r = self.__kivyColorToInt(color[0])
+        g = self.__kivyColorToInt(color[1])
+        b = self.__kivyColorToInt(color[2])
         hexColor = ("#%02x%02x%02x" % (r, g, b))
         return hexColor
 
-    def _kivyColorToInt(self, value):
+    def __kivyColorToInt(self, value):
         return int(math.floor(255 * value))
 
 
