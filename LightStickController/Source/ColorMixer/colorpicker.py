@@ -15,9 +15,9 @@ class CustomWheel(Widget):
     color = ListProperty((1, 1, 1, 1))
     screen_color = ListProperty((0.1, 0.5, 1, 1))
 
-    bpm = NumericProperty(0.0)
+    bpm = NumericProperty(60.0)
 
-    fade_time_in_beats = NumericProperty(1.0)
+    fade_time_in_beats = NumericProperty(0.0)
 
     def __init__(self, **kwargs):
         super(CustomWheel, self).__init__(**kwargs)
@@ -38,8 +38,11 @@ class CustomWheel(Widget):
 
     def set_new_color(self, newColor):
         self.newColor = newColor
-        self.__set_color_step_sizes()
-        self.__playBackHandler.start()
+        if self.fade_time_in_beats > 0.0:
+            self.__set_color_step_sizes()
+            self.__playBackHandler.start()
+        else:
+            self.screen_color = newColor
 
     def fadeStepCallback(self, time):
         if self.fade_time_in_beats <= time:

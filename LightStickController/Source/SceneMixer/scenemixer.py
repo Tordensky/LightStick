@@ -40,7 +40,7 @@ class SceneMixer(Widget):
 
         # init playbackHandler
         self.__isInPlayback = False
-        self.__playbackHandler = PlayBackHandler(bpm=0.0, updatesPerBeat=20)
+        self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=20)
         self.__playbackHandler.addIntervalUpdateCallback(self.playbackCallbackUpdate)
 
         # TODO fix a better approach for checking if object is ready
