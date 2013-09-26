@@ -13,7 +13,7 @@ class CustomWheel(Widget):
     IDX_BLUE = 2
 
     color = ListProperty((1, 1, 1, 1))
-    screen_color = ListProperty((0.1, 0.5, 1, 1))
+    screen_color = ListProperty((1, 1, 1, 1))
 
     bpm = NumericProperty(60.0)
 
@@ -45,7 +45,8 @@ class CustomWheel(Widget):
             self.screen_color = newColor
 
     def fadeStepCallback(self, time):
-        if self.fade_time_in_beats <= time:
+        if self.fade_time_in_beats < time:
+            self.screen_color = self.newColor
             self.__playBackHandler.stopAndReset()
         else:
             self.__update_color_one_fade_step()
@@ -57,7 +58,8 @@ class CustomWheel(Widget):
         self.color[idx] = color_value
 
     def __calc_number_of_steps(self):
-            return float(self.fade_time_in_beats) * self.__updatesPerBeat
+        numberOfSteps = float(self.fade_time_in_beats) * self.__updatesPerBeat
+        return numberOfSteps
 
     def __get_color_step_size(self, idx):
         try:

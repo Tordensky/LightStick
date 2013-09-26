@@ -51,8 +51,8 @@
     on_fade_time: sceneSlider.slider_value = sceneSlider.valueToIdx(args[1]) if args[1] > root.scene_time else sceneSlider.valueToIdx(root.scene_time)
     on_scene_time: fadeSlider.slider_value = fadeSlider.valueToIdx(args[1]) if args[1] < root.fade_time else fadeSlider.valueToIdx(root.fade_time)
 
-    values: [0.0, 0.125, 0.25, 0.5, 1, 2, 3, 4, 8, 16, 32, 64, 128]
-    labels: ["OFF", "1/8", "1/4", "1/2", "1", "2", "3", "4", "8", "16", "32", "64", "128"]
+    values: [0.0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 3, 4, 8, 16, 32, 64, 128]
+    labels: ["OFF", "1/16", "1/8", "1/4", "1/2", "1", "2", "3", "4", "8", "16", "32", "64", "128"]
 
     BoxLayout:
         orientation: 'vertical'
