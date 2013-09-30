@@ -1,7 +1,15 @@
-from scnconfig import EffectNames
+from scnconfig import EffectNames, SerializedKeys
 
 
-class SceneFrame():
+class Serializable():
+    def serialize_to_dict(self):
+        return {}
+
+    def from_dict(self, dict):
+        pass
+
+
+class SceneFrame(Serializable):
     def __init__(self):
         self.__fadeTime = None
         self.__sceneTime = None
@@ -40,13 +48,28 @@ class SceneFrame():
     def setSceneTime(self, sceneTime):
         self.__sceneTime = float(sceneTime)
 
+    def serialize_to_dict(self):
+        serDict = Serializable.serialize_to_dict(self)
+        serDict[SerializedKeys.FADE_TIME] = self.__fadeTime
+        serDict[SerializedKeys.SCENE_TIME] = self.__sceneTime
 
-class Effect():
+        serDict[SerializedKeys.EFFECT_LIST] = []
+        for effect in self.__effects:
+            serDict[SerializedKeys.EFFECT_LIST].append(effect.serialize_to_dict())
+
+        return serDict
+
+
+class Effect(Serializable):
     def __init__(self, name):
         self.__name = name
 
     def getEffectName(self):
         return self.__name
+
+    def serialize_to_dict(self):
+        serObj = {SerializedKeys.EFFECT_NAME: self.getEffectName()}
+        return serObj
 
 
 class ColorEffect(Effect):
@@ -63,4 +86,11 @@ class ColorEffect(Effect):
 
     def getHexColor(self):
         # TODO
-        pass
+        return "NOT IMPLEMENTED"
+
+    def serialize_to_dict(self):
+        serObj = Effect.serialize_to_dict(self)
+        serObj[SerializedKeys.COLOR_VALUE_HEX] = self.getHexColor()
+        return serObj
+
+

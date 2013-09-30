@@ -219,7 +219,7 @@ class SceneMixer(Widget):
         self.__setFadeTimeForAllFrames(self.fadeTime)
 
     def __setSyncedFadeAndSceneTime(self):
-        print "SET SYNC SCENE AND FADE TIME"
+        # TODO There is something going wrong here. Recursive event call bug
         self.fadeTime = self.sceneTime
 
         self.__setFadeTimeForAllFrames(self.fadeTime)

@@ -28,7 +28,7 @@ class CustomWheel(Widget):
         self.__updatesPerBeat = 32
 
         self.__playBackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=self.__updatesPerBeat)
-        self.__playBackHandler.addIntervalUpdateCallback(self.fadeStepCallback)
+        self.__playBackHandler.addIntervalUpdateCallback(self.fade_step_callback)
 
     def on_bpm(self, obj, newBpm):
         self.__playBackHandler.setBpm(newBpm)
@@ -44,14 +44,14 @@ class CustomWheel(Widget):
         else:
             self.screen_color = newColor
 
-    def fadeStepCallback(self, time):
+    def fade_step_callback(self, time):
         if self.fade_time_in_beats < time:
             self.screen_color = self.newColor
             self.__playBackHandler.stopAndReset()
         else:
             self.__update_color_one_fade_step()
 
-    def setValueFromSlider(self, idx, new_color_value):
+    def set_value_from_slider(self, idx, new_color_value):
         color_value = new_color_value / 255.0
         if color_value > 1.0:
             color_value = 1.0
