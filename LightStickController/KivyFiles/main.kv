@@ -46,6 +46,8 @@
             SimpleMsvController:
                 id: msvControl
                 size_hint: 0.5, 1
+                on_set_new_show_from_a: self.sendSceneToServer(mixer_a.serialize_to_dict())
+                on_set_new_show_from_b: self.sendSceneToServer(mixer_b.serialize_to_dict())
 
             # BEAT COUNTER B
             BeatCounter:

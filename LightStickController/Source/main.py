@@ -29,16 +29,6 @@ class WebTest(Widget):
         msg = {"command": {"color": self.colorToHex(args[1])}}
         self.httpClient.postJson(json.dumps(msg), "/command")
 
-    def colorToHex(self, color):
-        r = self.__kivyColorToInt(color[0])
-        g = self.__kivyColorToInt(color[1])
-        b = self.__kivyColorToInt(color[2])
-        hexColor = ("#%02x%02x%02x" % (r, g, b))
-        return hexColor
-
-    def __kivyColorToInt(self, value):
-        return int(math.floor(255 * value))
-
 
 class WidgetScreen(Widget):
     def __init__(self, **kwargs):

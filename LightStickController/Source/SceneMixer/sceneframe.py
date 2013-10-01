@@ -1,12 +1,6 @@
+import math
+from serializer import Serializable
 from scnconfig import EffectNames, SerializedKeys
-
-
-class Serializable():
-    def serialize_to_dict(self):
-        return {}
-
-    def from_dict(self, dict):
-        pass
 
 
 class SceneFrame(Serializable):
@@ -17,7 +11,7 @@ class SceneFrame(Serializable):
         self.__effects = {}
 
     def addEffect(self, Effect):
-        effectName = Effect.getEffectName()
+        effectName = Effect.get_effect_name()
         self.__effects[effectName] = Effect
 
     def getEffect(self, name):
@@ -54,7 +48,7 @@ class SceneFrame(Serializable):
         serDict[SerializedKeys.SCENE_TIME] = self.__sceneTime
 
         serDict[SerializedKeys.EFFECT_LIST] = []
-        for effect in self.__effects:
+        for effect in self.getEffects():
             serDict[SerializedKeys.EFFECT_LIST].append(effect.serialize_to_dict())
 
         return serDict
@@ -64,16 +58,15 @@ class Effect(Serializable):
     def __init__(self, name):
         self.__name = name
 
-    def getEffectName(self):
+    def get_effect_name(self):
         return self.__name
 
     def serialize_to_dict(self):
-        serObj = {SerializedKeys.EFFECT_NAME: self.getEffectName()}
+        serObj = {SerializedKeys.EFFECT_NAME: self.get_effect_name()}
         return serObj
 
 
 class ColorEffect(Effect):
-
     def __init__(self):
         Effect.__init__(self, EffectNames.COLOR_EFFECT)
         self.__color = (1.0, 1.0, 1.0, 1.0)
@@ -85,12 +78,27 @@ class ColorEffect(Effect):
         self.__color = color
 
     def getHexColor(self):
-        # TODO
-        return "NOT IMPLEMENTED"
+        hexColor = ColorTools.colorToHex(self.__color)
+        return hexColor
 
     def serialize_to_dict(self):
         serObj = Effect.serialize_to_dict(self)
         serObj[SerializedKeys.COLOR_VALUE_HEX] = self.getHexColor()
         return serObj
+
+
+class ColorTools():
+    @staticmethod
+    def colorToHex(color):
+        color = tuple(color)
+        r = ColorTools.__kivyColorToInt(color[0])
+        g = ColorTools.__kivyColorToInt(color[1])
+        b = ColorTools.__kivyColorToInt(color[2])
+        hexColor = ("#%02x%02x%02x" % (r, g, b))
+        return hexColor
+
+    @staticmethod
+    def __kivyColorToInt(value):
+        return int(math.floor(255 * value))
 
 

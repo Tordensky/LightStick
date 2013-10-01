@@ -5,6 +5,9 @@ class EffectNames():
 
 
 class SerializedKeys:
+    ### FRAME HANDLER
+    FRAME_LIST = "FRAME_LIST"
+
     ### SCENE FRAME
     FADE_TIME = "FADE_TIME"
     SCENE_TIME = "SCENE_TIME"

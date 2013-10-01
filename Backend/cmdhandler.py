@@ -1,6 +1,5 @@
 import json
 import threading
-import random
 
 
 class CommandHandler():
@@ -11,11 +10,11 @@ class CommandHandler():
         self.lock = threading.RLock()
 
     def setCommand(self, data):
+        self.messageNum += 1
         with self.lock:
             self.command = json.loads(data)
 
     def getCommand(self):
-        self.messageNum += 1
         self.command["cmdNum"] = self.messageNum
         with self.lock:
             cmd = self.command

@@ -25,8 +25,9 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     handleCommand: function() {
-        console.log(this.commandModel.get("command")["color"]);
-        this.$el.css("background-color", this.commandModel.get("command")["color"]);
+        //console.log(this.commandModel.get("command")["color"]);
+        //this.$el.css("background-color", this.commandModel.get("FRAME_LIST"));
+        console.log(this.commandModel.get("FRAME_LIST"));
 
     },
 

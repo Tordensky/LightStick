@@ -1,7 +1,9 @@
 from collections import namedtuple
+from scnconfig import SerializedKeys
+from serializer import Serializable
 
 
-class FrameHandler():
+class FrameHandler(Serializable):
     FRAME_OBJ_IDX = 0
     FRAME_POS_IDX = 1
     FRAME_NUM_IDX = 2
@@ -93,3 +95,14 @@ class FrameHandler():
 
     def isAtEndOfFrames(self):
         return self.__framePointer == self.__numFrames()
+
+    def serialize_to_dict(self):
+        serializedDict = Serializable.serialize_to_dict(self)
+        serializedFramesList = []
+
+        for frame in self.__frames:
+            frameDict = frame.serialize_to_dict()
+            serializedFramesList.append(frameDict)
+        serializedDict[SerializedKeys.FRAME_LIST] = serializedFramesList
+
+        return serializedDict

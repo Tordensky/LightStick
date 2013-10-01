@@ -1,10 +1,12 @@
 import os
+import pprint
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, StringProperty, ListProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty, DictProperty
 from kivy.uix.widget import Widget
-from sceneframe import ColorEffect
 from SceneMixer import SceneFrame
+from serializer import Serializable
+from sceneframe import ColorEffect
 from scnconfig import EffectNames
 from framehandler import FrameHandler
 from playbackhandler import PlayBackHandler
@@ -12,7 +14,7 @@ from playbackhandler import PlayBackHandler
 Builder.load_file(os.getenv("FILE_PATH") + "/scenemixer.kv")
 
 
-class SceneMixer(Widget):
+class SceneMixer(Widget, Serializable):
     currentTime = NumericProperty(0.0)
     sceneTime = NumericProperty(0.0)
     fadeTime = NumericProperty(0.0)
@@ -56,9 +58,6 @@ class SceneMixer(Widget):
         if self.__currentFrame is None:
             self.addScene()
 
-        if self.sceneTime == 0.0:
-            self.sceneTime = 1.0
-
     def __setColorEffect(self, color):
         self.__beforeSetEffect()
         colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
@@ -94,22 +93,32 @@ class SceneMixer(Widget):
             self.__updateSceneAndFadeTimes()
 
     def addScene(self):
+        self.__before_create_scene()
+
         sceneFrame = self.__createNewScene()
         result = (self.__frameHandler.addFrameAtEnd(sceneFrame))
         self.__setDisplayValues(result)
         return result
 
     def insertSceneBefore(self):
+        self.__before_create_scene()
+
         sceneFrame = self.__createNewScene()
         result = (self.__frameHandler.insertFrameBeforePointer(sceneFrame))
         self.__setDisplayValues(result)
         return result
 
     def insertSceneAfter(self):
+        self.__before_create_scene()
+
         sceneFrame = self.__createNewScene()
         result = (self.__frameHandler.insertFrameAfterPointer(sceneFrame))
         self.__setDisplayValues(result)
         return result
+
+    def __before_create_scene(self):
+        if self.sceneTime == 0.0:
+            self.sceneTime = 1.0
 
     def __createNewScene(self):
         sceneFrame = SceneFrame()
@@ -209,7 +218,7 @@ class SceneMixer(Widget):
         if self.__currentFrame is not None:
             effects = self.__currentFrame.getEffects()
             for effect in effects:
-                if effect.getEffectName() == EffectNames.COLOR_EFFECT:
+                if effect.get_effect_name() == EffectNames.COLOR_EFFECT:
                     self.color = effect.getKivyColor()
 
     def __setGlobalSceneTime(self):
@@ -236,6 +245,14 @@ class SceneMixer(Widget):
 
     def __iterFuncSetFadeTime(self, sceneFrame, fadeTime):
         sceneFrame.setFadeTime(fadeTime)
+
+    def serialize_to_dict(self):
+        serializedDict = Serializable.serialize_to_dict(self)
+        serializedDict = dict(serializedDict.items() + self.__frameHandler.serialize_to_dict().items())
+        pprint.pprint(serializedDict)
+
+        # Update property
+        return serializedDict
 
 
 class __TestScreenMixer(App):

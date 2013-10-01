@@ -1,13 +1,17 @@
 # Based on the code written by Ingar Arntzen, Norut & Motion Corporation
 from collections import defaultdict
+import json
 import os
+import pprint
 
 import threading
 import time
+from kivy.event import EventDispatcher
 from kivy.lang import Builder
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty, DictProperty
 from kivy.uix.widget import Widget
 import sys
+from HttpWebClient import HttpClient
 
 from libs.pymsv.msvclient.client import Client, Msv
 
@@ -15,7 +19,7 @@ from libs.pymsv.msvclient.client import Client, Msv
 Builder.load_file(os.getenv("FILE_PATH") + "/msvcontroller.kv")
 
 
-class SimpleMsvController(Widget):
+class SimpleMsvController(Widget, EventDispatcher):
     HOST = "mcorp.no:8091"
     MSVID = 18
 
@@ -24,8 +28,13 @@ class SimpleMsvController(Widget):
     msvAcceleration = NumericProperty(0.0)
     currentBPM = NumericProperty(0.0)
 
+    currentMsg = DictProperty({})
+
     def __init__(self, **kwargs):
+        self.register_event_type('on_set_new_show_from_a')
+        self.register_event_type('on_set_new_show_from_b')
         super(SimpleMsvController, self).__init__(**kwargs)
+
         try:
             self._stop_event = threading.Event()
             self._client = Client(self.HOST)
@@ -33,20 +42,38 @@ class SimpleMsvController(Widget):
             self._msv = Msv(self._client, self.MSVID)
             self._msv.add_handler(self.update_handler)
 
-            #self.update(18, 0, 1, 0)
-
             self.lock = threading.RLock()
             self.msvThread = threading.Thread(target=self.run)
             self.msvThread.start()
 
             self.source = None
             self.bpm = defaultdict(float)
+
+            self.httpClient = HttpClient("localhost", 8080)
         except AssertionError:
             print "MSV ERROR ! ! ! ! !! ! ! "
 
+    def on_set_new_show_from_a(self):
+        pass
+
+    def on_set_new_show_from_b(self):
+        pass
+
     def setSourceForBpm(self, source):
         self.source = source
+
+        if source == "A":
+            self.dispatch('on_set_new_show_from_a')
+        elif source == "B":
+            self.dispatch('on_set_new_show_from_b')
+
         self.setVelocityFromBPM(self.bpm[source])
+
+    def sendSceneToServer(self, msg):
+        pprint.pprint(msg)
+        msg["MSV_TIME"] = float(self.msvPosition)
+        msg = json.dumps(msg)
+        self.httpClient.postJson(jsonMessage=msg, url="/command")
 
     def setBpm(self, bpm, source):
         self.bpm[source] = bpm
@@ -56,7 +83,7 @@ class SimpleMsvController(Widget):
         print "Set new velocity"
         velocity = bpm / 60.0
         self.currentBPM = round(bpm, 1)
-        self.update(18, 0, velocity, 0)
+        self.update(18, self.msvPosition, velocity, 0)
 
     def on_msvVelocity(self, *args):
         print args[1]
