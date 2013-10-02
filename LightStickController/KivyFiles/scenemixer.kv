@@ -175,7 +175,7 @@
                 size_hint: 1, 0.6
                 # Display part of the widget
                 SceneMixerScreen:
-                    size_hint: 0.9, 1
+                    size_hint: 0.7, 1
 
                     currentTime: root.currentTime
                     sceneTime: root.sceneTime
@@ -190,17 +190,21 @@
                     orientation: "vertical"
                     LightButton:
                         text: "ADD"
+                        font_size: self.height / 2
                         on_press: root.addScene()
                     LightButton:
                         text: "INS B"
+                        font_size: self.height / 2
                         on_press: root.insertSceneBefore()
 
                     LightButton:
                         text: "INS A"
+                        font_size: self.height / 2
                         on_press: root.insertSceneAfter()
 
                     LightButton:
                         text: "DEL"
+                        font_size: self.height / 2
                         on_press: root.deleteScene()
 
             # CONTROL BUTTONS
@@ -211,18 +215,23 @@
 
                 LightButton:
                     text: "START"
+                    font_size: self.height / 2
                     on_press: root.gotoStartOfShow()
                 LightButton:
                     text: "END"
+                    font_size: self.height / 2
                     on_press: root.gotoEndOfShow()
                 LightButton:
                     text: "PREV"
+                    font_size: self.height / 2
                     on_press: root.gotoPrevScene()
                 LightButton:
                     text: "NEXT"
+                    font_size: self.height / 2
                     on_press: root.gotoNextScene()
                 LightButton:
                     text: "PLAY"
+                    font_size: self.height / 2
                     on_press: root.startStopPlayback()
 
             # CONTROLLER OPTIONS
@@ -242,7 +251,7 @@
                             size_hint: 0.85, 1
                             text: "SET GLOBAL SCENE TIME"
                             text_size: self.size
-                            font_size: "12dp"
+                            font_size: self.height / 2
                             valign: "middle"
 
                     BoxLayout:
@@ -255,7 +264,7 @@
                             size_hint: 0.85, 1
                             text: "SYNC SCENE AND FADE TIME"
                             text_size: self.size
-                            font_size: "12dp"
+                            font_size: self.height / 2
                             valign: "middle"
 
                     BoxLayout:
@@ -268,7 +277,7 @@
                             size_hint: 0.85, 1
                             text: "SET GLOBAL FADE TIME"
                             text_size: self.size
-                            font_size: "12dp"
+                            font_size: self.height / 2
                             valign: "middle"
 
 
@@ -283,5 +292,5 @@
                             size_hint: 0.85, 1
                             text: "LOOP AFTER END"
                             text_size: self.size
-                            font_size: "12dp"
+                            font_size: self.height / 2
                             valign: "middle"
