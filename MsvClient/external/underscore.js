@@ -273,7 +273,8 @@
   // Return the minimum element (or element-based computation).
   _.min = function(obj, iterator, context) {
     if (!iterator && _.isArray(obj) && obj[0] === +obj[0] && obj.length < 65535) {
-      return Math.min.apply(Math, obj);
+      //noinspection JSUnresolvedVariable
+        return Math.min.apply(Math, obj);
     }
     if (!iterator && _.isEmpty(obj)) return Infinity;
     var result = {computed : Infinity, value: Infinity};

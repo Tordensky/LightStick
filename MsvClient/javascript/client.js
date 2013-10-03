@@ -3,7 +3,7 @@ var LightStick = LightStick || {};
 LightStick.Client = {
     ds: null,
 
-    load: function () {
+    init: function () {
         console.log('Setting up MSV');
 
         this.msv = MSV.msv("msv://mcorp.no:8091/18");
