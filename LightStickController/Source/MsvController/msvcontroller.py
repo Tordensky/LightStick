@@ -71,7 +71,7 @@ class SimpleMsvController(Widget, EventDispatcher):
 
     def sendSceneToServer(self, msg):
         pprint.pprint(msg)
-        msg["MSV_TIME"] = float(self.msvPosition)
+        msg["MSV_TIME"] = int(self.msvPosition)
         msg = json.dumps(msg)
         self.httpClient.postJson(jsonMessage=msg, url="/command")
 
@@ -83,7 +83,7 @@ class SimpleMsvController(Widget, EventDispatcher):
         print "Set new velocity"
         velocity = bpm / 60.0
         self.currentBPM = round(bpm, 1)
-        self.update(18, self.msvPosition, velocity, 0)
+        self.update(18, int(self.msvPosition), velocity, 0)
 
     def on_msvVelocity(self, *args):
         print args[1]

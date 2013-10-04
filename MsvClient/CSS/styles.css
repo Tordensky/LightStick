@@ -3,12 +3,13 @@
 }
 
 html, body {
-    padding: 0;
+    padding: 5%;
     margin: 0;
     font-size: 12px;
     width: auto;
     height: 100%;
     background-color: black;
+    font-family: Helvetica, monospace;
 }
 
 h1 {
@@ -26,4 +27,11 @@ h1 {
 .info {
     font-size: 20px;
     color: white;
+}
+
+.beat {
+    font-size: 200px;
+    color: white;
+    display: none;
+
 }

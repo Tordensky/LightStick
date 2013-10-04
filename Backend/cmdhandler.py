@@ -15,10 +15,8 @@ class CommandHandler():
             self.command = json.loads(data)
 
     def getCommand(self):
-        self.command["cmdNum"] = self.messageNum
-        with self.lock:
-            cmd = self.command
-        return json.dumps(cmd)
+        self.message = {"cmdNum": self.messageNum, "data": self.command}
+        return json.dumps(self.message)
 
 
 if __name__ == "__main__":

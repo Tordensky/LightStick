@@ -1,6 +1,5 @@
 import json
 import os
-import math
 import kivy
 
 from kivy.lang import Builder
