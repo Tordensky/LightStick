@@ -8,7 +8,7 @@ LightStick.MainView = Backbone.View.extend({
         this.initEvents();
         this.startUpdateTimer();
 
-        this.show = null;
+        this.showFrames = null;
 
         this.playback = null;
         this.initPlayback();
@@ -43,35 +43,42 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     handleCommand: function() {
-        this.show = this.commandModel.get("FRAME_LIST");
+        this.showFrames = this.commandModel.get("FRAME_LIST");
         var message = this.commandModel.get("data");
 
         this.playback.setNewSceneShow(message);
-        //this.playbackHandler.setPlaybackStartTime(startTime);
     },
 
     render: function() {
        //this.$el.html("<h1>Render OK</h1>");
        return this;
-    },
-
-    setScreenColor: function(color) {
-        this.$el.css("background-color", color);
     }
 });
 
 
 LightStick.PlayBack = function() {
     this.init = function(readyCB, $el)  {
+        this.updatesPerBeat = 64;
+
+
         this.$el = $el;
         this.playbackTimer = null;
-        this.initPlaybackTimer(readyCB);
+        this.initPlaybackTimer(readyCB, this.updatesPerBeat);
 
-        this.beatText = new LightStick.BeatTextTest(this.$el);
+        this.showFrames = null;
+        this.currentFrame = null;
+
+        this.initEffects();
     };
 
-    this.initPlaybackTimer = function(readyCB) {
-        this.playbackTimer = new LightStick.PlayBackTimer(50);
+    this.initEffects = function() {
+        // Effects
+        this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
+        this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
+    };
+
+    this.initPlaybackTimer = function(readyCB, updatesPerBeat) {
+        this.playbackTimer = new LightStick.PlayBackTimer(updatesPerBeat);
 
         var that = this;
         this.playbackTimer.init(function() {
@@ -91,13 +98,37 @@ LightStick.PlayBack = function() {
     this.updateCallback = function(currentTime, isWholeBeat) {
         this.$el.find("#msv").html(currentTime.toFixed(2) + " beats, " + isWholeBeat);
 
-        if (isWholeBeat) {
-            this.beatText.flash();
+        var frame = this.getCurrentFrame(currentTime);
+
+
+        // TODO IF ONLY ONE FRAME! NEED TO SEND A TIMER RESET OPTION;
+        if (frame !== this.currentFrame){
+            this.onFrameChange(frame);
+
         }
+        if (isWholeBeat) {
+            //this.beatTextEffect.flash();
+        }
+
+        this.colorEffect.onUpdate();
+    };
+
+    this.onFrameChange = function(frame) {
+        this.currentFrame = frame;
+
+        var sceneTime = frame["SCENE_TIME"];
+        var fadeTime = frame["FADE_TIME"];
+
+        var that = this;
+        _.each(this.currentFrame["EFFECTS"], function(effect) {
+            if (effect["FX_NAME"] == "COLOR") {
+                that.colorEffect.setNewColor(effect, sceneTime, fadeTime);
+            }
+        });
     };
 
     this.setNewSceneShow = function(sceneShow) {
-        console.log("showData", sceneShow);
+        this.showFrames = sceneShow["FRAME_LIST"];
 
         this.playbackTimer.setPlaybackStartTime(sceneShow["MSV_TIME"]);
         var showTime = this._calcTotalShowTime(sceneShow["FRAME_LIST"]);
@@ -110,17 +141,107 @@ LightStick.PlayBack = function() {
             showTime += scene["SCENE_TIME"];
         });
         return showTime;
+    };
+
+    this.getCurrentFrame = function(currentTime) {
+        // TODO fix offset so do not need to iter trough prev frames if time is higher than before
+
+        var frameShowTime = 0.0;
+
+        return _.find(this.showFrames, function(scene){
+            frameShowTime += scene["SCENE_TIME"];
+            if (frameShowTime > currentTime) {
+                return scene;
+            }
+        });
+    };
+};
+
+
+LightStick.ColorEffect = function($el, updatesPerBeat)  {
+    this.$el = $el;
+    this.fadeTime = 0.0;
+    this.numSteps = 0.0;
+
+    this.updatesPerBeat = updatesPerBeat;
+
+    this.setNewColor = function(colorEffect, sceneTime, FadeTime) {
+        this.fadeTime = FadeTime;
+
+        var newColor = colorEffect["COLOR_HEX"];
+
+        this.newRed = this.getRedFromHex(newColor);
+        this.newGreen = this.getGreenFromHex(newColor);
+        this.newBlue = this.getBlueFromHex(newColor);
+
+        if (this.fadeTime == 0.0) {
+            this.redStep = 0.0;
+            this.greenStep = 0.0;
+            this.blueStep = 0.0;
+            this.setScreenColor(this.newRed, this.newGreen, this.newBlue);
+
+        } else {
+            this.numSteps = this.fadeTime * this.updatesPerBeat;
+
+            var currColor = this.rgb2hex(this.$el.css("background-color"));
+
+            this.currRed = this.getRedFromHex(currColor);
+            this.currGreen = this.getGreenFromHex(currColor);
+            this.currBlue = this.getBlueFromHex(currColor);
+
+            this.redStep = (this.newRed - this.currRed) / this.numSteps;
+            this.greenStep = (this.newGreen - this.currGreen) / this.numSteps;
+            this.blueStep = (this.newBlue - this.currBlue) / this.numSteps;
+        }
+    };
+
+    this.getRedFromHex = function(color) {
+        return parseInt("0x"+color.substr(1, 2));
+    };
+
+    this.getGreenFromHex = function(color) {
+        return parseInt("0x"+color.substr(3, 2));
+    };
+
+    this.getBlueFromHex = function(color) {
+        return parseInt("0x"+color.substr(5, 2));
+    };
+
+    this.onUpdate = function() {
+        if (this.numSteps > 0.0) {
+            this.currRed += this.redStep;
+            this.currGreen += this.greenStep;
+            this.currBlue += this.blueStep;
+            this.setScreenColor(this.currRed, this.currGreen, this.currBlue);
+        }
+        this.numSteps -= 1;
+    };
+
+    this.setScreenColor = function(r, g, b) {
+        this.$el.css("background-color", this.toCssRGB(r, g, b));
+    };
+
+    this.toCssRGB = function(r, g, b) {
+        return "rgb(" + parseInt(r) + ", " + parseInt(g) + ", " + parseInt(b) + ")";
+    };
+
+    this.rgb2hex = function(rgb){
+        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        return "#" +
+            ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[3],10).toString(16)).slice(-2);
     }
 };
 
-LightStick.BeatTextTest = function($el) {
+LightStick.BeatTextEffect = function($el) {
     this.$el = $el;
     this.flash = function() {
         this.$el.find("#beat").show();
         var that = this;
-        setInterval(function(){
+        setTimeout(function(){
             that.$el.find("#beat").hide();
-        }, 500);
+        }, 100);
     }
 };
 

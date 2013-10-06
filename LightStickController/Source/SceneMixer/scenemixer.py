@@ -47,6 +47,7 @@ class SceneMixer(Widget, Serializable):
 
         # TODO fix a better approach for checking if object is ready
         self.__initFinished = True
+        self.isInFrameChange = False
 
     def on_bpm(self, *args):
         self.__playbackHandler.setBpm(args[1])
@@ -82,14 +83,16 @@ class SceneMixer(Widget, Serializable):
 
     def on_sceneTime(self, object, value):
         if self.__initFinished:
-            if self.sceneTime < self.fadeTime:
-                self.fadeTime = self.sceneTime
+            if not self.isInFrameChange:
+                if self.sceneTime < self.fadeTime:
+                    self.fadeTime = self.sceneTime
             self.__updateSceneAndFadeTimes()
 
     def on_fadeTime(self, object, value):
         if self.__initFinished:
-            if self.fadeTime > self.sceneTime:
-                self.sceneTime = self.fadeTime
+            if not self.isInFrameChange:
+                if self.fadeTime > self.sceneTime:
+                    self.sceneTime = self.fadeTime
             self.__updateSceneAndFadeTimes()
 
     def addScene(self):
@@ -188,8 +191,10 @@ class SceneMixer(Widget, Serializable):
         frame = currentFrameData[FrameHandler.FRAME_OBJ_IDX]
         self.__currentFrame = frame
         if frame is not None:
+            self.isInFrameChange = True
             self.sceneTime = frame.getSceneTime()
             self.fadeTime = frame.getFadeTime()
+            self.isInFrameChange = False
 
         framePos = currentFrameData[FrameHandler.FRAME_POS_IDX]
         numFrames = currentFrameData[FrameHandler.FRAME_NUM_IDX]
@@ -211,8 +216,9 @@ class SceneMixer(Widget, Serializable):
 
     def __updateCurrentFrame(self):
         if self.__currentFrame is not None:
-            self.__currentFrame.setSceneTime(self.sceneTime)
-            self.__currentFrame.setFadeTime(self.fadeTime)
+            if not self.isInFrameChange:
+                self.__currentFrame.setSceneTime(self.sceneTime)
+                self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
         if self.__currentFrame is not None:
