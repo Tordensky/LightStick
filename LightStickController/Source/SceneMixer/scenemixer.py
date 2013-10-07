@@ -6,7 +6,7 @@ from kivy.properties import NumericProperty, StringProperty, ListProperty, DictP
 from kivy.uix.widget import Widget
 from SceneMixer import SceneFrame
 from serializer import Serializable
-from sceneframe import ColorEffect
+from sceneframe import ColorEffect, TextEffect
 from scnconfig import EffectNames
 from framehandler import FrameHandler
 from playbackhandler import PlayBackHandler
@@ -23,6 +23,7 @@ class SceneMixer(Widget, Serializable):
 
     # Properties for effects
     color = ListProperty((1.0, 1.0, 1.0, 1.0))
+    text = StringProperty("")
 
     __initFinished = False
 
@@ -47,7 +48,7 @@ class SceneMixer(Widget, Serializable):
 
         # TODO fix a better approach for checking if object is ready
         self.__initFinished = True
-        self.isInFrameChange = False
+        self.__isInFrameChange = False
 
     def on_bpm(self, *args):
         self.__playbackHandler.setBpm(args[1])
@@ -55,10 +56,15 @@ class SceneMixer(Widget, Serializable):
     def on_color(self, obj, color):
         self.__setColorEffect(color)
 
+    def on_text(self, obj, text):
+        print "SCENE MIXER,", text
+        self.__setTextEffect(text)
+
     def __beforeSetEffect(self):
         if self.__currentFrame is None:
             self.addScene()
 
+    # COLOR EFFECT
     def __setColorEffect(self, color):
         self.__beforeSetEffect()
         colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
@@ -67,6 +73,16 @@ class SceneMixer(Widget, Serializable):
             self.__currentFrame.addEffect(colorEffectObj)
 
         colorEffectObj.setKivyColor(color)
+
+    # TEXT EFFECT
+    def __setTextEffect(self, text):
+        self.__beforeSetEffect()
+        textEffectObj = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
+        if textEffectObj is None:
+            textEffectObj = TextEffect()
+            self.__currentFrame.addEffect(textEffectObj)
+
+        textEffectObj.setText(text)
 
     def playbackCallbackUpdate(self, *args):
         self.currentTime = round(args[0], 1)
@@ -83,14 +99,14 @@ class SceneMixer(Widget, Serializable):
 
     def on_sceneTime(self, object, value):
         if self.__initFinished:
-            if not self.isInFrameChange:
+            if not self.__isInFrameChange:
                 if self.sceneTime < self.fadeTime:
                     self.fadeTime = self.sceneTime
             self.__updateSceneAndFadeTimes()
 
     def on_fadeTime(self, object, value):
         if self.__initFinished:
-            if not self.isInFrameChange:
+            if not self.__isInFrameChange:
                 if self.fadeTime > self.sceneTime:
                     self.sceneTime = self.fadeTime
             self.__updateSceneAndFadeTimes()
@@ -191,10 +207,10 @@ class SceneMixer(Widget, Serializable):
         frame = currentFrameData[FrameHandler.FRAME_OBJ_IDX]
         self.__currentFrame = frame
         if frame is not None:
-            self.isInFrameChange = True
+            self.__isInFrameChange = True
             self.sceneTime = frame.getSceneTime()
             self.fadeTime = frame.getFadeTime()
-            self.isInFrameChange = False
+            self.__isInFrameChange = False
 
         framePos = currentFrameData[FrameHandler.FRAME_POS_IDX]
         numFrames = currentFrameData[FrameHandler.FRAME_NUM_IDX]
@@ -216,7 +232,7 @@ class SceneMixer(Widget, Serializable):
 
     def __updateCurrentFrame(self):
         if self.__currentFrame is not None:
-            if not self.isInFrameChange:
+            if not self.__isInFrameChange:
                 self.__currentFrame.setSceneTime(self.sceneTime)
                 self.__currentFrame.setFadeTime(self.fadeTime)
 
@@ -224,8 +240,15 @@ class SceneMixer(Widget, Serializable):
         if self.__currentFrame is not None:
             effects = self.__currentFrame.getEffects()
             for effect in effects:
-                if effect.get_effect_name() == EffectNames.COLOR_EFFECT:
+                effectName = effect.get_effect_name()
+
+                # HAS COLOR EFFECT
+                if effectName == EffectNames.COLOR_EFFECT:
                     self.color = effect.getKivyColor()
+
+                # HAS TEXT EFFECT
+                elif effectName == EffectNames.TEXT_EFFECT:
+                    self.text = effect.getText()
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)

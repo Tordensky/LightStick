@@ -1,10 +1,12 @@
 
 
 class EffectNames():
+    TEXT_EFFECT = "TEXT"
     COLOR_EFFECT = "COLOR"
 
 
 class SerializedKeys:
+
     ### FRAME HANDLER
     FRAME_LIST = "FRAME_LIST"
 
@@ -15,4 +17,10 @@ class SerializedKeys:
 
     ### EFFECTS
     EFFECT_NAME = "FX_NAME"
+
+    # COLOR EFFECT
     COLOR_VALUE_HEX = "COLOR_HEX"
+
+    # TEXT EFFECT
+    TEXT_VALUE_KEY = "TEXT"
+

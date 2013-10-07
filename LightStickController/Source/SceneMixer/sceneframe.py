@@ -68,6 +68,23 @@ class Effect(Serializable):
         return serObj
 
 
+class TextEffect(Effect):
+    def __init__(self):
+        Effect.__init__(self, EffectNames.TEXT_EFFECT)
+        self.__text = ""
+
+    def setText(self, text):
+        self.__text = text
+
+    def getText(self):
+        return self.__text
+
+    def serialize_to_dict(self):
+        serObj = Effect.serialize_to_dict(self)
+        serObj[SerializedKeys.TEXT_VALUE_KEY] = self.getText()
+        return serObj
+
+
 class ColorEffect(Effect):
     def __init__(self):
         Effect.__init__(self, EffectNames.COLOR_EFFECT)

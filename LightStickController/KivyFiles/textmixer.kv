@@ -1,0 +1,53 @@
+#:kivy 1.7.2
+#:import Colors Config.WIDGET_COLORS
+#:import Sizes Config.WIDGET_SIZES
+
+<TextMixer>
+    text: ""
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
+        pos: root.pos
+        size: root.size
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        WidgetHeader:
+            title: "Text mixer"
+            size_hint_x: 1
+            size_hint_y: None
+            height: Sizes.HEADER_FONT_SIZE
+
+        BoxLayout:
+            size: root.size
+            pos: root.pos
+            orientation: "vertical"
+
+            padding: 5
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            TextInput:
+                multiline: False
+                size_hint_y: None
+                font_size: "20dp"
+                height: "40dp"
+                text: root.text
+                on_text: root.text = str(args[1])
+
+            BoxLayout:
+
+

@@ -127,8 +127,14 @@ LightStick.PlayBack = function() {
 
         var that = this;
         _.each(this.currentFrame["EFFECTS"], function(effect) {
-            if (effect["FX_NAME"] == "COLOR") {
+            var fxName = effect["FX_NAME"];
+            if (fxName == "COLOR") {
                 that.colorEffect.setNewColor(effect, sceneTime, fadeTime);
+            }
+            if (fxName == "TEXT") {
+                that.beatTextEffect.setText(effect);
+            } else {
+                that.beatTextEffect.setText("");
             }
         });
     };
@@ -337,6 +343,11 @@ LightStick.MsvClient = function() {
 // EFFECTS ! ! ! TODO extract to its own file
 LightStick.BeatTextEffect = function($el) {
     this.$el = $el;
+
+    this.setText = function(effect) {
+        this.$el.find("#beat").text(effect["TEXT"]);
+        this.$el.find("#beat").show();
+    };
 
     this.flash = function() {
         this.$el.find("#beat").show();
