@@ -134,7 +134,7 @@ LightStick.PlayBack = function() {
             if (fxName == "TEXT") {
                 that.beatTextEffect.setText(effect);
             } else {
-                that.beatTextEffect.setText("");
+                that.beatTextEffect.clearEffect();
             }
         });
     };
@@ -347,6 +347,10 @@ LightStick.BeatTextEffect = function($el) {
     this.setText = function(effect) {
         this.$el.find("#beat").text(effect["TEXT"]);
         this.$el.find("#beat").show();
+    };
+
+    this.clearEffect = function() {
+        this.$el.find("#beat").text("")
     };
 
     this.flash = function() {
