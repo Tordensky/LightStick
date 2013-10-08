@@ -71,7 +71,7 @@ class SimpleMsvController(Widget, EventDispatcher):
 
     def sendSceneToServer(self, msg):
         pprint.pprint(msg)
-        msg["MSV_TIME"] = int(self.msvPosition) + 6  # Todo make dynamic delay for start
+        msg["MSV_TIME"] = int(self.msvPosition) ### + 6  # Todo make dynamic delay for start
         msg = json.dumps(msg)
         self.httpClient.postJson(jsonMessage=msg, url="/command")
 

@@ -43,7 +43,7 @@ class SceneMixer(Widget, Serializable):
 
         # init playbackHandler
         self.__isInPlayback = False
-        self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=20)
+        self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=64)
         self.__playbackHandler.addIntervalUpdateCallback(self.playbackCallbackUpdate)
 
         # TODO fix a better approach for checking if object is ready
@@ -85,7 +85,7 @@ class SceneMixer(Widget, Serializable):
         textEffectObj.setText(text)
 
     def playbackCallbackUpdate(self, *args):
-        self.currentTime = round(args[0], 1)
+        self.currentTime = args[0]
 
         if self.currentTime >= self.sceneTime:
             atEnd = self.__frameHandler.isAtEndOfFrames()
