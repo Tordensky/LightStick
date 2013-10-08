@@ -47,26 +47,26 @@
             Label:
                 size_hint: 1.0, 0.5
                 text: str(root.msvPos)
-                font_size: self.height
+                font_size: "20px"
                 #font_name: os.getenv("FILE_PATH")+"/mono.ttf"
 
             BoxLayout:
                 size_hint: 1.0, 0.3
                 Label:
                     text: "LIVE"
-                    font_size: self.height / 1.2
+                    font_size: "15px"
                     size_hint: 0.25, 1.0
                 Label:
                     text: "BPM: " + str(root.currentBPM)
-                    font_size: self.height / 1.2
+                    font_size: "15px"
                     size_hint: 0.25, 1.0
                 Label:
                     text: "Vel: " + str(root.msvVel)
-                    font_size: self.height / 1.2
+                    font_size: "15px"
                     size_hint: 0.25, 1.0
                 Label:
                     text: "Acc: " + str(root.msvAcc)
-                    font_size: self.height / 1.2
+                    font_size: "15px"
                     size_hint: 0.25, 1.0
 
 
@@ -75,6 +75,9 @@
     msvVelocity: 0.0
     msvAcceleration: 0.0
     currentBPM: 0.0
+
+    size_hint_y: None
+    height: 180
 
     BoxLayout:
         orientation: 'vertical'
@@ -103,6 +106,7 @@
             orientation: "vertical"
 
             padding: 5
+            spacing: 3
 
             canvas:
                 Color:
@@ -121,6 +125,10 @@
             BoxLayout:
                 spacing: 5
                 size_hint: 1.0, 0.4
+
+                size_hint_y: None
+                height: 50
+
                 LightButton:
                     text: "TRIGGER A"
                     font_size: self.height / 2

@@ -134,6 +134,11 @@
     fadeTime: 0.0
     sceneNumber: "0:0"
 
+    size_hint_x: None
+    size_hint_y: None
+    height: 220
+    width: 400
+
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -172,8 +177,12 @@
 
             BoxLayout:
                 spacing: 5
-                size_hint: 1, 0.6
+                #size_hint: 1, 0.6
                 # Display part of the widget
+                size_hint_x: 1
+                size_hint_y: None
+                height: 100
+
                 SceneMixerScreen:
                     size_hint: 0.7, 1
 
@@ -187,31 +196,38 @@
                     padding: 0
                     spacing: 5
                     size_hint: 0.1, 1.0
+
+                    size_hint_y: 1
+                    size_hint_x: None
+                    width: 50
+
                     orientation: "vertical"
                     LightButton:
                         text: "ADD"
-                        font_size: self.height / 2
+                        font_size: 10
                         on_press: root.addScene()
                     LightButton:
                         text: "INS B"
-                        font_size: self.height / 2
+                        font_size: 10
                         on_press: root.insertSceneBefore()
 
                     LightButton:
                         text: "INS A"
-                        font_size: self.height / 2
+                        font_size: 10
                         on_press: root.insertSceneAfter()
 
                     LightButton:
                         text: "DEL"
-                        font_size: self.height / 2
+                        font_size: 10
                         on_press: root.deleteScene()
 
             # CONTROL BUTTONS
             BoxLayout:
                 padding: 0
                 spacing: 5
-                size_hint: 1, 0.2
+                size_hint_x: 1
+                size_hint_y: None
+                height: 30
 
                 LightButton:
                     text: "START"
@@ -237,7 +253,12 @@
             # CONTROLLER OPTIONS
             BoxLayout:
                 spacing: 5
-                size_hint: 1, 0.2
+                #size_hint: 1, 0.2
+
+                size_hint_x: 1
+                size_hint_y: None
+                height: 40
+
                 GridLayout:
                     cols: 2
 
@@ -294,3 +315,5 @@
                             text_size: self.size
                             font_size: self.height / 2
                             valign: "middle"
+
+            BoxLayout:

@@ -30,109 +30,89 @@
         orientation: 'vertical'
 
         # BEAT COUNTER, MSV CONTROLLER ROW
-        GridLayout:
-            pos: root.pos
-            size: root.size
-            size_hint: 1, 0.15
+        BoxLayout:
             spacing: Sizes.SCREEN_SPACING
-            cols: 3
+
+            size_hint_x: 1
+            size_hint_y: None
+            height: beat_a.height
 
             # BEAT COUNTER A
             BeatCounter:
                 id: beat_a
-                size_hint: 0.35, 1
                 on_beat_value: wheel_a.bpm = args[1]; msvControl.setBpm(args[1], "A"); mixer_a.bpm = args[1]
 
             # MSV CONTROLLER
             SimpleMsvController:
                 id: msvControl
-                size_hint: 0.5, 1
                 on_set_new_show_from_a: self.sendSceneToServer(mixer_a.serialize_to_dict())
                 on_set_new_show_from_b: self.sendSceneToServer(mixer_b.serialize_to_dict())
 
             # BEAT COUNTER B
             BeatCounter:
                 id: beat_b
-                size_hint: 0.35, 1
                 on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B"); mixer_b.bpm = args[1]
 
         # COLOR MIXER ROW
-        GridLayout:
-            pos: root.pos
-            size: root.size
+        BoxLayout:
             size_hint: 1, 0.25
             spacing: Sizes.SCREEN_SPACING
-            cols: 3
+
+            size_hint_x: 1
+            size_hint_y: None
+            height: wheel_a.height
 
             # COLOR MIXER A
             CustomWheel:
                 id: wheel_a
-                size_hint: 0.40, 1
+                #size_hint: 0.40, 1
                 on_color: mixer_a.color = args[1]
 
             Filler:
-                size_hint: 0.2, 1
+                #size_hint: 0.2, 1
 
             # COLOR MIXER B
             CustomWheel:
                 id: wheel_b
-                size_hint: 0.40, 1
+                #size_hint: 0.40, 1
                 on_color: mixer_b.color = args[1]
 
         # FADE MIXER ROW
-        GridLayout:
-            pos: root.pos
-            size: root.size
-            size_hint: 1, 0.25
+        BoxLayout:
             spacing: Sizes.SCREEN_SPACING
-            cols: 5
+
+            size_hint_x: 1
+            size_hint_y: None
+            height: fade_a.height
 
             # FADE MIXER A
             FadePicker:
                 id: fade_a
-                size_hint: 0.15, 1
                 on_scene_time: mixer_a.sceneTime = args[1]
                 on_fade_time: wheel_a.fade_time_in_beats = args[1]; mixer_a.fadeTime = args[1]
 
-            BoxLayout:
-                orientation: "vertical"
-                spacing: Sizes.SCREEN_SPACING
-                size_hint: 0.3, 1
-                TextMixer:
-                    id: text_a
-                    on_text: mixer_a.text = str(args[1])
-
-                Filler:
-                    size_hint: 1, 0.6
+            TextMixer:
+                id: text_a
+                on_text: mixer_a.text = str(args[1])
 
             Filler:
-                text: "Controller v.1.1"
-                size_hint: 0.5, 1
 
-            BoxLayout:
-                orientation: "vertical"
-                spacing: Sizes.SCREEN_SPACING
-                size_hint: 0.3, 1
-                TextMixer:
-                    id: text_b
-                    on_text: mixer_b.text = str(args[1])
-                Filler:
-                    size_hint: 1, 0.6
+            TextMixer:
+                id: text_b
+                on_text: mixer_b.text = str(args[1])
 
             # FADE MIXER B
             FadePicker:
                 id: fade_b
-                size_hint: 0.15, 1
                 on_scene_time: mixer_b.sceneTime = args[1]
                 on_fade_time: wheel_b.fade_time_in_beats = args[1]; mixer_b.fadeTime = args[1]
 
         # SCENE CONTROLLER ROW
-        GridLayout:
-            pos: root.pos
-            size: root.size
-            size_hint: 1, 0.3
+        BoxLayout:
+            size_hint_x: 1
+            size_hint_y: None
+            height: mixer_a.height
             spacing: Sizes.SCREEN_SPACING
-            cols: 3
 
             # SCENE CONTROLLER A
             SceneMixer:
@@ -146,7 +126,7 @@
                 on_sceneTime: fade_a.scene_time = args[1]
 
             Filler:
-                size_hint: 0.3, 1
+                size_hint_x: 0.3
 
             # SCENE CONTROLLER B
             SceneMixer:
@@ -158,3 +138,7 @@
 
                 on_fadeTime: fade_b.fade_time = args[1]
                 on_sceneTime: fade_b.scene_time = args[1]
+
+        BoxLayout:
+            Filler:
+

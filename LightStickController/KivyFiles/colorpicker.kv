@@ -54,6 +54,12 @@
     values: [0.0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 3, 4, 8, 16, 32, 64, 128]
     labels: ["OFF", "1/16", "1/8", "1/4", "1/2", "1", "2", "3", "4", "8", "16", "32", "64", "128"]
 
+    size_hint_x: None
+    size_hint_y: None
+    height: 220
+    width: 160
+
+
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -156,6 +162,11 @@
     color: Colors.WHITE
     screen_color: Colors.WHITE
 
+    size_hint_x: None
+    size_hint_y: None
+    height: 220
+    width: 400
+
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -180,7 +191,6 @@
         BoxLayout:
             size: root.size
             pos: root.pos
-
 
             canvas:
                 Color:

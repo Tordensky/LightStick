@@ -74,6 +74,9 @@
 
     beat_value: 0.0
 
+    size_hint_y: None
+    height: 180
+
     BoxLayout:
         orientation: 'vertical'
         padding: Sizes.WIDGET_BORDER
@@ -123,9 +126,9 @@
                     on_beat_value: root.beat_value = args[1]
 
                 BoxLayout:
-                    pos: root.pos
-                    size: root.size
-                    size_hint: 0.2, 1
+                    size_hint_y:  1
+                    size_hint_x: None
+                    width: 50
 
                     spacing: 3
 
@@ -150,4 +153,7 @@
                 text: "Sample"
                 font_size: self.height / 2
                 size_hint: 1, 0.3
+                size_hint_y: None
+                height: 50
+
                 on_press: root.button_press()
