@@ -25,7 +25,7 @@ class CustomWheel(Widget):
 
         self.__color_step_size = [0.0, 0.0, 0.0]
 
-        self.__updatesPerBeat = 32
+        self.__updatesPerBeat = 10
 
         self.__playBackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=self.__updatesPerBeat)
         self.__playBackHandler.addIntervalUpdateCallback(self.fade_step_callback)

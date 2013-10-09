@@ -92,7 +92,7 @@ class BeatCounter(Widget):
         self.set_new_bpm()
 
     def sample_time_to_BPM(self, sample_time):
-        return 60 / sample_time
+        return 60 / float(sample_time)
 
     def set_new_bpm(self):
         self.beat_value = self.sample_time_to_BPM(self.avg_sample_time)

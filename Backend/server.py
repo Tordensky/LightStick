@@ -34,7 +34,7 @@ class command:
 class files:
     def GET(self, filename):
         try:
-            f = open(APPLICATION_BASE_PATH + filename, 'r')
+            f = open(APPLICATION_BASE_PATH + filename, 'rb')
             return f.read()
 
         except IOError, e:

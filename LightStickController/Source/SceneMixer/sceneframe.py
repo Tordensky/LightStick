@@ -32,7 +32,6 @@ class SceneFrame(Serializable):
         return self.__fadeTime
 
     def setFadeTime(self, fadeTime):
-        print "setsfade,", fadeTime
         if self.__fadeTime > self.__sceneTime:
             self.__sceneTime = self.__fadeTime
         self.__fadeTime = float(fadeTime)
@@ -41,7 +40,6 @@ class SceneFrame(Serializable):
         return self.__sceneTime
 
     def setSceneTime(self, sceneTime):
-        print "setsScene,", sceneTime
         self.__sceneTime = float(sceneTime)
 
     def serialize_to_dict(self):

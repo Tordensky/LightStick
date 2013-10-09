@@ -70,6 +70,7 @@
     sceneTime: 0.0
     fadeTime: 0.0
     sceneNumber: None
+    totalSceneTime: 0.0
 
     padding: 3
 
@@ -109,10 +110,13 @@
                         value: round(root.currentTime, 1)
                     MiniLabel:
                         label: "SCN TIME"
-                        value: root.sceneTime
+                        value: float(root.sceneTime)
                     MiniLabel:
                         label: "FADE TIME"
-                        value: root.fadeTime
+                        value: float(root.fadeTime)
+                    MiniLabel:
+                        label: "SHOW TIME"
+                        value: float(root.totalSceneTime)
 
                 ScenePositionBars:
                     currentTime: root.currentTime
@@ -133,6 +137,7 @@
     sceneTime: 0.0
     fadeTime: 0.0
     sceneNumber: "0:0"
+    totalSceneTime: 0.0
 
     size_hint_x: None
     size_hint_y: None
@@ -190,6 +195,7 @@
                     sceneTime: root.sceneTime
                     fadeTime: root.fadeTime
                     sceneNumber: root.sceneNumber
+                    totalSceneTime: root.totalSceneTime
 
                 # SIDE BUTTONS
                 BoxLayout:

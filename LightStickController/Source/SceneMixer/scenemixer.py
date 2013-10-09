@@ -19,6 +19,7 @@ class SceneMixer(Widget, Serializable):
     sceneTime = NumericProperty(0.0)
     fadeTime = NumericProperty(0.0)
     sceneNumber = StringProperty(None)
+    totalSceneTime = NumericProperty(0.0)
     bpm = NumericProperty(0.0)
 
     # Properties for effects
@@ -43,7 +44,7 @@ class SceneMixer(Widget, Serializable):
 
         # init playbackHandler
         self.__isInPlayback = False
-        self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=64)
+        self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=20)
         self.__playbackHandler.addIntervalUpdateCallback(self.playbackCallbackUpdate)
 
         # TODO fix a better approach for checking if object is ready
@@ -217,6 +218,7 @@ class SceneMixer(Widget, Serializable):
         self.sceneNumber = ("%d:%d" % (framePos, numFrames))
 
         self.__setCurrentFrameEffects()
+        self.totalSceneTime = self.__getTotalSceneTime()
 
     def __updateSceneAndFadeTimes(self):
         self.__updateCurrentFrame()
@@ -229,6 +231,8 @@ class SceneMixer(Widget, Serializable):
 
         if self.__syncSceneAndFadeTime:
             self.__setSyncedFadeAndSceneTime()
+
+        self.totalSceneTime = self.__getTotalSceneTime()
 
     def __updateCurrentFrame(self):
         if self.__currentFrame is not None:
@@ -269,11 +273,19 @@ class SceneMixer(Widget, Serializable):
     def __setFadeTimeForAllFrames(self, fadeTime):
         self.__frameHandler.forAllFramesDo(self.__iterFuncSetFadeTime, fadeTime)
 
+    def __getTotalSceneTime(self):
+        self.totalSceneTime = 0.0
+        self.__frameHandler.forAllFramesDo(self.__iterFuncCalcTotSceneTime)
+        return self.totalSceneTime
+
     def __iterFuncSetSceneTime(self, sceneFrame, sceneTime):
         sceneFrame.setSceneTime(sceneTime)
 
     def __iterFuncSetFadeTime(self, sceneFrame, fadeTime):
         sceneFrame.setFadeTime(fadeTime)
+
+    def __iterFuncCalcTotSceneTime(self, sceneFrame, *args):
+        self.totalSceneTime += sceneFrame.getSceneTime()
 
     def serialize_to_dict(self):
         serializedDict = Serializable.serialize_to_dict(self)

@@ -3,16 +3,18 @@ from kivy.clock import Clock
 
 class PlayBackHandler():
     def __init__(self, bpm=0.0, updatesPerBeat=20.0):
-        self.__pbm = float(bpm)
-        self.__updatesPerBeat = 1.0 / float(updatesPerBeat)
+        self.__bpm = float(bpm)
+        self.__updatesPerBeat = float(updatesPerBeat)
 
-        self.__updateInterval = 1.0
+        self.__updateInterval = self.__getIntervalTime()
 
         self.__currTime = 0.0
+        self.__lastTime = 0.0
+
         self.__callbacks = []
 
     def setBpm(self, bpm):
-        self.__pbm = float(bpm)
+        self.__bpm = bpm
         self.__updateInterval = self.__getIntervalTime()
 
     def addIntervalUpdateCallback(self, callback):
@@ -34,8 +36,8 @@ class PlayBackHandler():
         self.__currTime = 0.0
 
     def __getIntervalTime(self):
-        if self.__pbm:
-            return 60.0 * self.__updatesPerBeat / self.__pbm
+        if self.__bpm:
+            return (1.0 / (float(self.__bpm) / 60.0)) / float(self.__updatesPerBeat)
         return 0.0
 
     def __scheduleNextUpdate(self):
@@ -44,7 +46,7 @@ class PlayBackHandler():
             Clock.schedule_once(self.__onUpdate, self.__updateInterval)
 
     def __onUpdate(self, *args):
-        self.__currTime += self.__updatesPerBeat
+        self.__currTime += 1.0 / self.__updatesPerBeat
         for callback in self.__callbacks:
             callback(self.__currTime)
 
