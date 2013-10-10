@@ -24,6 +24,21 @@ h1 {
     text-align: center;
 
     background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.color-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0;
+    margin: 0;
+    background-color: black;
+
+    width: 100%;
+    height: 100%;
 }
 
 .info {
@@ -31,9 +46,20 @@ h1 {
     color: white;
 }
 
-.beat {
-    font-size: 100px;
-    color: white;
+
+
+.strobe {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 100);
+
+    width: 100%;
+    height: 100%;
+
     display: none;
 }
 
@@ -45,3 +71,11 @@ h1 {
     width: 100%;
     height: 100%;
 }
+
+.beat {
+    font-size: 100px;
+    color: white;
+    display: none;
+    overflow: hidden;
+}
+

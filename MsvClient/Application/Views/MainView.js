@@ -77,6 +77,7 @@ LightStick.PlayBack = function() {
         // Effects
         this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
         this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
+        this.strobeEffect = new LightStick.StrobeEffect(this.$el, this.updatesPerBeat)
     };
 
     this.initPlaybackTimer = function(readyCB, updatesPerBeat) {
@@ -117,6 +118,7 @@ LightStick.PlayBack = function() {
         }
 
         this.colorEffect.onUpdate();
+        //this.strobeEffect.onUpdate(isWholeBeat);
     };
 
     this.onFrameChange = function(frame) {
@@ -128,14 +130,20 @@ LightStick.PlayBack = function() {
         var that = this;
         _.each(this.currentFrame["EFFECTS"], function(effect) {
             var fxName = effect["FX_NAME"];
+
+            // COLOR EFFECT
             if (fxName == "COLOR") {
                 that.colorEffect.setNewColor(effect, sceneTime, fadeTime);
             }
+
+            // TEXT EFFECT
             if (fxName == "TEXT") {
                 that.beatTextEffect.setText(effect);
             } else {
                 that.beatTextEffect.clearEffect();
             }
+
+            // TODO STROBE EFFECT
         });
     };
 
@@ -288,7 +296,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         var beatPos = currentTime - tmpTime;
 
         if (tmpTime != this.lastTime) {
-            if ((beatPos < 0.05)) {
+            if ((beatPos < 0.02)) {
                 return true;
             }
         }
@@ -340,33 +348,51 @@ LightStick.MsvClient = function() {
 };
 
 
-// EFFECTS ! ! ! TODO extract to its own file
-LightStick.BeatTextEffect = function($el) {
-    this.$el = $el;
+LightStick.StrobeEffect = function($el, updatesPerBeat) {
+    this.$el = $el.find("#strobe");
+    this.updatesPerBeat = updatesPerBeat;
 
-    this.setText = function(effect) {
-        this.$el.find("#beat").text(effect["TEXT"]);
-        this.$el.find("#beat").show();
-    };
-
-    this.clearEffect = function() {
-        this.$el.find("#beat").text("")
+    this.onUpdate = function(isWholeBeat) {
+        if (isWholeBeat)
+            this.flash();
     };
 
     this.flash = function() {
-        this.$el.find("#beat").show();
+        this.$el.show();
         var that = this;
         setTimeout(function(){
-            that.$el.find("#beat").hide();
+            that.$el.hide();
+        }, 10);
+    };
+};
+
+
+// EFFECTS ! ! ! TODO extract to its own file
+LightStick.BeatTextEffect = function($el) {
+    this.$el = $el.find("#beat");
+
+    this.setText = function(effect) {
+        this.$el.text(effect["TEXT"]);
+        this.$el.show();
+    };
+
+    this.clearEffect = function() {
+        this.$el.text("")
+    };
+
+    this.flash = function() {
+        this.$el.show();
+        var that = this;
+        setTimeout(function(){
+            that.$el.hide();
         }, 100);
     }
 };
 
 
 LightStick.ColorEffect = function($el, updatesPerBeat)  {
-    this.$el = $el;
+    this.$el = $el.find("#color");
     this.fadeTime = 0.0;
-    this.numSteps = 0.0;
 
     this.updatesPerBeat = updatesPerBeat;
 
@@ -379,7 +405,10 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         this.newGreen = this.getGreenFromHex(newColor);
         this.newBlue = this.getBlueFromHex(newColor);
 
+        this.$el.find("#demo").text(this.numSteps);
+
         if (this.fadeTime == 0.0) {
+            this.numSteps = 0.0;
             this.redStep = 0.0;
             this.greenStep = 0.0;
             this.blueStep = 0.0;
@@ -401,6 +430,7 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     };
 
     this.onUpdate = function() {
+
         if (this.numSteps > 0.0) {
             this.currRed += this.redStep;
             this.currGreen += this.greenStep;
