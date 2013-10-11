@@ -50,15 +50,13 @@
                 id: beat_val
                 text: "00.0"
                 halign: 'left'
-                size: self.size
-                font_size: self.height / 1.8
+                font_size: "35px"
                 size_hint: 0.6, 1
 
             Label:
                 id: beat_label
                 text: "bpm"
-                size: self.size
-                font_size: self.height / 4
+                font_size: "18px"
 
                 size_hint: 0.2, 1
 
@@ -74,8 +72,10 @@
 
     beat_value: 0.0
 
+    size_hint_x: None
     size_hint_y: None
     height: 180
+    width: 280
 
     BoxLayout:
         orientation: 'vertical'
@@ -137,21 +137,21 @@
                     LightButton:
                         id: up_button
                         text: "+"
-                        font_size: self.width / 2
+                        font_size: "20px"
                         on_press: root.bpm_button_press(root.bpm_up)
                         on_release: root.bpm_button_release(root.bpm_up)
 
                     LightButton:
                         id: down_button
                         text: "-"
-                        font_size: self.width / 2
+                        font_size: "20px"
                         on_press: root.bpm_button_press(root.bpm_down)
                         on_release: root.bpm_button_release(root.bpm_down)
 
             LightButton:
                 id: sample_but
-                text: "Sample"
-                font_size: self.height / 2
+                text: "SAMPLE"
+                font_size: "20px"
                 size_hint: 1, 0.3
                 size_hint_y: None
                 height: 50
