@@ -52,6 +52,8 @@ class SceneMixer(Widget, Serializable):
         self.__initFinished = True
         self.__isInFrameChange = False
 
+        self.syncedIsSetTest = False
+
     def on_bpm(self, *args):
         self.__playbackHandler.setBpm(args[1])
 
@@ -231,7 +233,10 @@ class SceneMixer(Widget, Serializable):
             self.__setGlobalSceneTime()
 
         if self.__syncSceneAndFadeTime:
-            self.__setSyncedFadeAndSceneTime()
+            if not self.syncedIsSetTest:
+                self.__setSyncedFadeAndSceneTime()
+            else:
+                self.syncedIsSetTest = False
 
         self.totalSceneTime = self.__getTotalSceneTime()
 
@@ -261,9 +266,13 @@ class SceneMixer(Widget, Serializable):
 
     def __setSyncedFadeAndSceneTime(self):
         # TODO There is something going wrong here. Recursive event call bug
+
+        self.sceneTime = self.fadeTime
         self.fadeTime = self.sceneTime
 
-        self.__setFadeTimeForAllFrames(self.fadeTime)
+        self.syncedIsSetTest = True
+        print "set synced scene fade", self.sceneTime, self.fadeTime
+        self.__setFadeTimeForAllFrames(self.sceneTime)
         self.__setSceneTimeForAllFrames(self.sceneTime)
 
     def __setSceneTimeForAllFrames(self, sceneTime):
