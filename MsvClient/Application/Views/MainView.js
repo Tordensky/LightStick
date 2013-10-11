@@ -58,7 +58,7 @@ LightStick.MainView = Backbone.View.extend({
 
 LightStick.PlayBack = function() {
     this.init = function(readyCB, $el)  {
-        this.updatesPerBeat = 32;
+        this.updatesPerBeat = 16;
 
         this.$el = $el;
         this.playbackTimer = null;
@@ -159,9 +159,11 @@ LightStick.PlayBack = function() {
     };
 
     this.triggerNewSceneShow = function(sceneShow) {
+        this.showFrames = sceneShow["FRAME_LIST"];
+
         var showStartTime = sceneShow["MSV_TIME"];
         this.playbackTimer.setPlaybackStartTime(showStartTime);
-        this.showFrames = sceneShow["FRAME_LIST"];
+
         var showTime = this._calcTotalShowTime(sceneShow["FRAME_LIST"]);
         this.playbackTimer.setPlaybackLength(showTime);
     };
@@ -203,6 +205,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.callbacks = [];
 
     this.currentTime = 0.0;
+    this.lastUpdateTime = new Date().getTime();
 
     this.init = function(readyCallback) {
         this.msvClient = new LightStick.MsvClient();
@@ -212,6 +215,11 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
             that.onMsvReady();
             readyCallback();
         });
+    };
+
+    this.setUpdatesPerBeat = function(updatesPerBeat) {
+        this.updatesPerBeat = updatesPerBeat;
+        this.updateInterval = this.getIntervalTime();
     };
 
     this.setPlaybackStartTime = function(startTime) {
@@ -248,6 +256,8 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 
     this.getIntervalTime = function() {
         if (this.bpm > 0.0) {
+            //return (1.0 / (this.bpm) / 60.0) / this.updatesPerBeat;
+            // TODO this one seems correct also fix this one in the playbackHandler.py
             return 60.0 * this.updatesPerBeat / this.bpm;
         }
         return 0.0
@@ -255,11 +265,22 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 
     this.scheduleNextUpdate = function() {
         this.updateFromMsv();
+        var currTime = new Date().getTime();
+
+        var elapsed = ((currTime - this.lastUpdateTime) / 100)/ 10.0;
+        this.lastUpdateTime = currTime;
+        var interval = this.updateInterval - (elapsed - this.updateInterval);
+
+        if ((interval < 0.0) && (this.updateInterval > 0.0)) {
+            console.log("WARNING TO FAST!!!, CANT MAKE ALL FRAMES");
+            interval = 0.0;
+        }
+
         var that = this;
         if (this.updateInterval > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, this.updateInterval * 1000);
+            }, interval * 1000);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -281,8 +302,8 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 
         var timeAfterStart = this.msvPosition - this.playbackStartTime;
         this.currentTime = timeAfterStart % this.playbackLength;
-        var isWholeBeat = this.isWholeBeat(this.currentTime);
 
+        var isWholeBeat = this.isWholeBeat(this.currentTime);
         var timerReset = (prevTime > this.currentTime);
 
         var that = this;
@@ -399,6 +420,14 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.setNewColor = function(colorEffect, sceneTime, FadeTime) {
         this.fadeTime = FadeTime;
 
+
+        // TODO UGLY FIX FOR HANDLING FRAME DROPS AND ASSURING CORRECT START COLOR!!
+        this.currRed = this.newRed;
+        this.currGreen = this.newGreen;
+        this.currBlue = this.newBlue;
+        // END OF UGLY FIX
+
+
         var newColor = colorEffect["COLOR_HEX"];
 
         this.newRed = this.getRedFromHex(newColor);
@@ -417,11 +446,11 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         } else {
             this.numSteps = this.fadeTime * this.updatesPerBeat;
 
-            var currColor = this.fromCssRgb2Hex(this.$el.css("background-color"));
+            //var currColor = this.fromCssRgb2Hex(this.$el.css("background-color"));
 
-            this.currRed = this.getRedFromHex(currColor);
-            this.currGreen = this.getGreenFromHex(currColor);
-            this.currBlue = this.getBlueFromHex(currColor);
+            //this.currRed = this.getRedFromHex(currColor);
+            //this.currGreen = this.getGreenFromHex(currColor);
+            //this.currBlue = this.getBlueFromHex(currColor);
 
             this.redStep = (this.newRed - this.currRed) / this.numSteps;
             this.greenStep = (this.newGreen - this.currGreen) / this.numSteps;

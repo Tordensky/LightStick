@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, StringProperty, ListProperty, DictProperty
 from kivy.uix.widget import Widget
+from Config import RGBA
 from SceneMixer import SceneFrame
 from serializer import Serializable
 from sceneframe import ColorEffect, TextEffect
@@ -242,20 +243,15 @@ class SceneMixer(Widget, Serializable):
 
     def __setCurrentFrameEffects(self):
         if self.__currentFrame is not None:
-            effects = self.__currentFrame.getEffects()
-            for effect in effects:
-                effectName = effect.get_effect_name()
+            # COLOR EFFECT
+            # TODO SET COLOR WIDGET OFF IF NOT SET
+            colorEffect = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
+            self.color = colorEffect.getKivyColor() if colorEffect is not None else RGBA(0, 0, 0)
 
-                # HAS COLOR EFFECT
-                if effectName == EffectNames.COLOR_EFFECT:
-                    self.color = effect.getKivyColor()
-
-                # HAS TEXT EFFECT
-                elif effectName == EffectNames.TEXT_EFFECT:
-                    self.text = effect.getText()
-
-            if not self.__currentFrame.hasEffect(EffectNames.TEXT_EFFECT):
-                self.text = ""
+            # TEXT EFFECT
+            # TODO SET TEXT WIDGET OFF IF NOT SET
+            textEffect = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
+            self.text = textEffect.getText() if textEffect is not None else ""
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)
