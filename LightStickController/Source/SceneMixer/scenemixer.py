@@ -254,6 +254,9 @@ class SceneMixer(Widget, Serializable):
                 elif effectName == EffectNames.TEXT_EFFECT:
                     self.text = effect.getText()
 
+            if not self.__currentFrame.hasEffect(EffectNames.TEXT_EFFECT):
+                self.text = ""
+
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)
 
