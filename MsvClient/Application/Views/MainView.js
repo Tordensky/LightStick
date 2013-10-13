@@ -58,7 +58,7 @@ LightStick.MainView = Backbone.View.extend({
 
 LightStick.PlayBack = function() {
     this.init = function(readyCB, $el)  {
-        this.updatesPerBeat = 16;
+        this.updatesPerBeat = 64;
 
         this.$el = $el;
         this.playbackTimer = null;
@@ -104,6 +104,7 @@ LightStick.PlayBack = function() {
         this.msvTime = msvTime;
 
         var frame = this.getCurrentFrame(currentTime);
+        var currentFrameTime = frame.currentFrameTime;
 
         if (frame !== this.currentFrame || isReset){
             this.onFrameChange(frame);
@@ -117,7 +118,7 @@ LightStick.PlayBack = function() {
             this.setNewSceneShow(this.nextSceneShow);
         }
 
-        this.colorEffect.onUpdate();
+        this.colorEffect.onUpdate(currentFrameTime);
         //this.strobeEffect.onUpdate(isWholeBeat);
     };
 
@@ -182,8 +183,10 @@ LightStick.PlayBack = function() {
         var frameShowTime = 0.0;
 
         return _.find(this.showFrames, function(scene){
+            var currentFrameTime = currentTime - frameShowTime;
             frameShowTime += scene["SCENE_TIME"];
             if (frameShowTime > currentTime) {
+                scene.currentFrameTime = currentFrameTime;
                 return scene;
             }
         });
@@ -417,16 +420,16 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
 
     this.updatesPerBeat = updatesPerBeat;
 
+    this.currRed = 0.0;
+    this.currGreen = 0.0;
+    this.currBlue = 0.0;
+
     this.setNewColor = function(colorEffect, sceneTime, FadeTime) {
         this.fadeTime = FadeTime;
 
-
-        // TODO UGLY FIX FOR HANDLING FRAME DROPS AND ASSURING CORRECT START COLOR!!
-        this.currRed = this.newRed;
-        this.currGreen = this.newGreen;
-        this.currBlue = this.newBlue;
-        // END OF UGLY FIX
-
+        this.oldRed = this.currRed;
+        this.oldGreen = this.currGreen;
+        this.oldBlue = this.currBlue;
 
         var newColor = colorEffect["COLOR_HEX"];
 
@@ -437,41 +440,31 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         this.$el.find("#demo").text(this.numSteps);
 
         if (this.fadeTime == 0.0) {
-            this.numSteps = 0.0;
-            this.redStep = 0.0;
-            this.greenStep = 0.0;
-            this.blueStep = 0.0;
+            this.redColorDiff = 0.0;
+            this.greenColorDiff = 0.0;
+            this.blueColorDiff = 0.0;
             this.setScreenColor(this.newRed, this.newGreen, this.newBlue);
 
         } else {
-            this.numSteps = this.fadeTime * this.updatesPerBeat;
-
-            //var currColor = this.fromCssRgb2Hex(this.$el.css("background-color"));
-
-            //this.currRed = this.getRedFromHex(currColor);
-            //this.currGreen = this.getGreenFromHex(currColor);
-            //this.currBlue = this.getBlueFromHex(currColor);
-
-            this.redStep = (this.newRed - this.currRed) / this.numSteps;
-            this.greenStep = (this.newGreen - this.currGreen) / this.numSteps;
-            this.blueStep = (this.newBlue - this.currBlue) / this.numSteps;
+            this.redColorDiff = (this.newRed - this.currRed);
+            this.greenColorDiff = (this.newGreen - this.currGreen);
+            this.blueColorDiff = (this.newBlue - this.currBlue);
         }
     };
 
-    this.onUpdate = function() {
-
-        if (this.numSteps > 0.0) {
-            this.currRed += this.redStep;
-            this.currGreen += this.greenStep;
-            this.currBlue += this.blueStep;
-            this.setScreenColor(this.currRed, this.currGreen, this.currBlue);
-        }
-        else if (this.numSteps == 0) {
-            // Assure the correct color is set at end of fade!
+    this.onUpdate = function(currentFrameTime) {
+        if (currentFrameTime < this.fadeTime) {
+            var currentFadePos = currentFrameTime / this.fadeTime;
+            this.currRed = this.oldRed + this.redColorDiff * currentFadePos;
+            this.currGreen = this.oldGreen + this.greenColorDiff * currentFadePos;
+            this.currBlue = this.oldBlue + this.blueColorDiff * currentFadePos;
+        } else {
             this.currRed = this.newRed;
             this.currGreen = this.newGreen;
             this.currBlue = this.newBlue;
         }
+        this.setScreenColor(this.currRed, this.currGreen, this.currBlue);
+
         this.numSteps -= 1;
     };
 
