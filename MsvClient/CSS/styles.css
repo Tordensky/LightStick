@@ -75,5 +75,5 @@ h1 {
     color: white;
     display: none;
     overflow: hidden;
+    z-index: 1;
 }
-

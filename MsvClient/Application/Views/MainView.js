@@ -58,8 +58,6 @@ LightStick.MainView = Backbone.View.extend({
 
 LightStick.PlayBack = function() {
     this.init = function(readyCB, $el)  {
-        this.updatesPerBeat = 64;
-
         this.$el = $el;
         this.playbackTimer = null;
         this.initPlaybackTimer(readyCB, this.updatesPerBeat);
@@ -77,7 +75,7 @@ LightStick.PlayBack = function() {
         // Effects
         this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
         this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
-        //this.strobeEffect = new LightStick.StrobeEffect(this.$el, this.updatesPerBeat)
+        this.strobeEffect = new LightStick.StrobeEffect(this.$el);
     };
 
     this.initPlaybackTimer = function(readyCB, updatesPerBeat) {
@@ -108,6 +106,7 @@ LightStick.PlayBack = function() {
 
         if (frame !== this.currentFrame || isReset){
             this.onFrameChange(frame);
+            //this.strobeEffect.flash();
         }
 
         if (this.nextSceneShow != null) {
@@ -131,7 +130,7 @@ LightStick.PlayBack = function() {
 
             // COLOR EFFECT
             if (fxName == "COLOR") {
-                that.colorEffect.setNewColor(effect, sceneTime, fadeTime);
+                that.colorEffect.setNewColor(effect, fadeTime);
             }
 
             // TEXT EFFECT
@@ -196,7 +195,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.updatesPerBeat = 1.0 / (typeof updatesPerBeat !== 'undefined' ? updatesPerBeat : 10);
 
     this.msvPosition = 0.0;
-    this.updateInterval = 0.0;
     this.timer = null;
 
     this.playbackStartTime = 0.0;
@@ -208,7 +206,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.lastUpdateTime = new Date().getTime();
 
     this.init = function(readyCallback) {
-        this.msvClient = new LightStick.MsvClient();
+        this.msvClient = new LightStick.MsvClient(18);
 
         var that = this;
         this.msvClient.init(function() {
@@ -232,8 +230,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.updateFromMsv = function() {
         this.bpm = 60.0 * this.msvClient.getCurrentMsvVelocity();
         this.msvPosition = this.msvClient.getCurrentMsvTime();
-
-        this.updateInterval = this.getIntervalTime();
     };
 
     this.addIntervalUpdateCallback = function(callback) {
@@ -249,35 +245,18 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         this.unScheduleNextUpdate();
     };
 
-    this.getIntervalTime = function() {
-        if (this.bpm > 0.0) {
-            //return (1.0 / (this.bpm) / 60.0) / this.updatesPerBeat;
-            // TODO this one seems correct also fix this one in the playbackHandler.py
-            return 60.0 * this.updatesPerBeat / this.bpm;
-        }
-        return 0.0
-    };
-
     this.scheduleNextUpdate = function() {
         this.updateFromMsv();
         var currTime = new Date().getTime();
 
         var elapsed = ((currTime - this.lastUpdateTime) / 100);
         this.lastUpdateTime = currTime;
-        //var interval = this.updateInterval - (elapsed - this.updateInterval);
-
-        //if ((interval < 0.0) && (this.updateInterval > 0.0)) {
-        //    console.log("WARNING TO FAST!!!, CANT MAKE ALL FRAMES");
-        //    interval = 0.0;
-        //}
-
-        console.log(elapsed, 1.0/25);
 
         var that = this;
-        if (this.updateInterval > 0.0) {
+        if (this.bpm > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, 1.0 / 25);
+            }, 1.0 / 24);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -310,12 +289,13 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 };
 
 
-LightStick.MsvClient = function() {
+LightStick.MsvClient = function(id) {
     this.ds = null;
     this.msv = null;
+    this.id = id;
 
     this.init = function (msvReadyCallback) {
-        this.msv = MSV.msv("msv://mcorp.no:8091/18");
+        this.msv = MSV.msv("msv://mcorp.no:8091/"+ this.id);
 
         var that = this;
         this.msv.add_error_handler(
@@ -352,9 +332,8 @@ LightStick.MsvClient = function() {
 };
 
 
-LightStick.StrobeEffect = function($el, updatesPerBeat) {
+LightStick.StrobeEffect = function($el) {
     this.$el = $el.find("#strobe");
-    this.updatesPerBeat = updatesPerBeat;
 
     this.onUpdate = function(isWholeBeat) {
         if (isWholeBeat)
@@ -366,7 +345,7 @@ LightStick.StrobeEffect = function($el, updatesPerBeat) {
         var that = this;
         setTimeout(function(){
             that.$el.hide();
-        }, 10);
+        }, 100);
     };
 };
 
@@ -404,7 +383,7 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.currGreen = 0.0;
     this.currBlue = 0.0;
 
-    this.setNewColor = function(colorEffect, sceneTime, FadeTime) {
+    this.setNewColor = function(colorEffect, FadeTime) {
         this.fadeTime = FadeTime;
 
         this.oldRed = this.currRed;
@@ -423,8 +402,8 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
             this.redColorDiff = 0.0;
             this.greenColorDiff = 0.0;
             this.blueColorDiff = 0.0;
-            this.setScreenColor(this.newRed, this.newGreen, this.newBlue);
 
+            this.setScreenColor(this.newRed, this.newGreen, this.newBlue);
         } else {
             this.redColorDiff = (this.newRed - this.currRed);
             this.greenColorDiff = (this.newGreen - this.currGreen);
@@ -433,23 +412,41 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     };
 
     this.onUpdate = function(currentFrameTime) {
+        this.intensityUpdate(currentFrameTime);
+        var r, g, b;
         if (currentFrameTime < this.fadeTime) {
             var currentFadePos = currentFrameTime / this.fadeTime;
-            this.currRed = this.oldRed + this.redColorDiff * currentFadePos;
-            this.currGreen = this.oldGreen + this.greenColorDiff * currentFadePos;
-            this.currBlue = this.oldBlue + this.blueColorDiff * currentFadePos;
+            r = this.oldRed + this.redColorDiff * currentFadePos;
+            g = this.oldGreen + this.greenColorDiff * currentFadePos;
+            b = this.oldBlue + this.blueColorDiff * currentFadePos;
         } else {
-            this.currRed = this.newRed;
-            this.currGreen = this.newGreen;
-            this.currBlue = this.newBlue;
+            r = this.newRed;
+            g = this.newGreen;
+            b = this.newBlue;
         }
-        this.setScreenColor(this.currRed, this.currGreen, this.currBlue);
+        this.setScreenColor(r, g, b);
+    };
 
-        this.numSteps -= 1;
+    this.intensityUpdate = function(currentFrameTime){
+        var max = 1.0;
+        var min = 0.5;
+        this.interval = 1.0;
+        if (this.interval > 0.0) {
+            var pos = (currentFrameTime % this.interval) / (this.interval / 2.0);
+            if (pos > 1.0) {
+                pos = 2.0 - pos;
+            }
+            this.intensity = min + (max - min) * pos;
+        } else {
+            this.intensity = max;
+        }
     };
 
     this.setScreenColor = function(r, g, b) {
-        this.$el.css("background-color", this.toCssRGB(r, g, b));
+        this.currRed = r;
+        this.currGreen = g;
+        this.currBlue = b;
+        this.$el.css("background-color", this.toCssRGB(r*this.intensity, g*this.intensity, b*this.intensity));
     };
 
     this.getRedFromHex = function(color) {
