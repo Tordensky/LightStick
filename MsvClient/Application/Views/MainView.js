@@ -77,7 +77,7 @@ LightStick.PlayBack = function() {
         // Effects
         this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
         this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
-        this.strobeEffect = new LightStick.StrobeEffect(this.$el, this.updatesPerBeat)
+        //this.strobeEffect = new LightStick.StrobeEffect(this.$el, this.updatesPerBeat)
     };
 
     this.initPlaybackTimer = function(readyCB, updatesPerBeat) {
@@ -92,14 +92,14 @@ LightStick.PlayBack = function() {
 
     this.playbackTimerReadyCallback = function() {
         var that = this;
-        this.playbackTimer.addIntervalUpdateCallback(function(currentTime, msvTime, isWholeBeat, isReset){
-            that.updateCallback(currentTime, msvTime, isWholeBeat, isReset);
+        this.playbackTimer.addIntervalUpdateCallback(function(currentTime, msvTime, isReset){
+            that.updateCallback(currentTime, msvTime, isReset);
         });
         this.playbackTimer.start();
     };
 
-    this.updateCallback = function(currentTime, msvTime, isWholeBeat, isReset) {
-        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats, " + isWholeBeat);
+    this.updateCallback = function(currentTime, msvTime, isReset) {
+        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
 
         this.msvTime = msvTime;
 
@@ -110,16 +110,11 @@ LightStick.PlayBack = function() {
             this.onFrameChange(frame);
         }
 
-        if (isWholeBeat) {
-            //this.beatTextEffect.flash();
-        }
-
         if (this.nextSceneShow != null) {
             this.setNewSceneShow(this.nextSceneShow);
         }
 
         this.colorEffect.onUpdate(currentFrameTime);
-        //this.strobeEffect.onUpdate(isWholeBeat);
     };
 
     this.onFrameChange = function(frame) {
@@ -129,6 +124,8 @@ LightStick.PlayBack = function() {
         var fadeTime = frame["FADE_TIME"];
 
         var that = this;
+
+        // TODO Refactor to set each effect
         _.each(this.currentFrame["EFFECTS"], function(effect) {
             var fxName = effect["FX_NAME"];
 
@@ -220,11 +217,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         });
     };
 
-    this.setUpdatesPerBeat = function(updatesPerBeat) {
-        this.updatesPerBeat = updatesPerBeat;
-        this.updateInterval = this.getIntervalTime();
-    };
-
     this.setPlaybackStartTime = function(startTime) {
         this.playbackStartTime = startTime;
     };
@@ -270,20 +262,22 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         this.updateFromMsv();
         var currTime = new Date().getTime();
 
-        var elapsed = ((currTime - this.lastUpdateTime) / 100)/ 10.0;
+        var elapsed = ((currTime - this.lastUpdateTime) / 100);
         this.lastUpdateTime = currTime;
-        var interval = this.updateInterval - (elapsed - this.updateInterval);
+        //var interval = this.updateInterval - (elapsed - this.updateInterval);
 
-        if ((interval < 0.0) && (this.updateInterval > 0.0)) {
-            console.log("WARNING TO FAST!!!, CANT MAKE ALL FRAMES");
-            interval = 0.0;
-        }
+        //if ((interval < 0.0) && (this.updateInterval > 0.0)) {
+        //    console.log("WARNING TO FAST!!!, CANT MAKE ALL FRAMES");
+        //    interval = 0.0;
+        //}
+
+        console.log(elapsed, 1.0/25);
 
         var that = this;
         if (this.updateInterval > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, interval * 1000);
+            }, 1.0 / 25);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -314,19 +308,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
             callback(that.currentTime, that.msvPosition, isWholeBeat, timerReset);
         });
     };
-
-    this.isWholeBeat = function(currentTime) {
-        var tmpTime = Math.floor(currentTime);
-        var beatPos = currentTime - tmpTime;
-
-        if (tmpTime != this.lastTime) {
-            if ((beatPos < 0.02)) {
-                return true;
-            }
-        }
-        this.lastTime = tmpTime;
-        return false;
-    }
 };
 
 
