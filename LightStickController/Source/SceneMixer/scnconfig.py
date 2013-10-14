@@ -20,6 +20,9 @@ class SerializedKeys:
 
     # COLOR EFFECT
     COLOR_VALUE_HEX = "COLOR_HEX"
+    GLOW_MAX = "GLOW_MAX"
+    GLOW_MIN = "GLOW_MIN"
+    GLOW_INTERVAL = "GLOW_INT"
 
     # TEXT EFFECT
     TEXT_VALUE_KEY = "TEXT"

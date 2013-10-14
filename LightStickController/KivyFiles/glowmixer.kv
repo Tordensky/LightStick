@@ -1,0 +1,72 @@
+#:kivy 1.7.2
+#:import Colors Config.WIDGET_COLORS
+#:import Sizes Config.WIDGET_SIZES
+#:import WidgetElements WidgetElements
+
+<GlowMixer>
+    values: [0.0, 0.0625, 0.125, 0.25, 0.5, 1, 2, 3, 4, 8, 16]
+    labels: ["OFF", "1/16", "1/8", "1/4", "1/2", "1", "2", "3", "4", "8", "16"]
+
+    max: 100.0
+    min: 50.0
+    interval: 0.0
+
+    on_max: minSlider.value = maxSlider.value if maxSlider.value < minSlider.value else minSlider.value
+    on_min: maxSlider.value = minSlider.value if minSlider.value > maxSlider.value else maxSlider.value
+
+    size_hint_x: None
+    size_hint_y: None
+    height: 180
+    width: 140
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: Sizes.WIDGET_BORDER
+        spacing: Sizes.WIDGET_SPACING
+
+        pos: root.pos
+        size: root.size
+
+        canvas:
+            Color:
+                rgba: Colors.WIDGET_BACKGROUND_DARK
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        WidgetHeader:
+            title: "Glow mixer"
+            size_hint_x: 1
+            size_hint_y: None
+            height: Sizes.HEADER_FONT_SIZE
+
+        BoxLayout:
+            padding: 5
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            CustomStepSlider:
+                id: intervalSlider
+                name: "Interval"
+                step_values: root.values
+                step_labels: root.labels
+                on_value: root.interval = args[1]
+                slider_value: self.valueToIdx(root.interval)
+
+            CustomSlider:
+                id: minSlider
+                name: "MIN"
+                value: root.min
+                on_value: root.min = args[1]
+
+
+            CustomSlider:
+                id: maxSlider
+                name: "MAX"
+                value: root.max
+                on_value: root.max = args[1]

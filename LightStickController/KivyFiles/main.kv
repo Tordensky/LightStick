@@ -8,6 +8,7 @@
 #:import SceneMixer SceneMixer
 #:import WidgetElements WidgetElements
 #:import TextMixer TextEffect
+#:import GlowMixer ColorMixer
 
 <WidgetScreen>:
     canvas:
@@ -95,7 +96,20 @@
                 id: text_a
                 on_text: mixer_a.text = str(args[1])
 
+
+            GlowMixer:
+                id: glow_a
+                on_interval: mixer_a.glowInterval = args[1]
+                on_max: mixer_a.glowMax = args[1]
+                on_min: mixer_a.glowMin = args[1]
+
             Filler:
+
+            GlowMixer:
+                id: glow_b
+                on_interval: mixer_b.glowInterval = args[1]
+                on_max: mixer_b.glowMax = args[1]
+                on_min: mixer_b.glowMin = args[1]
 
             TextMixer:
                 id: text_b
@@ -122,6 +136,10 @@
                 on_text: text_a.text = str(args[1])
                 on_color: wheel_a.color = args[1]
 
+                on_glowMax: glow_a.max = args[1]
+                on_glowMin: glow_a.min = args[1]
+                on_glowInterval: glow_a.interval = args[1]
+
                 on_fadeTime: fade_a.fade_time = args[1]
                 on_sceneTime: fade_a.scene_time = args[1]
 
@@ -135,6 +153,10 @@
                 #EFFECTS
                 on_text: text_b.text = str(args[1])
                 on_color: wheel_b.color = args[1]
+
+                on_glowMax: glow_b.max = args[1]
+                on_glowMin: glow_b.min = args[1]
+                on_glowInterval: glow_b.interval = args[1]
 
                 on_fadeTime: fade_b.fade_time = args[1]
                 on_sceneTime: fade_b.scene_time = args[1]

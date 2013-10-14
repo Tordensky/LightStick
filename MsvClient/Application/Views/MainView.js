@@ -384,6 +384,12 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.currBlue = 0.0;
 
     this.setNewColor = function(colorEffect, FadeTime) {
+        console.log(colorEffect["GLOW_MAX"], colorEffect["GLOW_MIN"], colorEffect["GLOW_INT"]);
+
+        this.max = colorEffect["GLOW_MAX"];
+        this.min = colorEffect["GLOW_MIN"];
+        this.interval = colorEffect["GLOW_INT"];
+
         this.fadeTime = FadeTime;
 
         this.oldRed = this.currRed;
@@ -428,17 +434,14 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     };
 
     this.intensityUpdate = function(currentFrameTime){
-        var max = 1.0;
-        var min = 0.5;
-        this.interval = 1.0;
         if (this.interval > 0.0) {
             var pos = (currentFrameTime % this.interval) / (this.interval / 2.0);
             if (pos > 1.0) {
                 pos = 2.0 - pos;
             }
-            this.intensity = min + (max - min) * pos;
+            this.intensity = this.min + (this.max - this.min) * pos;
         } else {
-            this.intensity = max;
+            this.intensity = this.max;
         }
     };
 

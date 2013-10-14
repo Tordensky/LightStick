@@ -88,6 +88,28 @@ class ColorEffect(Effect):
         Effect.__init__(self, EffectNames.COLOR_EFFECT)
         self.__color = (1.0, 1.0, 1.0, 1.0)
 
+        self.__glowMax = 1.0
+        self.__glowMin = 0.5
+        self.__glowInterval = 0.0
+
+    def setGlowMin(self, value):
+        self.__glowMin = value
+
+    def setGlowMax(self, value):
+        self.__glowMax = value
+
+    def setGlowInterval(self, value):
+        self.__glowInterval = value
+
+    def getGlowMin(self):
+        return self.__glowMin
+
+    def getGlowMax(self):
+        return self.__glowMax
+
+    def getGlowInterval(self):
+        return self.__glowInterval
+
     def getKivyColor(self):
         return self.__color
 
@@ -101,6 +123,10 @@ class ColorEffect(Effect):
     def serialize_to_dict(self):
         serObj = Effect.serialize_to_dict(self)
         serObj[SerializedKeys.COLOR_VALUE_HEX] = self.getHexColor()
+
+        serObj[SerializedKeys.GLOW_MAX] = self.getGlowMax() / 100.0
+        serObj[SerializedKeys.GLOW_MIN] = self.getGlowMin() / 100.0
+        serObj[SerializedKeys.GLOW_INTERVAL] = self.getGlowInterval()
         return serObj
 
 

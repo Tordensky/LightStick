@@ -25,6 +25,10 @@ class SceneMixer(Widget, Serializable):
 
     # Properties for effects
     color = ListProperty((1.0, 1.0, 1.0, 1.0))
+    glowMax = NumericProperty(100.0)
+    glowMin = NumericProperty(50.0)
+    glowInterval = NumericProperty(0.0)
+
     text = StringProperty("")
 
     __initFinished = False
@@ -58,25 +62,36 @@ class SceneMixer(Widget, Serializable):
         self.__playbackHandler.setBpm(args[1])
 
     def on_color(self, obj, color):
-        self.__setColorEffect(color)
+        self.__setColorEffect()
 
     def on_text(self, obj, text):
-        print "SCENE MIXER,", text
         self.__setTextEffect(text)
+
+    def on_glowMax(self, obj, value):
+        self.__setColorEffect()
+
+    def on_glowMin(self, obj, value):
+        self.__setColorEffect()
+
+    def on_glowInterval(self, obj, value):
+        self.__setColorEffect()
 
     def __beforeSetEffect(self):
         if self.__currentFrame is None:
             self.addScene()
 
     # COLOR EFFECT
-    def __setColorEffect(self, color):
+    def __setColorEffect(self):
         self.__beforeSetEffect()
         colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
         if colorEffectObj is None:
             colorEffectObj = ColorEffect()
             self.__currentFrame.addEffect(colorEffectObj)
 
-        colorEffectObj.setKivyColor(color)
+        colorEffectObj.setKivyColor(self.color)
+        colorEffectObj.setGlowMax(self.glowMax)
+        colorEffectObj.setGlowMin(self.glowMin)
+        colorEffectObj.setGlowInterval(self.glowInterval)
 
     # TEXT EFFECT
     def __setTextEffect(self, text):
@@ -252,6 +267,9 @@ class SceneMixer(Widget, Serializable):
             # TODO SET COLOR WIDGET OFF IF NOT SET
             colorEffect = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
             self.color = colorEffect.getKivyColor() if colorEffect is not None else RGBA(0, 0, 0)
+            self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else 50.0
+            self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else 100.0
+            self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else 0.0
 
             # TEXT EFFECT
             # TODO SET TEXT WIDGET OFF IF NOT SET
