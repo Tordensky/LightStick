@@ -270,7 +270,7 @@ class SceneMixer(Widget, Serializable):
     def __setCurrentFrameEffects(self):
         # TODO SET TO DEFAULT VALUES IN CONFIG
         defText = str(self.text) if self.__dontClearEffects else ""
-        defColor = self.color if self.__dontClearEffects else RGBA(0, 0, 0)
+        defColor = list(self.color) if self.__dontClearEffects else RGBA(0, 0, 0)
         defMin = float(self.glowMin) if self.__dontClearEffects else 50.0
         defMax = float(self.glowMax) if self.__dontClearEffects else 100.0
         defInt = float(self.glowInterval) if self.__dontClearEffects else 0.0

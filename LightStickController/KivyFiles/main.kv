@@ -105,21 +105,21 @@
 
             Filler:
 
+            FadePicker:
+                id: fade_b
+                on_scene_time: mixer_b.sceneTime = args[1]
+                on_fade_time: wheel_b.fade_time_in_beats = args[1]; mixer_b.fadeTime = args[1]
+
+            TextMixer:
+                id: text_b
+                on_text: mixer_b.text = str(args[1])
+
             GlowMixer:
                 id: glow_b
                 on_interval: mixer_b.glowInterval = args[1]
                 on_max: mixer_b.glowMax = args[1]
                 on_min: mixer_b.glowMin = args[1]
 
-            TextMixer:
-                id: text_b
-                on_text: mixer_b.text = str(args[1])
-
-            # FADE MIXER B
-            FadePicker:
-                id: fade_b
-                on_scene_time: mixer_b.sceneTime = args[1]
-                on_fade_time: wheel_b.fade_time_in_beats = args[1]; mixer_b.fadeTime = args[1]
 
         # SCENE CONTROLLER ROW
         BoxLayout:

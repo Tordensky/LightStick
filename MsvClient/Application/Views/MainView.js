@@ -97,7 +97,7 @@ LightStick.PlayBack = function() {
     };
 
     this.updateCallback = function(currentTime, msvTime, isReset) {
-        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
+//        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
 
         this.msvTime = msvTime;
 
@@ -253,10 +253,11 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         this.lastUpdateTime = currTime;
 
         var that = this;
+        //this.unScheduleNextUpdate();
         if (this.bpm > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, 1.0 / 24);
+            }, 1000.0 / 100.0);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -375,6 +376,7 @@ LightStick.BeatTextEffect = function($el) {
 
 LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.$el = $el.find("#color");
+    this.$glowImage = $el.find("#glowImage");
     this.fadeTime = 0.0;
 
     this.updatesPerBeat = updatesPerBeat;
@@ -383,8 +385,13 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.currGreen = 0.0;
     this.currBlue = 0.0;
 
+
+    this.max = 0.0;
+    this.min = 0.0;
+    this.interval = 0.0;
+
     this.setNewColor = function(colorEffect, FadeTime) {
-        console.log(colorEffect["GLOW_MAX"], colorEffect["GLOW_MIN"], colorEffect["GLOW_INT"]);
+//        console.log(colorEffect["GLOW_MAX"], colorEffect["GLOW_MIN"], colorEffect["GLOW_INT"]);
 
         this.max = colorEffect["GLOW_MAX"];
         this.min = colorEffect["GLOW_MIN"];
@@ -402,7 +409,7 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         this.newGreen = this.getGreenFromHex(newColor);
         this.newBlue = this.getBlueFromHex(newColor);
 
-        this.$el.find("#demo").text(this.numSteps);
+//        this.$el.find("#demo").text(this.numSteps);
 
         if (this.fadeTime == 0.0) {
             this.redColorDiff = 0.0;
@@ -442,6 +449,13 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
             this.intensity = this.min + (this.max - this.min) * pos;
         } else {
             this.intensity = this.max;
+        }
+
+        if (this.intensity <= 0.00) {
+            this.$glowImage.fadeOut(500);
+            console.log("hide");
+        } else {
+            this.$glowImage.fadeIn(500);
         }
     };
 
