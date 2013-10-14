@@ -285,11 +285,12 @@
                         CheckBox:
                             size_hint: 0.15, 1
                             size: self.size
-                            on_active: root.toggleSyncSceneAndFadeTime(args[1])
+                            on_active: root.toggleClearValuesOnNewScene(args[1])
+                            active: True
                             valign: "middle"
                         Label:
                             size_hint: 0.85, 1
-                            text: "SYNC SCENE AND FADE TIME"
+                            text: "DON'T CLEAR EFFECTS ON NEW SCENE"
                             text_size: self.size
                             font_size: self.height / 2
                             valign: "middle"

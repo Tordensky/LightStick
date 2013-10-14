@@ -42,6 +42,8 @@ class SceneMixer(Widget, Serializable):
         self.__globalFadeTime = False
         self.__loopScenes = True
 
+        self.__dontClearEffects = True
+
         self.sceneTime = 0.0
         self.fadeTime = 0.0
 
@@ -82,16 +84,17 @@ class SceneMixer(Widget, Serializable):
 
     # COLOR EFFECT
     def __setColorEffect(self):
-        self.__beforeSetEffect()
-        colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
-        if colorEffectObj is None:
-            colorEffectObj = ColorEffect()
-            self.__currentFrame.addEffect(colorEffectObj)
+        if not self.__isInFrameChange:
+            self.__beforeSetEffect()
+            colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
+            if colorEffectObj is None:
+                colorEffectObj = ColorEffect()
+                self.__currentFrame.addEffect(colorEffectObj)
 
-        colorEffectObj.setKivyColor(self.color)
-        colorEffectObj.setGlowMax(self.glowMax)
-        colorEffectObj.setGlowMin(self.glowMin)
-        colorEffectObj.setGlowInterval(self.glowInterval)
+            colorEffectObj.setKivyColor(self.color)
+            colorEffectObj.setGlowMax(self.glowMax)
+            colorEffectObj.setGlowMin(self.glowMin)
+            colorEffectObj.setGlowInterval(self.glowInterval)
 
     # TEXT EFFECT
     def __setTextEffect(self, text):
@@ -210,6 +213,9 @@ class SceneMixer(Widget, Serializable):
         self.__syncSceneAndFadeTime = value
         self.__updateSceneAndFadeTimes()
 
+    def toggleClearValuesOnNewScene(self, value):
+        self.__dontClearEffects = value
+
     def toggleGlobalSceneTime(self, value):
         self.__globalSceneTime = value
         self.__updateSceneAndFadeTimes()
@@ -262,19 +268,28 @@ class SceneMixer(Widget, Serializable):
                 self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
+        # TODO SET TO DEFAULT VALUES IN CONFIG
+        defText = str(self.text) if self.__dontClearEffects else ""
+        defColor = self.color if self.__dontClearEffects else RGBA(0, 0, 0)
+        defMin = float(self.glowMin) if self.__dontClearEffects else 50.0
+        defMax = float(self.glowMax) if self.__dontClearEffects else 100.0
+        defInt = float(self.glowInterval) if self.__dontClearEffects else 0.0
+
         if self.__currentFrame is not None:
             # COLOR EFFECT
             # TODO SET COLOR WIDGET OFF IF NOT SET
             colorEffect = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
-            self.color = colorEffect.getKivyColor() if colorEffect is not None else RGBA(0, 0, 0)
-            self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else 50.0
-            self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else 100.0
-            self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else 0.0
+            self.__isInFrameChange = True
+            self.color = colorEffect.getKivyColor() if colorEffect is not None else defColor
+            self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else defMin
+            self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else defMax
+            self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else defInt
+            self.__isInFrameChange = False
 
             # TEXT EFFECT
             # TODO SET TEXT WIDGET OFF IF NOT SET
             textEffect = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
-            self.text = textEffect.getText() if textEffect is not None else ""
+            self.text = textEffect.getText() if textEffect is not None else defText
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)

@@ -85,6 +85,52 @@
         font_size: self.height / 1.5
 
 
+
+
+<CustomSlider@BoxLayout>
+    orientation: 'vertical'
+    name: ""
+
+    range: 0, 100
+    value: 0
+    label_value: str(self.value)
+
+    step_size: 1
+
+    size: root.size
+    pos: root.pos
+
+    padding: 2
+    BoxLayout:
+        padding: 2
+        size_hint: 1, 0.1
+
+        canvas.before:
+            Color:
+                rgba: Colors.WIDGET_GREY_LIGHT
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: root.label_value
+            font_size: self.height / 1.2
+
+    Slider:
+        id: slider
+        range: root.range
+        value: root.value
+        orientation: 'vertical'
+        size_hint: 1, 0.8
+        on_value: root.value = args[1]
+        step: root.step_size
+
+    Label:
+        size_hint: 1, 0.1
+        text: root.name
+        font_size: self.height / 1.5
+
+
 <Filler@BoxLayout>
     size: root.size
     pos: root.pos
