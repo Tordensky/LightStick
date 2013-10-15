@@ -97,7 +97,7 @@ LightStick.PlayBack = function() {
     };
 
     this.updateCallback = function(currentTime, msvTime, isReset) {
-//        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
+        this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
 
         this.msvTime = msvTime;
 
@@ -246,7 +246,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     };
 
     this.scheduleNextUpdate = function() {
-        this.updateFromMsv();
+
         var currTime = new Date().getTime();
 
         var elapsed = ((currTime - this.lastUpdateTime) / 100);
@@ -257,7 +257,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         if (this.bpm > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, 1000.0 / 100.0);
+            }, 1000.0 / 50.0);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -275,6 +275,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     };
 
     this.onUpdate = function() {
+        this.updateFromMsv();
         var prevTime = this.currentTime;
 
         var timeAfterStart = this.msvPosition - this.playbackStartTime;
@@ -451,12 +452,12 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
             this.intensity = this.max;
         }
 
-        if (this.intensity <= 0.00) {
-            this.$glowImage.fadeOut(500);
-            console.log("hide");
-        } else {
-            this.$glowImage.fadeIn(500);
-        }
+//        if (this.intensity <= 0.00) {
+//            this.$glowImage.fadeOut(500);
+//            console.log("hide");
+//        } else {
+//            this.$glowImage.fadeIn(500);
+//        }
     };
 
     this.setScreenColor = function(r, g, b) {
