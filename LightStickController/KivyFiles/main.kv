@@ -42,6 +42,9 @@
             BeatCounter:
                 id: beat_a
                 on_beat_value: wheel_a.bpm = args[1]; msvControl.setBpm(args[1], "A"); mixer_a.bpm = args[1]
+                on_beat_trigger: msvControl.on_whole_beat("A")
+
+            Filler:
 
             # MSV CONTROLLER
             SimpleMsvController:
@@ -49,10 +52,15 @@
                 on_set_new_show_from_a: self.sendSceneToServer(mixer_a.serialize_to_dict())
                 on_set_new_show_from_b: self.sendSceneToServer(mixer_b.serialize_to_dict())
 
+            Filler:
+
             # BEAT COUNTER B
             BeatCounter:
                 id: beat_b
                 on_beat_value: wheel_b.bpm = args[1]; msvControl.setBpm(args[1], "B"); mixer_b.bpm = args[1]
+                on_beat_trigger: msvControl.on_whole_beat("B")
+
+
 
         # COLOR MIXER ROW
         BoxLayout:

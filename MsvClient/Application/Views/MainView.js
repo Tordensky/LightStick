@@ -100,22 +100,26 @@ LightStick.PlayBack = function() {
         this.$el.find("#msv").html(currentTime.toFixed(2) + " beats");
 
         this.msvTime = msvTime;
-
+        var currentFrameTime;
         var frame = this.getCurrentFrame(currentTime);
-        if (frame != undefined){
-            var currentFrameTime = frame.currentFrameTime;
+        try {
+            currentFrameTime = frame.currentFrameTime;
 
             if (frame !== this.currentFrame || isReset){
                 this.onFrameChange(frame);
                 //this.strobeEffect.flash();
             }
+
+            if (this.nextSceneShow != null) {
+                this.setNewSceneShow(this.nextSceneShow);
+            }
+
+            this.colorEffect.onUpdate(currentFrameTime);
+
+        } catch (TypeError) {
+            console.log("No frame");
         }
 
-        if (this.nextSceneShow != null) {
-            this.setNewSceneShow(this.nextSceneShow);
-        }
-
-        this.colorEffect.onUpdate(currentFrameTime);
     };
 
     this.onFrameChange = function(frame) {

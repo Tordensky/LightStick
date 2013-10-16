@@ -11,6 +11,7 @@
     msvPos: 0.0
     msvVel: 0.0
     msvAcc: 0.0
+    delay: "4"
     currentBPM: 0.0
     padding: 3
 
@@ -53,7 +54,7 @@
             BoxLayout:
                 size_hint: 1.0, 0.3
                 Label:
-                    text: "LIVE"
+                    text: root.delay
                     font_size: "15px"
                     size_hint: 0.25, 1.0
                 Label:
@@ -78,6 +79,8 @@
 
     size_hint_y: None
     height: 120
+    size_hint_x: None
+    width: 424
 
     BoxLayout:
         orientation: 'vertical'
@@ -115,27 +118,89 @@
                     pos: self.pos
                     size: self.size
 
-            MsvScreen:
-                msvPos: str(root.msvPosition)
-                msvAcc: str(root.msvAcceleration)
-                msvVel: str(root.msvVelocity)
-                currentBPM: str(root.currentBPM)
-                size_hint: 1.0, 0.6
-
             BoxLayout:
                 spacing: 5
-                size_hint: 1.0, 0.4
 
-                size_hint_y: None
-                height: 30
 
-                LightButton:
-                    text: "TRIGGER A"
-                    font_size: "20px"
-                    on_press: root.setSourceForBpm("A")
+                # LEFT CONTROLLER
+                BoxLayout:
+                    spacing: 5
+                    orientation: "vertical"
 
-                LightButton:
-                    text: "TRIGGER B"
-                    font_size: "20px"
-                    on_press: root.setSourceForBpm("B")
+                    size_hint_x: None
+                    width: 60
+
+                    LightButton:
+                        text: "SET BPM"
+                        font_size: "12px"
+                        on_press: root.setBpmFromSource("A")
+
+
+
+                    LightButton:
+
+                        size_hint_y: None
+                        height: 60
+
+                        text: "A"
+                        font_size: "25px"
+                        on_press: root.setSourceForBpm("A")
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_x: None
+                    width: 280
+                    spacing: 5
+
+                    # SCREEN
+                    MsvScreen:
+                        msvPos: str(root.msvPosition)
+                        msvAcc: str(root.msvAcceleration)
+                        msvVel: str(root.msvVelocity)
+                        currentBPM: str(root.currentBPM)
+                        delay: str(root.delay)
+
+                    BoxLayout:
+                        spacing: 5
+                        size_hint_y: None
+                        height: 20
+
+                        LightButton:
+                            text: "DELAY DOWN"
+                            font_size: "12px"
+                            on_press: root.delayDown()
+
+                        LightButton:
+                            text: "DELAY UP"
+                            font_size: "12px"
+                            on_press: root.delayUp()
+
+
+
+
+
+                # RIGHT CONTROLLER
+                BoxLayout:
+                    spacing: 5
+                    orientation: "vertical"
+
+                    size_hint_x: None
+                    width: 60
+
+                    LightButton:
+                        text: "SET BPM"
+                        font_size: "12px"
+                        on_press: root.setBpmFromSource("B")
+
+
+
+                    LightButton:
+                        size_hint_x: None
+                        width: 60
+                        size_hint_y: None
+                        height: 60
+
+                        text: "B"
+                        font_size: "25px"
+                        on_press: root.setSourceForBpm("B")
 

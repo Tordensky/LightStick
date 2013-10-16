@@ -29,11 +29,15 @@ class SimpleMsvController(Widget, EventDispatcher):
     currentBPM = NumericProperty(0.0)
 
     currentMsg = DictProperty({})
+    delay = NumericProperty(4)
 
     def __init__(self, **kwargs):
         self.register_event_type('on_set_new_show_from_a')
         self.register_event_type('on_set_new_show_from_b')
         super(SimpleMsvController, self).__init__(**kwargs)
+
+        self.__set_new_show = False
+        self.__set_new_bpm = False
 
         try:
             self._stop_event = threading.Event()
@@ -53,6 +57,20 @@ class SimpleMsvController(Widget, EventDispatcher):
         except AssertionError:
             print "MSV ERROR ! ! ! ! !! ! ! "
 
+    def delayUp(self):
+        print "delay up"
+        self.delay += 1
+
+    def delayDown(self):
+        print "delay down"
+        if self.delay > 1:
+            self.delay -= 1
+
+    def on_whole_beat(self, source):
+        if self.__set_new_bpm and self.source == source:
+            self.setVelocityFromBPM(self.bpm[source])
+            self.__set_new_bpm = False
+
     def on_set_new_show_from_a(self):
         pass
 
@@ -67,11 +85,13 @@ class SimpleMsvController(Widget, EventDispatcher):
         elif source == "B":
             self.dispatch('on_set_new_show_from_b')
 
-        self.setVelocityFromBPM(self.bpm[source])
+    def setBpmFromSource(self, source):
+        self.source = source
+        self.__set_new_bpm = True
 
     def sendSceneToServer(self, msg):
         pprint.pprint(msg)
-        msg["MSV_TIME"] = int(self.msvPosition) ### + 6  # Todo make dynamic delay for start
+        msg["MSV_TIME"] = int(self.msvPosition) + int(self.delay)  # Todo make dynamic delay for start
         msg = json.dumps(msg)
         self.httpClient.postJson(jsonMessage=msg, url="/command")
 
@@ -82,7 +102,6 @@ class SimpleMsvController(Widget, EventDispatcher):
     def setVelocityFromBPM(self, bpm):
         print "Set new velocity"
         velocity = bpm / 60.0
-        self.currentBPM = round(bpm, 1)
         self.update(18, int(self.msvPosition), velocity, 0)
 
     def on_msvVelocity(self, *args):
@@ -106,9 +125,10 @@ class SimpleMsvController(Widget, EventDispatcher):
 
     def updateScreen(self, pos, vel, acc):
         with self.lock:
-            self.msvPosition = round(pos, 3)
+            self.msvPosition = round(pos, 1)
             self.msvVelocity = round(vel, 3)
             self.msvAcceleration = round(acc, 3)
+            self.currentBPM = round(60.0 * vel, 1)
 
     def run(self, *args):
         while not self._stop_event.is_set():

@@ -1,5 +1,6 @@
+from kivy.event import EventDispatcher
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty, StringProperty, BooleanProperty
+from kivy.properties import ObjectProperty, BooleanProperty
 from kivy.properties import NumericProperty
 from kivy.clock import Clock
 from kivy.lang import Builder
@@ -44,7 +45,7 @@ class BeatCounterScreen(Widget):
 
 
 # TODO REFACTOR AND GET BPM COUNTER TO UPDATE AND START AT 60 BPM
-class BeatCounter(Widget):
+class BeatCounter(Widget, EventDispatcher):
     MIN_SAMPLE_TIME = 0.01
     MAX_NUM_SAMPLES = 4
 
@@ -63,7 +64,14 @@ class BeatCounter(Widget):
     samples = []
 
     def __init__(self, **kwargs):
+        self.register_event_type('on_beat_trigger')
         super(BeatCounter, self).__init__(**kwargs)
+
+        self.lastTime = 0.0
+        Clock.schedule_once(self.set_new_bpm, 1 / 4.0)
+
+    def on_beat_trigger(self, *args):
+        pass
 
     def button_press(self):
         self._set_sample_time()
@@ -92,24 +100,23 @@ class BeatCounter(Widget):
         self.set_new_bpm()
 
     def sample_time_to_BPM(self, sample_time):
-        return 60 / float(sample_time)
+        return round(60 / float(sample_time), 1)
 
-    def set_new_bpm(self):
+    def set_new_bpm(self, *args):
         self.beat_value = self.sample_time_to_BPM(self.avg_sample_time)
 
         self.beat_counter_screen.setScreenValue(self.beat_value)
-        self.on_beat()
         if self.avg_sample_time > 0.0:
             Clock.unschedule(self.on_beat)
-            Clock.schedule_interval(self.on_beat, self.avg_sample_time)
+            self.on_beat()
 
     def on_beat(self, *args):
+        self.dispatch('on_beat_trigger')
         self.beat_counter_screen.flash()
-        self.trigger = True
-        Clock.schedule_once(self._trigger_reset, BEAT_LIVE_WINDOW)
 
-    def _trigger_reset(self, *args):
-        self.trigger = False
+        nextUpdateIn = (60 / self.beat_value)
+
+        Clock.schedule_once(self.on_beat, nextUpdateIn)
 
     def _set_sample_time(self):
         if self.last_sample == 0.0:
@@ -123,7 +130,7 @@ class BeatCounter(Widget):
             self.avg_sample_time = self._get_avg_from_samples()
 
         Clock.unschedule(self._reset_timer)
-        Clock.schedule_interval(self._reset_timer, 3)
+        Clock.schedule_once(self._reset_timer, 3)
 
     def _insert_new_sample(self, sample):
         if sample > self.MIN_SAMPLE_TIME:
