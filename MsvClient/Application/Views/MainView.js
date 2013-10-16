@@ -102,11 +102,13 @@ LightStick.PlayBack = function() {
         this.msvTime = msvTime;
 
         var frame = this.getCurrentFrame(currentTime);
-        var currentFrameTime = frame.currentFrameTime;
+        if (frame != undefined){
+            var currentFrameTime = frame.currentFrameTime;
 
-        if (frame !== this.currentFrame || isReset){
-            this.onFrameChange(frame);
-            //this.strobeEffect.flash();
+            if (frame !== this.currentFrame || isReset){
+                this.onFrameChange(frame);
+                //this.strobeEffect.flash();
+            }
         }
 
         if (this.nextSceneShow != null) {
