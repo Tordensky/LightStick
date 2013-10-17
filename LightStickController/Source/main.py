@@ -5,14 +5,17 @@ import kivy
 from kivy.lang import Builder
 from kivy.properties import ListProperty
 from HttpWebClient import HttpClient
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.config import Config
 
 
 Builder.load_file(os.getenv("FILE_PATH") + "/main.kv")
 
 kivy.require("1.7.2")
 
-from kivy.app import App
-from kivy.uix.widget import Widget
+Config.set('graphics', 'width', '940')
+Config.set('graphics', 'height', '700')
 
 
 class WebTest(Widget):

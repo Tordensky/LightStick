@@ -53,6 +53,22 @@ class SceneFrame(Serializable):
 
         return serDict
 
+    def deserializer_from_dict(self, showDict):
+        self.__sceneTime = showDict[SerializedKeys.SCENE_TIME]
+        self.__fadeTime = showDict[SerializedKeys.FADE_TIME]
+
+        if SerializedKeys.EFFECT_LIST in showDict:
+            for effect in showDict[SerializedKeys.EFFECT_LIST]:
+                if effect[SerializedKeys.EFFECT_NAME] == EffectNames.COLOR_EFFECT:
+                    colorEffect = ColorEffect()
+                    colorEffect.deserializer_from_dict(effect)
+                    self.addEffect(colorEffect)
+
+                elif effect[SerializedKeys.EFFECT_NAME] == EffectNames.TEXT_EFFECT:
+                    textEffect = TextEffect()
+                    textEffect.deserializer_from_dict(effect)
+                    self.addEffect(textEffect)
+
 
 class Effect(Serializable):
     def __init__(self, name):
@@ -81,6 +97,9 @@ class TextEffect(Effect):
         serObj = Effect.serialize_to_dict(self)
         serObj[SerializedKeys.TEXT_VALUE_KEY] = self.getText()
         return serObj
+
+    def deserializer_from_dict(self, showDict):
+        self.setText(showDict[SerializedKeys.TEXT_VALUE_KEY])
 
 
 class ColorEffect(Effect):
@@ -129,6 +148,15 @@ class ColorEffect(Effect):
         serObj[SerializedKeys.GLOW_INTERVAL] = self.getGlowInterval()
         return serObj
 
+    def deserializer_from_dict(self, showDict):
+        self.setColorFromHEX(showDict[SerializedKeys.COLOR_VALUE_HEX])
+        self.setGlowMax(float(showDict[SerializedKeys.GLOW_MAX]) * 100.0)
+        self.setGlowMin(float(showDict[SerializedKeys.GLOW_MIN]) * 100.0)
+        self.setGlowInterval(showDict[SerializedKeys.GLOW_INTERVAL])
+
+    def setColorFromHEX(self, hexColor):
+        self.__color = ColorTools.hexTokivy(hexColor)
+
 
 class ColorTools():
     @staticmethod
@@ -141,7 +169,12 @@ class ColorTools():
         return hexColor
 
     @staticmethod
+    def hexTokivy(hexValue):
+        r = float(int(hexValue[1:3], 16) / 255.0)
+        g = float(int(hexValue[3:5], 16) / 255.0)
+        b = float(int(hexValue[5:7], 16) / 255.0)
+        return [r, g, b, 1.0]
+
+    @staticmethod
     def __kivyColorToInt(value):
         return int(math.floor(255 * value))
-
-

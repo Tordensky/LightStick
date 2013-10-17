@@ -1,4 +1,5 @@
 from collections import namedtuple
+from sceneframe import SceneFrame
 from scnconfig import SerializedKeys
 from serializer import Serializable
 
@@ -48,6 +49,12 @@ class FrameHandler(Serializable):
         if index is not None:
             self.__frames.pop(index)
             self.moveFramePointerDown()
+        return self.__getCurrentFrameWithInfo()
+
+    def deleteAllFrames(self):
+        del self.__frames
+        self.__frames = []
+        self.__framePointer = 0
         return self.__getCurrentFrameWithInfo()
 
     def moveFramePointerUp(self):
@@ -106,3 +113,10 @@ class FrameHandler(Serializable):
         serializedDict[SerializedKeys.FRAME_LIST] = serializedFramesList
 
         return serializedDict
+
+    def deserializer_from_dict(self, showDict):
+        if SerializedKeys.FRAME_LIST in showDict:
+            for sceneInfo in showDict[SerializedKeys.FRAME_LIST]:
+                tmpScene = SceneFrame()
+                tmpScene.deserializer_from_dict(sceneInfo)
+                self.insertFrameAfterPointer(tmpScene)

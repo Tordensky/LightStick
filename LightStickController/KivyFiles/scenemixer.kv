@@ -141,7 +141,7 @@
 
     size_hint_x: None
     size_hint_y: None
-    height: 190
+    height: 208
     width: 400
 
     BoxLayout:
@@ -169,8 +169,8 @@
             size: root.size
             pos: root.pos
 
-            spacing: 5
-            padding: 5
+            spacing: Sizes.WIDGET_ELEM_SPACING
+            padding: Sizes.WIDGET_ELEM_PADDING
             orientation: "vertical"
 
             canvas:
@@ -181,7 +181,7 @@
                     size: self.size
 
             BoxLayout:
-                spacing: 5
+                spacing: Sizes.WIDGET_ELEM_SPACING
                 #size_hint: 1, 0.6
                 # Display part of the widget
                 size_hint_x: 1
@@ -200,7 +200,7 @@
                 # SIDE BUTTONS
                 BoxLayout:
                     padding: 0
-                    spacing: 5
+                    spacing: Sizes.WIDGET_ELEM_SPACING
                     size_hint: 0.1, 1.0
 
                     size_hint_y: 1
@@ -230,7 +230,7 @@
             # CONTROL BUTTONS
             BoxLayout:
                 padding: 0
-                spacing: 5
+                spacing: Sizes.WIDGET_ELEM_SPACING
                 size_hint_x: 1
                 size_hint_y: None
                 height: 22
@@ -256,9 +256,11 @@
                     font_size: self.height / 2
                     on_press: root.startStopPlayback()
 
+
+
             # CONTROLLER OPTIONS
             BoxLayout:
-                spacing: 2
+                spacing: Sizes.WIDGET_ELEM_SPACING
                 #size_hint: 1, 0.2
 
                 size_hint_x: 1
@@ -313,12 +315,48 @@
                         CheckBox:
                             size_hint: 0.15, 1
                             size: self.size
-                            active: True
                             on_active: root.toggleLoopScenes(args[1])
                             valign: "middle"
                         Label:
                             size_hint: 0.85, 1
-                            text: "LOOP AFTER END"
+                            text: "LOOP PLAYBACK"
                             text_size: self.size
                             font_size: self.height / 2
                             valign: "middle"
+
+
+            # FILE HANDLING
+            BoxLayout:
+                spacing: Sizes.WIDGET_ELEM_SPACING
+                #size_hint: 1, 0.2
+
+                size_hint_x: 1
+                size_hint_y: None
+                height: 18
+
+                LightButton:
+                    text: "LOAD SHOW"
+                    font_size: self.height / 2
+                    on_press: root.loadShow()
+
+                LightButton:
+                    text: "SAVE SHOW"
+                    font_size: self.height / 2
+                    on_press: root.saveShow()
+
+                LightButton:
+                    text: "APPEND SHOW"
+                    font_size: self.height / 2
+                    on_press: root.appendShow()
+
+                LightButton:
+                    text: "INSERT SHOW"
+                    font_size: self.height / 2
+                    on_press: root.insertShow()
+
+                LightButton:
+                    text: "NEW SHOW"
+                    font_size: self.height / 2
+                    on_press: root.clearShow()
+
+

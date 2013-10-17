@@ -1,10 +1,16 @@
+import json
 import os
 import pprint
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, StringProperty, ListProperty, DictProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.uix.widget import Widget
 from Config import RGBA
+from filehandler import FileHandler
 from SceneMixer import SceneFrame
 from serializer import Serializable
 from sceneframe import ColorEffect, TextEffect
@@ -40,7 +46,7 @@ class SceneMixer(Widget, Serializable):
         self.__syncSceneAndFadeTime = False
         self.__globalSceneTime = False
         self.__globalFadeTime = False
-        self.__loopScenes = True
+        self.__loopScenes = False
 
         self.__dontClearEffects = True
 
@@ -53,6 +59,8 @@ class SceneMixer(Widget, Serializable):
         self.__isInPlayback = False
         self.__playbackHandler = PlayBackHandler(bpm=60.0, updatesPerBeat=20)
         self.__playbackHandler.addIntervalUpdateCallback(self.playbackCallbackUpdate)
+
+        self.fileHandler = FileHandler()
 
         # TODO fix a better approach for checking if object is ready
         self.__initFinished = True
@@ -336,10 +344,89 @@ class SceneMixer(Widget, Serializable):
         # Update property
         return serializedDict
 
+    def deserializer_from_dict(self, showData):
+        return self.__frameHandler.deserializer_from_dict(showData)
+        #return Serializable.deserializer_from_dict(self, showData)
+
+    def loadShow(self):
+        popup = Popups.yesNoPopUp(titleLabel="Clear current show and load new",
+                                  text="Are you sure you want to delete the current show \n"
+                                       "and load a new from disk?",
+                                  yesCallback=self.__loadShow)
+        popup.open()
+
+    def __loadShow(self, deleteCurrent=True, *args):
+        self.fileHandler.show_load(self.__onLoadSuccessCallback)
+        # TODO LOAD FROM FILE
+        #currentShow = json.dumps(self.serialize_to_dict())
+        if deleteCurrent:
+            self.__clearCurrentShow()
+
+    def __onLoadSuccessCallback(self, data):
+        # TODO fix load from file
+        self.deserializer_from_dict(json.loads(data))
+        self.gotoStartOfShow()
+
+    def saveShow(self):
+        # TODO WRITE TO FILE
+        show = json.dumps(self.serialize_to_dict())
+        self.fileHandler.show_save(show)
+
+    def appendShow(self):
+        self.gotoEndOfShow()
+        self.__loadShow(deleteCurrent=False)
+
+    def insertShow(self):
+        self.__loadShow(deleteCurrent=False)
+
+    def clearShow(self):
+        popup = Popups.yesNoPopUp(titleLabel="Clear current show",
+                                  text="Are you sure you want to delete the current show?",
+                                  yesCallback=self.__clearCurrentShow)
+        popup.open()
+
+    def __clearCurrentShow(self, *args):
+        self.__playbackHandler.stop()
+        self.__resetPlayback()
+        result = (self.__frameHandler.deleteAllFrames())
+        self.__setDisplayValues(result)
+
+
+class Popups():
+    @staticmethod
+    def yesNoPopUp(titleLabel, text, yesCallback=None, noCallback=None):
+        popup = Popup(title=titleLabel,
+                      auto_dismiss=False,
+                      size_hint=(0, 0),
+                      size=(400, 200))
+
+        mainLayout = BoxLayout(orientation="vertical")
+        label = Label(text=text)
+        mainLayout.add_widget(label)
+
+        buttonLayout = BoxLayout()
+
+        yesButton = Button(text="YES",
+                           on_press=yesCallback,
+                           on_release=popup.dismiss)
+
+        noButton = Button(text="NO",
+                          on_press=noCallback,
+                          on_release=popup.dismiss)
+
+        buttonLayout.add_widget(yesButton)
+        buttonLayout.add_widget(noButton)
+
+        mainLayout.add_widget(buttonLayout)
+
+        popup.add_widget(mainLayout)
+        return popup
+
 
 class __TestScreenMixer(App):
     def build(self):
         return SceneMixer()
+
 
 if __name__ == "__main__":
     test = __TestScreenMixer()
