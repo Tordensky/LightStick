@@ -6,12 +6,13 @@ import pprint
 
 import threading
 import time
+from kivy.clock import Clock
 from kivy.event import EventDispatcher
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, DictProperty
 from kivy.uix.widget import Widget
-import sys
 from HttpWebClient import HttpClient
+from SceneMixer import Popups
 
 from libs.pymsv.msvclient.client import Client, Msv
 
@@ -35,9 +36,14 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.register_event_type('on_set_new_show_from_a')
         self.register_event_type('on_set_new_show_from_b')
         super(SimpleMsvController, self).__init__(**kwargs)
+        self.source = None
 
         self.__set_new_show = False
         self.__set_new_bpm = False
+
+        self.bpm = defaultdict(float)
+
+        self.httpClient = HttpClient("localhost", 8080)
 
         try:
             self._stop_event = threading.Event()
@@ -49,13 +55,23 @@ class SimpleMsvController(Widget, EventDispatcher):
             self.lock = threading.RLock()
             self.msvThread = threading.Thread(target=self.run)
             self.msvThread.start()
-
-            self.source = None
-            self.bpm = defaultdict(float)
-
-            self.httpClient = HttpClient("localhost", 8080)
         except AssertionError:
-            print "MSV ERROR ! ! ! ! !! ! ! "
+            print "MSV ERROR"
+            Clock.schedule_once(self.showMsvErrorPopup, 1 / 2.0)
+
+    def showMsvErrorPopup(self, *args):
+        popup = Popups.errorPopup(titleLabel="MSV ERROR",
+                                  text="Error: Could not connect to MSV service!")
+        popup.open()
+
+    def showServerErrorPopup(self, statusCode, *args):
+        if statusCode == -1:
+            errorText = "Error: Could not connect to server!"
+        else:
+            errorText = "Error. Bad request!\nGot response status: " + str(statusCode) + " expected: 200"
+        popup = Popups.errorPopup(titleLabel="SERVER ERROR",
+                                  text=errorText)
+        popup.open()
 
     def delayUp(self):
         print "delay up"
@@ -90,10 +106,13 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.__set_new_bpm = True
 
     def sendSceneToServer(self, msg):
-        pprint.pprint(msg)
         msg["MSV_TIME"] = int(self.msvPosition) + int(self.delay)  # Todo make dynamic delay for start
         msg = json.dumps(msg)
-        self.httpClient.postJson(jsonMessage=msg, url="/command")
+        self.httpClient.postJson(jsonMessage=msg, url="/command", callback=self.postCallback)
+
+    def postCallback(self, responseCode, *args):
+        if responseCode != 200:
+            self.showServerErrorPopup(responseCode)
 
     def setBpm(self, bpm, source):
         self.bpm[source] = bpm

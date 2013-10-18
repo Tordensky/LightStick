@@ -422,6 +422,25 @@ class Popups():
         popup.add_widget(mainLayout)
         return popup
 
+    @staticmethod
+    def errorPopup(titleLabel, text, onCloseCallback=None):
+        popup = Popup(title=titleLabel,
+                      auto_dismiss=False,
+                      size_hint=(0, 0),
+                      size=(400, 200))
+
+        mainLayout = BoxLayout(orientation="vertical")
+        label = Label(text=text, color=[1.0, 0.0, 0.0, 1.0])
+        mainLayout.add_widget(label)
+
+        okButton = Button(text="CLOSE",
+                          on_press=onCloseCallback,
+                          on_release=popup.dismiss)
+
+        mainLayout.add_widget(okButton)
+        popup.add_widget(mainLayout)
+        return popup
+
 
 class __TestScreenMixer(App):
     def build(self):
