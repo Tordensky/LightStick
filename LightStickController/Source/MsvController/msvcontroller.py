@@ -11,6 +11,7 @@ from kivy.event import EventDispatcher
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, DictProperty
 from kivy.uix.widget import Widget
+import math
 from HttpWebClient import HttpClient
 from SceneMixer import Popups
 
@@ -42,7 +43,6 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.__set_new_bpm = False
 
         self.bpm = defaultdict(float)
-
         self.httpClient = HttpClient("localhost", 8080)
 
         try:
@@ -106,7 +106,7 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.__set_new_bpm = True
 
     def sendSceneToServer(self, msg):
-        msg["MSV_TIME"] = int(self.msvPosition) + int(self.delay)  # Todo make dynamic delay for start
+        msg["MSV_TIME"] = int(math.ceil(self.msvPosition)) + int(self.delay)  # Todo make dynamic delay for start
         msg = json.dumps(msg)
         self.httpClient.postJson(jsonMessage=msg, url="/command", callback=self.postCallback)
 

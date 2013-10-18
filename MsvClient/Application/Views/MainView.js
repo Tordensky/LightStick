@@ -12,6 +12,14 @@ LightStick.MainView = Backbone.View.extend({
 
         this.playback = null;
         this.initPlayback();
+
+        this.pullNotificationMsv = new LightStick.MsvClient(22, "msv://t0.mcorp.no:8091/");
+
+        var that = this;
+        this.pullNotificationMsv.init(function() {
+            that.pullMsvReady()
+        });
+        this.currentMsvMsgNum = 0;
     },
 
     initEvents: function() {
@@ -27,6 +35,22 @@ LightStick.MainView = Backbone.View.extend({
         }, this.$el);
     },
 
+    pullMsvReady: function() {
+        console.log("msvPullReady", this.pullNotificationMsv.getCurrentMsvTime());
+        this.currentMsvMsgNum = this.pullNotificationMsv.getCurrentMsvTime();
+        this.updateModels();
+        var that = this;
+        setInterval(function(){
+            var currentMsgNum = that.pullNotificationMsv.getCurrentMsvTime();
+            if (that.currentMsvMsgNum != currentMsgNum) {
+                console.log("NEW SHOW");
+                that.updateModels();
+                that.currentMsvMsgNum = currentMsgNum;
+            }
+
+        }, 1000 / 50.0);
+    },
+
     playbackReadyCallback: function() {
         console.log("Playback ready")
     },
@@ -39,7 +63,7 @@ LightStick.MainView = Backbone.View.extend({
         var that = this;
         setInterval(function(){
             that.updateModels();
-        }, 2000);
+        }, 30000);
     },
 
     handleCommand: function() {
@@ -212,7 +236,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.lastUpdateTime = new Date().getTime();
 
     this.init = function(readyCallback) {
-        this.msvClient = new LightStick.MsvClient(18);
+        this.msvClient = new LightStick.MsvClient(18, "msv://mcorp.no:8091/");
 
         var that = this;
         this.msvClient.init(function() {
@@ -297,13 +321,14 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 };
 
 
-LightStick.MsvClient = function(id) {
+LightStick.MsvClient = function(id, host) {
     this.ds = null;
     this.msv = null;
     this.id = id;
+    this.host = host;
 
     this.init = function (msvReadyCallback) {
-        this.msv = MSV.msv("msv://mcorp.no:8091/"+ this.id);
+        this.msv = MSV.msv(this.host+ this.id);
 
         var that = this;
         this.msv.add_error_handler(

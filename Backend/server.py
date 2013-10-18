@@ -1,5 +1,5 @@
 from config.serverconfig import APPLICATION_BASE_PATH, INDEX_HTML
-from cmdhandler import CommandHandler
+from cmdhandler import CommandHandler, MsvController, FileCash
 import libs.web as web
 
 
@@ -26,7 +26,6 @@ class command:
         return web.cmdHandler.getCommand()
 
     def POST(self):
-        print web.data()
         web.cmdHandler.setCommand(web.data())
         return
 
@@ -34,9 +33,10 @@ class command:
 class files:
     def GET(self, filename):
         try:
-            f = open(APPLICATION_BASE_PATH + filename, 'rb')
-            return f.read()
+            #f = open(APPLICATION_BASE_PATH + filename, 'rb')
+            #return f.read()
 
+            return web.cache.getFile(filename)
         except IOError, e:
             print "ERROR", e
             return
@@ -44,6 +44,7 @@ class files:
 
 if __name__ == "__main__":
     web.cmdHandler = CommandHandler()
+    web.cache = FileCash()
     app = web.application(urls, globals())
     app.run()
 
