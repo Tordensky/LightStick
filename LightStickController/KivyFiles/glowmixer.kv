@@ -8,7 +8,7 @@
     labels: ["OFF", "1/2", "1", "2", "3", "4", "8", "16"]
 
     max: 100.0
-    min: 50.0
+    min: 0.0
     interval: 0.0
 
     on_max: minSlider.value = maxSlider.value if maxSlider.value < minSlider.value else minSlider.value
@@ -60,6 +60,7 @@
 
             CustomSlider:
                 id: minSlider
+                step_size: 5
                 name: "MIN"
                 value: root.min
                 on_value: root.min = args[1]
@@ -67,6 +68,7 @@
 
             CustomSlider:
                 id: maxSlider
+                step_size: 5
                 name: "MAX"
                 value: root.max
                 on_value: root.max = args[1]

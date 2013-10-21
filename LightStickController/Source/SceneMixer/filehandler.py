@@ -1,4 +1,5 @@
 import os
+from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.floatlayout import FloatLayout
@@ -21,32 +22,28 @@ class SaveDialog(FloatLayout):
 
 
 class FileHandler():
-    #loadFile = ObjectProperty(None)
-    #savefile = ObjectProperty(None)
-
     def __init__(self):
         self.fileData = ""
-
         self.loadReadyCallback = None
-        self.path = ""
+        self.app = App.get_running_app()
 
     def dismiss_popup(self):
         self._popup.dismiss()
 
     def show_load(self, loadCallback=None):
         self.loadReadyCallback = loadCallback
-        content = LoadDialog(load=self.load, cancel=self.dismiss_popup, path=self.path)
+        content = LoadDialog(load=self.load, cancel=self.dismiss_popup, path=self.app.path)
         self._popup = Popup(title="Load file", content=content, size_hint=(0.9, 0.9))
         self._popup.open()
 
     def show_save(self, saveString):
         self.fileData = saveString
-        content = SaveDialog(save=self.save, cancel=self.dismiss_popup, path=self.path)
+        content = SaveDialog(save=self.save, cancel=self.dismiss_popup, path=self.app.path)
         self._popup = Popup(title="Save file", content=content, size_hint=(0.9, 0.9))
         self._popup.open()
 
     def load(self, path, filename):
-        self.path = path
+        self.app.path = path
         with open(os.path.join(path, filename[0])) as stream:
             self.fileData = stream.read()
 
@@ -56,7 +53,7 @@ class FileHandler():
             self.loadReadyCallback(self.fileData)
 
     def save(self, path, filename):
-        self.path = path
+        self.app.path = path
         filename += ".show"
         with open(os.path.join(path, filename), 'w') as stream:
             stream.write(self.fileData)

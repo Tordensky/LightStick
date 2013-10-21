@@ -12,13 +12,16 @@ urls = (
 
 class index:
     def GET(self):
-        try:
-            f = open(APPLICATION_BASE_PATH + INDEX_HTML, 'r')
-            return f.read()
+        raise web.seeother('/static/MsvClient/Html/index.html')
 
-        except IOError, e:
-            print "ERROR", e
-            return
+        # try:
+        #     f = open(APPLICATION_BASE_PATH + INDEX_HTML, 'r')
+        #     return f.read()
+        #
+        #
+        # except IOError, e:
+        #     print "ERROR", e
+        #     return
 
 
 class command:

@@ -119,12 +119,12 @@
                     size: self.size
 
             BoxLayout:
-                spacing: 5
+                spacing: 3
 
 
                 # LEFT CONTROLLER
                 BoxLayout:
-                    spacing: 5
+                    spacing: 3
                     orientation: "vertical"
 
                     size_hint_x: None
@@ -150,7 +150,7 @@
                     orientation: "vertical"
                     size_hint_x: None
                     width: 280
-                    spacing: 5
+                    spacing: 3
 
                     # SCREEN
                     MsvScreen:
@@ -161,7 +161,7 @@
                         delay: str(root.delay)
 
                     BoxLayout:
-                        spacing: 5
+                        spacing: 3
                         size_hint_y: None
                         height: 20
 
@@ -175,13 +175,9 @@
                             font_size: "12px"
                             on_press: root.delayUp()
 
-
-
-
-
                 # RIGHT CONTROLLER
                 BoxLayout:
-                    spacing: 5
+                    spacing: 3
                     orientation: "vertical"
 
                     size_hint_x: None

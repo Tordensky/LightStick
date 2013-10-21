@@ -24,6 +24,11 @@ LightStick.MainView = Backbone.View.extend({
 
     initEvents: function() {
         this.commandModel.on("change:cmdNum", this.handleCommand, this);
+
+        // RELOAD TO CLEAN THINGS UP EVERY TEN MINUTE
+        setInterval(function(){
+            location.reload();
+        }, 600000);
     },
 
     initPlayback: function() {
@@ -37,8 +42,8 @@ LightStick.MainView = Backbone.View.extend({
 
     pullMsvReady: function() {
         console.log("msvPullReady", this.pullNotificationMsv.getCurrentMsvTime());
-        this.currentMsvMsgNum = this.pullNotificationMsv.getCurrentMsvTime();
-        this.updateModels();
+        this.currentMsvMsgNum = -1;//this.pullNotificationMsv.getCurrentMsvTime();
+        //this.updateModels();
         var that = this;
         setInterval(function(){
             var currentMsgNum = that.pullNotificationMsv.getCurrentMsvTime();
@@ -47,7 +52,6 @@ LightStick.MainView = Backbone.View.extend({
                 that.updateModels();
                 that.currentMsvMsgNum = currentMsgNum;
             }
-
         }, 1000 / 50.0);
     },
 
@@ -63,7 +67,7 @@ LightStick.MainView = Backbone.View.extend({
         var that = this;
         setInterval(function(){
             that.updateModels();
-        }, 30000);
+        }, 10000);
     },
 
     handleCommand: function() {
@@ -126,18 +130,16 @@ LightStick.PlayBack = function() {
         this.msvTime = msvTime;
         var currentFrameTime;
         var frame = this.getCurrentFrame(currentTime);
+
+        if (this.nextSceneShow != null) {
+            this.setNewSceneShow(this.nextSceneShow);
+        }
+
         try {
             currentFrameTime = frame.currentFrameTime;
-
             if (frame !== this.currentFrame || isReset){
                 this.onFrameChange(frame);
-                //this.strobeEffect.flash();
             }
-
-            if (this.nextSceneShow != null) {
-                this.setNewSceneShow(this.nextSceneShow);
-            }
-
             this.colorEffect.onUpdate(currentFrameTime);
 
         } catch (TypeError) {
@@ -233,7 +235,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.callbacks = [];
 
     this.currentTime = 0.0;
-    this.lastUpdateTime = new Date().getTime();
 
     this.init = function(readyCallback) {
         this.msvClient = new LightStick.MsvClient(18, "msv://mcorp.no:8091/");
@@ -277,17 +278,12 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 
     this.scheduleNextUpdate = function() {
 
-        var currTime = new Date().getTime();
-
-        var elapsed = ((currTime - this.lastUpdateTime) / 100);
-        this.lastUpdateTime = currTime;
-
         var that = this;
-        //this.unScheduleNextUpdate();
+        this.unScheduleNextUpdate();
         if (this.bpm > 0.0) {
             this.timer = setTimeout(function() {
                 that.scheduleNextUpdate();
-            }, 1000.0 / 50.0);
+            }, 1000.0 / 120.0);
             // SHOW IS RUNNING
             this.onUpdate();
         } else {
@@ -314,7 +310,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         var timerReset = (prevTime > this.currentTime);
 
         var that = this;
-        _.each(this.callbacks, function(callback) {
+        _.each(that.callbacks, function(callback) {
             callback(that.currentTime, that.msvPosition, timerReset);
         });
     };
@@ -388,7 +384,16 @@ LightStick.BeatTextEffect = function($el) {
     this.$el = $el.find("#beat");
 
     this.setText = function(effect) {
-        this.$el.text(effect["TEXT"]);
+        var text = effect["TEXT"]
+        this.$el.text(text);
+        console.log(text.length);
+        if (text.length == 1)
+            jQuery("#beat").fitText(0.1);
+        else if (text.length < 4)
+            jQuery("#beat").fitText(0.2);
+        else
+            jQuery("#beat").fitText(0.4);
+
         this.$el.show();
     };
 
@@ -408,7 +413,6 @@ LightStick.BeatTextEffect = function($el) {
 
 LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.$el = $el.find("#color");
-    this.$glowImage = $el.find("#glowImage");
     this.fadeTime = 0.0;
 
     this.updatesPerBeat = updatesPerBeat;
@@ -417,14 +421,11 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.currGreen = 0.0;
     this.currBlue = 0.0;
 
-
     this.max = 0.0;
     this.min = 0.0;
     this.interval = 0.0;
 
     this.setNewColor = function(colorEffect, FadeTime) {
-//        console.log(colorEffect["GLOW_MAX"], colorEffect["GLOW_MIN"], colorEffect["GLOW_INT"]);
-
         this.max = colorEffect["GLOW_MAX"];
         this.min = colorEffect["GLOW_MIN"];
         this.interval = colorEffect["GLOW_INT"];
@@ -440,8 +441,6 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         this.newRed = this.getRedFromHex(newColor);
         this.newGreen = this.getGreenFromHex(newColor);
         this.newBlue = this.getBlueFromHex(newColor);
-
-//        this.$el.find("#demo").text(this.numSteps);
 
         if (this.fadeTime == 0.0) {
             this.redColorDiff = 0.0;
@@ -482,13 +481,6 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
         } else {
             this.intensity = this.max;
         }
-
-//        if (this.intensity <= 0.00) {
-//            this.$glowImage.fadeOut(500);
-//            console.log("hide");
-//        } else {
-//            this.$glowImage.fadeIn(500);
-//        }
     };
 
     this.setScreenColor = function(r, g, b) {

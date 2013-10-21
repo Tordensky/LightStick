@@ -67,7 +67,8 @@ class FileCash():
             else:
                 f = open(APPLICATION_BASE_PATH + filename, 'rb')
                 data = f.read()
-                self.cache[filename] = data
+                # TODO ENABLE TO ADD CACHING!
+                #self.cache[filename] = data
                 return  data
 
 

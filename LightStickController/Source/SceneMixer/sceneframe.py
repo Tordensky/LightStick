@@ -108,7 +108,7 @@ class ColorEffect(Effect):
         self.__color = (1.0, 1.0, 1.0, 1.0)
 
         self.__glowMax = 1.0
-        self.__glowMin = 0.5
+        self.__glowMin = 0.0
         self.__glowInterval = 0.0
 
     def setGlowMin(self, value):

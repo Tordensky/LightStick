@@ -18,6 +18,8 @@ Config.set('graphics', 'width', '940')
 Config.set('graphics', 'height', '700')
 
 
+
+
 class WebTest(Widget):
     color = ListProperty([0, 0, 0, 0])
 
@@ -39,6 +41,8 @@ class WidgetScreen(Widget):
 
 
 class LightStickApp(App):
+    path = ""
+
     def build(self):
         return WidgetScreen()
 

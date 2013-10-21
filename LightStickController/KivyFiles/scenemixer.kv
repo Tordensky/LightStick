@@ -139,6 +139,13 @@
     sceneNumber: "0:0"
     totalSceneTime: 0.0
 
+    globalSceneTime: self.globalSceneTime
+    globalFadeTime: self.globalFadeTime
+    loopScenes: self.loopScenes
+    doNotClearEffectsOnNewFrame: self.doNotClearEffectsOnNewFrame
+
+
+
     size_hint_x: None
     size_hint_y: None
     height: 208
@@ -276,6 +283,7 @@
                             size: self.size
                             on_active: root.toggleGlobalSceneTime(args[1])
                             valign: "middle"
+                            active: root.globalSceneTime
                         Label:
                             size_hint: 0.85, 1
                             text: "SET GLOBAL SCENE TIME"
@@ -288,7 +296,7 @@
                             size_hint: 0.15, 1
                             size: self.size
                             on_active: root.toggleClearValuesOnNewScene(args[1])
-                            active: True
+                            active: root.doNotClearEffectsOnNewFrame
                             valign: "middle"
                         Label:
                             size_hint: 0.85, 1
@@ -303,6 +311,7 @@
                             size: self.size
                             on_active: root.toggleGlobalFadeTime(args[1])
                             valign: "middle"
+                            active: root.globalFadeTime
                         Label:
                             size_hint: 0.85, 1
                             text: "SET GLOBAL FADE TIME"
@@ -311,18 +320,21 @@
                             valign: "middle"
 
 
+
                     BoxLayout:
                         CheckBox:
                             size_hint: 0.15, 1
                             size: self.size
                             on_active: root.toggleLoopScenes(args[1])
                             valign: "middle"
+                            active: root.loopScenes
                         Label:
                             size_hint: 0.85, 1
                             text: "LOOP PLAYBACK"
                             text_size: self.size
                             font_size: self.height / 2
                             valign: "middle"
+
 
 
             # FILE HANDLING

@@ -2,22 +2,23 @@
 <html>
 <head>
     <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
-    <script type="text/javascript" src="/MsvClient/external/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="/MsvClient/external/jquery-ui.js"></script>
-    <script type="text/javascript" src="/MsvClient/external/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/jquery.fittext.js"></script>
     <script type="text/javascript" src="http://mcorp.no/lib/ext/jquery.cookie.js"></script>
-    <script type="text/javascript" src="/MsvClient/external/underscore.js"></script>
-    <script type="text/javascript" src="/MsvClient/external/backbone.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/underscore.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/external/backbone.js"></script>
 
     <script type="text/javascript" src="http://mcorp.no/lib/msv-1.4.js"></script>
     <script type="text/javascript" src="http://mcorp.no/lib/magic-1.1.js"></script>
 
-    <script type="text/javascript" src="/MsvClient/Application/Router/Router.js"></script>
-    <script type="text/javascript" src="/MsvClient/Application/Views/MainView.js"></script>
-    <script type="text/javascript" src="/MsvClient/Application/Models/CommandModel.js"></script>
-    <script type="text/javascript" src="/MsvClient/Application/application.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/Application/Router/Router.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/Application/Views/MainView.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/Application/Models/CommandModel.js"></script>
+    <script type="text/javascript" src="/static/MsvClient/Application/application.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/MsvClient/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/Backend/static/MsvClient/CSS/styles.css">
     <title>LIGHT STICK V1.4</title>
 
     <script type="text/javascript">
@@ -25,6 +26,7 @@
             var app = LightStick.Application;
             app.run();
         });
+
     </script>
 </head>
 
@@ -35,7 +37,7 @@
 
         <h1>LIGHT STICK CLIENT VERSION 1.2</h1>
         <div id="msv" class="info">test</div>
-        <div id="beat" class="info">BASS!</div>
+        <div id="beat" class="beat"></div>
 
         </div>
         <!--<div id="demo">BASS!</div>-->

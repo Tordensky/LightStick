@@ -3,7 +3,7 @@ import os
 import pprint
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import NumericProperty, StringProperty, ListProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
@@ -32,8 +32,13 @@ class SceneMixer(Widget, Serializable):
     # Properties for effects
     color = ListProperty((1.0, 1.0, 1.0, 1.0))
     glowMax = NumericProperty(100.0)
-    glowMin = NumericProperty(50.0)
+    glowMin = NumericProperty(0.0)
     glowInterval = NumericProperty(0.0)
+
+    globalSceneTime = BooleanProperty(False)
+    globalFadeTime = BooleanProperty(False)
+    loopScenes = BooleanProperty(True)
+    doNotClearEffectsOnNewFrame = BooleanProperty(True)
 
     text = StringProperty("")
 
@@ -42,13 +47,6 @@ class SceneMixer(Widget, Serializable):
     def __init__(self, **kwargs):
         super(SceneMixer, self).__init__(**kwargs)
         self.__frameHandler = FrameHandler()
-
-        self.__syncSceneAndFadeTime = False
-        self.__globalSceneTime = False
-        self.__globalFadeTime = False
-        self.__loopScenes = False
-
-        self.__dontClearEffects = True
 
         self.sceneTime = 0.0
         self.fadeTime = 0.0
@@ -120,7 +118,7 @@ class SceneMixer(Widget, Serializable):
         if self.currentTime >= self.sceneTime:
             atEnd = self.__frameHandler.isAtEndOfFrames()
             self.__playbackHandler.reset()
-            if atEnd and self.__loopScenes:
+            if atEnd and self.loopScenes:
                 self.gotoStartOfShow()
             elif atEnd:
                 self.startStopPlayback()
@@ -217,23 +215,19 @@ class SceneMixer(Widget, Serializable):
         self.__setDisplayValues(result)
         return result
 
-    def toggleSyncSceneAndFadeTime(self, value):
-        self.__syncSceneAndFadeTime = value
-        self.__updateSceneAndFadeTimes()
-
     def toggleClearValuesOnNewScene(self, value):
-        self.__dontClearEffects = value
+        self.doNotClearEffectsOnNewFrame = value
 
     def toggleGlobalSceneTime(self, value):
-        self.__globalSceneTime = value
+        self.globalSceneTime = value
         self.__updateSceneAndFadeTimes()
 
     def toggleGlobalFadeTime(self, value):
-        self.__globalFadeTime = value
+        self.globalFadeTime = value
         self.__updateSceneAndFadeTimes()
 
     def toggleLoopScenes(self, value):
-        self.__loopScenes = value
+        self.loopScenes = value
 
     # TODO RENAME OR REFACTOR
     def __setDisplayValues(self, currentFrameData):
@@ -255,17 +249,11 @@ class SceneMixer(Widget, Serializable):
     def __updateSceneAndFadeTimes(self):
         self.__updateCurrentFrame()
 
-        if self.__globalFadeTime:
+        if self.globalFadeTime:
             self.__setGlobalFadeTime()
 
-        if self.__globalSceneTime:
+        if self.globalSceneTime:
             self.__setGlobalSceneTime()
-
-        if self.__syncSceneAndFadeTime:
-            if not self.syncedIsSetTest:
-                self.__setSyncedFadeAndSceneTime()
-            else:
-                self.syncedIsSetTest = False
 
         self.totalSceneTime = self.__getTotalSceneTime()
 
@@ -276,12 +264,11 @@ class SceneMixer(Widget, Serializable):
                 self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
-        # TODO SET TO DEFAULT VALUES IN CONFIG
-        defText = str(self.text) if self.__dontClearEffects else ""
-        defColor = list(self.color) if self.__dontClearEffects else RGBA(0, 0, 0)
-        defMin = float(self.glowMin) if self.__dontClearEffects else 50.0
-        defMax = float(self.glowMax) if self.__dontClearEffects else 100.0
-        defInt = float(self.glowInterval) if self.__dontClearEffects else 0.0
+        defText = str(self.text) if self.doNotClearEffectsOnNewFrame else ""
+        defColor = list(self.color) if self.doNotClearEffectsOnNewFrame else RGBA(0, 0, 0)
+        defMin = float(self.glowMin) if self.doNotClearEffectsOnNewFrame else 0.0
+        defMax = float(self.glowMax) if self.doNotClearEffectsOnNewFrame else 100.0
+        defInt = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
 
         if self.__currentFrame is not None:
             # COLOR EFFECT
@@ -289,15 +276,23 @@ class SceneMixer(Widget, Serializable):
             colorEffect = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
             self.__isInFrameChange = True
             self.color = colorEffect.getKivyColor() if colorEffect is not None else defColor
+            self.on_color(None, self.color)
+
             self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else defMin
+            self.on_glowMin(None, self.glowMin)
+
             self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else defMax
+            self.on_glowMax(None, self.glowMax)
+
             self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else defInt
-            self.__isInFrameChange = False
+            self.on_glowInterval(None, self.glowInterval)
 
             # TEXT EFFECT
-            # TODO SET TEXT WIDGET OFF IF NOT SET
             textEffect = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
             self.text = textEffect.getText() if textEffect is not None else defText
+            self.on_text(None, self.text)
+
+            self.__isInFrameChange = False
 
     def __setGlobalSceneTime(self):
         self.__setSceneTimeForAllFrames(self.sceneTime)
@@ -390,6 +385,9 @@ class SceneMixer(Widget, Serializable):
         self.__resetPlayback()
         result = (self.__frameHandler.deleteAllFrames())
         self.__setDisplayValues(result)
+        self.globalFadeTime = False
+        self.globalSceneTime = False
+        self.doNotClearEffectsOnNewFrame = False
 
 
 class Popups():
