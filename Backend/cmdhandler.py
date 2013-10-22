@@ -1,5 +1,9 @@
+from collections import defaultdict
 import json
 import threading
+import time
+import math
+import thread
 from config import APPLICATION_BASE_PATH
 from libs.pymsv.msvclient.client import Client, Msv
 
@@ -41,7 +45,6 @@ class MsvController():
             print "MSV ERROR"
 
     def setMsvValue(self, value):
-        print "msv new value", value
         self.__update(value)
 
     def getCurrentMsvValue(self):
@@ -69,6 +72,54 @@ class FileCash():
                 data = f.read()
                 # TODO ENABLE TO ADD CACHING!
                 #self.cache[filename] = data
-                return  data
+                return data
+
+
+class Monitor():
+    def __init__(self):
+        self.logFileName = "log/cmdLogFile" + str(int(time.time())) + ".log"
+        self.dropBoxFileName = "B:/Dropbox/Privat/insomnialog/" + self.logFileName
+
+        self.heartbeats = 0
+        self.ids = defaultdict(int)
+
+        self.lock = threading.RLock()
+        self.writeLock = threading.RLock()
+
+        self.logInterval = 60000
+
+        headerLine = "STARTING SERVER: " + str(time.asctime()) + "\n" \
+                     "INTERVAL: " + str(self.logInterval) + "\n#####\n"
+        self.appendToFile(headerLine)
+
+        thread.start_new_thread(self.idLogger, ())
+
+    def addID(self, clientID):
+        with self.lock:
+            self.ids[clientID] += 1
+
+    def getIDsAndReset(self):
+        with self.lock:
+            ids = self.ids
+            self.ids = defaultdict(int)
+            return ids
+
+    def idLogger(self):
+        while True:
+            clients = self.getIDsAndReset()
+            logRecord = {"time": time.asctime(), "num clients": len(clients), "history": clients}
+            self.appendToFile(json.dumps(logRecord))
+            time.sleep(self.logInterval / 1000.0)
+
+    def appendToFile(self, line):
+        with self.writeLock:
+            with open(self.logFileName, "a") as stream:
+                stream.write(line + "\n")
+
+            with open(self.dropBoxFileName, "a") as stream:
+                stream.write(line + "\n")
+
+
+
 
 

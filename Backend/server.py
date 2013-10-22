@@ -1,5 +1,5 @@
-from config.serverconfig import APPLICATION_BASE_PATH, INDEX_HTML
-from cmdhandler import CommandHandler, MsvController, FileCash
+from cmdhandler import Monitor
+from cmdhandler import CommandHandler, FileCash
 import libs.web as web
 
 
@@ -14,18 +14,14 @@ class index:
     def GET(self):
         raise web.seeother('/static/MsvClient/Html/index.html')
 
-        # try:
-        #     f = open(APPLICATION_BASE_PATH + INDEX_HTML, 'r')
-        #     return f.read()
-        #
-        #
-        # except IOError, e:
-        #     print "ERROR", e
-        #     return
-
 
 class command:
     def GET(self):
+        params = web.input()
+
+        if "id" in params:
+            web.heartBeatMonitor.addID(params.id)
+
         return web.cmdHandler.getCommand()
 
     def POST(self):
@@ -47,6 +43,7 @@ class files:
 
 if __name__ == "__main__":
     web.cmdHandler = CommandHandler()
+    web.heartBeatMonitor = Monitor()
     web.cache = FileCash()
     app = web.application(urls, globals())
     app.run()

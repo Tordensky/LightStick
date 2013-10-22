@@ -20,6 +20,16 @@ LightStick.MainView = Backbone.View.extend({
             that.pullMsvReady()
         });
         this.currentMsvMsgNum = 0;
+
+        this.myID = null;
+        var cookie = $.cookie('my_id');
+
+        if (cookie == undefined) {
+            this.myID = uuid.v4();
+            $.cookie('my_id', String(this.myID), { expires: 365, path: '/' });
+        } else {
+            this.myID = $.cookie('my_id');
+        }
     },
 
     initEvents: function() {
@@ -41,14 +51,12 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     pullMsvReady: function() {
-        console.log("msvPullReady", this.pullNotificationMsv.getCurrentMsvTime());
-        this.currentMsvMsgNum = -1;//this.pullNotificationMsv.getCurrentMsvTime();
-        //this.updateModels();
+        this.currentMsvMsgNum = -1;
         var that = this;
         setInterval(function(){
             var currentMsgNum = that.pullNotificationMsv.getCurrentMsvTime();
             if (that.currentMsvMsgNum != currentMsgNum) {
-                console.log("NEW SHOW");
+                console.log("NOTIFICATION OF NEW SHOW");
                 that.updateModels();
                 that.currentMsvMsgNum = currentMsgNum;
             }
@@ -60,14 +68,17 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     updateModels: function () {
-        this.commandModel.fetch();
+        this.commandModel.fetch({data: {id: this.myID}});
     },
 
     startUpdateTimer: function() {
+        var heartbeatLongPollTime = 10000;
+
+
         var that = this;
         setInterval(function(){
             that.updateModels();
-        }, 10000);
+        }, heartbeatLongPollTime);
     },
 
     handleCommand: function() {
@@ -103,7 +114,6 @@ LightStick.PlayBack = function() {
         // Effects
         this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
         this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
-        this.strobeEffect = new LightStick.StrobeEffect(this.$el);
     };
 
     this.initPlaybackTimer = function(readyCB, updatesPerBeat) {
@@ -386,7 +396,6 @@ LightStick.BeatTextEffect = function($el) {
     this.setText = function(effect) {
         var text = effect["TEXT"]
         this.$el.text(text);
-        console.log(text.length);
         if (text.length == 1)
             jQuery("#beat").fitText(0.1);
         else if (text.length < 4)
