@@ -1,9 +1,12 @@
 from collections import defaultdict
 import json
+import random
 import threading
 import time
-import math
 import thread
+import math
+from randomshow import RandomShow
+from config import serverconfig
 from config import APPLICATION_BASE_PATH
 from libs.pymsv.msvclient.client import Client, Msv
 
@@ -14,27 +17,54 @@ class CommandHandler():
         self.command = {}
         self.lock = threading.RLock()
 
-        self.msvController = MsvController()
-        self.messageNum = self.msvController.getCurrentMsvValue()
-        print self.messageNum
+        self.msvMsgIdController = MsvController("t0.mcorp.no:8091", 22)
+        self.msvPlaybackController = MsvController("t0.mcorp.no:8091", 18)
+        self.messageNum = self.msvMsgIdController.getCurrentMsvValue()
+
+        self.isInRandomMode = True
+        self.randomFileHelper = RandomShow()
+        self.startRandomMode()
+
+    def startRandomMode(self):
+        self.isInRandomMode = True
+        thread.start_new_thread(self.randomHandler, ())
+
+    def endRandomMode(self):
+        self.isInRandomMode = False
 
     def setCommand(self, data):
         self.messageNum += 1
         with self.lock:
-            self.command = json.loads(data)
-            self.msvController.setMsvValue(self.messageNum)
+            self.command = data
+            self.msvMsgIdController.setMsvValue(self.messageNum)
 
     def getCommand(self):
         self.message = {"cmdNum": self.messageNum, "data": self.command}
         return json.dumps(self.message)
 
+    def randomHandler(self):
+        while self.isInRandomMode:
+            newShow = self.randomFileHelper.getRandomShow()
+            timeStamp = int(math.floor(self.msvPlaybackController.getCurrentMsvValue()))
+            timeStamp += serverconfig.RANDOM_START_DELAY
+
+            newShow["MSV_TIME"] = timeStamp
+
+            self.setCommand(newShow)
+
+            randomInterval = random.randrange(serverconfig.RANDOM_INTERVAL_SEC_MIN,
+                                              serverconfig.RANDOM_INTERVAL_SEC_MAX)
+            time.sleep(randomInterval)
+
 
 class MsvController():
-    HOST = "t0.mcorp.no:8091"
-    MSVID = 22
-
-    def __init__(self):
+    def __init__(self, host, msvid):
         print "INITALIZE MSV"
+
+        #self.HOST = "t0.mcorp.no:8091"
+        self.HOST = host
+        #self.MSVID = 22
+        self.MSVID = msvid
 
         try:
             self._client = Client(self.HOST)

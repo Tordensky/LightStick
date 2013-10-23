@@ -1,3 +1,4 @@
+import json
 from cmdhandler import Monitor
 from cmdhandler import CommandHandler, FileCash
 import libs.web as web
@@ -25,7 +26,7 @@ class command:
         return web.cmdHandler.getCommand()
 
     def POST(self):
-        web.cmdHandler.setCommand(web.data())
+        web.cmdHandler.setCommand(json.loads(web.data()))
         return
 
 
