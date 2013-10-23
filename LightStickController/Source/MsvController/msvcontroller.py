@@ -22,7 +22,7 @@ Builder.load_file(os.getenv("FILE_PATH") + "/msvcontroller.kv")
 
 
 class SimpleMsvController(Widget, EventDispatcher):
-    HOST = "mcorp.no:8091"
+    HOST = "t0.mcorp.no:8091"
     MSVID = 18
 
     msvVelocity = NumericProperty(0.0)

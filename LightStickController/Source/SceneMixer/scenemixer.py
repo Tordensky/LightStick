@@ -70,32 +70,36 @@ class SceneMixer(Widget, Serializable):
         self.__playbackHandler.setBpm(args[1])
 
     def on_color(self, obj, color):
-        self.__setColorEffect()
+        self.__beforeSetEffect()
+        self.__setColorEffect(self.__currentFrame)
 
     def on_text(self, obj, text):
-        self.__setTextEffect(text)
+        self.__beforeSetEffect()
+        self.__setTextEffect(self.__currentFrame, text)
 
     def on_glowMax(self, obj, value):
-        self.__setColorEffect()
+        self.__beforeSetEffect()
+        self.__setColorEffect(self.__currentFrame)
 
     def on_glowMin(self, obj, value):
-        self.__setColorEffect()
+        self.__beforeSetEffect()
+        self.__setColorEffect(self.__currentFrame)
 
     def on_glowInterval(self, obj, value):
-        self.__setColorEffect()
+        self.__beforeSetEffect()
+        self.__setColorEffect(self.__currentFrame)
 
     def __beforeSetEffect(self):
         if self.__currentFrame is None:
             self.addScene()
 
     # COLOR EFFECT
-    def __setColorEffect(self):
+    def __setColorEffect(self, frame=None):
         if not self.__isInFrameChange:
-            self.__beforeSetEffect()
-            colorEffectObj = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
+            colorEffectObj = frame.getEffect(EffectNames.COLOR_EFFECT)
             if colorEffectObj is None:
                 colorEffectObj = ColorEffect()
-                self.__currentFrame.addEffect(colorEffectObj)
+                frame.addEffect(colorEffectObj)
 
             colorEffectObj.setKivyColor(self.color)
             colorEffectObj.setGlowMax(self.glowMax)
@@ -103,12 +107,11 @@ class SceneMixer(Widget, Serializable):
             colorEffectObj.setGlowInterval(self.glowInterval)
 
     # TEXT EFFECT
-    def __setTextEffect(self, text):
-        self.__beforeSetEffect()
-        textEffectObj = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
+    def __setTextEffect(self, frame, text):
+        textEffectObj = frame.getEffect(EffectNames.TEXT_EFFECT)
         if textEffectObj is None:
             textEffectObj = TextEffect()
-            self.__currentFrame.addEffect(textEffectObj)
+            frame.addEffect(textEffectObj)
 
         textEffectObj.setText(text)
 
@@ -171,6 +174,11 @@ class SceneMixer(Widget, Serializable):
         sceneFrame = SceneFrame()
         sceneFrame.setSceneTime(self.sceneTime)
         sceneFrame.setFadeTime(self.fadeTime)
+
+        if self.doNotClearEffectsOnNewFrame:
+            self.__setColorEffect(sceneFrame)
+            self.__setTextEffect(sceneFrame, self.text)
+
         return sceneFrame
 
     def startStopPlayback(self, *args):
@@ -275,21 +283,21 @@ class SceneMixer(Widget, Serializable):
             # TODO SET COLOR WIDGET OFF IF NOT SET
             colorEffect = self.__currentFrame.getEffect(EffectNames.COLOR_EFFECT)
             self.__isInFrameChange = True
-            self.color = colorEffect.getKivyColor() if colorEffect is not None else defColor
+            self.color = colorEffect.getKivyColor() if colorEffect is not None else RGBA(0, 0, 0)
             self.on_color(None, self.color)
 
-            self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else defMin
+            self.glowMin = colorEffect.getGlowMin() if colorEffect is not None else 0.0
             self.on_glowMin(None, self.glowMin)
 
-            self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else defMax
+            self.glowMax = colorEffect.getGlowMax() if colorEffect is not None else 100.0
             self.on_glowMax(None, self.glowMax)
 
-            self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else defInt
+            self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else 0.0
             self.on_glowInterval(None, self.glowInterval)
 
             # TEXT EFFECT
             textEffect = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
-            self.text = textEffect.getText() if textEffect is not None else defText
+            self.text = textEffect.getText() if textEffect is not None else ""
             self.on_text(None, self.text)
 
             self.__isInFrameChange = False

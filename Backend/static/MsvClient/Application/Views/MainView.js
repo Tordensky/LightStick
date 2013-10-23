@@ -36,9 +36,9 @@ LightStick.MainView = Backbone.View.extend({
         this.commandModel.on("change:cmdNum", this.handleCommand, this);
 
         // RELOAD TO CLEAN THINGS UP EVERY TEN MINUTE
-        setInterval(function(){
-            location.reload();
-        }, 600000);
+        ///setInterval(function(){
+        //    location.reload();
+        //}, 6000000);
     },
 
     initPlayback: function() {
@@ -155,35 +155,29 @@ LightStick.PlayBack = function() {
         } catch (TypeError) {
             console.log("No frame");
         }
-
     };
 
     this.onFrameChange = function(frame) {
         this.currentFrame = frame;
 
-        var sceneTime = frame["SCENE_TIME"];
+        //var sceneTime = frame["SCENE_TIME"];
         var fadeTime = frame["FADE_TIME"];
 
-        var that = this;
+        // SET COLOR EFFECT
+        var newColorEffect = _.findWhere(this.currentFrame["EFFECTS"], {FX_NAME: "COLOR"});
+        if (newColorEffect != undefined) {
+            this.colorEffect.setNewColor(newColorEffect, fadeTime);
+        } else {
+            this.colorEffect.clearColorEffect();
+        }
 
-        // TODO Refactor to set each effect
-        _.each(this.currentFrame["EFFECTS"], function(effect) {
-            var fxName = effect["FX_NAME"];
-
-            // COLOR EFFECT
-            if (fxName == "COLOR") {
-                that.colorEffect.setNewColor(effect, fadeTime);
-            }
-
-            // TEXT EFFECT
-            if (fxName == "TEXT") {
-                that.beatTextEffect.setText(effect);
-            } else {
-                that.beatTextEffect.clearEffect();
-            }
-
-            // TODO STROBE EFFECT
-        });
+        // SET TEXT EFFECT
+        var newTextEffect = _.findWhere(this.currentFrame["EFFECTS"], {FX_NAME: "TEXT"});
+        if (newTextEffect != undefined) {
+            this.beatTextEffect.setText(newTextEffect);
+        } else {
+            this.beatTextEffect.clearEffect();
+        }
     };
 
     this.setNewSceneShow = function(sceneShow) {
@@ -247,7 +241,7 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     this.currentTime = 0.0;
 
     this.init = function(readyCallback) {
-        this.msvClient = new LightStick.MsvClient(18, "msv://mcorp.no:8091/");
+        this.msvClient = new LightStick.MsvClient(18, "msv://t0.mcorp.no:8091/");
 
         var that = this;
         this.msvClient.init(function() {
@@ -391,17 +385,20 @@ LightStick.StrobeEffect = function($el) {
 
 // EFFECTS ! ! ! TODO extract to its own file
 LightStick.BeatTextEffect = function($el) {
-    this.$el = $el.find("#beat");
+    this.$el = $el.find("#text");
+    this.$holder = $el;
 
     this.setText = function(effect) {
-        var text = effect["TEXT"]
+        var text = effect["TEXT"];
         this.$el.text(text);
-        if (text.length == 1)
-            jQuery("#beat").fitText(0.1);
-        else if (text.length < 4)
-            jQuery("#beat").fitText(0.2);
-        else
-            jQuery("#beat").fitText(0.4);
+
+        this.$el.fitText(Math.min(0.1 * text.length, 0.5), {maxFontSize: this.$holder.height()});
+
+        this.$el.position({
+            my: "center center",
+            at: "center center",
+            of: this.$holder
+        });
 
         this.$el.show();
     };
@@ -433,6 +430,10 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.max = 0.0;
     this.min = 0.0;
     this.interval = 0.0;
+
+    this.clearColorEffect = function(){
+        this.setNewColor({GLOW_MAX: 100, GLOW_MIN: 0, GLOW_INT: 0, COLOR_HEX: "#000000"}, 0)
+    };
 
     this.setNewColor = function(colorEffect, FadeTime) {
         this.max = colorEffect["GLOW_MAX"];

@@ -33,7 +33,7 @@ class SceneFrame(Serializable):
 
     def setFadeTime(self, fadeTime):
         if self.__fadeTime > self.__sceneTime:
-            self.__sceneTime = self.__fadeTime
+            self.__sceneTime = float(self.__fadeTime)
         self.__fadeTime = float(fadeTime)
 
     def getSceneTime(self):

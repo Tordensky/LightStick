@@ -29,16 +29,16 @@ class command:
         return
 
 
-class files:
-    def GET(self, filename):
-        try:
-            #f = open(APPLICATION_BASE_PATH + filename, 'rb')
-            #return f.read()
-
-            return web.cache.getFile(filename)
-        except IOError, e:
-            print "ERROR", e
-            return
+# class files:
+#     def GET(self, filename):
+#         try:
+#             #f = open(APPLICATION_BASE_PATH + filename, 'rb')
+#             #return f.read()
+#
+#             return web.cache.getFile(filename)
+#         except IOError, e:
+#             print "ERROR", e
+#             return
 
 
 if __name__ == "__main__":

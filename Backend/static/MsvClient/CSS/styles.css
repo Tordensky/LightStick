@@ -6,7 +6,7 @@ html, body {
     padding: 0;
     margin: 0;
     font-size: 12px;
-    width: auto;
+    width: 100%;
     height: 100%;
     background-color: black;
     font-family: Helvetica, monospace;
@@ -22,14 +22,13 @@ h1 {
     margin: 0;
     width: 100%;
     height: 100%;
-    text-align: center;
-    vertical-align: middle;
 
     background-color: black;
     position: absolute;
     top: 0;
     left: 0;
 }
+
 .color-effect {
     position: absolute;
     top: 0;
@@ -48,7 +47,7 @@ h1 {
     color: white;
 }
 
-.strobe {
+.blackfade {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,47 +87,31 @@ h1 {
     background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.2) 0%,rgba(254,254,254,0.2) 1%,rgba(172,171,172,0) 75%,rgba(146,144,146,0) 99%); /* IE10+ */
     background: radial-gradient(ellipse at center,  rgba(255,255,255,0.2) 0%,rgba(254,254,254,0.2) 1%,rgba(172,171,172,0) 75%,rgba(146,144,146,0) 99%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#00929092',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
 }
 
-.image {
-    position: fixed;
-    top: 0;
-    left: 0;
-
+.text {
     width: 100%;
-    height: 100%;
-
-}
-
-.hiddenimage {
-    display: none;
-}
-
-.beat {
-    width: 100%;
-    position: absolute;
-    bottom: auto;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
     overflow: hidden;
     z-index: 1;
 
     color: #f4f1de;
     font: 220px "anchor-web-1","anchor-web-2", 'Impact', sans-serif;
     font-weight: 900;
-    display: block;
-    margin: 0 auto;
     line-height: 1;
-    width: 100%;
-    text-shadow: #000000 .01em .01em 0,
-    #000000 .02em .02em 0,
-    #000000 .03em .03em 0,
-    #000000 .04em .04em 0,
-    #000000 .05em .05em 0,
-    #000000 .06em .06em 0,
-    #000000 .07em .07em 0,
-    #000000 .08em .08em 0,
-    #000000 .09em .09em 0,
-    #000000 .1em .1em 0;
+
+    /*text-shadow: #000000 .01em .01em 0,*/
+    /*#000000 .02em .02em 0,*/
+    /*#000000 .03em .03em 0,*/
+    /*#000000 .04em .04em 0,*/
+    /*#000000 .05em .05em 0,*/
+    /*#000000 .06em .06em 0,*/
+    /*#000000 .07em .07em 0,*/
+    /*#000000 .08em .08em 0,*/
+    /*#000000 .09em .09em 0,*/
+    /*#000000 .1em .1em 0;*/
 
 }
 
