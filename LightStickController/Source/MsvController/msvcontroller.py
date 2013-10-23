@@ -43,7 +43,7 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.__set_new_bpm = False
 
         self.bpm = defaultdict(float)
-        self.httpClient = HttpClient("localhost", 8080)
+        self.httpClient = HttpClient("129.242.22.10", 8080)
 
         try:
             self._stop_event = threading.Event()
