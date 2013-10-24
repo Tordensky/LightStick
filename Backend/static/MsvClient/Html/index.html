@@ -28,11 +28,22 @@
             app.run();
         });
 
+        onPress = function(){
+            $("#share-me").show();
+            $("#share-but").hide();
+        };
+
+        hideShare = function(){
+            $("#share-me").hide();
+            $("#share-but").show();
+        }
+
     </script>
 </head>
 
 <body>
     <div id="app">
+        <!--SITE IS ALIVE-->
         <!--<div id="color" class="color-effect"></div>-->
         <div id="color" class="color-effect"></div>
 
@@ -45,5 +56,17 @@
         <!--<div class="blackfade"></div>-->
         <div id="glowImage" class="middle"></div>
     </div>
+
+    <div id="share-me" class="share-me" onmousedown="hideShare()">
+        <div class="share-me-text">SHARE ME!</div>
+
+        <img src="http://bitly.com/lightstick13.qrcode" class="share-me-qr">
+
+        <div class="share-me-link">bit.ly/lightstick13</div>
+
+        <div class="close-me-link">close</div>
+    </div>
+
+    <a href="#" onmousedown="onPress();" class="share-button" id="share-but">SHARE ME!</a>
 </body>
 </html>

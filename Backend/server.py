@@ -6,8 +6,7 @@ import libs.web as web
 
 urls = (
     '/', 'index',
-    '/command', 'command',
-    '/(.*)', 'files'
+    '/command', 'command'
 )
 
 
@@ -45,7 +44,7 @@ class command:
 if __name__ == "__main__":
     web.cmdHandler = CommandHandler()
     web.heartBeatMonitor = Monitor()
-    web.cache = FileCash()
+    #web.cache = FileCash()
     app = web.application(urls, globals())
     app.run()
 

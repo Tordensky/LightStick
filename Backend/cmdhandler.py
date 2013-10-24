@@ -23,7 +23,10 @@ class CommandHandler():
 
         self.isInRandomMode = True
         self.randomFileHelper = RandomShow()
+
+        self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER
         self.startRandomMode()
+
 
     def startRandomMode(self):
         self.isInRandomMode = True
@@ -32,7 +35,11 @@ class CommandHandler():
     def endRandomMode(self):
         self.isInRandomMode = False
 
-    def setCommand(self, data):
+    def setCommand(self, data, fromServer=True):
+        if fromServer:
+            self.isInRandomMode = False
+            self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER
+
         self.messageNum += 1
         with self.lock:
             self.command = data
@@ -43,18 +50,25 @@ class CommandHandler():
         return json.dumps(self.message)
 
     def randomHandler(self):
-        while self.isInRandomMode:
-            newShow = self.randomFileHelper.getRandomShow()
-            timeStamp = int(math.floor(self.msvPlaybackController.getCurrentMsvValue()))
-            timeStamp += serverconfig.RANDOM_START_DELAY
+        while True:
+            while self.isInRandomMode:
+                newShow = self.randomFileHelper.getRandomShow()
+                timeStamp = int(math.floor(self.msvPlaybackController.getCurrentMsvValue()))
+                timeStamp += serverconfig.RANDOM_START_DELAY
 
-            newShow["MSV_TIME"] = timeStamp
+                newShow["MSV_TIME"] = timeStamp
 
-            self.setCommand(newShow)
+                self.setCommand(newShow, fromServer=False)
 
-            randomInterval = random.randrange(serverconfig.RANDOM_INTERVAL_SEC_MIN,
-                                              serverconfig.RANDOM_INTERVAL_SEC_MAX)
-            time.sleep(randomInterval)
+                randomInterval = random.randrange(serverconfig.RANDOM_INTERVAL_SEC_MIN,
+                                                  serverconfig.RANDOM_INTERVAL_SEC_MAX)
+                time.sleep(randomInterval)
+
+            while not self.isInRandomMode:
+                time.sleep(5)
+                self.resetCounter -= 5
+                if self.resetCounter <= 0:
+                    self.isInRandomMode = True
 
 
 class MsvController():
