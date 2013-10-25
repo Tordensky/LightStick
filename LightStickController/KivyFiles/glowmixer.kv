@@ -10,6 +10,7 @@
     max: 100.0
     min: 0.0
     interval: 0.0
+    offset: False
 
     on_max: minSlider.value = maxSlider.value if maxSlider.value < minSlider.value else minSlider.value
     on_min: maxSlider.value = minSlider.value if minSlider.value > maxSlider.value else maxSlider.value
@@ -72,3 +73,33 @@
                 name: "MAX"
                 value: root.max
                 on_value: root.max = args[1]
+
+
+        BoxLayout:
+            padding: Sizes.WIDGET_BORDER
+            spacing: Sizes.WIDGET_SPACING
+
+            size_hint_x: 1
+            size_hint_y: None
+            height: 22
+
+            canvas:
+                Color:
+                    rgba: Colors.WIDGET_BACKGROUND_LIGHT
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            CheckBox:
+                size_hint: 0.15, 1
+                size: self.size
+                on_active: root.offset = args[1]
+                valign: "middle"
+                active: root.offset
+            Label:
+                size_hint: 0.85, 1
+                text: "OFFSET GLOW"
+                text_size: self.size
+                font_size: self.height / 2
+                valign: "middle"
+

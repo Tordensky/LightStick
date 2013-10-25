@@ -8,25 +8,24 @@ LightStick.MainView = Backbone.View.extend({
         this.initEvents();
         this.startUpdateTimer();
 
-        this.showFrames = null;
+        this.frameList = null;
 
         this.playback = null;
         this.initPlayback();
 
+        // HANDLE INCOMING NOTIFICATIONS OF NEW SHOWS
         this.pullNotificationMsv = new LightStick.MsvClient(22, "msv://t0.mcorp.no:8091/");
-
         var that = this;
         this.pullNotificationMsv.init(function() {
             that.pullMsvReady()
         });
-        this.currentMsvMsgNum = 0;
 
+        // GENERATE UNIQUE ID FOR USER
         this.myID = null;
         var cookie = $.cookie('my_id');
-
         if (cookie == undefined) {
             this.myID = uuid.v4();
-            $.cookie('my_id', String(this.myID), { expires: 365, path: '/' });
+            $.cookie('my_id', String(this.myID), {expires: 365, path: "/"});
         } else {
             this.myID = $.cookie('my_id');
         }
@@ -34,11 +33,6 @@ LightStick.MainView = Backbone.View.extend({
 
     initEvents: function() {
         this.commandModel.on("change:cmdNum", this.handleCommand, this);
-
-        // RELOAD TO CLEAN THINGS UP EVERY TEN MINUTE
-        ///setInterval(function(){
-        //    location.reload();
-        //}, 6000000);
     },
 
     initPlayback: function() {
@@ -51,16 +45,11 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     pullMsvReady: function() {
-        this.currentMsvMsgNum = -1;
         var that = this;
-        setInterval(function(){
-            var currentMsgNum = that.pullNotificationMsv.getCurrentMsvTime();
-            if (that.currentMsvMsgNum != currentMsgNum) {
-                console.log("NOTIFICATION OF NEW SHOW");
-                that.updateModels();
-                that.currentMsvMsgNum = currentMsgNum;
-            }
-        }, 1000 / 50.0);
+        this.pullNotificationMsv.add_update_handler(function(){
+            that.updateModels();
+            console.log("NOTIFICATION OF NEW SHOW");
+        });
     },
 
     playbackReadyCallback: function() {
@@ -74,7 +63,6 @@ LightStick.MainView = Backbone.View.extend({
     startUpdateTimer: function() {
         var heartbeatLongPollTime = 10000;
 
-
         var that = this;
         setInterval(function(){
             that.updateModels();
@@ -82,14 +70,13 @@ LightStick.MainView = Backbone.View.extend({
     },
 
     handleCommand: function() {
-        this.showFrames = this.commandModel.get("FRAME_LIST");
+        this.frameList = this.commandModel.get("FRAME_LIST");
         var message = this.commandModel.get("data");
-
         this.playback.setNewSceneShow(message);
     },
 
     render: function() {
-       //this.$el.html("<h1>Render OK</h1>");
+       // RENDER FUNCTION FOR BACKBONE VIEW
        return this;
     }
 });
@@ -101,17 +88,16 @@ LightStick.PlayBack = function() {
         this.playbackTimer = null;
         this.initPlaybackTimer(readyCB, this.updatesPerBeat);
 
-        this.showFrames = null;
+        this.frameList = null;
         this.currentFrame = null;
         this.msvTime = 0.0;
 
-        this.nextSceneShow = null;
+        this.nextShow = null;
 
         this.initEffects();
     };
 
     this.initEffects = function() {
-        // Effects
         this.beatTextEffect = new LightStick.BeatTextEffect(this.$el);
         this.colorEffect = new LightStick.ColorEffect(this.$el, this.updatesPerBeat);
     };
@@ -141,8 +127,8 @@ LightStick.PlayBack = function() {
         var currentFrameTime;
         var frame = this.getCurrentFrame(currentTime);
 
-        if (this.nextSceneShow != null) {
-            this.setNewSceneShow(this.nextSceneShow);
+        if (this.nextShow != null) {
+            this.setNewSceneShow(this.nextShow);
         }
 
         try {
@@ -160,7 +146,6 @@ LightStick.PlayBack = function() {
     this.onFrameChange = function(frame) {
         this.currentFrame = frame;
 
-        //var sceneTime = frame["SCENE_TIME"];
         var fadeTime = frame["FADE_TIME"];
 
         // SET COLOR EFFECT
@@ -183,16 +168,19 @@ LightStick.PlayBack = function() {
     this.setNewSceneShow = function(sceneShow) {
         var showStartTime = sceneShow["MSV_TIME"];
 
+        // TRIGGER NEW SCENE SHOW
         if (showStartTime < this.msvTime) {
-            this.nextSceneShow = null;
-            this.triggerNewSceneShow(sceneShow);
+            this.nextShow = null;
+            this.triggerNewShow(sceneShow);
+
+        // WAIT FOR START TIME TO TRIGGER SHOW
         } else {
-            this.nextSceneShow = sceneShow;
+            this.nextShow = sceneShow;
         }
     };
 
-    this.triggerNewSceneShow = function(sceneShow) {
-        this.showFrames = sceneShow["FRAME_LIST"];
+    this.triggerNewShow = function(sceneShow) {
+        this.frameList = sceneShow["FRAME_LIST"];
 
         var showStartTime = sceneShow["MSV_TIME"];
         this.playbackTimer.setPlaybackStartTime(showStartTime);
@@ -211,10 +199,9 @@ LightStick.PlayBack = function() {
 
     this.getCurrentFrame = function(currentTime) {
         // TODO fix offset so do not need to iter trough prev frames if time is higher than before
-
         var frameShowTime = 0.0;
 
-        return _.find(this.showFrames, function(scene){
+        return _.find(this.frameList, function(scene){
             var currentFrameTime = currentTime - frameShowTime;
             frameShowTime += scene["SCENE_TIME"];
             if (frameShowTime > currentTime) {
@@ -227,18 +214,18 @@ LightStick.PlayBack = function() {
 
 
 LightStick.PlayBackTimer = function(updatesPerBeat) {
-    this.bpm = 60.0;
     this.updatesPerBeat = 1.0 / (typeof updatesPerBeat !== 'undefined' ? updatesPerBeat : 10);
 
-    this.msvPosition = 0.0;
     this.timer = null;
+    this.msvPosition = 0.0;
 
+    this.currentTime = 0.0;
     this.playbackStartTime = 0.0;
     this.playbackLength = 0.0;
 
     this.callbacks = [];
 
-    this.currentTime = 0.0;
+    this.FPS = 24.0;
 
     this.init = function(readyCallback) {
         this.msvClient = new LightStick.MsvClient(18, "msv://t0.mcorp.no:8091/");
@@ -263,7 +250,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
     };
 
     this.updateFromMsv = function() {
-        this.bpm = 60.0 * this.msvClient.getCurrentMsvVelocity();
         this.msvPosition = this.msvClient.getCurrentMsvTime();
     };
 
@@ -275,27 +261,17 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
         this.scheduleNextUpdate();
     };
 
-    // should not be used
     this.stop = function() {
         this.unScheduleNextUpdate();
     };
 
     this.scheduleNextUpdate = function() {
+        this.onUpdate();
 
         var that = this;
-        this.unScheduleNextUpdate();
-        if (this.bpm > 0.0) {
-            this.timer = setTimeout(function() {
-                that.scheduleNextUpdate();
-            }, 1000.0 / 120.0);
-            // SHOW IS RUNNING
-            this.onUpdate();
-        } else {
-            // BPM IS ZERO AND THE SHOW IS PAUSED, CHECK FOR UPDATES IN BPM each 100ms
-            setTimeout(function() {
-                that.scheduleNextUpdate();
-            }, 100);
-        }
+        this.timer = setTimeout(function() {
+            that.scheduleNextUpdate();
+        }, 1000.0 / this.FPS);
     };
 
     this.unScheduleNextUpdate = function() {
@@ -322,7 +298,6 @@ LightStick.PlayBackTimer = function(updatesPerBeat) {
 
 
 LightStick.MsvClient = function(id, host) {
-    this.ds = null;
     this.msv = null;
     this.id = id;
     this.host = host;
@@ -343,12 +318,16 @@ LightStick.MsvClient = function(id, host) {
             });
     };
 
+    this.add_update_handler = function (callback){
+        this.msv.add_update_handler(callback);
+    };
+
     this.msvErrorHandler = function ()  {
         alert("Failed to load MSV");
     };
 
     this.msvReadyHandler = function () {
-        //console.log('MSV ready: ', this.getCurrentMsvTime());
+        console.log('MSV ready:');
     };
 
     this.getCurrentMsvTime = function () {
@@ -361,24 +340,6 @@ LightStick.MsvClient = function(id, host) {
 
     this.getCurrentMsvAcceleration = function () {
         return this.msv.query()[MSV.A];
-    };
-};
-
-
-LightStick.StrobeEffect = function($el) {
-    this.$el = $el.find("#strobe");
-
-    this.onUpdate = function(isWholeBeat) {
-        if (isWholeBeat)
-            this.flash();
-    };
-
-    this.flash = function() {
-        this.$el.show();
-        var that = this;
-        setTimeout(function(){
-            that.$el.hide();
-        }, 100);
     };
 };
 
@@ -399,21 +360,12 @@ LightStick.BeatTextEffect = function($el) {
             at: "center center",
             of: this.$holder
         });
-
         this.$el.show();
     };
 
     this.clearEffect = function() {
-        this.$el.text("")
+        this.$el.text("");
     };
-
-    this.flash = function() {
-        this.$el.show();
-        var that = this;
-        setTimeout(function(){
-            that.$el.hide();
-        }, 100);
-    }
 };
 
 
@@ -427,18 +379,24 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
     this.currGreen = 0.0;
     this.currBlue = 0.0;
 
-    this.max = 0.0;
-    this.min = 0.0;
+    this.glowMax = 0.0;
+    this.glowMin = 0.0;
     this.interval = 0.0;
 
+
+    var offsets = [0.0, 0.25, 0.5, 0.75];
+    this.glowOffset = offsets[Math.floor(Math.random() * offsets.length)];
+    console.log("glowOffset: ", this.glowOffset);
+
     this.clearColorEffect = function(){
-        this.setNewColor({GLOW_MAX: 100, GLOW_MIN: 0, GLOW_INT: 0, COLOR_HEX: "#000000"}, 0)
+        this.setNewColor({GLOW_MAX: 100, GLOW_MIN: 0, GLOW_INT: 0, COLOR_HEX: "#000000", GLOW_OFFSET: false}, 0)
     };
 
     this.setNewColor = function(colorEffect, FadeTime) {
-        this.max = colorEffect["GLOW_MAX"];
-        this.min = colorEffect["GLOW_MIN"];
+        this.glowMax = colorEffect["GLOW_MAX"];
+        this.glowMin = colorEffect["GLOW_MIN"];
         this.interval = colorEffect["GLOW_INT"];
+        this.offsetGlow = colorEffect["GLOW_OFFSET"];
 
         this.fadeTime = FadeTime;
 
@@ -483,13 +441,18 @@ LightStick.ColorEffect = function($el, updatesPerBeat)  {
 
     this.intensityUpdate = function(currentFrameTime){
         if (this.interval > 0.0) {
+            // ADD GLOW OFFSET
+            if (this.offsetGlow){
+                currentFrameTime += this.interval * this.glowOffset;
+            }
+
             var pos = (currentFrameTime % this.interval) / (this.interval / 2.0);
             if (pos > 1.0) {
                 pos = 2.0 - pos;
             }
-            this.intensity = this.min + (this.max - this.min) * pos;
+            this.intensity = this.glowMin + (this.glowMax - this.glowMin) * pos;
         } else {
-            this.intensity = this.max;
+            this.intensity = this.glowMax;
         }
     };
 

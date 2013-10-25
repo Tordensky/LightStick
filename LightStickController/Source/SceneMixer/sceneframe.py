@@ -110,6 +110,7 @@ class ColorEffect(Effect):
         self.__glowMax = 1.0
         self.__glowMin = 0.0
         self.__glowInterval = 0.0
+        self.__glowOffset = False
 
     def setGlowMin(self, value):
         self.__glowMin = value
@@ -120,6 +121,9 @@ class ColorEffect(Effect):
     def setGlowInterval(self, value):
         self.__glowInterval = value
 
+    def setGlowOffset(self, value):
+        self.__glowOffset = value
+
     def getGlowMin(self):
         return self.__glowMin
 
@@ -128,6 +132,9 @@ class ColorEffect(Effect):
 
     def getGlowInterval(self):
         return self.__glowInterval
+
+    def getGlowOffset(self):
+        return self.__glowOffset
 
     def getKivyColor(self):
         return self.__color
@@ -146,6 +153,7 @@ class ColorEffect(Effect):
         serObj[SerializedKeys.GLOW_MAX] = self.getGlowMax() / 100.0
         serObj[SerializedKeys.GLOW_MIN] = self.getGlowMin() / 100.0
         serObj[SerializedKeys.GLOW_INTERVAL] = self.getGlowInterval()
+        serObj[SerializedKeys.GLOW_OFFSET] = self.getGlowOffset()
         return serObj
 
     def deserializer_from_dict(self, showDict):
@@ -153,6 +161,10 @@ class ColorEffect(Effect):
         self.setGlowMax(float(showDict[SerializedKeys.GLOW_MAX]) * 100.0)
         self.setGlowMin(float(showDict[SerializedKeys.GLOW_MIN]) * 100.0)
         self.setGlowInterval(showDict[SerializedKeys.GLOW_INTERVAL])
+
+        # ADDING BACKWARD COMPATIBILITY FOR HANDLING OLD SHOW FILES
+        if SerializedKeys.GLOW_INTERVAL in showDict:
+            self.setGlowOffset(showDict[SerializedKeys.GLOW_INTERVAL])
 
     def setColorFromHEX(self, hexColor):
         self.__color = ColorTools.hexTokivy(hexColor)

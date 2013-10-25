@@ -6,7 +6,6 @@ class EffectNames():
 
 
 class SerializedKeys:
-
     ### FRAME HANDLER
     FRAME_LIST = "FRAME_LIST"
 
@@ -23,6 +22,7 @@ class SerializedKeys:
     GLOW_MAX = "GLOW_MAX"
     GLOW_MIN = "GLOW_MIN"
     GLOW_INTERVAL = "GLOW_INT"
+    GLOW_OFFSET = "GLOW_OFFSET"
 
     # TEXT EFFECT
     TEXT_VALUE_KEY = "TEXT"

@@ -34,6 +34,7 @@ class SceneMixer(Widget, Serializable):
     glowMax = NumericProperty(100.0)
     glowMin = NumericProperty(0.0)
     glowInterval = NumericProperty(0.0)
+    glowOffset = BooleanProperty(False)
 
     globalSceneTime = BooleanProperty(False)
     globalFadeTime = BooleanProperty(False)
@@ -81,6 +82,10 @@ class SceneMixer(Widget, Serializable):
         self.__beforeSetEffect()
         self.__setColorEffect(self.__currentFrame)
 
+    def on_glowOffset(self, obj, value):
+        self.__beforeSetEffect()
+        self.__setColorEffect(self.__currentFrame)
+
     def on_glowMin(self, obj, value):
         self.__beforeSetEffect()
         self.__setColorEffect(self.__currentFrame)
@@ -105,6 +110,7 @@ class SceneMixer(Widget, Serializable):
             colorEffectObj.setGlowMax(self.glowMax)
             colorEffectObj.setGlowMin(self.glowMin)
             colorEffectObj.setGlowInterval(self.glowInterval)
+            colorEffectObj.setGlowOffset(self.glowOffset)
 
     # TEXT EFFECT
     def __setTextEffect(self, frame, text):
@@ -272,11 +278,12 @@ class SceneMixer(Widget, Serializable):
                 self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
-        defText = str(self.text) if self.doNotClearEffectsOnNewFrame else ""
-        defColor = list(self.color) if self.doNotClearEffectsOnNewFrame else RGBA(0, 0, 0)
-        defMin = float(self.glowMin) if self.doNotClearEffectsOnNewFrame else 0.0
-        defMax = float(self.glowMax) if self.doNotClearEffectsOnNewFrame else 100.0
-        defInt = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
+        # defText = str(self.text) if self.doNotClearEffectsOnNewFrame else ""
+        # defColor = list(self.color) if self.doNotClearEffectsOnNewFrame else RGBA(0, 0, 0)
+        # defMin = float(self.glowMin) if self.doNotClearEffectsOnNewFrame else 0.0
+        # defMax = float(self.glowMax) if self.doNotClearEffectsOnNewFrame else 100.0
+        # defInt = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
+        # defOff = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
 
         if self.__currentFrame is not None:
             # COLOR EFFECT
@@ -294,6 +301,9 @@ class SceneMixer(Widget, Serializable):
 
             self.glowInterval = colorEffect.getGlowInterval() if colorEffect is not None else 0.0
             self.on_glowInterval(None, self.glowInterval)
+
+            self.glowOffset = colorEffect.getGlowOffset() if colorEffect is not None else False
+            self.on_glowOffset(None, self.glowOffset)
 
             # TEXT EFFECT
             textEffect = self.__currentFrame.getEffect(EffectNames.TEXT_EFFECT)
