@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script type="text/javascript" src="http://motioncorporation.com/lib/msv-1.4.js"></script>
+    <script type="text/javascript" src="http://motioncorporation.com/lib/magic-1.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/MsvClient/CSS/beat.css">
+    <title>BPM</title>
+
+    <script type="text/javascript">
+        var bpm = 60.0;
+        var last_click = 0.0;
+        var mymsv = null;
+        var new_bpm = 1.0;
+
+        // GET SAMPLE FOR NEW BPM
+        function clicked() {
+            console.log("SAMPLE");
+
+            var now = new Date();
+            if (last_click == null) {
+                last_click = now;
+                return;
+            }
+
+            if (now - last_click > 5000) {
+                bpm = 0;
+                last_click = null;
+            }
+
+            var new_time = now - last_click;
+            new_bpm = 60.0 / (new_time / 1000.0);
+            if (bpm == 0) {
+                bpm = new_bpm;
+            }
+
+            if (Math.abs(bpm - new_bpm) > 20) {
+                bpm = new_bpm;
+            } else {
+                bpm = ((bpm * 9) + new_bpm) / 10;
+            }
+
+            $("#beat-value").html(bpm.toFixed(1));
+
+            last_click = now;
+        }
+
+        // SEND NEW BPM TO MSV
+        function updateMsv() {
+            console.log("UPDATE MSV");
+            console.log(bpm);
+            mymsv.update(null, bpm / 60.0);
+        }
+
+        function load() {
+            console.log("LOAD MSV");
+
+            mymsv = MSV.msv("msv://t0.mcorp.no:8091/18")
+                    .add_ready_handler(function(){
+                        console.log("MSV READY");
+                    })
+                    .add_error_handler(function(){
+                        alert("Failed to load MSV");
+                    })
+                    .add_update_handler(function(){
+                        var q = mymsv.query();
+                        console.log();
+
+                        var msvBPM = 60.0 * q[MSV.V];
+                        $("#msv-beat-value").html(msvBPM.toFixed(1));
+                    });
+        }
+
+    </script>
+
+
+</head>
+<body onload="load()">
+    <div class="header">BPM CONTROLLER</div>
+
+    <div class="beat-value-label">CURRENT SHOW BPM</div>
+    <div id="msv-beat-value" class="beat-value">0.0</div>
+
+    <div class="beat-value-label">SAMPLE BPM</div>
+    <div id="beat-value" class="beat-value">0.0</div>
+
+    <div class="controller">
+        <button class="control-button" onclick="clicked()">SAMPLE</button>
+        <button class="control-button" onclick="updateMsv()">SET</button>
+    </div>
+</body>
+</html>
