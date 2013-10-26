@@ -35,4 +35,4 @@ class Parser():
 
 if __name__ == "__main__":
     parser = Parser()
-    parser.countUniqueUsers("insomniaDag1.log")
+    print parser.countUniqueUsers("insomniaDag2.log")

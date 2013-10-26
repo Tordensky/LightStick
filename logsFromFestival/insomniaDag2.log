@@ -1,0 +1,984 @@
+STARTING SERVER: Fri Oct 25 18:36:15 2013
+INTERVAL: 60000
+#####
+
+{"num clients": 0, "history": {}, "time": "Fri Oct 25 18:36:15 2013"}
+{"num clients": 4, "history": {"210d3be0-05e2-4479-9c88-3a6470ee66e1": 22, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "76c588ad-4d8f-41c4-b15e-440af7961e91": 8, "9334b30a-cdfa-4c3c-873c-a5bb9a02e6a8": 8}, "time": "Fri Oct 25 18:37:15 2013"}
+{"num clients": 4, "history": {"210d3be0-05e2-4479-9c88-3a6470ee66e1": 19, "9334b30a-cdfa-4c3c-873c-a5bb9a02e6a8": 7, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "76c588ad-4d8f-41c4-b15e-440af7961e91": 7}, "time": "Fri Oct 25 18:38:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "9334b30a-cdfa-4c3c-873c-a5bb9a02e6a8": 1, "210d3be0-05e2-4479-9c88-3a6470ee66e1": 18, "76c588ad-4d8f-41c4-b15e-440af7961e91": 1}, "time": "Fri Oct 25 18:39:15 2013"}
+{"num clients": 2, "history": {"210d3be0-05e2-4479-9c88-3a6470ee66e1": 6, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:40:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 2}, "time": "Fri Oct 25 18:41:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 18:42:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 18:43:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 5}, "time": "Fri Oct 25 18:44:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 4, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 4}, "time": "Fri Oct 25 18:45:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 5}, "time": "Fri Oct 25 18:46:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 4}, "time": "Fri Oct 25 18:47:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:48:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 18:49:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:50:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Fri Oct 25 18:51:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 3}, "time": "Fri Oct 25 18:52:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:53:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:54:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:55:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:56:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 18:57:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 18:58:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 18:59:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 1}, "time": "Fri Oct 25 19:00:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:01:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:02:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:03:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:04:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:05:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:06:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:07:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:08:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:09:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:10:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:11:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:12:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:13:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:14:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:15:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:16:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:17:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 5}, "time": "Fri Oct 25 19:18:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 3}, "time": "Fri Oct 25 19:19:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:20:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "8ccf4a30-7b68-49bf-8c88-43d6b1336a39": 1}, "time": "Fri Oct 25 19:21:15 2013"}
+{"num clients": 2, "history": {"8ccf4a30-7b68-49bf-8c88-43d6b1336a39": 2, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:22:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "8ccf4a30-7b68-49bf-8c88-43d6b1336a39": 2}, "time": "Fri Oct 25 19:23:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:24:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:25:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:26:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:27:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:28:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:29:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:30:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:31:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 3}, "time": "Fri Oct 25 19:32:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Fri Oct 25 19:33:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Fri Oct 25 19:34:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "a835548f-1db8-4a06-9ebe-6f31103864d0": 4, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Fri Oct 25 19:35:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Fri Oct 25 19:36:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Fri Oct 25 19:37:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 2}, "time": "Fri Oct 25 19:38:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:39:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:40:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 19:41:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "a835548f-1db8-4a06-9ebe-6f31103864d0": 1}, "time": "Fri Oct 25 19:42:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 1}, "time": "Fri Oct 25 19:43:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:44:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:45:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:46:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 1}, "time": "Fri Oct 25 19:47:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 19:48:15 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 19:49:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "b5026838-41a8-4019-9761-81f823ad9c80": 1}, "time": "Fri Oct 25 19:50:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "b5026838-41a8-4019-9761-81f823ad9c80": 2, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 1}, "time": "Fri Oct 25 19:51:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 19:52:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 19:53:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 2, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 4}, "time": "Fri Oct 25 19:54:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 19:55:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 19:56:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 9, "e0b552ac-d524-49ca-9091-1b62107c2fed": 8}, "time": "Fri Oct 25 19:57:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 19:58:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 5}, "time": "Fri Oct 25 19:59:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:00:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:01:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 1, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:02:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 3, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:03:15 2013"}
+{"num clients": 6, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 1, "8d83f858-55f1-4ffb-8406-0c42349642ae": 1, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:04:15 2013"}
+{"num clients": 6, "history": {"fa99b024-a253-4190-86bb-5fff72658e35": 2, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 4, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7}, "time": "Fri Oct 25 20:05:15 2013"}
+{"num clients": 5, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7}, "time": "Fri Oct 25 20:06:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 1, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7}, "time": "Fri Oct 25 20:07:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 2, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7}, "time": "Fri Oct 25 20:08:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 7}, "time": "Fri Oct 25 20:09:15 2013"}
+{"num clients": 5, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6, "c2f04f02-fa02-4917-9843-e95c91fd217f": 1, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 4}, "time": "Fri Oct 25 20:10:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 1, "a835548f-1db8-4a06-9ebe-6f31103864d0": 7}, "time": "Fri Oct 25 20:11:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6}, "time": "Fri Oct 25 20:12:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 2, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6}, "time": "Fri Oct 25 20:13:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6}, "time": "Fri Oct 25 20:14:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6}, "time": "Fri Oct 25 20:15:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "a835548f-1db8-4a06-9ebe-6f31103864d0": 6}, "time": "Fri Oct 25 20:16:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "61ed6744-c002-4867-b0bd-ba55d7cb8830": 1}, "time": "Fri Oct 25 20:17:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 8}, "time": "Fri Oct 25 20:18:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:19:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:20:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:21:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:22:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "e00ccd15-0749-451f-87e3-47c866ecbe09": 5}, "time": "Fri Oct 25 20:23:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 5}, "time": "Fri Oct 25 20:24:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 3, "a7fc2524-02d8-4f79-93fc-96b57def812d": 1}, "time": "Fri Oct 25 20:25:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:26:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "e0b552ac-d524-49ca-9091-1b62107c2fed": 9}, "time": "Fri Oct 25 20:27:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:28:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "e0b552ac-d524-49ca-9091-1b62107c2fed": 8}, "time": "Fri Oct 25 20:29:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 6}, "time": "Fri Oct 25 20:30:15 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "e0579f56-c691-4e38-badb-7772e8b0b746": 1, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 4}, "time": "Fri Oct 25 20:31:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 14}, "time": "Fri Oct 25 20:32:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 14}, "time": "Fri Oct 25 20:33:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 10}, "time": "Fri Oct 25 20:34:15 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 6}, "time": "Fri Oct 25 20:35:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:36:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:37:15 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:38:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:39:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:40:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:41:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:42:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:43:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:44:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:45:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:46:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:47:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 5}, "time": "Fri Oct 25 20:48:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "110e1688-bee8-4bb6-96e9-e313f68cfefb": 1, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:49:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 8}, "time": "Fri Oct 25 20:50:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "8d1f64a5-3603-4270-8327-a1f257bba951": 2}, "time": "Fri Oct 25 20:51:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:52:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:53:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:54:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:55:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:56:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 20:57:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:58:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 20:59:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 21:00:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 21:01:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "e0b552ac-d524-49ca-9091-1b62107c2fed": 8}, "time": "Fri Oct 25 21:02:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "a835548f-1db8-4a06-9ebe-6f31103864d0": 2}, "time": "Fri Oct 25 21:03:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6, "5450a71c-6453-4cb7-88ca-41a21e2d2ff4": 1}, "time": "Fri Oct 25 21:04:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 21:05:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 21:06:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7, "83face64-ca69-417f-a361-263c0279b953": 6}, "time": "Fri Oct 25 21:07:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 7}, "time": "Fri Oct 25 21:08:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e0b552ac-d524-49ca-9091-1b62107c2fed": 6}, "time": "Fri Oct 25 21:09:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e0b552ac-d524-49ca-9091-1b62107c2fed": 1}, "time": "Fri Oct 25 21:10:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "c722fa45-919f-43f7-92b2-e2295f0f560d": 5}, "time": "Fri Oct 25 21:11:16 2013"}
+{"num clients": 2, "history": {"c722fa45-919f-43f7-92b2-e2295f0f560d": 6, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:12:16 2013"}
+{"num clients": 2, "history": {"c722fa45-919f-43f7-92b2-e2295f0f560d": 7, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:13:16 2013"}
+{"num clients": 2, "history": {"c722fa45-919f-43f7-92b2-e2295f0f560d": 2, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:14:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:15:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:16:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:17:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:18:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:19:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:20:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:21:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:22:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:23:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "7d2027cc-bde3-477d-a21d-324f45607ac8": 4}, "time": "Fri Oct 25 21:24:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:25:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:26:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:27:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:28:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:29:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "c76da386-d629-47d6-b09a-d1e13f629bce": 2}, "time": "Fri Oct 25 21:30:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "70138311-98be-40a9-afc6-4182566c5d2a": 1}, "time": "Fri Oct 25 21:31:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:32:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 21:33:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:34:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "e4c8e54b-a153-483e-8b60-816992873cc6": 3}, "time": "Fri Oct 25 21:35:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6904db58-102d-4043-b8d7-14008085f6e3": 3}, "time": "Fri Oct 25 21:36:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:37:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:38:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:39:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:40:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:41:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:42:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:43:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:44:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:45:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:46:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 21:47:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:48:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:49:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:50:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:51:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:52:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:53:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:54:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:55:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:56:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:57:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 21:58:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 21:59:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:00:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:01:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:02:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:03:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:04:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:05:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:06:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 5}, "time": "Fri Oct 25 22:07:16 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 8}, "time": "Fri Oct 25 22:08:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 6}, "time": "Fri Oct 25 22:09:16 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 3, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 7}, "time": "Fri Oct 25 22:10:16 2013"}
+{"num clients": 4, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 3, "e37dcb5e-5db9-495a-ba3e-abb902cfb0f9": 4, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 7}, "time": "Fri Oct 25 22:11:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 7}, "time": "Fri Oct 25 22:12:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "1eff86e1-f55e-4003-ad0a-f62d17f1cfab": 5}, "time": "Fri Oct 25 22:13:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:14:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:15:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:16:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:17:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:18:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:19:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:20:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:21:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:22:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:23:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "38e8fb33-c4c8-4801-aae4-d41b8d02050b": 1}, "time": "Fri Oct 25 22:24:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:25:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:26:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 22:27:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:28:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:29:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:30:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:31:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 2}, "time": "Fri Oct 25 22:32:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1}, "time": "Fri Oct 25 22:33:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:34:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:35:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:36:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:37:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:38:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:39:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:40:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "c7e33943-658f-497d-9930-48022410785c": 2}, "time": "Fri Oct 25 22:41:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "fda9a4ab-cc8e-4848-be41-079146a2e8cf": 1}, "time": "Fri Oct 25 22:42:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 22:43:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:44:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1}, "time": "Fri Oct 25 22:45:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 7}, "time": "Fri Oct 25 22:46:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 6}, "time": "Fri Oct 25 22:47:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 8}, "time": "Fri Oct 25 22:48:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 7}, "time": "Fri Oct 25 22:49:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 7}, "time": "Fri Oct 25 22:50:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1}, "time": "Fri Oct 25 22:51:16 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "fdaafdbc-1b5c-4e1f-b3b5-6087dad76023": 1}, "time": "Fri Oct 25 22:52:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:53:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:54:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:55:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 22:56:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 22:57:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:58:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 22:59:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:00:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:01:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:02:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:03:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:04:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 23:05:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:06:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:07:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:08:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:09:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:10:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:11:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:12:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:13:16 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:14:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:15:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:16:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:17:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 23:18:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:19:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:20:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:21:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:22:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Fri Oct 25 23:23:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:24:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:25:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:26:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:27:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:28:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:29:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:30:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:31:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:32:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:33:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:34:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:35:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:36:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:37:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:38:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:39:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:40:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:41:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "59e18194-e012-43eb-9aa7-5af243b3c2c7": 7}, "time": "Fri Oct 25 23:42:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "59e18194-e012-43eb-9aa7-5af243b3c2c7": 2}, "time": "Fri Oct 25 23:43:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:44:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1}, "time": "Fri Oct 25 23:45:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:46:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:47:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:48:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:49:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:50:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:51:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:52:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "1446bade-ccc2-4ebd-a6fa-f486dda03761": 3}, "time": "Fri Oct 25 23:53:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:54:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Fri Oct 25 23:55:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:56:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 3}, "time": "Fri Oct 25 23:57:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Fri Oct 25 23:58:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Fri Oct 25 23:59:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:00:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:01:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:02:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:03:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:04:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:05:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:06:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:07:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:08:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:09:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "c2866c26-d68f-4a04-987b-f9139d136b97": 3}, "time": "Sat Oct 26 00:10:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:11:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:12:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 00:13:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:14:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 00:15:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:16:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:17:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 00:18:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:19:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:20:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:21:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 00:22:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 1}, "time": "Sat Oct 26 00:23:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:24:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:25:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:26:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:27:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:28:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:29:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "59e18194-e012-43eb-9aa7-5af243b3c2c7": 2}, "time": "Sat Oct 26 00:30:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:31:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:32:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:33:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:34:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:35:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:36:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:37:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:38:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:39:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:40:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:41:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 00:42:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:43:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:44:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:45:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:46:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:47:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:48:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:49:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:50:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:51:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:52:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:53:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 00:54:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:55:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:56:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:57:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 00:58:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 00:59:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:00:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:01:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:02:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:03:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:04:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:05:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:06:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:07:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:08:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:09:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:10:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:11:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:12:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:13:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:14:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:15:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:16:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 01:17:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:18:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:19:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:20:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:21:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "1090c9df-f10f-4a8a-b321-a3734643bcb9": 1}, "time": "Sat Oct 26 01:22:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:23:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:24:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:25:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:26:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:27:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "c8914344-b324-48b1-965c-95939e7bb12c": 2}, "time": "Sat Oct 26 01:28:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:29:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "c8914344-b324-48b1-965c-95939e7bb12c": 1}, "time": "Sat Oct 26 01:30:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:31:17 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:32:17 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "3edd6fac-b66b-45a4-90f8-131b974451d8": 6}, "time": "Sat Oct 26 01:33:17 2013"}
+{"num clients": 3, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 7, "3edd6fac-b66b-45a4-90f8-131b974451d8": 5}, "time": "Sat Oct 26 01:34:17 2013"}
+{"num clients": 3, "history": {"6d399340-71ea-4db3-9c47-a0178bf36a8c": 4, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "3edd6fac-b66b-45a4-90f8-131b974451d8": 7}, "time": "Sat Oct 26 01:35:18 2013"}
+{"num clients": 3, "history": {"6d399340-71ea-4db3-9c47-a0178bf36a8c": 1, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "3edd6fac-b66b-45a4-90f8-131b974451d8": 1}, "time": "Sat Oct 26 01:36:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:37:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:38:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:39:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:40:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:41:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:42:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:43:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:44:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 01:45:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:46:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:47:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:48:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:49:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:50:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:51:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:52:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:53:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:54:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:55:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:56:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 01:57:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 01:58:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 01:59:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:00:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:01:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "54f5a16f-4214-41b8-bf03-bcd9d8000a2a": 4}, "time": "Sat Oct 26 02:02:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "54f5a16f-4214-41b8-bf03-bcd9d8000a2a": 1}, "time": "Sat Oct 26 02:03:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:04:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "3d895332-6e14-4dde-824d-8f36fe024b97": 3}, "time": "Sat Oct 26 02:05:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:06:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:07:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:08:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:09:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:10:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:11:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:12:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:13:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:14:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:15:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:16:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:17:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:18:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:19:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:20:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:21:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:22:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:23:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:24:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:25:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:26:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:27:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:28:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:29:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:30:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:31:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:32:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:33:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:34:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:35:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:36:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:37:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:38:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:39:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:40:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:41:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:42:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:43:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:44:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:45:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:46:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:47:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:48:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:49:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 02:50:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:51:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:52:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "d3287deb-54bf-4fbe-b228-4f8ab48de3af": 2}, "time": "Sat Oct 26 02:53:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:54:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "d3287deb-54bf-4fbe-b228-4f8ab48de3af": 2}, "time": "Sat Oct 26 02:55:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 02:56:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:57:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:58:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 02:59:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:00:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:01:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:02:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:03:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:04:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:05:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:06:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 03:07:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:08:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:09:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:10:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:11:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:12:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:13:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:14:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:15:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:16:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:17:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:18:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:19:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:20:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:21:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:22:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:23:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:24:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e52acd84-4512-4e7f-83d6-a69e2ede1515": 2}, "time": "Sat Oct 26 03:25:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:26:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:27:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:28:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:29:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:30:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:31:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:32:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:33:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:34:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:35:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:36:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:37:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:38:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:39:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:40:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:41:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:42:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:43:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:44:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:45:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:46:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:47:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:48:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:49:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:50:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 03:51:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:52:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:53:18 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 03:54:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 1}, "time": "Sat Oct 26 03:55:18 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 5}, "time": "Sat Oct 26 03:56:18 2013"}
+{"num clients": 2, "history": {"6d399340-71ea-4db3-9c47-a0178bf36a8c": 7, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 03:57:18 2013"}
+{"num clients": 2, "history": {"6d399340-71ea-4db3-9c47-a0178bf36a8c": 2, "75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:58:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 03:59:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 1}, "time": "Sat Oct 26 04:00:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 1}, "time": "Sat Oct 26 04:01:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:02:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 2}, "time": "Sat Oct 26 04:03:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:04:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 1}, "time": "Sat Oct 26 04:05:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:06:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "6d399340-71ea-4db3-9c47-a0178bf36a8c": 1}, "time": "Sat Oct 26 04:07:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:08:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "e35eb2eb-63f8-45a9-8ccb-3be5e3b8d53f": 4}, "time": "Sat Oct 26 04:09:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:10:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:11:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:12:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:13:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:14:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:15:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:16:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:17:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:18:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:19:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:20:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:21:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:22:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:23:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:24:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:25:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:26:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:27:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:28:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:29:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:30:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:31:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:32:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:33:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:34:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:35:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:36:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:37:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:38:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:39:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:40:19 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "c2866c26-d68f-4a04-987b-f9139d136b97": 1}, "time": "Sat Oct 26 04:41:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:42:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:43:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:44:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:45:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:46:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:47:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:48:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:49:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:50:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:51:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:52:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:53:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:54:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:55:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 04:56:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:57:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 04:58:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 04:59:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:00:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:01:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:02:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:03:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:04:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:05:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:06:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:07:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:08:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:09:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:10:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:11:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:12:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:13:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:14:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:15:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:16:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:17:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:18:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:19:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:20:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:21:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:22:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:23:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:24:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 05:25:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:26:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:27:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:28:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:29:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:30:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:31:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:32:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:33:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:34:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:35:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:36:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:37:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:38:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:39:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:40:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:41:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:42:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:43:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:44:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:45:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:46:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:47:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:48:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:49:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:50:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:51:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:52:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:53:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:54:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:55:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:56:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 05:57:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 05:58:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 05:59:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:00:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:01:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:02:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:03:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:04:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:05:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:06:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 06:07:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:08:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:09:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:10:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:11:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:12:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 06:13:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:14:19 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:15:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 06:16:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:17:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:18:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:19:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:20:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:21:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:22:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:23:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:24:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:25:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:26:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:27:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:28:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:29:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:30:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:31:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:32:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:33:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:34:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:35:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:36:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:37:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:38:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:39:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:40:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:41:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:42:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:43:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:44:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:45:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:46:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:47:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:48:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:49:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:50:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:51:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:52:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:53:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:54:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:55:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 06:56:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 06:57:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 06:58:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 06:59:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:00:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:01:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:02:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:03:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:04:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:05:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:06:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:07:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:08:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:09:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:10:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:11:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:12:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:13:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:14:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:15:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:16:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:17:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:18:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:19:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:20:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:21:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:22:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:23:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:24:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:25:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:26:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:27:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:28:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:29:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:30:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:31:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:32:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:33:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:34:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 07:35:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:36:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 07:37:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:38:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:39:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:40:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:41:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:42:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:43:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:44:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:45:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:46:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 07:47:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:48:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:49:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:50:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:51:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 07:52:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:53:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 07:54:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:55:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:56:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 07:57:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 4}, "time": "Sat Oct 26 07:58:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 07:59:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:00:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:01:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:02:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:03:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:04:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:05:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:06:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:07:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:08:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:09:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:10:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 8}, "time": "Sat Oct 26 08:11:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 7}, "time": "Sat Oct 26 08:12:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 6}, "time": "Sat Oct 26 08:13:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:14:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:15:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:16:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:17:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:18:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:19:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:20:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:21:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 08:22:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:23:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:24:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:25:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:26:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:27:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:28:20 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:29:20 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "2696c1e1-1941-494d-96cf-e32983aa948d": 2}, "time": "Sat Oct 26 08:30:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:31:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:32:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:33:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:34:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:35:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "21a9909b-c26d-4a49-a26f-f6bc70c261f7": 1}, "time": "Sat Oct 26 08:36:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:37:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 08:38:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 08:39:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "fd123483-b6b9-4109-956b-53451d75dd9b": 1}, "time": "Sat Oct 26 08:40:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:41:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:42:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:43:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:44:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:45:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:46:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:47:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 08:48:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 08:49:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:50:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:51:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:52:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 08:53:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:54:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:55:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 1}, "time": "Sat Oct 26 08:56:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "77fec6e6-bf20-46b9-bfde-db9447ba26b5": 3}, "time": "Sat Oct 26 08:57:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 08:58:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 08:59:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:00:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:01:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:02:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:03:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:04:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:05:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:06:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:07:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6, "5a1cc759-9d9c-417c-ade1-66800025f5d8": 3}, "time": "Sat Oct 26 09:08:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:09:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:10:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:11:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:12:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:13:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:14:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:15:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:16:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:17:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 09:18:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:19:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "6b95d32d-e36e-4d90-99a1-20a4b287e649": 2}, "time": "Sat Oct 26 09:20:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:21:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:22:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:23:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:24:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:25:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:26:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:27:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:28:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:29:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:30:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:31:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:32:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:33:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:34:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:35:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:36:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:37:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 09:38:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:39:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:40:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:41:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:42:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:43:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:44:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:45:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:46:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:47:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:48:21 2013"}
+{"num clients": 2, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7, "57b73080-5ad6-4d1a-aca4-7de935e2d505": 1}, "time": "Sat Oct 26 09:49:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 09:50:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 09:51:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:52:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:53:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:54:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:55:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 09:56:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:57:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:58:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 09:59:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:00:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:01:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:02:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:03:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:04:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:05:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:06:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:07:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:08:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:09:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:10:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:11:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:12:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:13:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:14:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:15:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:16:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:17:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:18:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:19:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:20:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:21:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:22:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:23:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:24:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:25:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:26:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:27:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:28:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:29:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 10:30:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:31:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:32:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:33:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:34:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:35:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:36:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:37:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:38:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:39:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:40:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:41:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:42:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:43:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 8}, "time": "Sat Oct 26 10:44:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:45:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:46:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:47:21 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:48:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:49:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:50:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:51:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:52:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 5}, "time": "Sat Oct 26 10:53:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 6}, "time": "Sat Oct 26 10:54:22 2013"}
+{"num clients": 1, "history": {"75f46600-5c2b-4db6-aca7-04bb429b03e5": 7}, "time": "Sat Oct 26 10:55:22 2013"}
