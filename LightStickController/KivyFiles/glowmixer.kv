@@ -76,7 +76,7 @@
 
 
         BoxLayout:
-            padding: Sizes.WIDGET_BORDER
+            padding: 5
             spacing: Sizes.WIDGET_SPACING
 
             size_hint_x: 1
@@ -91,15 +91,16 @@
                     size: self.size
 
             CheckBox:
-                size_hint: 0.15, 1
+                size_hint: 0.20, 1
                 size: self.size
                 on_active: root.offset = args[1]
                 valign: "middle"
                 active: root.offset
+
             Label:
-                size_hint: 0.85, 1
+                size_hint: 0.80, 1
                 text: "OFFSET GLOW"
                 text_size: self.size
-                font_size: self.height / 2
+                font_size: "10px"
                 valign: "middle"
 

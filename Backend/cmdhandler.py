@@ -87,6 +87,7 @@ class MsvController():
             self._msv.add_handler(self.update_handler)
         except AssertionError:
             print "MSV ERROR"
+            exit()
 
     def setMsvValue(self, value):
         self.__update(value)

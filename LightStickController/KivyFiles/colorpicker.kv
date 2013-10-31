@@ -118,7 +118,9 @@
 
     BoxLayout:
         padding: 2
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "18px"
 
         canvas.before:
             Color:
@@ -129,7 +131,7 @@
 
         Label:
             text: str(int(slider.value))
-            font_size: self.height / 1.2
+            font_size: "10px"
 
     Slider:
         id: slider
@@ -141,9 +143,12 @@
             root.mroot.set_value_from_slider(root.idx, args[1])
 
     Label:
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "20px"
+
         text: root.name
-        font_size: self.height / 1.5
+        font_size: "10px"
 
 
 <ColorPreview@BoxLayout>
