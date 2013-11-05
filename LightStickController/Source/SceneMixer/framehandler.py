@@ -10,104 +10,104 @@ class FrameHandler(Serializable):
     FRAME_NUM_IDX = 2
 
     def __init__(self):
-        self.__framePointer = 0
-        self.__frames = []
+        self._framePointer = 0
+        self._frames = []
 
-    def __getCurrentFrame(self):
-        index = self.__getCurrentListIndex()
+    def _getCurrentFrame(self):
+        index = self._getCurrentListIndex()
         if index is not None:
-            return self.__frames[index]
+            return self._frames[index]
         return None
 
     def addFrameAtEnd(self, newFrame):
-        self.__frames.append(newFrame)
+        self._frames.append(newFrame)
         self.moveFramePointerToEnd()
-        return self.__getCurrentFrameWithInfo()
+        return self._getCurrentFrameWithInfo()
 
     def insertFrameBeforePointer(self, newFrame):
-        index = self.__getCurrentListIndex()
+        index = self._getCurrentListIndex()
         if index is not None:
-            self.__frames.insert(index, newFrame)
+            self._frames.insert(index, newFrame)
         else:
-            self.__frames.append(newFrame)
+            self._frames.append(newFrame)
             self.moveFramePointerToEnd()
-        return self.__getCurrentFrameWithInfo()
+        return self._getCurrentFrameWithInfo()
 
     def insertFrameAfterPointer(self, newFrame):
-        index = self.__getCurrentListIndex()
+        index = self._getCurrentListIndex()
         offset = 1
         if index is not None:
-            self.__frames.insert(index + offset, newFrame)
+            self._frames.insert(index + offset, newFrame)
             self.moveFramePointerUp()
         else:
-            self.__frames.append(newFrame)
+            self._frames.append(newFrame)
             self.moveFramePointerToEnd()
-        return self.__getCurrentFrameWithInfo()
+        return self._getCurrentFrameWithInfo()
 
     def deleteCurrentFrame(self):
-        index = self.__getCurrentListIndex()
+        index = self._getCurrentListIndex()
         if index is not None:
-            self.__frames.pop(index)
+            self._frames.pop(index)
             self.moveFramePointerDown()
-        return self.__getCurrentFrameWithInfo()
+        return self._getCurrentFrameWithInfo()
 
     def deleteAllFrames(self):
-        del self.__frames
-        self.__frames = []
-        self.__framePointer = 0
-        return self.__getCurrentFrameWithInfo()
+        del self._frames
+        self._frames = []
+        self._framePointer = 0
+        return self._getCurrentFrameWithInfo()
 
     def moveFramePointerUp(self):
-        if self.__framePointer < self.__numFrames():
-            self.__framePointer += 1
-        return self.__getCurrentFrameWithInfo()
+        if self._framePointer < self._numFrames():
+            self._framePointer += 1
+        return self._getCurrentFrameWithInfo()
 
     def moveFramePointerDown(self):
-        if self.__framePointer > 1:
-            self.__framePointer -= 1
-        elif self.__numFrames() == 0:
-            self.__framePointer = 0
-        return self.__getCurrentFrameWithInfo()
+        if self._framePointer > 1:
+            self._framePointer -= 1
+        elif self._numFrames() == 0:
+            self._framePointer = 0
+        return self._getCurrentFrameWithInfo()
 
     def moveFramePointerToStart(self):
-        if self.__numFrames() > 0:
-            self.__framePointer = 1
-        return self.__getCurrentFrameWithInfo()
+        if self._numFrames() > 0:
+            self._framePointer = 1
+        return self._getCurrentFrameWithInfo()
 
     def moveFramePointerToEnd(self):
-        self.__framePointer = len(self.__frames)
-        return self.__getCurrentFrameWithInfo()
+        self._framePointer = len(self._frames)
+        return self._getCurrentFrameWithInfo()
 
     def forAllFramesDo(self, action, *args):
-        for frame in self.__frames:
+        for frame in self._frames:
             action(frame, *args)
 
-    def __numFrames(self):
-        return len(self.__frames)
+    def _numFrames(self):
+        return len(self._frames)
 
-    def __getCurrentListIndex(self):
-        if self.__framePointer > 0:
-            return self.__framePointer - 1
+    def _getCurrentListIndex(self):
+        if self._framePointer > 0:
+            return self._framePointer - 1
         return None
 
-    def __getCurrentFrameWithInfo(self):
+    def _getCurrentFrameWithInfo(self):
         FrameHolder = namedtuple("Frame", ["FrameObject", "FramePos", "NumFrames"])
-        frame = self.__getCurrentFrame()
+        frame = self._getCurrentFrame()
 
-        framePos = self.__framePointer
-        numFrames = self.__numFrames()
+        framePos = self._framePointer
+        numFrames = self._numFrames()
 
         currentFrame = FrameHolder(frame, framePos, numFrames)
         return currentFrame
 
     def isAtEndOfFrames(self):
-        return self.__framePointer == self.__numFrames()
+        return self._framePointer == self._numFrames()
 
     def serialize_to_dict(self):
         serializedDict = Serializable.serialize_to_dict(self)
         serializedFramesList = []
 
-        for frame in self.__frames:
+        for frame in self._frames:
             frameDict = frame.serialize_to_dict()
             serializedFramesList.append(frameDict)
         serializedDict[SerializedKeys.FRAME_LIST] = serializedFramesList

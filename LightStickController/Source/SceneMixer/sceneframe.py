@@ -7,7 +7,6 @@ class SceneFrame(Serializable):
     def __init__(self):
         self.__fadeTime = None
         self.__sceneTime = None
-
         self.__effects = {}
 
     def addEffect(self, Effect):

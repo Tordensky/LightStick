@@ -278,13 +278,6 @@ class SceneMixer(Widget, Serializable):
                 self.__currentFrame.setFadeTime(self.fadeTime)
 
     def __setCurrentFrameEffects(self):
-        # defText = str(self.text) if self.doNotClearEffectsOnNewFrame else ""
-        # defColor = list(self.color) if self.doNotClearEffectsOnNewFrame else RGBA(0, 0, 0)
-        # defMin = float(self.glowMin) if self.doNotClearEffectsOnNewFrame else 0.0
-        # defMax = float(self.glowMax) if self.doNotClearEffectsOnNewFrame else 100.0
-        # defInt = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
-        # defOff = float(self.glowInterval) if self.doNotClearEffectsOnNewFrame else 0.0
-
         if self.__currentFrame is not None:
             # COLOR EFFECT
             # TODO SET COLOR WIDGET OFF IF NOT SET
@@ -318,17 +311,6 @@ class SceneMixer(Widget, Serializable):
     def __setGlobalFadeTime(self):
         self.__setFadeTimeForAllFrames(self.fadeTime)
 
-    def __setSyncedFadeAndSceneTime(self):
-        # TODO There is something going wrong here. Recursive event call bug
-
-        self.sceneTime = self.fadeTime
-        self.fadeTime = self.sceneTime
-
-        self.syncedIsSetTest = True
-        print "set synced scene fade", self.sceneTime, self.fadeTime
-        self.__setFadeTimeForAllFrames(self.sceneTime)
-        self.__setSceneTimeForAllFrames(self.sceneTime)
-
     def __setSceneTimeForAllFrames(self, sceneTime):
         self.__frameHandler.forAllFramesDo(self.__iterFuncSetSceneTime, sceneTime)
 
@@ -352,14 +334,11 @@ class SceneMixer(Widget, Serializable):
     def serialize_to_dict(self):
         serializedDict = Serializable.serialize_to_dict(self)
         serializedDict = dict(serializedDict.items() + self.__frameHandler.serialize_to_dict().items())
-        pprint.pprint(serializedDict)
 
-        # Update property
         return serializedDict
 
     def deserializer_from_dict(self, showData):
         return self.__frameHandler.deserializer_from_dict(showData)
-        #return Serializable.deserializer_from_dict(self, showData)
 
     def loadShow(self):
         popup = Popups.yesNoPopUp(titleLabel="Clear current show and load new",
@@ -370,18 +349,14 @@ class SceneMixer(Widget, Serializable):
 
     def __loadShow(self, deleteCurrent=True, *args):
         self.fileHandler.show_load(self.__onLoadSuccessCallback)
-        # TODO LOAD FROM FILE
-        #currentShow = json.dumps(self.serialize_to_dict())
         if deleteCurrent:
             self.__clearCurrentShow()
 
     def __onLoadSuccessCallback(self, data):
-        # TODO fix load from file
         self.deserializer_from_dict(json.loads(data))
         self.gotoStartOfShow()
 
     def saveShow(self):
-        # TODO WRITE TO FILE
         show = json.dumps(self.serialize_to_dict())
         self.fileHandler.show_save(show)
 
@@ -457,12 +432,3 @@ class Popups():
         popup.add_widget(mainLayout)
         return popup
 
-
-class __TestScreenMixer(App):
-    def build(self):
-        return SceneMixer()
-
-
-if __name__ == "__main__":
-    test = __TestScreenMixer()
-    test.run()

@@ -55,14 +55,13 @@
 
     Label:
         text: str(root.label) if root.label is not None else "None"
-        font_size: self.height / 2
+        font_size: "8px"
         size_hint: 1.0, 0.3
 
     Label:
         text: str(root.value) if root.value is not None else "None"
-        font_size: self.height / 2
+        font_size: self.height / 1.5
         size_hint: 1.0, 0.7
-
 
 
 <SceneMixerScreen@BoxLayout>

@@ -2,11 +2,11 @@
 from collections import defaultdict
 import json
 import os
-import pprint
 
 import threading
 import time
 from kivy.clock import Clock
+from kivy.core.window import Window
 from kivy.event import EventDispatcher
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, DictProperty
@@ -25,9 +25,7 @@ class SimpleMsvController(Widget, EventDispatcher):
     HOST = "t0.mcorp.no:8091"
     MSVID = 18
 
-    msvVelocity = NumericProperty(0.0)
     msvPosition = NumericProperty(0.0)
-    msvAcceleration = NumericProperty(0.0)
     currentBPM = NumericProperty(0.0)
 
     currentMsg = DictProperty({})
@@ -40,10 +38,12 @@ class SimpleMsvController(Widget, EventDispatcher):
         self.source = None
 
         self.__set_new_show = False
-        self.__set_new_bpm = False
+        self._set_new_bpm = False
 
         self.bpm = defaultdict(float)
         self.httpClient = HttpClient("129.242.22.10", 8080)
+
+        self.window = Window.bind(on_close=self.stop)
 
         try:
             self._stop_event = threading.Event()
@@ -68,45 +68,51 @@ class SimpleMsvController(Widget, EventDispatcher):
         if statusCode == -1:
             errorText = "Error: Could not connect to server!"
         else:
-            errorText = "Error. Bad request!\nGot response status: " + str(statusCode) + " expected: 200"
+            errorText = "Error. Bad request!\n" \
+                        "Got response status: " \
+                        "" + str(statusCode) + " " \
+                        "expected: 200"
         popup = Popups.errorPopup(titleLabel="SERVER ERROR",
                                   text=errorText)
         popup.open()
 
     def delayUp(self):
-        print "delay up"
         self.delay += 1
 
     def delayDown(self):
-        print "delay down"
-        if self.delay > 1:
+        if self.delay > 0:
             self.delay -= 1
 
     def on_whole_beat(self, source):
-        if self.__set_new_bpm and self.source == source:
-            self.setVelocityFromBPM(self.bpm[source])
-            self.__set_new_bpm = False
+        if self._set_new_bpm and self.source == source:
+            self.setMsvSpeed(self.bpm[source])
+            self._set_new_bpm = False
 
+    # EVENT USED IN .KV FILES
     def on_set_new_show_from_a(self):
         pass
 
+    # EVENT USED IN .KV FILES
     def on_set_new_show_from_b(self):
+        pass
+
+    # EVENT USED IN .KV FILES
+    def update_handler(self, msv_data):
         pass
 
     def setSourceForBpm(self, source):
         self.source = source
-
         if source == "A":
             self.dispatch('on_set_new_show_from_a')
         elif source == "B":
             self.dispatch('on_set_new_show_from_b')
 
-    def setBpmFromSource(self, source):
-        self.source = source
-        self.__set_new_bpm = True
+    def setBpmFromSource(self, source_id):
+        self.source = source_id
+        self._set_new_bpm = True
 
     def sendSceneToServer(self, msg):
-        msg["MSV_TIME"] = int(math.ceil(self.msvPosition)) + int(self.delay)  # Todo make dynamic delay for start
+        msg["MSV_TIME"] = int(math.ceil(self.msvPosition)) + int(self.delay)
         msg = json.dumps(msg)
         self.httpClient.postJson(jsonMessage=msg, url="/command", callback=self.postCallback)
 
@@ -114,39 +120,22 @@ class SimpleMsvController(Widget, EventDispatcher):
         if responseCode != 200:
             self.showServerErrorPopup(responseCode)
 
-    def setBpm(self, bpm, source):
-        self.bpm[source] = bpm
-        print bpm, source
+    def setBpm(self, bpm, sourceId):
+        self.bpm[sourceId] = bpm
 
-    def setVelocityFromBPM(self, bpm):
-        print "Set new velocity"
+    def setMsvSpeed(self, bpm):
         velocity = bpm / 60.0
-        self.update(18, int(self.msvPosition), velocity, 0)
+        self.updateMSV(18, int(self.msvPosition), velocity, 0)
 
-    def on_msvVelocity(self, *args):
-        print args[1]
-
-    def update_handler(self, msv_data):
-        pass
-
-    def update(self, msvid, p=None, v=None, a=None):
+    def updateMSV(self, msvid, p=None, v=None, a=None):
         if p is v is a is None:
             return
         msv_data_list = [{'msvid': msvid, 'vector': (p, v, a)}]
         self._client.update(msv_data_list)
 
-    def stop(self):
-        self._client.stop()
-        self._stop_event.set()
-
-    def join(self):
-        self._client.join()
-
     def updateScreen(self, pos, vel, acc):
         with self.lock:
             self.msvPosition = round(pos, 1)
-            self.msvVelocity = round(vel, 3)
-            self.msvAcceleration = round(acc, 3)
             self.currentBPM = round(60.0 * vel, 1)
 
     def run(self, *args):
@@ -154,25 +143,8 @@ class SimpleMsvController(Widget, EventDispatcher):
             vector = self._msv.query()
 
             self.updateScreen(vector[0], vector[1], vector[2])
-
             time.sleep(0.1)
 
-
-
-
-    
-#################################################
-# MAIN
-#################################################
-
-if __name__ == '__main__':
-    
-    HOST = "mcorp.no:8091"
-    MSVID = 18
-
-    s = SimpleMsvController(HOST, MSVID)
-    try:
-        s.run()
-    finally:
-        s.stop()
-        s.join()
+    def stop(self, *args):
+        self._client.stop()
+        self._stop_event.set()

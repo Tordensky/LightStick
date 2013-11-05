@@ -66,7 +66,9 @@
     padding: 2
     BoxLayout:
         padding: 2
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "18px"
 
         canvas.before:
             Color:
@@ -77,7 +79,7 @@
 
         Label:
             text: root.label_value
-            font_size: self.height / 1.2
+            font_size: "10px"
 
     Slider:
         id: slider
@@ -89,9 +91,12 @@
         step: 1
 
     Label:
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "20px"
+
         text: root.name
-        font_size: self.height / 1.5
+        font_size: "10px"
 
 
 
@@ -112,7 +117,9 @@
     padding: 2
     BoxLayout:
         padding: 2
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "18px"
 
         canvas.before:
             Color:
@@ -123,7 +130,7 @@
 
         Label:
             text: root.label_value
-            font_size: self.height / 1.2
+            font_size: "10px"
 
     Slider:
         id: slider
@@ -135,9 +142,12 @@
         step: root.step_size
 
     Label:
-        size_hint: 1, 0.1
+        size_hint_x: 1
+        size_hint_y: None
+        height: "20px"
+
         text: root.name
-        font_size: self.height / 1.5
+        font_size: "10px"
 
 
 <Filler@BoxLayout>

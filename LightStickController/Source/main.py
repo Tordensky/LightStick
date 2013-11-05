@@ -1,14 +1,10 @@
-import json
 import os
 import kivy
 
 from kivy.lang import Builder
-from kivy.properties import ListProperty
-from HttpWebClient import HttpClient
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.config import Config
-
 
 Builder.load_file(os.getenv("FILE_PATH") + "/main.kv")
 
@@ -18,22 +14,6 @@ Config.set('graphics', 'width', '940')
 Config.set('graphics', 'height', '700')
 
 
-
-
-class WebTest(Widget):
-    color = ListProperty([0, 0, 0, 0])
-
-    def __init__(self, **kwargs):
-        super(WebTest, self).__init__(**kwargs)
-        self.httpClient = HttpClient("localhost", 8080)
-
-    def on_color(self, *args):
-        print "COLOR WEB:", args
-        print "HEX:", self.colorToHex(args[1])
-        msg = {"command": {"color": self.colorToHex(args[1])}}
-        self.httpClient.postJson(json.dumps(msg), "/command")
-
-
 class WidgetScreen(Widget):
     def __init__(self, **kwargs):
         super(WidgetScreen, self).__init__(**kwargs)
@@ -41,6 +21,8 @@ class WidgetScreen(Widget):
 
 
 class LightStickApp(App):
+    # Global path for storing last location of
+    # opened and saved show files
     path = ""
 
     def build(self):

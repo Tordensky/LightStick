@@ -3,51 +3,53 @@ from kivy.clock import Clock
 
 class PlayBackHandler():
     def __init__(self, bpm=0.0, updatesPerBeat=20.0):
-        self.__bpm = float(bpm)
-        self.__updatesPerBeat = float(updatesPerBeat)
+        self._bpm = float(bpm)
+        self._updatesPerBeat = float(updatesPerBeat)
+        self._updateInterval = self._getIntervalTime(bpm=self._bpm,
+                                                     updatesPerBeat=self._updatesPerBeat)
 
-        self.__updateInterval = self.__getIntervalTime()
+        self._currTime = 0.0
+        self._lastTime = 0.0
 
-        self.__currTime = 0.0
-        self.__lastTime = 0.0
-
-        self.__callbacks = []
+        self._callbacks = []
 
     def setBpm(self, bpm):
-        self.__bpm = bpm
-        self.__updateInterval = self.__getIntervalTime()
+        self._bpm = bpm
+        self._updateInterval = self._getIntervalTime(bpm=self._bpm,
+                                                     updatesPerBeat=self._updatesPerBeat)
 
     def addIntervalUpdateCallback(self, callback):
-        self.__callbacks.append(callback)
+        self._callbacks.append(callback)
 
     def start(self):
-        self.__updateInterval = self.__getIntervalTime()
-        self.__scheduleNextUpdate()
+        self._updateInterval = self._getIntervalTime(bpm=self._bpm,
+                                                     updatesPerBeat=self._updatesPerBeat)
+        self._scheduleNextUpdate()
 
     def stop(self):
-        Clock.unschedule(self.__onUpdate)
-        self.__updateInterval = 0.0
+        Clock.unschedule(self._onUpdate)
+        self._updateInterval = 0.0
+
+    def reset(self):
+        self._currTime = 0.0
 
     def stopAndReset(self):
         self.stop()
         self.reset()
 
-    def reset(self):
-        self.__currTime = 0.0
-
-    def __getIntervalTime(self):
-        if self.__bpm:
-            return (1.0 / (float(self.__bpm) / 60.0)) / float(self.__updatesPerBeat)
+    def _getIntervalTime(self, bpm, updatesPerBeat):
+        if bpm:
+            return (1.0 / (float(bpm) / 60.0)) / float(updatesPerBeat)
         return 0.0
 
-    def __scheduleNextUpdate(self):
-        Clock.unschedule(self.__onUpdate)
-        if self.__updateInterval:
-            Clock.schedule_once(self.__onUpdate, self.__updateInterval)
+    def _scheduleNextUpdate(self):
+        Clock.unschedule(self._onUpdate)
+        if self._updateInterval:
+            Clock.schedule_once(self._onUpdate, self._updateInterval)
 
-    def __onUpdate(self, *args):
-        self.__currTime += 1.0 / self.__updatesPerBeat
-        for callback in self.__callbacks:
-            callback(self.__currTime)
+    def _onUpdate(self, *args):
+        self._currTime += 1.0 / self._updatesPerBeat
+        for callback in self._callbacks:
+            callback(self._currTime)
 
-        self.__scheduleNextUpdate()
+        self._scheduleNextUpdate()

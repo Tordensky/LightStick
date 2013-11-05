@@ -6,7 +6,3 @@ class Serializable():
 
     def deserializer_from_dict(self, showDict):
         return showDict
-
-
-if __name__ == "__main__":
-    pass

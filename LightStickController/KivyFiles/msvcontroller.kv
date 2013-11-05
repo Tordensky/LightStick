@@ -9,8 +9,6 @@
     size: root.size
 
     msvPos: 0.0
-    msvVel: 0.0
-    msvAcc: 0.0
     delay: "4"
     currentBPM: 0.0
     padding: 3
@@ -54,27 +52,18 @@
             BoxLayout:
                 size_hint: 1.0, 0.3
                 Label:
-                    text: root.delay
+                    text: "DELAY TRIGGER: " + root.delay
                     font_size: "15px"
-                    size_hint: 0.25, 1.0
+                    size_hint: 0.50, 1.0
                 Label:
-                    text: "BPM: " + str(root.currentBPM)
+                    text: "CURR BPM: " + str(root.currentBPM)
                     font_size: "15px"
-                    size_hint: 0.25, 1.0
-                Label:
-                    text: "Vel: " + str(root.msvVel)
-                    font_size: "15px"
-                    size_hint: 0.25, 1.0
-                Label:
-                    text: "Acc: " + str(root.msvAcc)
-                    font_size: "15px"
-                    size_hint: 0.25, 1.0
+                    size_hint: 0.50, 1.0
+
 
 
 <SimpleMsvController>
     msvPosition: 0.0
-    msvVelocity: 0.0
-    msvAcceleration: 0.0
     currentBPM: 0.0
 
     size_hint_y: None
@@ -130,18 +119,16 @@
                     size_hint_x: None
                     width: 60
 
+                    # SET BPM FROM A
                     LightButton:
                         text: "SET BPM"
                         font_size: "12px"
                         on_press: root.setBpmFromSource("A")
 
-
-
+                    # TRIGGER SHOW A
                     LightButton:
-
                         size_hint_y: None
                         height: 60
-
                         text: "A"
                         font_size: "25px"
                         on_press: root.setSourceForBpm("A")
@@ -155,11 +142,10 @@
                     # SCREEN
                     MsvScreen:
                         msvPos: str(root.msvPosition)
-                        msvAcc: str(root.msvAcceleration)
-                        msvVel: str(root.msvVelocity)
                         currentBPM: str(root.currentBPM)
                         delay: str(root.delay)
 
+                    # SET DELAY FOR TRIGGERS
                     BoxLayout:
                         spacing: 3
                         size_hint_y: None
@@ -179,17 +165,16 @@
                 BoxLayout:
                     spacing: 3
                     orientation: "vertical"
-
                     size_hint_x: None
                     width: 60
 
+                    # SET BPM FROM B
                     LightButton:
                         text: "SET BPM"
                         font_size: "12px"
                         on_press: root.setBpmFromSource("B")
 
-
-
+                    # TRIGGER SHOW B
                     LightButton:
                         size_hint_x: None
                         width: 60
@@ -199,4 +184,3 @@
                         text: "B"
                         font_size: "25px"
                         on_press: root.setSourceForBpm("B")
-
