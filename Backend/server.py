@@ -1,8 +1,7 @@
 import json
-from cmdhandler import Monitor
-from cmdhandler import CommandHandler, FileCash
+from logger import Logger
+from cmdhandler import CommandHandler
 import libs.web as web
-
 
 urls = (
     '/', 'index',
@@ -20,7 +19,7 @@ class command:
         params = web.input()
 
         if "id" in params:
-            web.heartBeatMonitor.addID(params.id)
+            web.heartBeatMonitor.log_id(params.id)
 
         return web.cmdHandler.getCommand()
 
@@ -28,23 +27,9 @@ class command:
         web.cmdHandler.setCommand(json.loads(web.data()))
         return
 
-
-# class files:
-#     def GET(self, filename):
-#         try:
-#             #f = open(APPLICATION_BASE_PATH + filename, 'rb')
-#             #return f.read()
-#
-#             return web.cache.getFile(filename)
-#         except IOError, e:
-#             print "ERROR", e
-#             return
-
-
 if __name__ == "__main__":
     web.cmdHandler = CommandHandler()
-    web.heartBeatMonitor = Monitor()
-    #web.cache = FileCash()
+    web.heartBeatMonitor = Logger()
+    web.heartBeatMonitor.start_logger()
     app = web.application(urls, globals())
     app.run()
-

@@ -7,7 +7,6 @@ class PlayBackHandler():
         self._updatesPerBeat = float(updatesPerBeat)
         self._updateInterval = self._getIntervalTime(bpm=self._bpm,
                                                      updatesPerBeat=self._updatesPerBeat)
-
         self._currTime = 0.0
         self._lastTime = 0.0
 

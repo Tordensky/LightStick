@@ -1,4 +1,3 @@
-from collections import defaultdict
 import json
 import random
 import threading
@@ -7,7 +6,6 @@ import thread
 import math
 from randomshow import RandomShow
 from config import serverconfig
-from config import APPLICATION_BASE_PATH
 from libs.pymsv.msvclient.client import Client, Msv
 
 
@@ -24,9 +22,8 @@ class CommandHandler():
         self.isInRandomMode = True
         self.randomFileHelper = RandomShow()
 
-        self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER
+        self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
         self.startRandomMode()
-
 
     def startRandomMode(self):
         self.isInRandomMode = True
@@ -38,7 +35,7 @@ class CommandHandler():
     def setCommand(self, data, fromServer=True):
         if fromServer:
             self.isInRandomMode = False
-            self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER
+            self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
 
         self.messageNum += 1
         with self.lock:
@@ -54,7 +51,7 @@ class CommandHandler():
             while self.isInRandomMode:
                 newShow = self.randomFileHelper.getRandomShow()
                 timeStamp = int(math.floor(self.msvPlaybackController.getCurrentMsvValue()))
-                timeStamp += serverconfig.RANDOM_START_DELAY
+                timeStamp += serverconfig.RANDOM_BPM_DELAY_NEXT_SHOW
 
                 newShow["MSV_TIME"] = timeStamp
 
@@ -74,10 +71,7 @@ class CommandHandler():
 class MsvController():
     def __init__(self, host, msvid):
         print "INITALIZE MSV"
-
-        #self.HOST = "t0.mcorp.no:8091"
         self.HOST = host
-        #self.MSVID = 22
         self.MSVID = msvid
 
         try:
@@ -103,66 +97,6 @@ class MsvController():
         pass
 
 
-class FileCash():
-    def __init__(self):
-        self.cache = {}
-        self.lock = threading.RLock()
-
-    def getFile(self, filename):
-        with self.lock:
-            if filename in self.cache:
-                return self.cache[filename]
-            else:
-                f = open(APPLICATION_BASE_PATH + filename, 'rb')
-                data = f.read()
-                # TODO ENABLE TO ADD CACHING!
-                #self.cache[filename] = data
-                return data
-
-
-class Monitor():
-    def __init__(self):
-        self.logFileName = "log/cmdLogFile" + str(int(time.time())) + ".log"
-        self.dropBoxFileName = "B:/Dropbox/Privat/insomnialog/" + self.logFileName
-
-        self.heartbeats = 0
-        self.ids = defaultdict(int)
-
-        self.lock = threading.RLock()
-        self.writeLock = threading.RLock()
-
-        self.logInterval = 60000
-
-        headerLine = "STARTING SERVER: " + str(time.asctime()) + "\n" \
-                     "INTERVAL: " + str(self.logInterval) + "\n#####\n"
-        self.appendToFile(headerLine)
-
-        thread.start_new_thread(self.idLogger, ())
-
-    def addID(self, clientID):
-        with self.lock:
-            self.ids[clientID] += 1
-
-    def getIDsAndReset(self):
-        with self.lock:
-            ids = self.ids
-            self.ids = defaultdict(int)
-            return ids
-
-    def idLogger(self):
-        while True:
-            clients = self.getIDsAndReset()
-            logRecord = {"time": time.asctime(), "num clients": len(clients), "history": clients}
-            self.appendToFile(json.dumps(logRecord))
-            time.sleep(self.logInterval / 1000.0)
-
-    def appendToFile(self, line):
-        with self.writeLock:
-            with open(self.logFileName, "a") as stream:
-                stream.write(line + "\n")
-
-            with open(self.dropBoxFileName, "a") as stream:
-                stream.write(line + "\n")
 
 
 
