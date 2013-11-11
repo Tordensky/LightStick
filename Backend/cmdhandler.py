@@ -6,99 +6,73 @@ import thread
 import math
 from randomshow import RandomShow
 from config import serverconfig
-from libs.pymsv.msvclient.client import Client, Msv
+from msvcontroller import MsvController
 
 
 class CommandHandler():
     def __init__(self):
-        self.messageNum = 0
-        self.command = {}
-        self.lock = threading.RLock()
+        self._current_command = {}
+        self._command_lock = threading.RLock()
 
-        self.msvMsgIdController = MsvController("t0.mcorp.no:8091", 22)
-        self.msvPlaybackController = MsvController("t0.mcorp.no:8091", 18)
-        self.messageNum = self.msvMsgIdController.getCurrentMsvValue()
+        self._message_num_msv = MsvController(host=serverconfig.MSG_NUM_MSV_HOST,
+                                              msv_id=serverconfig.MSG_NUM_MSV_ID)
+        self._playback_msv = MsvController(host=serverconfig.PLAYBACK_MSV_HOST,
+                                           msv_id=serverconfig.PLAYBACK_MSV_ID)
+        self._current_message_num = self._message_num_msv.get_current_msv_value()
 
-        self.isInRandomMode = True
-        self.randomFileHelper = RandomShow()
+        self._init_and_start_random_mode()
 
-        self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
-        self.startRandomMode()
+    def _init_and_start_random_mode(self):
+        self._is_in_random_mode = True
+        self._random_show_helper = RandomShow()
+        self._time_before_entering_random_mode = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
 
-    def startRandomMode(self):
-        self.isInRandomMode = True
-        thread.start_new_thread(self.randomHandler, ())
+        thread.start_new_thread(self._random_cmd_handler, ())
 
-    def endRandomMode(self):
-        self.isInRandomMode = False
+    def _end_random_mode(self):
+        self._is_in_random_mode = False
 
-    def setCommand(self, data, fromServer=True):
-        if fromServer:
-            self.isInRandomMode = False
-            self.resetCounter = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
+    def _reset_time_to_enter_random_mode(self):
+        self._time_before_entering_random_mode = serverconfig.ENTER_RANDOM_MODE_AFTER_SEC
 
-        self.messageNum += 1
-        with self.lock:
-            self.command = data
-            self.msvMsgIdController.setMsvValue(self.messageNum)
+    def set_current_command(self, cmd_data, command_from_server=True):
+        if command_from_server:
+            self._is_in_random_mode = False
+            self._reset_time_to_enter_random_mode()
 
-    def getCommand(self):
-        self.message = {"cmdNum": self.messageNum, "data": self.command}
-        return json.dumps(self.message)
+        self._current_message_num += self._message_num_msv.get_current_msv_value() + 1
 
-    def randomHandler(self):
+        with self._command_lock:
+            self._current_command = cmd_data
+            self._message_num_msv.set_msv_value(self._current_message_num)
+
+    def get_current_command(self):
+        self._message = {"cmdNum": self._current_message_num,
+                         "data": self._current_command}
+
+        return json.dumps(self._message)
+
+    def _random_cmd_handler(self):
         while True:
-            while self.isInRandomMode:
-                newShow = self.randomFileHelper.getRandomShow()
-                timeStamp = int(math.floor(self.msvPlaybackController.getCurrentMsvValue()))
-                timeStamp += serverconfig.RANDOM_BPM_DELAY_NEXT_SHOW
+            while self._is_in_random_mode:
+                random_show = self._random_show_helper.get_random_show()
 
-                newShow["MSV_TIME"] = timeStamp
+                timestamp = self._calculate_next_cmd_timestamp()
+                random_show["MSV_TIME"] = timestamp
 
-                self.setCommand(newShow, fromServer=False)
+                self.set_current_command(random_show, command_from_server=False)
 
-                randomInterval = random.randrange(serverconfig.RANDOM_INTERVAL_SEC_MIN,
-                                                  serverconfig.RANDOM_INTERVAL_SEC_MAX)
-                time.sleep(randomInterval)
+                time_to_next_random_show = random.randrange(serverconfig.RANDOM_INTERVAL_SEC_MIN,
+                                                            serverconfig.RANDOM_INTERVAL_SEC_MAX)
+                time.sleep(time_to_next_random_show)
 
-            while not self.isInRandomMode:
+            while not self._is_in_random_mode:
                 time.sleep(5)
-                self.resetCounter -= 5
-                if self.resetCounter <= 0:
-                    self.isInRandomMode = True
+                self._time_before_entering_random_mode -= 5
+                if self._time_before_entering_random_mode <= 0:
+                    self._is_in_random_mode = True
 
-
-class MsvController():
-    def __init__(self, host, msvid):
-        print "INITALIZE MSV"
-        self.HOST = host
-        self.MSVID = msvid
-
-        try:
-            self._client = Client(self.HOST)
-            self._client.start()
-            self._msv = Msv(self._client, self.MSVID)
-            self._msv.add_handler(self.update_handler)
-        except AssertionError:
-            print "MSV ERROR"
-            exit()
-
-    def setMsvValue(self, value):
-        self.__update(value)
-
-    def getCurrentMsvValue(self):
-        return int(self._msv.query()[0])
-
-    def __update(self, value):
-        msv_data_list = [{'msvid': self.MSVID, 'vector': (value, 0.0, 0.0)}]
-        self._client.update(msv_data_list)
-
-    def update_handler(self, msv_data):
-        pass
-
-
-
-
-
-
-
+    def _calculate_next_cmd_timestamp(self):
+        current_time = int(math.floor(self._playback_msv.get_current_msv_value()))
+        current_time += serverconfig.RANDOM_BPM_DELAY_NEXT_SHOW
+        return current_time
