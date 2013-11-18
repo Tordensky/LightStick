@@ -45,19 +45,24 @@ class SimpleMsvController(Widget, EventDispatcher):
 
         self.window = Window.bind(on_close=self.stop)
 
-        try:
-            self._stop_event = threading.Event()
-            self._client = Client(self.HOST)
-            self._client.start()
-            self._msv = Msv(self._client, self.MSVID)
-            self._msv.add_handler(self.update_handler)
+        self._stop_event = threading.Event()
+        self.lock = threading.RLock()
+        self._conn_tries = 3
+        while self._conn_tries > 0:
+            try:
+                self._client = Client(self.HOST)
+                self._client.start()
+                self._msv = Msv(self._client, self.MSVID)
+                self._msv.add_handler(self.update_handler)
 
-            self.lock = threading.RLock()
-            self.msvThread = threading.Thread(target=self.run)
-            self.msvThread.start()
-        except AssertionError:
-            print "MSV ERROR"
-            Clock.schedule_once(self.showMsvErrorPopup, 1 / 2.0)
+                self.msvThread = threading.Thread(target=self.run)
+                self.msvThread.start()
+
+                self._conn_tries = 0
+            except AssertionError:
+                self._conn_tries -= 1
+                if self._conn_tries == 0:
+                    Clock.schedule_once(self.showMsvErrorPopup, 1 / 2.0)
 
     def showMsvErrorPopup(self, *args):
         popup = Popups.errorPopup(titleLabel="MSV ERROR",

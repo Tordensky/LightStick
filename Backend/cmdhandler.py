@@ -6,7 +6,7 @@ import thread
 import math
 from randomshow import RandomShow
 from config import serverconfig
-from msvcontroller import MsvController
+from msvhandler import MsvController
 
 
 class CommandHandler():
@@ -16,6 +16,7 @@ class CommandHandler():
 
         self._message_num_msv = MsvController(host=serverconfig.MSG_NUM_MSV_HOST,
                                               msv_id=serverconfig.MSG_NUM_MSV_ID)
+        self._message_num_msv.set_msv_value(0)
         self._playback_msv = MsvController(host=serverconfig.PLAYBACK_MSV_HOST,
                                            msv_id=serverconfig.PLAYBACK_MSV_ID)
         self._current_message_num = self._message_num_msv.get_current_msv_value()
@@ -40,11 +41,13 @@ class CommandHandler():
             self._is_in_random_mode = False
             self._reset_time_to_enter_random_mode()
 
+        print "before", self._message_num_msv.get_current_msv_value()
         self._current_message_num += self._message_num_msv.get_current_msv_value() + 1
 
         with self._command_lock:
             self._current_command = cmd_data
             self._message_num_msv.set_msv_value(self._current_message_num)
+            print "after", self._message_num_msv.get_current_msv_value()
 
     def get_current_command(self):
         self._message = {"cmdNum": self._current_message_num,

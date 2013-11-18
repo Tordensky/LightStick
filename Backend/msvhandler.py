@@ -7,13 +7,18 @@ class MsvController():
         self.MSV_ID = msv_id
 
         # TODO normally crashes on first startup, give more tries to start msv service
-        try:
-            self._client = Client(self.HOST)
-            self._client.start()
-            self._msv = Msv(self._client, self.MSV_ID)
+        self._conn_tries = 3
+        while self._conn_tries > 0:
+            try:
+                self._client = Client(self.HOST)
+                self._client.start()
+                self._msv = Msv(self._client, self.MSV_ID)
 
-        except AssertionError:
-            print "! ! ! ERROR, FAILED TO LOAD MSV ! ! !"
+                self._conn_tries = 0
+            except AssertionError:
+                self._conn_tries -= 1
+                if self._conn_tries == 0:
+                    print "! ! ! ERROR, FAILED TO LOAD MSV ! ! !"
 
     def set_msv_value(self, value):
         self._update(value)
