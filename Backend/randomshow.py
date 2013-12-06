@@ -22,7 +22,7 @@ class RandomShow():
     def _list_all_show_files(self):
         file_list = []
         for root, dirs, files in os.walk(self.PATH):
-            for file in files:
-                if file.endswith(".show"):
-                    file_list.append(os.path.join(root, file))
+            for lightShowFile in files:
+                if lightShowFile.endswith(".show"):
+                    file_list.append(os.path.join(root, lightShowFile))
         return file_list

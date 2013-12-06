@@ -198,7 +198,6 @@ LightStick.PlayBack = function() {
     };
 
     this.getCurrentFrame = function(currentTime) {
-        // TODO fix offset so do not need to iter trough prev frames if time is higher than before
         var frameShowTime = 0.0;
 
         return _.find(this.frameList, function(scene){
@@ -344,7 +343,7 @@ LightStick.MsvClient = function(id, host) {
 };
 
 
-// EFFECTS ! ! ! TODO extract to its own file
+// EFFECTS ! ! !
 LightStick.BeatTextEffect = function($el) {
     this.$el = $el.find("#text");
     this.$holder = $el;
