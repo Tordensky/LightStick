@@ -1,5 +1,6 @@
 from collections import defaultdict
 import json
+import os
 import threading
 import time
 import thread
@@ -8,6 +9,7 @@ import config
 
 class Logger():
     def __init__(self):
+        self._log_file_path = config.LOG_FILE_PATH
         self._log_file_name = "%s%s%d%s" % (config.LOG_FILE_PATH,
                                             config.LOG_FILE_NAME,
                                             time.time(),
@@ -47,5 +49,8 @@ class Logger():
         self._append_to_file(header_line)
 
     def _append_to_file(self, line):
+        dirName = os.path.dirname(self._log_file_path)
+        if not os.path.exists(dirName):
+            os.makedirs(dirName)
         with open(self._log_file_name, "a") as log_file:
             log_file.write(line + "\n")

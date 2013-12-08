@@ -44,7 +44,6 @@ class BeatCounterScreen(Widget):
         self.beat_value.text = str("%.1f" % screenValue)
 
 
-# TODO REFACTOR AND GET BPM COUNTER TO UPDATE AND START AT 60 BPM
 class BeatCounter(Widget, EventDispatcher):
     MIN_SAMPLE_TIME = 0.01
     MAX_NUM_SAMPLES = 4

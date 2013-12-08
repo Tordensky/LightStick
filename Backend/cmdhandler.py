@@ -41,13 +41,11 @@ class CommandHandler():
             self._is_in_random_mode = False
             self._reset_time_to_enter_random_mode()
 
-        print "before", self._message_num_msv.get_current_msv_value()
         self._current_message_num += self._message_num_msv.get_current_msv_value() + 1
 
         with self._command_lock:
             self._current_command = cmd_data
             self._message_num_msv.set_msv_value(self._current_message_num)
-            print "after", self._message_num_msv.get_current_msv_value()
 
     def get_current_command(self):
         self._message = {"cmdNum": self._current_message_num,

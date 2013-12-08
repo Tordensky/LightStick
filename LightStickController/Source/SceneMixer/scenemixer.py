@@ -61,7 +61,7 @@ class SceneMixer(Widget, Serializable):
 
         self.fileHandler = FileHandler()
 
-        # TODO fix a better approach for checking if object is ready
+
         self.__initFinished = True
         self.__isInFrameChange = False
 

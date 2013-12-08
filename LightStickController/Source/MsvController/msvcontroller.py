@@ -42,7 +42,8 @@ class SimpleMsvController(Widget, EventDispatcher):
         self._set_new_bpm = False
 
         self.bpm = defaultdict(float)
-        self.httpClient = HttpClient("129.242.22.10", 8080)
+        # self.httpClient = HttpClient("129.242.22.10", 8080)
+        self.httpClient = HttpClient("localhost", 8080)
 
         self.window = Window.bind(on_close=self.stop)
 

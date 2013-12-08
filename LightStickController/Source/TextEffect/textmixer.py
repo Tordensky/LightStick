@@ -12,4 +12,3 @@ class TextMixer(Widget):
     def __init__(self, **kwargs):
         super(TextMixer, self).__init__(**kwargs)
 
-    # TODO SET MAX NUMBER OF CHARS!!
