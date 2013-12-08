@@ -3,6 +3,7 @@ from collections import defaultdict
 import json
 import os
 import math
+from sqlite3 import Time
 import threading
 import time
 
@@ -63,6 +64,9 @@ class SimpleMsvController(Widget, EventDispatcher):
                 self._conn_tries -= 1
                 if self._conn_tries == 0:
                     Clock.schedule_once(self.showMsvErrorPopup, 1 / 2.0)
+                    Time.sleep(1)
+                else:
+                    print "Could not connect to msv server. Retries, Retries left: " + self._conn_tries
 
     def showMsvErrorPopup(self, *args):
         popup = Popups.errorPopup(titleLabel="MSV ERROR",
