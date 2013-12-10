@@ -1,4 +1,4 @@
-from sqlite3 import Time
+import time
 from libs.pymsv.msvclient.client import Client, Msv
 
 
@@ -18,11 +18,11 @@ class MsvController():
                 self._conn_tries = 0
             except AssertionError:
                 self._conn_tries -= 1
-                Time.sleep(1)
+                time.sleep(1)
                 if self._conn_tries == 0:
                     print "! ! ! ERROR, FAILED TO LOAD MSV ! ! !"
                 else:
-                    print "Could not connect to msv server. Retries, Retries left: " + self._conn_tries
+                    print "Could not connect to msv server. Retries, Retries left: " + str(self._conn_tries)
 
     def set_msv_value(self, value):
         self._update(value)

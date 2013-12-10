@@ -5,6 +5,7 @@ import libs.web as web
 
 urls = (
     '/', 'index',
+    '/beatControl', 'beat',
     '/command', 'command'
 )
 
@@ -12,6 +13,11 @@ urls = (
 class index:
     def GET(self):
         raise web.seeother('/static/MsvClient/Html/index.html')
+
+
+class beat:
+    def GET(self):
+        raise web.seeother('/static/MsvClient/Html/beat.html')
 
 
 class command:
